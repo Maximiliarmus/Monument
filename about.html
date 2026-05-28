@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>О компании | МОНУМЕНТ</title>
+    <meta name="description" content="История и преимущества компании МОНУМЕНТ - городской ритуальной службы во Владивостоке">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Подключаем общий CSS -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Стили только для страницы О КОМПАНИИ */
+        .about-content {
+            padding: 80px 0;
+            background: #f8f8f8;
+            min-height: 60vh;
+        }
+        
+        .about-content h1 {
+            font-size: 2.5rem;
+            color: #b87c4f;
+            margin-bottom: 30px;
+        }
+        
+        .about-content h2 {
+            font-size: 1.5rem;
+            margin: 30px 0 15px;
+            color: #1a1a1a;
+        }
+        
+        .about-content p {
+            font-size: 1.1rem;
+            color: #444;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        
+        .about-content .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+        
+        .stat-item {
+            background: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 16px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #b87c4f;
+        }
+        
+        .stat-label {
+            margin-top: 10px;
+            color: #666;
+        }
+        
+        @media (max-width: 768px) {
+            .about-content h1 {
+                font-size: 1.8rem;
+            }
+            .stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== ХЕДЕР (полностью как на главной) ===== -->
+    <header class="top-header">
+        <div class="container">
+            <div class="header-row">
+                <div class="header-left">
+                    <a href="monument.html" class="logo">
+                        <img src="logo.webp" alt="МОНУМЕНТ" class="logo-img" onerror="this.src='https://placehold.co/60x60/333/b87c4f?text=М'">
+                        <div class="logo-text">
+                            <div class="logo-main">МОНУМЕНТ</div>
+                            <div class="logo-sub">РИТУАЛЬНАЯ КОМПАНИЯ</div>
+                        </div>
+                    </a>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                        <a href="mailto:info@monument.ru" class="social-link"><i class="far fa-envelope"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="header-address">📍 г. Владивосток, ул. Борисенко 104, стр. 6</div>
+                    <a href="tel:+79247301030" class="header-phone">+7 (924) 730-10-30</a>
+                    <div class="header-worktime">🕒 Работаем круглосуточно, без выходных</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== МЕНЮ ===== -->
+    <div class="nav-menu-wrapper" id="navbar">
+        <div class="nav-container">
+            <button class="menu-toggle" id="menuToggle">☰ МЕНЮ</button>
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item"><a href="about.html" class="nav-link" style="color: #b87c4f;">О КОМПАНИИ</a></li>
+                <li class="nav-item has-dropdown">
+                    <a href="#" class="nav-link">БЛАГОУСТРОЙСТВО</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Услуги</a></li>
+                        <li><a href="#">Демонтаж</a></li>
+                        <li><a href="#">Установка</a></li>
+                        <li><a href="#">Гравировка</a></li>
+                        <li><a href="#">Плитки</a></li>
+                        <li><a href="#">Облицовка</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item has-dropdown">
+                    <a href="#" class="nav-link">ПАМЯТНИКИ</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Одиночные</a></li>
+                        <li><a href="#">Семейные</a></li>
+                        <li><a href="#">Комбинированные</a></li>
+                        <li><a href="#">Ритуальные наборы</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a href="#" class="nav-link">НАШИ РАБОТЫ</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">ОТЗЫВЫ</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">КОНТАКТЫ</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ===== УНИКАЛЬНЫЙ КОНТЕНТ СТРАНИЦЫ "О КОМПАНИИ" ===== -->
+    <main class="about-content">
+        <div class="container">
+            <h1>О компании «МОНУМЕНТ»</h1>
+            
+            <p>Компания «МОНУМЕНТ» — это городская ритуальная служба, работающая на рынке Владивостока с 2012 года. За это время мы помогли более чем 5000 семьям организовать достойные похороны и увековечить память близких.</p>
+            
+            <p>Наше главное преимущество — собственное производство памятников и надгробий из гранита. Мы контролируем каждый этап: от выбора камня до финальной шлифовки. Благодаря этому мы можем предлагать лучшие цены без наценок посредников.</p>
+            
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number">13+</div>
+                    <div class="stat-label">лет на рынке</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">5000+</div>
+                    <div class="stat-label">семей доверились нам</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">работаем без выходных</div>
+                </div>
+            </div>
+            
+            <h2>Наши принципы</h2>
+            <p>Мы гордимся тем, что наша продукция соответствует всем стандартам качества, а наши мастера — настоящие профессионалы своего дела. Каждый памятник изготавливается с душой и вниманием к деталям.</p>
+            
+            <p>Наша миссия — помогать людям в трудную минуту, беря на себя все организационные вопросы. Мы работаем круглосуточно и всегда готовы прийти на помощь.</p>
+            
+            <h2>Почему выбирают нас?</h2>
+            <p>✓ Собственное производство — цены ниже на 20-30%<br>
+            ✓ Гарантия качества на все изделия — 5 лет<br>
+            ✓ Бесплатная консультация и выезд специалиста<br>
+            ✓ Помощь в оформлении документов<br>
+            ✓ Доставка и установка в день заказа</p>
+        </div>
+    </main>
+
+    <!-- ===== ФУТЕР (полностью как на главной) ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-left">
+                <div class="logo-main">МОНУМЕНТ</div>
+                <div class="footer-social">
+                    <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                    <a href="mailto:info@monument.ru" class="social-link"><i class="far fa-envelope"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+                </div>
+                <div class="footer-copyright">© Монумент, 2026</div>
+            </div>
+            <div class="footer-right">
+                <div class="footer-address">
+                    📍 <a href="https://yandex.ru/maps/?text=Владивосток,+ул.+Борисенко+104+стр+6" target="_blank">г. Владивосток, ул. Борисенко, д. 104, стр. 6</a>
+                </div>
+                <a href="tel:+79247301030" class="footer-phone">+7 (924) 730-10-30</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Прилипание меню
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 50) {
+                navbar.classList.add('sticky');
+            } else {
+                navbar.classList.remove('sticky');
+            }
+        });
+
+        // Бургер-меню
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+            });
+        }
+
+        // Для мобильных: раскрытие подменю
+        const dropdownItems = document.querySelectorAll('.has-dropdown');
+        dropdownItems.forEach(item => {
+            const link = item.querySelector('.nav-link');
+            link.addEventListener('click', (e) => {
+                if (window.innerWidth <= 1000) {
+                    e.preventDefault();
+                    item.classList.toggle('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,3433 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Благоустройство | МОНУМЕНТ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">    
+<link rel="stylesheet" href="style.css">
+    <style>
+        /* ===== ТОЛЬКО СПЕЦИФИЧНЫЕ СТИЛИ ДЛЯ ДИНАМИЧЕСКИХ СТРАНИЦ ===== */
+        /* Стили только для страницы О КОМПАНИИ */
+        
+
+.about-content {
+    background: #f8f8f8;
+    padding-bottom: 80px;
+}
+
+/* HERO */
+
+.about-hero {
+    background:
+        linear-gradient(rgba(15,15,15,0.82), rgba(15,15,15,0.82)),
+        linear-gradient(135deg, #1f1f1f 0%, #2b2b2b 100%);
+    padding: 110px 0 90px;
+    text-align: center;
+    color: white;
+    margin-bottom: 70px;
+}
+
+.about-badge {
+    display: inline-block;
+    background: rgba(184,124,79,0.15);
+    border: 1px solid rgba(184,124,79,0.4);
+    color: #d4a373;
+    padding: 10px 18px;
+    border-radius: 40px;
+    font-size: 0.9rem;
+    margin-bottom: 24px;
+}
+
+.about-hero h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    margin-bottom: 20px;
+    color: white;
+}
+
+.about-subtitle {
+    max-width: 760px;
+    margin: 0 auto;
+    color: #d0d0d0;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+/* STATS */
+
+.about-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-bottom: 70px;
+}
+
+.stat-card {
+    background: white;
+    border-radius: 24px;
+    padding: 45px 30px;
+    text-align: center;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.05);
+    transition: 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-6px);
+}
+
+.stat-number {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #b87c4f;
+    margin-bottom: 12px;
+}
+
+.stat-text {
+    color: #777;
+}
+
+/* GRID */
+
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-bottom: 90px;
+}
+
+.about-card {
+    background: white;
+    border-radius: 28px;
+    padding: 40px;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.05);
+}
+
+.about-card h2 {
+    margin-bottom: 20px;
+}
+
+.about-card p {
+    color: #555;
+    line-height: 1.9;
+    margin-bottom: 16px;
+}
+
+/* WHY US */
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title p {
+    color: #777;
+}
+
+.why-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.why-card {
+    background: white;
+    border-radius: 24px;
+    padding: 35px 28px;
+    text-align: center;
+    transition: 0.3s ease;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.04);
+}
+
+.why-card:hover {
+    transform: translateY(-8px);
+}
+
+.why-icon {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 22px;
+    border-radius: 50%;
+    background: rgba(184,124,79,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.why-icon i {
+    font-size: 1.6rem;
+    color: #b87c4f;
+}
+
+.why-card h3 {
+    margin-bottom: 14px;
+    font-size: 1.1rem;
+}
+
+.why-card p {
+    color: #666;
+    line-height: 1.7;
+}
+
+/* MOBILE */
+
+@media (max-width: 1000px) {
+
+    .about-stats,
+    .about-grid,
+    .why-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-hero {
+        padding: 80px 0 70px;
+    }
+
+    .about-card,
+    .why-card,
+    .stat-card {
+        padding: 30px;
+    }
+
+}
+
+        /* Стили для страницы услуг (благоустройство) */
+        .service-header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            padding: 60px 0;
+            color: white;
+            text-align: center;
+        }
+        
+        .service-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .service-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .categories-tabs {
+            background: white;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 75px;
+            z-index: 99;
+        }
+        
+        .tabs-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            overflow-x: auto;
+        }
+        
+        .tab-btn {
+            padding: 15px 25px;
+            background: none;
+            border: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #666;
+            cursor: pointer;
+            transition: 0.2s;
+            white-space: nowrap;
+        }
+        
+        .tab-btn:hover {
+            color: #b87c4f;
+        }
+        
+        .tab-btn.active {
+            color: #b87c4f;
+            border-bottom: 3px solid #b87c4f;
+        }
+        
+        .services-list {
+            padding: 40px 0 80px;
+            background: #f8f8f8;
+        }
+        
+        .service-item {
+            background: white;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            display: flex;
+            flex-wrap: wrap;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+        
+        .service-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .service-number {
+            width: 70px;
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #b87c4f;
+            border-right: 1px solid #eee;
+        }
+        
+        .service-content {
+            flex: 1;
+            padding: 18px 25px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .service-info {
+            flex: 3;
+        }
+        
+        .service-info h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #1a1a1a;
+        }
+        
+        .service-unit {
+            flex: 1;
+            min-width: 100px;
+            font-size: 0.85rem;
+            color: #666;
+        }
+        
+        .service-price {
+            flex: 0.5;
+            min-width: 100px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #b87c4f;
+            text-align: right;
+        }
+        
+        .service-order {
+            flex: 0.3;
+            min-width: 100px;
+        }
+        
+        .order-btn {
+            background: #b87c4f;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: 0.2s;
+            width: 100%;
+        }
+        
+        .order-btn:hover {
+            background: #9a623d;
+        }
+        
+        .no-services {
+            text-align: center;
+            padding: 60px;
+            background: white;
+            border-radius: 16px;
+            color: #888;
+        }
+
+        /* Стили для раздела памятников */
+        .catalog-header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            padding: 50px 0;
+            color: white;
+            text-align: center;
+        }
+        
+        .catalog-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .monuments-tabs {
+            background: white;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 75px;
+            z-index: 98;
+            padding: 0;
+        }
+        
+        .monuments-tabs .tabs-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+        
+        .monuments-tab-btn {
+            padding: 15px 25px;
+            background: none;
+            border: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #666;
+            cursor: pointer;
+            transition: 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .monuments-tab-btn:hover {
+            color: #b87c4f;
+        }
+        
+        .monuments-tab-btn.active {
+            color: #b87c4f;
+            border-bottom: 3px solid #b87c4f;
+        }
+        
+        .monuments-list {
+            padding: 50px 0 80px;
+            background: #f8f8f8;
+        }
+        
+        .monuments-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .monument-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+        
+        .monument-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+        
+        .monument-image {
+            height: 220px;
+            position: relative;
+            background-color: #f8f8f8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .monument-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .monument-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #b87c4f;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+        
+        .monument-info {
+            padding: 18px;
+        }
+        
+        .monument-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: #1a1a1a;
+        }
+        
+        .monument-article {
+            font-size: 0.75rem;
+            color: #888;
+            margin-bottom: 5px;
+        }
+        
+        .monument-dimensions {
+            font-size: 0.75rem;
+            color: #b87c4f;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+        
+        .monument-price {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .monument-price .price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #b87c4f;
+            white-space: nowrap;
+        }
+        
+        .monument-price .order-btn {
+            background: #1a1a1a;
+            color: white;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: 0.2s;
+            white-space: nowrap;
+            width: auto;
+            min-width: 90px;
+        }
+        
+        .monument-price .order-btn:hover {
+            background: #b87c4f;
+        }
+        
+        .pdf-download-container {
+            text-align: right;
+            margin-bottom: 20px;
+        }
+        
+        .btn-pdf {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #d32f2f;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: 0.2s;
+        }
+        
+        .btn-pdf:hover {
+            background: #b71c1c;
+            transform: translateY(-2px);
+        }
+        
+        .btn-pdf i {
+            font-size: 1rem;
+        }
+        
+        .monuments-header {
+            margin-bottom: 30px;
+        }
+        
+        .monuments-header .section-title {
+            text-align: left;
+            margin-bottom: 10px;
+            font-size: 1.8rem;
+        }
+        
+        .monuments-header .section-subtitle {
+            text-align: left;
+            color: #666;
+        }
+
+        /* Стили для раздела "Наши работы" */
+        .works-header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            padding: 50px 0;
+            color: white;
+            text-align: center;
+        }
+        
+        .works-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .works-header p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .works-category {
+            margin-bottom: 50px;
+        }
+        
+        .works-category-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #b87c4f;
+            display: inline-block;
+        }
+        
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .work-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        
+        .work-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        
+        .work-image {
+            height: 260px;
+            position: relative;
+            overflow: hidden;
+            background-color: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .work-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .work-card:hover .work-image img {
+            transform: scale(1.05);
+        }
+        
+        .work-year {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #b87c4f;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+        
+        .work-info {
+            padding: 20px;
+        }
+        
+        .work-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #1a1a1a;
+        }
+        
+        .work-description {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .work-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+        }
+        
+        .work-category-badge {
+            background: #f0f0f0;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            color: #555;
+        }
+        
+        .work-more {
+            color: #b87c4f;
+            font-size: 0.75rem;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .work-more:hover {
+            text-decoration: underline;
+        }
+        
+        .work-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .work-modal.active {
+            display: flex;
+        }
+        
+        .work-modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            cursor: default;
+        }
+        
+        .work-modal-image {
+            width: 100%;
+            max-height: 70vh;
+            object-fit: contain;
+        }
+        
+        .work-modal-info {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .work-modal-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .work-modal-desc {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+        }
+
+        /* Стили для раздела "Отзывы" */
+        .reviews-header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            padding: 50px 0;
+            color: white;
+            text-align: center;
+        }
+        
+        .reviews-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .reviews-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .stat-card {
+            text-align: center;
+            background: rgba(255,255,255,0.1);
+            padding: 15px 25px;
+            border-radius: 16px;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #b87c4f;
+        }
+        
+        .stat-label {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+        
+        .reviews-filter {
+            background: white;
+            border-bottom: 1px solid #eee;
+            padding: 15px 0;
+            position: sticky;
+            top: 75px;
+            z-index: 98;
+        }
+        
+        /* ===== КРАСИВЫЕ КНОПКИ-ЗВЁЗДЫ ДЛЯ ФИЛЬТРАЦИИ ОТЗЫВОВ ===== */
+.filter-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: transparent;
+    border: 2px solid #e0e0e0;
+    padding: 10px 24px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(4px);
+}
+
+.filter-btn i {
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+/* Иконка звезды для кнопок */
+.filter-btn i.fa-star,
+.filter-btn i.far.fa-star {
+    margin-right: 4px;
+}
+
+/* Активная кнопка */
+.filter-btn.active {
+    background: linear-gradient(135deg, #b87c4f 0%, #9a623d 100%);
+    border-color: #b87c4f;
+    color: white;
+    box-shadow: 0 4px 15px rgba(184,124,79,0.3);
+    transform: translateY(-2px);
+}
+
+.filter-btn.active i {
+    color: white;
+}
+
+/* Кнопка "Все отзывы" */
+.filter-btn[data-rating="all"] {
+    background: #f5f5f5;
+    border-color: #ddd;
+}
+
+.filter-btn[data-rating="all"].active {
+    background: linear-gradient(135deg, #b87c4f 0%, #9a623d 100%);
+    border-color: #b87c4f;
+    color: white;
+}
+
+/* Эффекты при наведении */
+.filter-btn:hover:not(.active) {
+    border-color: #b87c4f;
+    color: #b87c4f;
+    transform: translateY(-2px);
+    background: rgba(184,124,79,0.05);
+}
+
+.filter-btn:hover:not(.active) i {
+    color: #b87c4f;
+}
+
+/* Специальные стили для кнопок с рейтингом 5,4,3 */
+.filter-btn[data-rating="5"] i.fa-star,
+.filter-btn[data-rating="5"] i.far.fa-star {
+    color: #ffc107;
+}
+
+.filter-btn[data-rating="5"]:hover:not(.active) i.fa-star {
+    color: #ffc107;
+}
+
+.filter-btn[data-rating="5"].active i.fa-star {
+    color: white;
+}
+
+/* Анимация появления */
+@keyframes starPulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.filter-btn.active i {
+    animation: starPulse 0.3s ease;
+}
+/* Анимированные звёзды в карточках отзывов */
+.review-rating {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 12px;
+}
+
+.review-rating .star {
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    cursor: default;
+}
+
+.review-card:hover .review-rating .star {
+    transform: scale(1.1);
+}
+
+.review-rating .star.fa-star {
+    color: #ffc107;
+    text-shadow: 0 0 3px rgba(255,193,7,0.5);
+}
+
+.review-rating .star.far.fa-star {
+    color: #ddd;
+}
+
+/* Добавляем небольшой блеск звёздам */
+@keyframes starGlow {
+    0% {
+        text-shadow: 0 0 0 rgba(255,193,7,0);
+    }
+    100% {
+        text-shadow: 0 0 5px rgba(255,193,7,0.5);
+    }
+}
+
+.review-card .review-rating .star.fa-star {
+    animation: starGlow 0.5s ease-out;
+}
+        
+        .reviews-list {
+            padding: 50px 0;
+            background: #f8f8f8;
+        }
+        
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 30px;
+        }
+        
+        .review-card {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+        
+        .review-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+        
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .review-avatar {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+        
+        .review-avatar-placeholder {
+            width: 55px;
+            height: 55px;
+            background: linear-gradient(135deg, #b87c4f 0%, #9a623d 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.3rem;
+        }
+        
+        .review-info {
+            flex: 1;
+        }
+        
+        .review-name {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 3px;
+        }
+        
+        .review-date {
+            font-size: 0.7rem;
+            color: #aaa;
+        }
+        
+        .review-rating {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 12px;
+        }
+        
+        .star {
+            color: #ffc107;
+            font-size: 0.9rem;
+        }
+        
+        .star.empty {
+            color: #ddd;
+        }
+        
+        .review-text {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: #444;
+            margin-bottom: 12px;
+        }
+        
+        .read-more-btn {
+            background: none;
+            border: none;
+            color: #b87c4f;
+            font-size: 0.75rem;
+            cursor: pointer;
+            margin-top: 5px;
+            padding: 0;
+        }
+        
+        .read-more-btn:hover {
+            text-decoration: underline;
+        }
+        
+        .review-service {
+            display: inline-block;
+            background: #f0f0f0;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            color: #b87c4f;
+            margin-top: 10px;
+        }
+        
+        .add-review-section {
+            background: white;
+            border-radius: 24px;
+            padding: 40px;
+            margin-top: 50px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+        
+        .add-review-title {
+            font-size: 1.6rem;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        
+        .add-review-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        .review-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-row {
+            margin-bottom: 20px;
+        }
+        
+        .form-row label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        
+        .form-row input, .form-row select, .form-row textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 0.9rem;
+            transition: 0.2s;
+        }
+        
+        .form-row input:focus, .form-row select:focus, .form-row textarea:focus {
+            outline: none;
+            border-color: #b87c4f;
+            box-shadow: 0 0 0 3px rgba(184,124,79,0.1);
+        }
+        
+        .form-row textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .rating-input {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .rating-stars {
+            display: flex;
+            gap: 8px;
+            cursor: pointer;
+        }
+        
+        .rating-stars i {
+            font-size: 1.5rem;
+            color: #ddd;
+            transition: 0.2s;
+        }
+        
+        .rating-stars i:hover,
+        .rating-stars i.active {
+            color: #ffc107;
+        }
+        
+        .submit-btn {
+            background: #b87c4f;
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 40px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: 0.2s;
+        }
+        
+        .submit-btn:hover {
+            background: #9a623d;
+            transform: translateY(-2px);
+        }
+        
+        .success-message {
+            background: #4caf50;
+            color: white;
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 20px;
+            display: none;
+        }
+        
+        .success-message.show {
+            display: block;
+        }
+
+        /* Стили для страницы контакты */
+        .contacts-header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            padding: 60px 0;
+            color: white;
+            text-align: center;
+        }
+        
+        .contacts-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .contacts-header p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .contacts-section {
+            padding: 60px 0;
+            background: #f8f8f8;
+        }
+        
+        .contacts-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .contacts-info {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        .info-card {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+        
+        .info-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .info-icon {
+            width: 55px;
+            height: 55px;
+            background: linear-gradient(135deg, #b87c4f 0%, #9a623d 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+        
+        .info-content {
+            flex: 1;
+        }
+        
+        .info-content h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: #1a1a1a;
+        }
+        
+        .info-content p {
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 5px;
+        }
+        
+        .info-link, .phone-link, .email-link {
+            color: #b87c4f;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .info-link:hover, .phone-link:hover, .email-link:hover {
+            text-decoration: underline;
+        }
+        
+        .work-time, .response-time {
+            font-size: 0.8rem;
+            color: #888;
+            margin-top: 5px;
+        }
+        
+        .social-card {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+        
+        .social-card h3 {
+            margin-bottom: 20px;
+            color: #1a1a1a;
+        }
+        
+        .messengers {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .messenger-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 20px;
+            border-radius: 40px;
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+        
+        .messenger-link.whatsapp {
+            background: #25D366;
+        }
+        
+        .messenger-link.telegram {
+            background: #0088cc;
+        }
+        
+        .messenger-link.email {
+            background: #b87c4f;
+        }
+        
+        .messenger-link:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.05);
+        }
+        
+        .messenger-link i {
+            font-size: 1.2rem;
+        }
+        
+        .contacts-form {
+            display: flex;
+            align-items: center;
+        }
+        
+        .form-card {
+            background: white;
+            border-radius: 24px;
+            padding: 35px;
+            width: 100%;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+        
+        .form-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #1a1a1a;
+        }
+        
+        .form-card p {
+            color: #666;
+            margin-bottom: 25px;
+        }
+        
+        .contact-form .form-row {
+            margin-bottom: 20px;
+        }
+        
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: 0.2s;
+        }
+        
+        .contact-form input:focus, .contact-form textarea:focus {
+            outline: none;
+            border-color: #b87c4f;
+            box-shadow: 0 0 0 3px rgba(184,124,79,0.1);
+        }
+        
+        .submit-contact-btn {
+            width: 100%;
+            background: #b87c4f;
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 40px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        
+        .submit-contact-btn:hover {
+            background: #9a623d;
+            transform: translateY(-2px);
+        }
+        
+        .form-note {
+            font-size: 0.7rem;
+            color: #999;
+            text-align: center;
+            margin-top: 15px;
+        }
+        
+        .map-container {
+            margin-top: 30px;
+        }
+        
+        .map-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #1a1a1a;
+        }
+        
+        .map-wrapper {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .email-wrapper {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 5px;
+        }
+        
+        .copy-email-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #f0f0f0;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #666;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .copy-email-btn i {
+            font-size: 0.8rem;
+            color: #b87c4f;
+        }
+        
+        .copy-email-btn:hover {
+            background: #b87c4f;
+            color: white;
+        }
+        
+        .copy-email-btn:hover i {
+            color: white;
+        }
+        
+        .copy-email-btn.copied {
+            background: #4caf50;
+            color: white;
+        }
+        
+        .copy-email-btn.copied i {
+            color: white;
+        }
+        
+        .input-hint {
+            display: block;
+            font-size: 0.65rem;
+            color: #999;
+            margin-top: 5px;
+        }
+        
+        .form-row input.error,
+        .form-row textarea.error {
+            border-color: #e74c3c;
+            background-color: #fff5f5;
+        }
+        
+        .error-message {
+            color: #e74c3c;
+            font-size: 0.65rem;
+            margin-top: 5px;
+            display: block;
+        }
+        
+        .form-row input.valid {
+            border-color: #4caf50;
+        }
+
+        @media (max-width: 768px) {
+            .works-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .works-category-title {
+                font-size: 1.4rem;
+            }
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+            .reviews-stats {
+                gap: 15px;
+            }
+            .stat-card {
+                padding: 10px 15px;
+            }
+            .add-review-section {
+                padding: 25px;
+            }
+            .rating-stars i {
+                font-size: 1.2rem;
+            }
+            .contacts-grid {
+                grid-template-columns: 1fr;
+            }
+            .info-card {
+                padding: 20px;
+            }
+            .form-card {
+                padding: 25px;
+            }
+            .messengers {
+                flex-direction: column;
+                align-items: center;
+            }
+            .messenger-link {
+                width: 100%;
+                justify-content: center;
+            }
+            .contacts-header h1 {
+                font-size: 2rem;
+            }
+            .email-wrapper {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ХЕДЕР -->
+    <header class="top-header">
+        <div class="container">
+            <div class="header-row">
+                <div class="header-left">
+                    <a href="monument.html" class="logo">
+                        <img src="logo.webp" alt="МОНУМЕНТ" class="logo-img" onerror="this.src='https://placehold.co/60x60/333/b87c4f?text=М'">
+                        <div class="logo-text">
+                            <div class="logo-main">МОНУМЕНТ</div>
+                            <div class="logo-sub">РИТУАЛЬНАЯ КОМПАНИЯ</div>
+                        </div>
+                    </a>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                        <a href="mailto:monument-baza@mail.ru" class="social-link"><i class="far fa-envelope"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="header-address">📍 г. Владивосток, ул. Борисенко 104, стр. 6</div>
+                    <a href="tel:+79247301030" class="header-phone">+7 (924) 730-10-30</a>
+                    <div class="header-worktime">🕒 Работаем круглосуточно, без выходных</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- МЕНЮ -->
+    <div class="nav-menu-wrapper" id="navbar">
+        <div class="nav-container">
+            <button class="menu-toggle" id="menuToggle">☰ МЕНЮ</button>
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item"><a href="service.html?category=about" class="nav-link" id="nav-about">О КОМПАНИИ</a></li>
+                <li class="nav-item has-dropdown">
+                    <a href="service.html?category=blagoustroystvo" class="nav-link">
+    БЛАГОУСТРОЙСТВО 
+    <i class="fa-solid fa-chevron-down"></i>
+</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="service.html?category=blagoustroystvo&tab=uslugi">Услуги</a></li>
+                        <li><a href="service.html?category=blagoustroystvo&tab=demonthazh">Демонтаж</a></li>
+                        <li><a href="service.html?category=blagoustroystvo&tab=ustanovka">Установка</a></li>
+                        <li><a href="service.html?category=blagoustroystvo&tab=gravirovka">Гравировка</a></li>
+                        <li><a href="service.html?category=blagoustroystvo&tab=plitki">Плитки СП</a></li>
+                        <li><a href="service.html?category=blagoustroystvo&tab=oblitsovka">Облицовка</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item has-dropdown">
+                    <a href="service.html?category=pamiatniki&tab=odinochnye" class="nav-link" id="nav-pamiatniki">ПАМЯТНИКИ
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="service.html?category=pamiatniki&tab=odinochnye">Одиночные</a></li>
+                        <li><a href="service.html?category=pamiatniki&tab=semeynye">Семейные</a></li>
+                        <li><a href="service.html?category=pamiatniki&tab=nakryvnye">Накрывные плиты</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a href="service.html?category=works" class="nav-link" id="nav-works">НАШИ РАБОТЫ</a></li>
+                <li class="nav-item"><a href="service.html?category=reviews" class="nav-link" id="nav-reviews">ОТЗЫВЫ</a></li>
+                <li class="nav-item"><a href="service.html?category=contacts" class="nav-link" id="nav-contacts">КОНТАКТЫ</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ДИНАМИЧЕСКИЙ КОНТЕНТ -->
+    <main id="dynamicMain">
+        <div class="service-header">
+            <div class="container">
+                <h1>Загрузка...</h1>
+                <p>Пожалуйста, подождите</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- ФУТЕР -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-left">
+                <div class="logo-main">МОНУМЕНТ</div>
+                <div class="footer-social">
+                    <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                    <a href="mailto:monument-baza@mail.ru" class="social-link"><i class="far fa-envelope"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+                </div>
+                <div class="footer-copyright">© Монумент, 2026</div>
+            </div>
+            <div class="footer-right">
+                <div class="footer-address">
+                    📍 <a href="https://yandex.ru/maps/?text=Владивосток,+ул.+Борисенко+104+стр+6" target="_blank">г. Владивосток, ул. Борисенко, д. 104, стр. 6</a>
+                </div>
+                <a href="tel:+79247301030" class="footer-phone">+7 (924) 730-10-30</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+// ===== ФУНКЦИЯ ДЛЯ СТРАНИЦЫ "О КОМПАНИИ" =====
+function renderAboutPage() {
+    const main = document.getElementById('dynamicMain');
+    if (!main) return;
+    
+    const html = `
+    
+    <section class="about-content">
+
+        <div class="about-hero">
+            <div class="container">
+
+                <span class="about-badge">
+                    С 2012 года рядом с семьями Владивостока
+                </span>
+
+                <h1>О компании «МОНУМЕНТ»</h1>
+
+                <p class="about-subtitle">
+                    Городская ритуальная служба, оказывающая полный комплекс услуг
+                    по изготовлению памятников и благоустройству мест захоронения.
+                </p>
+
+            </div>
+        </div>
+
+        <div class="container">
+
+            <!-- СТАТИСТИКА -->
+
+            <div class="about-stats">
+
+                <div class="stat-card">
+                    <div class="stat-number">13+</div>
+                    <div class="stat-text">лет опыта</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-number">5000+</div>
+                    <div class="stat-text">семей доверились нам</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-text">работаем ежедневно</div>
+                </div>
+
+            </div>
+
+            <!-- ОСНОВНОЙ БЛОК -->
+
+            <div class="about-grid">
+
+                <div class="about-card">
+
+                    <h2>Наши принципы</h2>
+
+                    <p>
+                        Мы гордимся тем, что наша продукция соответствует
+                        всем стандартам качества, а наши мастера —
+                        настоящие профессионалы своего дела.
+                    </p>
+
+                    <p>
+                        Каждый памятник изготавливается с вниманием к деталям,
+                        уважением к памяти близких и индивидуальным подходом.
+                    </p>
+
+                </div>
+
+                <div class="about-card">
+
+                    <h2>Наша миссия</h2>
+
+                    <p>
+                        Помогать людям в трудную минуту,
+                        беря на себя организационные вопросы
+                        и создавая достойные памятные комплексы.
+                    </p>
+
+                    <p>
+                        Мы понимаем важность доверия
+                        и делаем всё, чтобы работа была выполнена
+                        качественно, спокойно и в срок.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- ПОЧЕМУ ВЫБИРАЮТ -->
+
+            <div class="why-us">
+
+                <div class="section-title">
+
+                    <h2>Почему выбирают нас</h2>
+
+                    <p>
+                        Надёжность, качество и уважительное отношение
+                        к каждому клиенту
+                    </p>
+
+                </div>
+
+                <div class="why-grid">
+
+                    <div class="why-card">
+
+                        <div class="why-icon">
+                            <i class="fas fa-gem"></i>
+                        </div>
+
+                        <h3>Качественные материалы</h3>
+
+                        <p>
+                            Используем только проверенный гранит
+                            и долговечные материалы.
+                        </p>
+
+                    </div>
+
+                    <div class="why-card">
+
+                        <div class="why-icon">
+                            <i class="fas fa-user-shield"></i>
+                        </div>
+
+                        <h3>Честный подход</h3>
+
+                        <p>
+                            Прозрачные цены без скрытых доплат
+                            и навязанных услуг.
+                        </p>
+
+                    </div>
+
+                    <div class="why-card">
+
+                        <div class="why-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+
+                        <h3>Собственное производство</h3>
+
+                        <p>
+                            Контролируем качество
+                            на всех этапах изготовления.
+                        </p>
+
+                    </div>
+
+                    <div class="why-card">
+
+                        <div class="why-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+
+                        <h3>Человеческое отношение</h3>
+
+                        <p>
+                            Работаем с уважением,
+                            деликатностью и пониманием.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+`;
+    main.innerHTML = html;
+    document.title = 'О компании | МОНУМЕНТ';
+}
+        // ===== ДАННЫЕ ДЛЯ РАЗДЕЛА БЛАГОУСТРОЙСТВО =====
+        const servicesData = {
+            uslugi: {
+                title: "Услуги по благоустройству",
+                description: "Полный спектр услуг по благоустройству мест захоронений",
+                items: [
+                    { name: "Изготовление брусчатки 300х300мм (400х400мм) серая + УКЛАДКА", unit: "м²", price: "5 500 ₽" },
+                    { name: "Укладка брусчатки (сторонних производителей)", unit: "м²", price: "3 500 ₽" },
+                    { name: "Вывоз, утилизация памятника, соп. элементов, строительного мусора", unit: "шт", price: "5 000 ₽" },
+                    { name: "Изготовление нестандартных изделий из армированного бетона (тумба, ступень, лестница)", unit: "м³", price: "50 000 ₽" },
+                    { name: "Изготовление дренажной системы", unit: "п.м.", price: "5 000 ₽" },
+                    { name: "Изготовление ограды - метал.сварная. Рамка угол (25мм), орнамент прут диаметр 8мм", unit: "п.м.", price: "4 000 ₽" },
+                    { name: "Изготовление ограды - метал.сварная. Рамка проф труба (25х25мм), орнамент проф труба", unit: "п.м.", price: "5 000 ₽" },
+                    { name: "Изготовление опалубки (до 1м высота) неоштукатур - под облицовку", unit: "п.м.", price: "10 000 ₽" },
+                    { name: "Изготовление опалубки (ш-150мм, 150мм в землю, высота стены до 1м) со штукатуркой", unit: "п.м.", price: "12 000 ₽" },
+                    { name: "Изготовление скамьи (металл, верх террасная доска) (30х90см)", unit: "шт", price: "8 000 ₽" },
+                    { name: "Изготовление стола (металл, верх террасная доска) (45х60см)", unit: "шт", price: "8 000 ₽" },
+                    { name: "Изготовление скамьи (металл, верх дерево) (30х90см)", unit: "шт", price: "7 000 ₽" },
+                    { name: "Изготовление стола (металл, верх террасная доска) (45х60см)", unit: "шт", price: "7 000 ₽" },
+                    { name: "Изготовление стяжки (толщина от 100мм до 150мм) из армированного бетона", unit: "м²", price: "14 000 ₽" },
+                    { name: "Облицовка (каркасно-навесная фасадная система - вентилируемый фасад)", unit: "м²", price: "12 500 ₽" },
+                    { name: "Облицовка опалубки гранит., мрам. плиткой на раствор без ст-ти мат.", unit: "м²", price: "6 500 ₽" },
+                    { name: "Отверстие под крепление (ф/к, сп)", unit: "шт", price: "500 ₽" },
+                    { name: "Отсыпка мрам. крошкой со стоимостью материала (1 мешок 40кг на 1м²)", unit: "м²", price: "2 000 ₽" },
+                    { name: "Отсыпка щебнем со стоимостью материала (1 мешок 50кг на 1м²)", unit: "м²", price: "700 ₽" },
+                    { name: "Покраска ограды (со стоимостью материала)", unit: "п.м.", price: "1 200 ₽" },
+                    { name: "Покраска ограды (со стоимостью материала) с зачисткой", unit: "п.м.", price: "1 800 ₽" },
+                    { name: "Разработка грунта вручную (планировка)", unit: "м³", price: "10 000 ₽" },
+                    { name: "Донос материала (ИНДИВИДУАЛЬНЫЙ РАСЧЕТ)", unit: "услуга", price: "1 000 ₽" }
+                ]
+            },
+            demonthazh: {
+                title: "Демонтажные работы",
+                description: "Профессиональный демонтаж памятников, оград и фундаментов",
+                items: [
+                    { name: "Демонтаж брусчатки", unit: "м²", price: "1 500 ₽" },
+                    { name: "Демонтаж ленточного фундамента из ж/б (толщина до 18см, высота до 1м)", unit: "п.м.", price: "3 500 ₽" },
+                    { name: "Демонтаж ленточного фундамента из ж/б (толщина до 33см, высота до 1м)", unit: "п.м.", price: "5 500 ₽" },
+                    { name: "Демонтаж ограды без сохранения", unit: "услуга", price: "5 000 ₽" },
+                    { name: "Демонтаж памятника семейного без сохранения", unit: "шт", price: "8 000 ₽" },
+                    { name: "Демонтаж памятника семейного с сохранением", unit: "шт", price: "10 000 ₽" },
+                    { name: "Демонтаж памятника одиночного без сохранения", unit: "шт", price: "5 000 ₽" },
+                    { name: "Демонтаж памятника одиночного с сохранением", unit: "шт", price: "7 500 ₽" },
+                    { name: "Демонтаж постоянного памятника", unit: "шт", price: "5 000 ₽" },
+                    { name: "Демонтаж стола, скамейки или лавки", unit: "шт", price: "1 500 ₽" },
+                    { name: "Демонтаж штукатурки", unit: "п.м", price: "2 000 ₽" }
+                ]
+            },
+            ustanovka: {
+                title: "Установка памятников и конструкций",
+                description: "Профессиональная установка памятников любой сложности",
+                items: [
+                    { name: "Установка накрывной плиты (20мм)", unit: "шт", price: "2 000 ₽" },
+                    { name: "Установка накрывной плиты (30мм)", unit: "шт", price: "3 000 ₽" },
+                    { name: "Установка ограды, стола, лавки, скамьи (на раствор) одна нога", unit: "шт", price: "1 500 ₽" },
+                    { name: "Установка памятника «крематорский вариант»", unit: "шт", price: "6 500 ₽" },
+                    { name: "Установка плиты СП", unit: "шт", price: "3 000 ₽" },
+                    { name: "Штукатурение обычное (со стоимостью материала)", unit: "п.м.", price: "2 000 ₽" },
+                    { name: "Установка памятника в день похорон (доп. услуга к установке памятника)", unit: "услуга", price: "3 000 ₽" },
+                    { name: "Установка памятника гранит MS (высота стеллы до 80см)", unit: "шт", price: "8 500 ₽" },
+                    { name: "Установка памятника гранит ML (высота стеллы до 100см)", unit: "шт", price: "10 000 ₽" },
+                    { name: "Установка памятника гранит ME (высота стеллы до 120см)", unit: "шт", price: "12 000 ₽" },
+                    { name: "Установка памятника гранит ME (высота стеллы до 150см)", unit: "шт", price: "15 000 ₽" },
+                    { name: "Установка памятника гранит ME (высота стеллы до 180см)", unit: "шт", price: "20 000 ₽" },
+                    { name: "Установка памятника гранит (семейный ME 850x1200x70)", unit: "шт", price: "18 000 ₽" },
+                    { name: "Установка памятника гранит (семейный ME)", unit: "шт", price: "15 000 ₽" },
+                    { name: "Установка памятника гранит (семейный MEL)", unit: "шт", price: "13 000 ₽" },
+                    { name: "Установка памятника гранит (семейный ML)", unit: "шт", price: "12 000 ₽" }
+                ]
+            },
+            gravirovka: {
+                title: "Гравировка на памятниках",
+                description: "Художественная и портретная гравировка на граните",
+                items: [
+                    { name: "Гравировка гвоздики/розы (пара) до 20см", unit: "шт", price: "3 000 ₽" },
+                    { name: "Гравировка корабля, самолета, машины А4", unit: "шт", price: "5 000 ₽" },
+                    { name: "Гравировка корабля, самолета, машины А3", unit: "шт", price: "7 500 ₽" },
+                    { name: "Гравировка креста до 15см", unit: "шт", price: "2 000 ₽" },
+                    { name: "Гравировка креста до 15см с покраской золотом", unit: "шт", price: "3 000 ₽" },
+                    { name: "Гравировка креста до 20см", unit: "шт", price: "3 000 ₽" },
+                    { name: "Гравировка креста до 20см с покраской золотом", unit: "шт", price: "4 000 ₽" },
+                    { name: "Гравировка креста свыше 20см", unit: "шт", price: "5 000 ₽" },
+                    { name: "Гравировка креста свыше 20см с покраской золотом", unit: "шт", price: "6 000 ₽" },
+                    { name: "Гравировка крупные гвоздики/розы (пара) до 40см", unit: "шт", price: "5 000 ₽" },
+                    { name: "Гравировка ордена ВОВ больше натуральной величины", unit: "шт", price: "3 000 ₽" },
+                    { name: "Гравировка ордена, медали в натуральную величину", unit: "шт", price: "2 000 ₽" },
+                    { name: "Гравировка портрета на грудь", unit: "шт", price: "12 000 ₽" },
+                    { name: "Гравировка корабля, машины, самолета (до 50см)", unit: "шт", price: "10 000 ₽" },
+                    { name: "Гравировка портрета в полный рост - в натур величину", unit: "шт", price: "80 000 ₽" },
+                    { name: "Гравировка портрета в полный рост - стандарт", unit: "шт", price: "60 000 ₽" },
+                    { name: "Гравировка портрета по плечи (А4)", unit: "шт", price: "7 500 ₽" },
+                    { name: "Гравировка портрета по плечи в натур. величину (А3)", unit: "шт", price: "10 000 ₽" },
+                    { name: "Гравировка портрета по пояс", unit: "шт", price: "30 000 ₽" },
+                    { name: "Гравировка портрета по пояс в натур. величину", unit: "шт", price: "40 000 ₽" },
+                    { name: "Гравировка текста - стандарт", unit: "знак", price: "70 ₽" }
+                ]
+            },
+            plitki: {
+                title: "Плитки СП и трапеции",
+                description: "Изготовление плиток из искусственного камня и трапеций",
+                items: [
+                    { name: "Изготовление плитки СП 400х300х10", unit: "шт", price: "5 500 ₽" },
+                    { name: "Изготовление плитки СП 330х300х15", unit: "шт", price: "5 000 ₽" },
+                    { name: "Изготовление плитки СП 330х300х20", unit: "шт", price: "6 000 ₽" },
+                    { name: "Изготовление плитки СП 700х400х10 (фигурная 201)", unit: "шт", price: "10 000 ₽" },
+                    { name: "Изготовление плитки СП 700х400х10 (фигурная 202)", unit: "шт", price: "10 000 ₽" },
+                    { name: "Изготовление плитки СП 1000х400х10", unit: "шт", price: "14 000 ₽" },
+                    { name: "Изготовление плитки СП 400х330х10", unit: "шт", price: "6 500 ₽" },
+                    { name: "Изготовление плитки СП 500х400х10", unit: "шт", price: "8 500 ₽" },
+                    { name: "Изготовление плитки СП 700х400х10", unit: "шт", price: "10 000 ₽" },
+                    { name: "Изготовление плитки СП 400х300х10 (овал)", unit: "шт", price: "5 500 ₽" },
+                    { name: "Изготовление плитки СП 270х220х10 (овал)", unit: "шт", price: "4 500 ₽" },
+                    { name: "Изготовление плитки СП 180х130х10 (овал)", unit: "шт", price: "3 000 ₽" },
+                    { name: "Изготовление трапеции 360х500х140 (черная)", unit: "шт", price: "25 000 ₽" },
+                    { name: "Изготовление трапеции 360х500х60 (черная)", unit: "шт", price: "20 000 ₽" },
+                    { name: "Изготовление трапеции 390х560х170 (черная)", unit: "шт", price: "30 000 ₽" },
+                    { name: "Изготовление трапеции 500х360х140 (Св.серый, тем. серый) + черная плитка на выносках", unit: "шт", price: "23 000 ₽" }
+                ]
+            },
+            oblitsovka: {
+                title: "Облицовка гранитной плиткой",
+                description: "Облицовка оснований и цветников гранитной плиткой",
+                items: [
+                    { name: "Плитка полировка (300x600x20) G603", unit: "м²", price: "9 000 ₽" },
+                    { name: "Плитка скала (300x150x30) G603", unit: "м²", price: "11 000 ₽" },
+                    { name: "Плитка термо (300x600x20) G603", unit: "м²", price: "8 000 ₽" },
+                    { name: "Парапет G603", unit: "м²", price: "13 000 ₽" },
+                    { name: "Плитка полировка (300x600x20) G654", unit: "м²", price: "10 000 ₽" },
+                    { name: "Плитка скала (300x150x30) G654", unit: "м²", price: "13 000 ₽" },
+                    { name: "Плитка термо (300x600x20) G654", unit: "м²", price: "10 000 ₽" },
+                    { name: "Парапет G654", unit: "м²", price: "15 000 ₽" },
+                    { name: "Плитка полировка (300x600x20) SHANXI", unit: "м²", price: "15 000 ₽" },
+                    { name: "Плитка скала (300x150x30) SHANXI", unit: "м²", price: "13 000 ₽" },
+                    { name: "Плитка термо (300x600x20) SHANXI", unit: "м²", price: "14 000 ₽" },
+                    { name: "Парапет SHANXI", unit: "м²", price: "17 000 ₽" }
+                ]
+            }
+        };
+
+        // ===== ДАННЫЕ ДЛЯ РАЗДЕЛА ПАМЯТНИКОВ =====
+        const monumentsData = {
+            odinochnye: {
+                title: "Одиночные памятники",
+                description: "Гранитные памятники для одного захоронения. Изготовление любой формы и размера.",
+                products: [
+                    { id: 1, name: "Памятник MS", article: "MS", dimensions: "Стандарт", price: "33 000 ₽", type: "Одиночный" },
+                    { id: 2, name: "Памятник ML", article: "ML", dimensions: "Стандарт", price: "45 000 ₽", type: "Одиночный" },
+                    { id: 3, name: "Памятник ME", article: "ME", dimensions: "Стандарт", price: "70 000 ₽", type: "Одиночный" },
+                    { id: 4, name: "Памятник MT (прямоугольный 800)", article: "MT-800", dimensions: "800 мм", price: "30 000 ₽", type: "Одиночный" },
+                    { id: 5, name: "Памятник MTE (прямоугольный 800)", article: "MTE-800", dimensions: "800 мм", price: "40 000 ₽", type: "Одиночный" },
+                    { id: 6, name: "Памятник MT (прямоугольный 1000)", article: "MT-1000", dimensions: "1000 мм", price: "43 000 ₽", type: "Одиночный" },
+                    { id: 7, name: "Памятник MTE (прямоугольный 1000)", article: "MTE-1000", dimensions: "1000 мм", price: "52 000 ₽", type: "Одиночный" },
+                    { id: 8, name: "Памятник MTE (прямоугольный 1100)", article: "MTE-1100", dimensions: "1100 мм", price: "58 000 ₽", type: "Одиночный" },
+                    { id: 9, name: "Памятник MTE (прямоугольный 1200)", article: "MTE-1200", dimensions: "1200 мм", price: "70 000 ₽", type: "Одиночный" },
+                    { id: 17, name: "Памятник MS/V (800x450)", article: "MS/V", dimensions: "800x450 мм", price: "28 000 ₽", type: "Одиночный" },
+                    { id: 18, name: "Памятник ML/V 1000мм", article: "ML/V", dimensions: "1000 мм", price: "32 000 ₽", type: "Одиночный" }
+                ]
+            },
+            semeynye: {
+                title: "Семейные памятники",
+                description: "Гранитные памятники для семейных захоронений (2 и более места)",
+                products: [
+                    { id: 10, name: "Памятник ME семейный (820х820, 700х900)", article: "ME-S", dimensions: "820х820 / 700х900 мм", price: "80 000 ₽", type: "Семейный" },
+                    { id: 11, name: "Памятник ME семейный (900х1000)", article: "ME-S", dimensions: "900х1000 мм", price: "95 000 ₽", type: "Семейный" },
+                    { id: 12, name: "Памятник ME семейный (850х1200)", article: "ME-S", dimensions: "850х1200 мм", price: "120 000 ₽", type: "Семейный" },
+                    { id: 13, name: "Памятник ML семейный (820х820, 700х900)", article: "ML-S", dimensions: "820х820 / 700х900 мм", price: "70 000 ₽", type: "Семейный" },
+                    { id: 14, name: "Памятник ML семейный (850х1200)", article: "ML-S", dimensions: "850х1200 мм", price: "90 000 ₽", type: "Семейный" },
+                    { id: 15, name: "Памятник ML/V семейный (700x900, 820x820)", article: "ML/V-S", dimensions: "700x900 / 820x820 мм", price: "50 000 ₽", type: "Семейный" },
+                    { id: 16, name: "Памятник ML/V семейный (850x1200)", article: "ML/V-S", dimensions: "850x1200 мм", price: "65 000 ₽", type: "Семейный" }
+                ]
+            },
+            nakryvnye: {
+                title: "Накрывные плиты",
+                description: "Гранитные накрывные плиты для оформления захоронений",
+                products: [
+                    { id: 19, name: "Накрывная плита 1020х470х20 (черная)", article: "НП-1", dimensions: "1020х470х20 мм", price: "10 000 ₽", type: "Плита" },
+                    { id: 20, name: "Накрывная плита 1020х520х20 (черная)", article: "НП-2", dimensions: "1020х520х20 мм", price: "12 000 ₽", type: "Плита" },
+                    { id: 21, name: "Накрывная плита 1020х520х30 (черная)", article: "НП-3", dimensions: "1020х520х30 мм", price: "15 000 ₽", type: "Плита" },
+                    { id: 22, name: "Накрывная плита 1050х850х30 (черная)", article: "НП-4", dimensions: "1050х850х30 мм", price: "28 000 ₽", type: "Плита" },
+                    { id: 23, name: "Накрывная плита 1020х520х30 (G603 светло-серый)", article: "НП-5", dimensions: "1020х520х30 мм", price: "8 000 ₽", type: "Плита" },
+                    { id: 24, name: "Накрывная плита 1050х850х30 (G603 светло-серый)", article: "НП-6", dimensions: "1050х850х30 мм", price: "15 000 ₽", type: "Плита" }
+                ]
+            }
+        };
+        // ===== ДАННЫЕ ДЛЯ РАЗДЕЛА "НАШИ РАБОТЫ" =====
+const worksData = {
+    title: "Наши работы",
+    description: "Примеры выполненных памятников и благоустройства мест захоронений",
+    categories: [
+        {
+            name: "Памятники",
+            items: [
+                { id: 1, name: "Памятник гранитный MS", description: "Классический памятник из чёрного гранита", image: "images/works/ms-1.jpg", year: "2024" },
+                { id: 2, name: "Памятник гранитный ML", description: "Фигурный памятник с портретной гравировкой", image: "images/works/ml-2.jpg", year: "2024" },
+                { id: 3, name: "Памятник гранитный ME", description: "Элитный памятник из полированного гранита", image: "images/works/me-3.jpg", year: "2024" },
+                { id: 4, name: "Памятник семейный", description: "Семейный памятник с двумя портретами", image: "images/works/semeynyy-4.jpg", year: "2023" },
+                { id: 5, name: "Памятник с крестом", description: "Памятник православной формы", image: "images/works/krest-5.jpg", year: "2023" },
+                { id: 6, name: "Памятник из серого гранита", description: "Строгий памятник из серого гранита", image: "images/works/gray-6.jpg", year: "2024" }
+            ]
+        },
+        {
+            name: "Благоустройство",
+            items: [
+                { id: 7, name: "Комплексное благоустройство", description: "Оградка, столик, лавочка, мраморная крошка", image: "images/works/blago-7.jpg", year: "2024" },
+                { id: 8, name: "Облицовка гранитной плиткой", description: "Цветник, облицованный гранитной плиткой", image: "images/works/oblitsovka-8.jpg", year: "2024" },
+                { id: 9, name: "Установка оградки", description: "Кованая оградка с художественными элементами", image: "images/works/ograda-9.jpg", year: "2023" },
+                { id: 10, name: "Мраморная крошка", description: "Декоративная отсыпка мраморной крошкой", image: "images/works/kroshka-10.jpg", year: "2024" },
+                { id: 11, name: "Гравировка портрета", description: "Портретная гравировка на граните", image: "images/works/portret-11.jpg", year: "2024" },
+                { id: 12, name: "Демонтаж старого памятника", description: "Замена старого памятника на новый", image: "images/works/demontazh-12.jpg", year: "2023" }
+            ]
+        }
+    ]
+};
+
+        // Функция заказа услуги
+        window.orderService = function(name, price) {
+            const message = `Здравствуйте! Хочу заказать услугу: ${name} (${price})`;
+            window.open(`https://wa.me/79247301030?text=${encodeURIComponent(message)}`, '_blank');
+        };
+
+        // Функция заказа памятника
+        window.orderMonument = function(name, price) {
+            const message = `Здравствуйте! Хочу заказать памятник: ${name} (${price})`;
+            window.open(`https://wa.me/79247301030?text=${encodeURIComponent(message)}`, '_blank');
+        };
+
+        // Функция для отображения списка памятников
+        function renderMonumentsList(data) {
+    const container = document.getElementById('monumentsContainer');
+    if (!container) {
+        console.error('Контейнер monumentsContainer не найден');
+        return;
+    }
+    
+    let html = `
+        <div class="monuments-header">
+            <div class="pdf-download-container">
+                <a href="catalog/monuments-catalog.pdf" download class="btn-pdf">
+                    <i class="fas fa-file-pdf"></i> Скачать полный каталог памятников (PDF)
+                </a>
+            </div>
+            <h2 class="section-title">${data.title}</h2>
+            <p class="section-subtitle">${data.description}</p>
+        </div>
+        <div class="monuments-grid">
+    `;
+    
+    data.products.forEach((product, index) => {
+        // Иконка для каждого типа памятника
+        let icon = '';
+        if (product.type === 'Одиночный') icon = '🏛️';
+        else if (product.type === 'Семейный') icon = '🏛️🏛️';
+        else icon = '📐';
+        
+        // Бейдж для акций
+        let badge = '';
+        if (product.price.includes('33 000')) badge = '<div class="monument-badge">⭐ Хит</div>';
+        else if (product.price.includes('45 000')) badge = '<div class="monument-badge">🔥 Популярный</div>';
+        else if (product.price.includes('70 000')) badge = '<div class="monument-badge">💎 Премиум</div>';
+        else badge = '<div class="monument-badge">' + product.type + '</div>';
+        
+        html += `
+            <div class="monument-card">
+                <div class="monument-image">
+                    <img src="images/monuments/${product.article}.jpg" alt="${product.name}" onerror="this.src='https://placehold.co/400x300/f5f5f5/999?text=${encodeURIComponent(product.name)}'">
+                    ${badge}
+                </div>
+                <div class="monument-info">
+                    <div class="monument-icon">${icon}</div>
+                    <h3 class="monument-title">${product.name}</h3>
+                    <div class="monument-article">Артикул: ${product.article}</div>
+                    <div class="monument-dimensions">📏 Размер: ${product.dimensions}</div>
+                    <div class="monument-price">
+                        <span class="price">${product.price}</span>
+                        <button class="order-btn" onclick="orderMonument('${product.name.replace(/'/g, "\\'")}', '${product.price}')">Заказать →</button>
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+    
+    html += `</div>`;
+    container.innerHTML = html;
+}
+
+        // Функция для отображения страницы памятников
+        function renderPamiatnikiPage(tabId) {
+            const main = document.getElementById('dynamicMain');
+            if (!main) return;
+            
+            let data;
+            let activeTab = tabId;
+            
+            if (tabId === 'odinochnye') {
+                data = monumentsData.odinochnye;
+            } else if (tabId === 'semeynye') {
+                data = monumentsData.semeynye;
+            } else if (tabId === 'nakryvnye') {
+                data = monumentsData.nakryvnye;
+            } else {
+                data = monumentsData.odinochnye;
+                activeTab = 'odinochnye';
+            }
+            
+            main.innerHTML = `
+                <div class="catalog-header">
+                    <div class="container">
+                        <h1>Гранитные памятники</h1>
+                        <p>Изготовление памятников из натурального гранита любых форм и размеров</p>
+                    </div>
+                </div>
+                <div class="monuments-tabs">
+                    <div class="tabs-container">
+                        <a href="service.html?category=pamiatniki&tab=odinochnye" class="monuments-tab-btn ${activeTab === 'odinochnye' ? 'active' : ''}">Одиночные</a>
+                        <a href="service.html?category=pamiatniki&tab=semeynye" class="monuments-tab-btn ${activeTab === 'semeynye' ? 'active' : ''}">Семейные</a>
+                        <a href="service.html?category=pamiatniki&tab=nakryvnye" class="monuments-tab-btn ${activeTab === 'nakryvnye' ? 'active' : ''}">Накрывные плиты</a>
+                    </div>
+                </div>
+                <div class="monuments-list">
+                    <div class="container">
+                        <div id="monumentsContainer"></div>
+                    </div>
+                </div>
+            `;
+            
+            renderMonumentsList(data);
+            document.title = `${data.title} | МОНУМЕНТ`;
+        }
+
+        // Функция для отображения страницы благоустройства
+        function renderBlagoustroystvoPage(activeTab = 'uslugi') {
+    console.log('renderBlagoustroystvoPage вызван с activeTab:', activeTab);
+    
+    const main = document.getElementById('dynamicMain');
+    main.innerHTML = `
+        <div class="service-header">
+            <div class="container">
+                <h1 id="dynamicTitle">Благоустройство мест захоронений</h1>
+                <p id="dynamicDescription">Профессиональное благоустройство могил под ключ. Полный комплекс услуг по демонтажу, установке и гравировке.</p>
+            </div>
+        </div>
+        <div class="categories-tabs">
+            <div class="tabs-container" id="tabsContainer">
+                <button class="tab-btn ${activeTab === 'uslugi' ? 'active' : ''}" data-tab="uslugi">УСЛУГИ</button>
+                <button class="tab-btn ${activeTab === 'demonthazh' ? 'active' : ''}" data-tab="demonthazh">ДЕМОНТАЖ</button>
+                <button class="tab-btn ${activeTab === 'ustanovka' ? 'active' : ''}" data-tab="ustanovka">УСТАНОВКА</button>
+                <button class="tab-btn ${activeTab === 'gravirovka' ? 'active' : ''}" data-tab="gravirovka">ГРАВИРОВКА</button>
+                <button class="tab-btn ${activeTab === 'plitki' ? 'active' : ''}" data-tab="plitki">ПЛИТКИ СП</button>
+                <button class="tab-btn ${activeTab === 'oblitsovka' ? 'active' : ''}" data-tab="oblitsovka">ОБЛИЦОВКА</button>
+            </div>
+        </div>
+        <div class="services-list">
+            <div class="container" id="servicesContainer"></div>
+        </div>
+    `;
+    
+    // Рендер услуг
+    renderServices(activeTab);
+    
+    // Настройка табов
+    const tabs = document.querySelectorAll('.tab-btn');
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const tabId = tab.getAttribute('data-tab');
+            if (!tabId) return;
+            
+            console.log('Клик по табу:', tabId);
+            
+            // Обновляем активный класс
+            tabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            
+            // Обновляем контент
+            renderServices(tabId);
+            
+            // Обновляем URL без перезагрузки
+            const url = new URL(window.location.href);
+            url.searchParams.set('tab', tabId);
+            window.history.pushState({}, '', url);
+        });
+    });
+}
+
+        // Рендер услуг для благоустройства
+        function renderServices(tabId) {
+    console.log('renderServices вызван с tabId:', tabId);
+    
+    const data = servicesData[tabId];
+    const container = document.getElementById('servicesContainer');
+    
+    if (!data) {
+        console.error('Нет данных для раздела:', tabId);
+        container.innerHTML = '<div class="no-services"><i class="fas fa-box-open" style="font-size: 3rem; color: #ccc; margin-bottom: 15px; display: block;"></i>Услуги в этом разделе скоро появятся</div>';
+        return;
+    }
+    
+    if (!data.items || data.items.length === 0) {
+        container.innerHTML = '<div class="no-services"><i class="fas fa-box-open" style="font-size: 3rem; color: #ccc; margin-bottom: 15px; display: block;"></i>Услуги в этом разделе скоро появятся</div>';
+        return;
+    }
+    
+    document.getElementById('dynamicTitle').textContent = data.title;
+    document.getElementById('dynamicDescription').textContent = data.description;
+    document.title = `${data.title} | МОНУМЕНТ`;
+    
+    let html = '';
+    data.items.forEach((item, index) => {
+        // Иконка для типа услуги
+        let icon = '';
+        if (tabId === 'uslugi') icon = '🔧';
+        else if (tabId === 'demonthazh') icon = '🔨';
+        else if (tabId === 'ustanovka') icon = '📦';
+        else if (tabId === 'gravirovka') icon = '✍️';
+        else if (tabId === 'plitki') icon = '🧱';
+        else if (tabId === 'oblitsovka') icon = '🪨';
+        else icon = '📋';
+        
+        html += `
+            <div class="service-item">
+                <div class="service-number">${icon} ${index + 1}</div>
+                <div class="service-content">
+                    <div class="service-info">
+                        <h3>${item.name}</h3>
+                        ${item.desc ? `<div class="service-desc">${item.desc}</div>` : ''}
+                    </div>
+                    <div class="service-unit">${item.unit}</div>
+                    <div class="service-price">${item.price}</div>
+                    <div class="service-order">
+                        <button class="order-btn" onclick="orderService('${item.name.replace(/'/g, "\\'")}', '${item.price}')">
+                            Заказать <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+    container.innerHTML = html;
+}
+// Функция для отображения раздела "Наши работы"
+function renderWorksPage() {
+    const main = document.getElementById('dynamicMain');
+    if (!main) return;
+    
+    let html = `
+        <div class="works-header">
+            <div class="container">
+                <h1>${worksData.title}</h1>
+                <p>${worksData.description}</p>
+            </div>
+        </div>
+        <div class="services-list">
+            <div class="container">
+    `;
+    
+    worksData.categories.forEach(category => {
+        html += `
+            <div class="works-category">
+                <h2 class="works-category-title">
+                    <i class="fas ${category.name === 'Памятники' ? 'fa-monument' : 'fa-tools'}"></i>
+                    ${category.name}
+                </h2>
+                <div class="works-grid">
+        `;
+        
+        category.items.forEach((item, index) => {
+            html += `
+                <div class="work-card" onclick="openWorkModal(${item.id}, '${category.name}')">
+                    <div class="work-image">
+                        <img src="${item.image}" alt="${item.name}" onerror="this.src='https://placehold.co/400x300/f5f5f5/999?text=${encodeURIComponent(item.name)}'">
+                        <div class="work-year">${item.year}</div>
+                        <div class="work-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                    <div class="work-info">
+                        <div class="work-title">${item.name}</div>
+                        <div class="work-description">${item.description}</div>
+                        <div class="work-details">
+                            <span class="work-category-badge">
+                                <i class="fas ${category.name === 'Памятники' ? 'fa-monument' : 'fa-brush'}"></i>
+                                ${category.name}
+                            </span>
+                            <span class="work-more">Подробнее →</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+        
+        html += `
+                </div>
+            </div>
+        `;
+    });
+    
+    html += `
+            </div>
+        </div>
+        <!-- Модальное окно -->
+        <div id="workModal" class="work-modal" onclick="closeWorkModal(event)">
+            <span class="close-modal">&times;</span>
+            <div class="work-modal-content" onclick="event.stopPropagation()">
+                <img id="modalImage" class="work-modal-image" src="" alt="">
+                <div class="work-modal-info">
+                    <div class="work-modal-title" id="modalTitle"></div>
+                    <div class="work-modal-desc" id="modalDesc"></div>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    main.innerHTML = html;
+}
+
+// Функция для открытия модального окна
+function openWorkModal(id, category) {
+    // Находим нужную работу
+    let work = null;
+    for (const cat of worksData.categories) {
+        const found = cat.items.find(item => item.id === id && cat.name === category);
+        if (found) {
+            work = found;
+            break;
+        }
+    }
+    
+    if (work) {
+        const modal = document.getElementById('workModal');
+        const modalImage = document.getElementById('modalImage');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDesc = document.getElementById('modalDesc');
+        
+        modalImage.src = work.image;
+        modalTitle.textContent = work.name;
+        modalDesc.textContent = work.description;
+        
+        modal.classList.add('active');
+    }
+}
+
+// Функция для закрытия модального окна
+function closeWorkModal(event) {
+    const modal = document.getElementById('workModal');
+    if (event.target === modal || event.target.className === 'close-modal') {
+        modal.classList.remove('active');
+    }
+}
+let reviewsData = {
+    title: "Отзывы наших клиентов",
+    description: "Реальные отзывы людей, которые доверили нам организацию похорон своих близких",
+    stats: {
+        total: 0,
+        average: 0,
+        fiveStars: 0,
+        fourStars: 0,
+        threeStars: 0
+    },
+    items: []
+};
+
+// ===== ВСЕ ВАШИ 36 ОТЗЫВОВ (определяем ДО функций) =====
+const initialReviews = [
+    { id: 1, name: "Эмиль Третьяк", date: "15 мая 2026", rating: 5, text: "Заказывал гравировку и установку памятника. Художник Владимир отнёсся очень трепетно, а Фируз с Григорием аккуратно всё смонтировали. Спасибо за спокойную и достойную работу.", service: "Гравировка и установка памятника" },
+    { id: 2, name: "Владимир Миргородский", date: "14 мая 2026", rating: 5, text: "Сделал заказ на гравировку и установку памятника. Художник Владимир с работниками Фируз и Григорий обеспечили спокойный и аккуратный сервис. Всё выполнено качественно.", service: "Гравировка и установка памятника" },
+    { id: 3, name: "Анатолий Жеребятьев", date: "10 мая 2026", rating: 5, text: "Спасибо ребятам из Монумента: художник Владимир отлично нанёс портрет, а Фируз с Григорием аккуратно всё установили и убрали территорию.", service: "Портретная гравировка" },
+    { id: 4, name: "Виктор Васильев", date: "1 мая 2026", rating: 5, text: "Отличная мастерская по изготовлению памятников с высоким качеством работы и вниманием к деталям. Мастера помогли выбрать достойный камень и грамотно составить эпитафию, учли все пожелания. Изделие выполнено аккуратно, гравировка чёткая и глубокая, портрет получился максимально похожим, материал хорошего качества. Установку сделали профессионально и в обещанный срок. Цены адекватные за такой уровень. Рекомендую.", service: "Изготовление памятника" },
+    { id: 5, name: "Анатолий Наговицын", date: "26 апреля 2026", rating: 5, text: "Заказал памятник для родственника в 'Монументе'. Качество гравировки Владимира точно передало память об отце, а работники Фируз и Григорий оперативно установили плиту и привели место в порядок, подсыпав щебень. Доволен полнотой услуг и серьезным подходом.", service: "Памятник и благоустройство" },
+    { id: 6, name: "Дмитрий Лавриненков", date: "11 апреля 2026", rating: 5, text: "Заказывал у Монумента гравировку памятника и спил старого дерева. Художник Владимир сделал чёткую работу, Фируз с Григорием отсыпали участок щебнем.", service: "Гравировка и благоустройство" },
+    { id: 7, name: "Артем Златой", date: "8 апреля 2026", rating: 5, text: "Покупали памятник на могилку. Сделали в срок, качество отличное.", service: "Памятник" },
+    { id: 8, name: "Александр Рогов", date: "5 апреля 2026", rating: 5, text: "Заказывали памятник в честь тети. Специалисты — настоящие профессионалы своего дела. Получилось один в один!", service: "Памятник" },
+    { id: 9, name: "Артем Никитин", date: "2 апреля 2026", rating: 5, text: "Обращался в эту компанию, не пожалел. Гравировку выполнили качественно и недорого.", service: "Гравировка" },
+    { id: 10, name: "Игорь Баранов", date: "31 марта 2026", rating: 5, text: "Обратился за установкой памятника и гравировкой. Всё сделали аккуратно, с вниманием к деталям. Спасибо за качественную работу и человеческое отношение.", service: "Установка и гравировка" },
+    { id: 11, name: "Илья Деревянко", date: "27 марта 2026", rating: 5, text: "Заказывал гравировку и установку памятника. Всё сделали аккуратно, работники вежливые, помогли с выбором. Спасибо за внимательное отношение.", service: "Гравировка и установка" },
+    { id: 12, name: "Максим Горький", date: "24 марта 2026", rating: 5, text: "Очень доволен посещением. Обслуживание на действительно высоком уровне, персонал вежливый и отлично знает своё дело. Всё сделали быстро, чётко и без лишних вопросов. Обязательно буду обращаться сюда ещё при необходимости. Рекомендую!", service: "Ритуальные услуги" },
+    { id: 13, name: "Валерий Соколов", date: "22 февраля 2026", rating: 5, text: "Сделали красивый памятник, отличная работа на совесть.", service: "Памятник" },
+    { id: 14, name: "Иса Юсуф", date: "20 февраля 2026", rating: 5, text: "Сделали красивый монумент. Спасибо.", service: "Монумент" },
+    { id: 15, name: "Захар Милов", date: "19 февраля 2026", rating: 5, text: "Фируз всё терпеливо разъяснил про установку ограды. Впервые с этим столкнулся, спасибо.", service: "Установка ограды" },
+    { id: 16, name: "Андрей Азаренко", date: "27 января 2026", rating: 5, text: "Заказывали памятник и оградку с установкой. Качественно, спасибо.", service: "Памятник и ограда" },
+    { id: 17, name: "Nail iskandarov", date: "27 января 2026", rating: 5, text: "Памятники очень красивые гладкие видно за ними ухаживают их так много всем рекомендую посетить данное место очень красиво.", service: "Памятники" },
+    { id: 18, name: "Виктор Бобырев", date: "24 января 2026", rating: 5, text: "Заказал гравировку и установку памятника. Художник Владимир внимательно отнесся к деталям, а работники Фируз и Григорий аккуратно выполнили монтаж. Ценишь профессиональный подход в такой деликатной сфере.", service: "Гравировка и установка" },
+    { id: 19, name: "Анна Докучаева", date: "24 января 2026", rating: 5, text: "Установили памятник дяде, достаточно надежно. Отдельное спасибо, что выслушали все требования. Мастерство на высоком уровне.", service: "Установка памятника" },
+    { id: 20, name: "Pavel Lev", date: "30 декабря 2025", rating: 5, text: "Мастера, такие как Владимир, Firuz и Grigory, профессионально подошли к делу. Все работы были выполнены в срок, без лишних вопросов. Рекомендую, если нужны услуги по установке памятников и уходу за могилами.", service: "Установка и уход" },
+    { id: 21, name: "Нина Румянцева", date: "29 декабря 2025", rating: 5, text: "Спасибо большое за помощь, на могиле бабушки и дедушки поставили новый памятник, спилили деревья, установили скамейку и столик. Все сделали быстро и аккуратно.", service: "Комплексное благоустройство" },
+    { id: 22, name: "Леонид Махалов", date: "27 декабря 2025", rating: 5, text: "Художник Владимир качественно выполнил гравировку, а Фируз и Григорий аккуратно установили памятник. Оценил комплексный подход к обустройству участка.", service: "Гравировка и установка" },
+    { id: 23, name: "Артем Бабушкин", date: "24 декабря 2025", rating: 5, text: "Памятник поставили крепко, как договаривались. Теперь уверен, что простоит долго.", service: "Установка памятника" },
+    { id: 24, name: "Николай Захаров", date: "30 ноября 2025", rating: 5, text: "Организовали похороны брата, умер на СВО. Цена была адекватной.", service: "Организация похорон" },
+    { id: 25, name: "Тимур Плеханов", date: "28 ноября 2025", rating: 5, text: "Обращался за установкой памятника и благоустройством участка. Хочу выделить качественную гравировку и аккуратную уборку территории. Отдельная благодарность Владимиру за художественную работу. Приятно иметь дело с ответственными специалистами.", service: "Установка и благоустройство" },
+    { id: 26, name: "Юлиана Набутова", date: "25 ноября 2025", rating: 5, text: "Мне понравилось, как всё организовано, Владимир учёл пожелания, довольна и приду ещё.", service: "Организация услуг" },
+    { id: 27, name: "Алексей Шалушкин", date: "25 ноября 2025", rating: 5, text: "От установки памятника до укладки брусчатки – все сделали без лишней суеты. Ценю такой подход к делу.", service: "Комплексные работы" },
+    { id: 28, name: "Арсений Богомазов", date: "13 ноября 2025", rating: 5, text: "Все было организовано на высоком уровне, и мы почувствовали, что наши пожелания были услышаны.", service: "Организация услуг" },
+    { id: 29, name: "Алексей В", date: "12 ноября 2025", rating: 5, text: "Покупали памятник для тёти жены, все сделали правильно, фото похоже.", service: "Памятник" },
+    { id: 30, name: "Кира Низовцева", date: "13 октября 2025", rating: 5, text: "Сложная ситуация, когда нужно было установить памятник, стала проще благодаря вниманию сотрудников. Обсудили все детали, и работа выполнена с душой. Все сделали аккуратно и быстро, а результат радует глаз. Прекрасно подобрали материал, который отлично смотрится на участке. Много благодарностей команде за индивидуальный подход!", service: "Установка памятника" },
+    { id: 31, name: "Василий Миронов", date: "2 октября 2025", rating: 5, text: "Заказал памятник с гравировкой, оценил внимание Владимира к деталям. Фируз и Григорий аккуратно выполнили установку и сопутствующие работы. Убедился, что в сложной ситуации можно довериться их комплексному подходу.", service: "Памятник с гравировкой" },
+    { id: 32, name: "Максим Заглядов", date: "1 октября 2025", rating: 5, text: "Заказывали памятник и ограду, сделали хорошего качества и подготовку места по приемлемой цене. Спасибо за работу.", service: "Памятник и ограда" },
+    { id: 33, name: "Роберт К", date: "7 сентября 2025", rating: 5, text: "Заказывал памятник. Художник Владимир помог с дизайном, учёл все пожелания. Установку выполняли Фируз и Григорий — сделали всё аккуратно и в срок. Работой доволен, качество хорошее.", service: "Памятник" },
+    { id: 34, name: "Ксюша Новичихина", date: "5 сентября 2025", rating: 5, text: "Очень хорошо делают свою работу. Изготовление памятников, оград, надгробных плит, венков на высшем уровне. Все сделано качественно. Рекомендую данную компанию!", service: "Изготовление памятников" },
+    { id: 35, name: "Михаил Штукатуров", date: "29 июня 2025", rating: 5, text: "Обращались в другую компанию, но там предложили выполнить работы без договора. Знакомые дали телефон Сергея. С самого начала почувствовалось что фирма надёжная. В итоге сделали все качественно, аккуратно и раньше срока, указанного в договоре. Всем знакомым буду рекомендовать эту компанию. Спасибо ребята...", service: "Комплексные работы" },
+    { id: 36, name: "Наталья Д", date: "16 апреля 2025", rating: 5, text: "Хочется поблагодарить Сергея и всю команду, всех сотрудников, которые помогли нам в нашей ситуации. От начала и до конца помогли во всем. Взяли все проблемы на себя. Все обещанные услуги оказали своевременно и очень качественно. В такие моменты теряешься и спасибо что есть такие люди.", service: "Организация похорон" }
+];
+
+// Функции
+function calculateStats(items) {
+    const total = items.length;
+    if (total === 0) {
+        return { total: 0, average: 0, fiveStars: 0, fourStars: 0, threeStars: 0 };
+    }
+    const sum = items.reduce((acc, r) => acc + r.rating, 0);
+    const fiveStars = items.filter(r => r.rating === 5).length;
+    const fourStars = items.filter(r => r.rating === 4).length;
+    const threeStars = items.filter(r => r.rating === 3).length;
+    return {
+        total: total,
+        average: parseFloat((sum / total).toFixed(1)),
+        fiveStars: fiveStars,
+        fourStars: fourStars,
+        threeStars: threeStars
+    };
+}
+
+function saveReviewsToStorage() {
+    localStorage.setItem('monument_reviews', JSON.stringify(reviewsData));
+}
+
+function loadReviewsFromStorage() {
+    const saved = localStorage.getItem('monument_reviews');
+    if (saved) {
+        reviewsData = JSON.parse(saved);
+        console.log('✅ Загружено из localStorage:', reviewsData.items.length, 'отзывов');
+    } else {
+        console.log('📝 Первый запуск, загружаем начальные отзывы:', initialReviews.length);
+        reviewsData.items = [...initialReviews];
+        reviewsData.stats = calculateStats(reviewsData.items);
+        saveReviewsToStorage();
+        console.log('💾 Сохранено в localStorage:', reviewsData.items.length, 'отзывов');
+    }
+    
+    // ✅ ВАЖНО: после загрузки отзывов перерисовываем страницу
+    if (window.location.search.includes('category=reviews')) {
+        renderReviewsPage();
+    }
+}
+
+// Переменная для фильтрации
+let currentRatingFilter = 'all';
+
+// Генерация звёзд
+function generateStars(rating) {
+    let stars = '';
+    for (let i = 1; i <= 5; i++) {
+        if (i <= rating) {
+            stars += '<i class="fas fa-star star"></i>';
+        } else {
+            stars += '<i class="far fa-star star empty"></i>';
+        }
+    }
+    return stars;
+}
+
+// Функция для раскрытия полного текста
+window.toggleReviewText = function(id) {
+    const review = reviewsData.items.find(r => r.id === id);
+    if (review) {
+        const textElement = document.getElementById(`reviewText-${id}`);
+        if (textElement) {
+            if (textElement.textContent === review.text) {
+                textElement.textContent = review.text.substring(0, 200) + '...';
+                const btn = textElement.nextElementSibling;
+                if (btn && btn.classList.contains('read-more-btn')) btn.textContent = 'Читать полностью';
+            } else {
+                textElement.textContent = review.text;
+                const btn = textElement.nextElementSibling;
+                if (btn && btn.classList.contains('read-more-btn')) btn.textContent = 'Свернуть';
+            }
+        }
+    }
+};
+
+// Функция для добавления нового отзыва
+function addNewReview(name, rating, text, service) {
+    const newReview = {
+        id: Date.now(),
+        name: name,
+        date: new Date().toLocaleDateString('ru-RU'),
+        rating: parseInt(rating),
+        text: text,
+        service: service
+    };
+    reviewsData.items.unshift(newReview);
+    reviewsData.stats = calculateStats(reviewsData.items);
+    saveReviewsToStorage();
+    renderReviewsPage();
+}
+
+// Экранирование HTML для безопасности
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
+// Функция для отображения раздела "Отзывы"
+function renderReviewsPage() {
+    const main = document.getElementById('dynamicMain');
+    if (!main) return;
+    
+    let filteredReviews = reviewsData.items;
+    if (currentRatingFilter !== 'all') {
+        filteredReviews = reviewsData.items.filter(r => r.rating === parseInt(currentRatingFilter));
+    }
+    
+    let html = `
+        <div class="reviews-header">
+            <div class="container">
+                <h1>${reviewsData.title}</h1>
+                <p>${reviewsData.description}</p>
+                <div class="reviews-stats">
+                    <div class="stat-card">
+                        <div class="stat-number">${reviewsData.stats.average}</div>
+                        <div class="stat-label">★ Средняя оценка</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">${reviewsData.stats.total}</div>
+                        <div class="stat-label">Отзывов</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">${reviewsData.stats.fiveStars}</div>
+                        <div class="stat-label">★★★★★</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="reviews-filter">
+            <div class="container">
+                <div class="filter-buttons">
+    <button class="filter-btn ${currentRatingFilter === 'all' ? 'active' : ''}" data-rating="all">
+        <i class="fas fa-star"></i>
+        <span>Все отзывы</span>
+    </button>
+    <button class="filter-btn ${currentRatingFilter === '5' ? 'active' : ''}" data-rating="5">
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <span>(${reviewsData.stats.fiveStars})</span>
+    </button>
+    <button class="filter-btn ${currentRatingFilter === '4' ? 'active' : ''}" data-rating="4">
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="far fa-star"></i>
+        <span>(${reviewsData.stats.fourStars})</span>
+    </button>
+    <button class="filter-btn ${currentRatingFilter === '3' ? 'active' : ''}" data-rating="3">
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="far fa-star"></i>
+        <i class="far fa-star"></i>
+        <span>(${reviewsData.stats.threeStars})</span>
+    </button>
+</div>
+            </div>
+        </div>
+        <div class="reviews-list">
+            <div class="container">
+                <div class="reviews-grid" id="reviewsGrid">
+    `;
+    
+    if (filteredReviews.length === 0) {
+        html += '<div class="no-services" style="grid-column:1/-1; text-align:center;">Пока нет отзывов с таким рейтингом</div>';
+    } else {
+        filteredReviews.forEach((review, idx) => {
+    let shortText = review.text.length > 200 ? review.text.substring(0, 200) + '...' : review.text;
+    
+    // Аватарка с инициалами
+    const initials = review.name.substring(0, 2).toUpperCase();
+    
+    html += `
+        <div class="review-card">
+            <div class="review-header">
+                <div class="review-avatar">
+                    ${initials}
+                </div>
+                <div class="review-info">
+                    <div class="review-name">${escapeHtml(review.name)}</div>
+                    <div class="review-date">📅 ${review.date}</div>
+                </div>
+            </div>
+            <div class="review-rating">
+                ${generateStars(review.rating)}
+            </div>
+            <div class="review-text" id="reviewText-${review.id}">
+                "${escapeHtml(shortText)}"
+            </div>
+            ${review.text.length > 200 ? `<button class="read-more-btn" onclick="toggleReviewText(${review.id})">Читать полностью →</button>` : ''}
+            <div class="review-service">
+                <i class="fas fa-tag"></i> ${escapeHtml(review.service)}
+            </div>
+        </div>
+    `;
+});
+    }
+    
+    html += `
+                </div>
+                <div class="add-review-section">
+                    <h2 class="add-review-title">Оставить свой отзыв</h2>
+                    <p class="add-review-subtitle">Поделитесь своим опытом работы с нами</p>
+                    <div id="successMessage" class="success-message">
+                        Спасибо! Ваш отзыв успешно добавлен.
+                    </div>
+                    <form id="reviewForm" class="review-form">
+                        <div class="form-row">
+                            <label>Ваше имя *</label>
+                            <input type="text" id="reviewName" placeholder="Например: Александр" required>
+                        </div>
+                        <div class="form-row">
+                            <label>Ваша оценка *</label>
+                            <div class="rating-input">
+                                <div class="rating-stars" id="ratingStars">
+                                    <i class="far fa-star" data-value="1"></i>
+                                    <i class="far fa-star" data-value="2"></i>
+                                    <i class="far fa-star" data-value="3"></i>
+                                    <i class="far fa-star" data-value="4"></i>
+                                    <i class="far fa-star" data-value="5"></i>
+                                </div>
+                                <input type="hidden" id="reviewRating" value="0" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <label>Выберите услугу</label>
+                            <select id="reviewService">
+                                <option value="Памятник">Памятник</option>
+                                <option value="Благоустройство">Благоустройство</option>
+                                <option value="Гравировка">Гравировка</option>
+                                <option value="Установка">Установка</option>
+                                <option value="Организация похорон">Организация похорон</option>
+                                <option value="Другое">Другое</option>
+                            </select>
+                        </div>
+                        <div class="form-row">
+                            <label>Ваш отзыв *</label>
+                            <textarea id="reviewText" rows="4" placeholder="Расскажите о вашем опыте..." required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Оставить отзыв</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    main.innerHTML = html;
+    
+    // Настройка фильтров
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            currentRatingFilter = btn.getAttribute('data-rating');
+            renderReviewsPage();
+        });
+    });
+    
+    setupRatingStars();
+    setupReviewForm();
+}
+
+// Настройка звёзд для формы
+function setupRatingStars() {
+    const stars = document.querySelectorAll('#ratingStars i');
+    const ratingInput = document.getElementById('reviewRating');
+    if (!stars.length) return;
+    
+    stars.forEach(star => {
+        star.addEventListener('click', () => {
+            const value = parseInt(star.getAttribute('data-value'));
+            ratingInput.value = value;
+            
+            stars.forEach(s => {
+                const starValue = parseInt(s.getAttribute('data-value'));
+                if (starValue <= value) {
+                    s.className = 'fas fa-star';
+                } else {
+                    s.className = 'far fa-star';
+                }
+            });
+        });
+        
+        star.addEventListener('mouseenter', () => {
+            const value = parseInt(star.getAttribute('data-value'));
+            stars.forEach(s => {
+                const starValue = parseInt(s.getAttribute('data-value'));
+                if (starValue <= value) {
+                    s.className = 'fas fa-star';
+                } else {
+                    s.className = 'far fa-star';
+                }
+            });
+        });
+        
+        star.addEventListener('mouseleave', () => {
+            const currentRating = parseInt(ratingInput.value);
+            stars.forEach(s => {
+                const starValue = parseInt(s.getAttribute('data-value'));
+                if (currentRating > 0 && starValue <= currentRating) {
+                    s.className = 'fas fa-star';
+                } else {
+                    s.className = 'far fa-star';
+                }
+            });
+        });
+    });
+}
+
+// Настройка отправки формы
+function setupReviewForm() {
+    const form = document.getElementById('reviewForm');
+    if (!form) return;
+    
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const name = document.getElementById('reviewName').value.trim();
+        const rating = document.getElementById('reviewRating').value;
+        const service = document.getElementById('reviewService').value;
+        const text = document.getElementById('reviewText').value.trim();
+        
+        if (!name) {
+            alert('Пожалуйста, укажите ваше имя');
+            return;
+        }
+        if (!rating || rating === '0') {
+            alert('Пожалуйста, поставьте оценку');
+            return;
+        }
+        if (!text) {
+            alert('Пожалуйста, напишите ваш отзыв');
+            return;
+        }
+        
+        addNewReview(name, rating, text, service);
+        
+        const successMsg = document.getElementById('successMessage');
+        successMsg.classList.add('show');
+        
+        form.reset();
+        document.getElementById('reviewRating').value = '0';
+        document.querySelectorAll('#ratingStars i').forEach(s => s.className = 'far fa-star');
+        
+        setTimeout(() => {
+            successMsg.classList.remove('show');
+        }, 3000);
+    });
+}
+// ===== ФУНКЦИЯ ДЛЯ СТРАНИЦЫ КОНТАКТЫ =====
+function renderContactsPage() {
+    const main = document.getElementById('dynamicMain');
+    if (!main) return;
+
+    const html = `
+        <div class="contacts-header">
+            <div class="container">
+                <h1>Контакты</h1>
+                <p>Свяжитесь с нами удобным для вас способом</p>
+            </div>
+        </div>
+        
+        <div class="contacts-section">
+            <div class="container">
+                <div class="contacts-grid">
+                    <!-- Левая колонка - контактная информация -->
+                    <div class="contacts-info">
+                        <div class="info-card">
+                            <div class="info-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="info-content">
+                                <h3>Адрес</h3>
+                                <p>г. Владивосток, ул. Борисенко, д. 104, стр. 6</p>
+                                <a href="https://yandex.ru/maps/?text=Владивосток,+ул.+Борисенко+104+стр+6" target="_blank" class="info-link">Построить маршрут →</a>
+                            </div>
+                        </div>
+                        
+                        <div class="info-card">
+                            <div class="info-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="info-content">
+                                <h3>Телефон</h3>
+                                <p><a href="tel:+79247301030" class="phone-link">+7 (924) 730-10-30</a></p>
+                                <p class="work-time">📞 Работаем круглосуточно, без выходных</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-card">
+                            <div class="info-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="info-content">
+                                <h3>Email</h3>
+                                <p>
+                                    <a href="mailto:monument-baza@mail.ru" class="email-link">monument-baza@mail.ru</a>
+                                    <button class="copy-email-btn" onclick="copyEmail(this)">
+                                        <i class="far fa-copy"></i>
+                                        <span>Копировать</span>
+                                    </button>
+                                </p>
+                                <p class="response-time">✉️ Отвечаем в течение 15 минут</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-card">
+                            <div class="info-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="info-content">
+                                <h3>Режим работы</h3>
+                                <p>Ежедневно: <strong>09:00 — 19:00</strong></p>
+                                <p>🕒 Заявки принимаются круглосуточно</p>
+                            </div>
+                        </div>
+                        
+                        <div class="social-card">
+                            <h3>Мы в мессенджерах</h3>
+                            <div class="messengers">
+                                <a href="https://wa.me/79247301030" target="_blank" class="messenger-link whatsapp">
+                                    <i class="fab fa-whatsapp"></i>
+                                    <span>WhatsApp</span>
+                                </a>
+                                <a href="https://t.me/79247301030" target="_blank" class="messenger-link telegram">
+                                    <i class="fab fa-telegram"></i>
+                                    <span>Telegram</span>
+                                </a>
+                                <a href="mailto:monument-baza@mail.ru" class="messenger-link email">
+                                    <i class="far fa-envelope"></i>
+                                    <span>Email</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Правая колонка - форма обратной связи -->
+                    <div class="contacts-form">
+                        <div class="form-card">
+                            <h3>Написать нам</h3>
+                            <p>Заполните форму, и мы свяжемся с вами в ближайшее время</p>
+                            <form id="contactsForm" class="contact-form">
+                                <div class="form-row">
+                                    <input type="text" id="contactName" placeholder="Ваше имя *" required>
+                                </div>
+                                <div class="form-row">
+                                    <input type="tel" id="contactPhone" placeholder="+7 (___) ___-__-__" required>
+                                    <small class="input-hint">Введите 10 цифр после +7</small>
+                                </div>
+                                <div class="form-row">
+                                    <input type="email" id="contactEmail" placeholder="Email (необязательно)">
+                                    <small class="input-hint">Например: name@example.ru</small>
+                                </div>
+                                <div class="form-row">
+                                    <textarea id="contactMessage" rows="4" placeholder="Ваше сообщение *" required></textarea>
+                                </div>
+                                <div class="form-row">
+                                    <button type="submit" class="submit-contact-btn">Отправить сообщение</button>
+                                </div>
+                                <p class="form-note">* Нажимая на кнопку, вы соглашаетесь с политикой обработки персональных данных</p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Карта -->
+                <div class="map-container">
+                    <h3 class="map-title">Мы на карте</h3>
+                    <div class="map-wrapper">
+                        <iframe 
+                            src="https://yandex.ru/map-widget/v1/?ll=131.962429%2C43.088839&z=17&pt=131.962429%2C43.088839,pm2b87c4f" 
+                            width="100%" 
+                            height="400" 
+                            frameborder="0"
+                            style="border-radius: 20px;">
+                        </iframe>
+                        <p style="text-align: center; margin-top: 12px;">
+                            <a href="https://yandex.ru/maps/?text=Владивосток,+ул.+Борисенко+104+стр+6" target="_blank" style="color: #b87c4f;">
+                                📍 Открыть карту в Яндекс.Картах →
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    main.innerHTML = html;
+    
+    // ===== НАСТРОЙКА МАСКИ ТЕЛЕФОНА =====
+    const phoneInput = document.getElementById('contactPhone');
+    if (phoneInput) {
+        let previousLength = 0;
+        
+        phoneInput.addEventListener('focus', function() {
+            if (this.value === '') {
+                this.value = '+7';
+                previousLength = 2;
+            }
+        });
+        
+        phoneInput.addEventListener('input', function(e) {
+            let value = this.value;
+            
+            // Если поле пустое или удалён префикс, восстанавливаем +7
+            if (!value.startsWith('+7')) {
+                if (value.startsWith('7')) {
+                    value = '+' + value;
+                } else if (value.startsWith('8')) {
+                    value = '+7' + value.substring(1);
+                } else if (value.length > 0 && !value.startsWith('+')) {
+                    value = '+7' + value;
+                } else if (value === '') {
+                    value = '+7';
+                }
+            }
+            
+            // Удаляем все нецифровые символы, кроме +
+            let digits = value.replace(/[^\d+]/g, '');
+            
+            if (!digits.startsWith('+')) {
+                digits = '+7' + digits.replace(/^7/, '');
+            }
+            
+            // Ограничиваем длину: +7 + 10 цифр = 12 символов
+            if (digits.length > 12) {
+                digits = digits.substring(0, 12);
+            }
+            
+            this.value = digits;
+            
+            // Восстанавливаем позицию курсора
+            const newLength = this.value.length;
+            if (newLength !== previousLength) {
+                this.setSelectionRange(newLength, newLength);
+            }
+            previousLength = newLength;
+        });
+        
+        // Запрещаем удаление префикса +7
+        phoneInput.addEventListener('keydown', function(e) {
+            if (this.value === '+7' && (e.key === 'Backspace' || e.key === 'Delete')) {
+                e.preventDefault();
+                this.setSelectionRange(2, 2);
+            }
+        });
+        
+        // При потере фокуса проверяем длину
+        phoneInput.addEventListener('blur', function() {
+            const digits = this.value.replace(/[^\d]/g, '');
+            if (digits.length > 0 && digits.length < 11) {
+                this.style.borderColor = '#ffc107';
+            } else if (digits.length === 11) {
+                this.style.borderColor = '#ddd';
+                this.classList.add('valid');
+            } else {
+                this.style.borderColor = '#ddd';
+            }
+        });
+    }
+    
+    // ===== ВАЛИДАЦИЯ ФОРМЫ =====
+    const contactsForm = document.getElementById('contactsForm');
+    if (contactsForm) {
+        // Функция валидации
+        function validatePhone(phone) {
+            const digits = phone.replace(/[^\d]/g, '');
+            return digits.length === 11 && phone.startsWith('+7');
+        }
+        
+        function validateEmail(email) {
+            if (!email) return true;
+            const emailRegex = /^[^\s@]+@([^\s@.,]+\.)+[^\s@.,]{2,}$/;
+            return emailRegex.test(email);
+        }
+        
+        function validateName(name) {
+            return name.trim().length >= 2;
+        }
+        
+        function validateMessage(message) {
+            return message.trim().length >= 10;
+        }
+        
+        function clearError(input) {
+            input.classList.remove('error');
+            const errorMsg = input.parentElement.querySelector('.error-message');
+            if (errorMsg) errorMsg.remove();
+        }
+        
+        function showError(input, message) {
+            input.classList.add('error');
+            const existingError = input.parentElement.querySelector('.error-message');
+            if (existingError) existingError.remove();
+            
+            const errorMsg = document.createElement('small');
+            errorMsg.className = 'error-message';
+            errorMsg.textContent = message;
+            input.parentElement.appendChild(errorMsg);
+        }
+        
+        // Убираем ошибки при вводе
+        const nameInput = document.getElementById('contactName');
+        const emailInput = document.getElementById('contactEmail');
+        const messageInput = document.getElementById('contactMessage');
+        
+        if (nameInput) {
+            nameInput.addEventListener('input', function() { clearError(this); });
+        }
+        if (emailInput) {
+            emailInput.addEventListener('input', function() { clearError(this); });
+        }
+        if (messageInput) {
+            messageInput.addEventListener('input', function() { clearError(this); });
+        }
+        if (phoneInput) {
+            phoneInput.addEventListener('input', function() { clearError(this); });
+        }
+        
+        // Обработка отправки
+        contactsForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('contactName');
+            const phone = document.getElementById('contactPhone');
+            const email = document.getElementById('contactEmail');
+            const message = document.getElementById('contactMessage');
+            
+            let isValid = true;
+            
+            // Валидация имени
+            clearError(name);
+            if (!validateName(name.value)) {
+                showError(name, 'Пожалуйста, укажите ваше имя (минимум 2 символа)');
+                isValid = false;
+            }
+            
+            // Валидация телефона
+            clearError(phone);
+            if (!validatePhone(phone.value)) {
+                showError(phone, 'Введите номер в формате: +7XXXXXXXXXX (10 цифр после +7)');
+                isValid = false;
+            }
+            
+            // Валидация email
+            clearError(email);
+            if (email.value && !validateEmail(email.value)) {
+                showError(email, 'Введите корректный email (например: name@example.ru)');
+                isValid = false;
+            }
+            
+            // Валидация сообщения
+            clearError(message);
+            if (!validateMessage(message.value)) {
+                showError(message, 'Сообщение должно содержать минимум 10 символов');
+                isValid = false;
+            }
+            
+            if (!isValid) return;
+            
+            // Создаём сообщение для WhatsApp
+            const whatsappMessage = `Здравствуйте! Новое сообщение с сайта:\n\nИмя: ${name.value}\nТелефон: ${phone.value}\nEmail: ${email.value || 'не указан'}\nСообщение: ${message.value}`;
+            
+            window.open(`https://wa.me/79247301030?text=${encodeURIComponent(whatsappMessage)}`, '_blank');
+            
+            alert('Спасибо! Ваше сообщение отправлено. Мы свяжемся с вами в ближайшее время.');
+            contactsForm.reset();
+            if (phoneInput) phoneInput.value = '';
+            [name, phone, email, message].forEach(input => {
+                if (input) input.classList.remove('error', 'valid');
+            });
+        });
+    }
+    
+    document.title = 'Контакты | МОНУМЕНТ';
+}
+
+        // ОСНОВНАЯ ФУНКЦИЯ - определяет, какой раздел показывать
+        
+function renderContent() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const category = urlParams.get('category');
+    const tab = urlParams.get('tab');
+    
+    console.log('=== ОТЛАДКА ===');
+    console.log('category:', category);
+    console.log('tab:', tab);
+    
+    // Проверяем category и сразу выходим (return)
+    if (category === 'about') {
+        console.log('Показываем раздел "О компании"');
+        renderAboutPage();
+        document.title = 'О компании | МОНУМЕНТ';
+        return; // ВАЖНО: ВЫХОДИМ ИЗ ФУНКЦИИ
+    }
+    
+    if (category === 'pamiatniki') {
+        console.log('Показываем раздел памятников');
+        const activeTab = (tab && monumentsData[tab]) ? tab : 'odinochnye';
+        renderPamiatnikiPage(activeTab);
+        return;
+    }
+    
+    if (category === 'reviews') {
+        console.log('Показываем раздел "Отзывы"');
+        renderReviewsPage();
+        document.title = 'Отзывы | МОНУМЕНТ';
+        return;
+    }
+    
+    if (category === 'works') {
+        console.log('Показываем раздел "Наши работы"');
+        renderWorksPage();
+        document.title = 'Наши работы | МОНУМЕНТ';
+        return;
+    }
+    
+    if (category === 'contacts') {
+        console.log('Показываем раздел "Контакты"');
+        renderContactsPage();
+        document.title = 'Контакты | МОНУМЕНТ';
+        return;
+    }
+    
+    // Если ни одно условие не подошло — показываем благоустройство
+    console.log('Показываем раздел благоустройства (по умолчанию)');
+    const activeTab = (tab && servicesData[tab]) ? tab : 'uslugi';
+    renderBlagoustroystvoPage(activeTab);
+}
+        // Функция для подсветки активного пункта меню
+function highlightActiveMenuItem() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const category = urlParams.get('category');
+    
+    // Убираем выделение со всех пунктов меню
+    const allNavLinks = document.querySelectorAll('.nav-menu .nav-link');
+    allNavLinks.forEach(link => {
+        link.style.color = '';
+        link.style.fontWeight = '';
+    });
+    
+    // Подсвечиваем нужный пункт в зависимости от category
+    if (category === 'blagoustroystvo') {
+        const blagoustroystvoLink = document.getElementById('nav-blagoustroystvo');
+        if (blagoustroystvoLink) {
+            blagoustroystvoLink.style.color = '#b87c4f';
+            blagoustroystvoLink.style.fontWeight = '600';
+        }
+    } 
+    else if (category === 'pamiatniki') {
+        const pamiatnikiLink = document.getElementById('nav-pamiatniki');
+        if (pamiatnikiLink) {
+            pamiatnikiLink.style.color = '#b87c4f';
+            pamiatnikiLink.style.fontWeight = '600';
+        }
+    }
+    else if (category === 'works') {
+        const worksLink = document.getElementById('nav-works');
+        if (worksLink) {
+            worksLink.style.color = '#b87c4f';
+            worksLink.style.fontWeight = '600';
+        }
+    }
+    else if (category === 'reviews') {
+        const reviewsLink = document.getElementById('nav-reviews');
+        if (reviewsLink) {
+            reviewsLink.style.color = '#b87c4f';
+            reviewsLink.style.fontWeight = '600';
+        }
+    }
+    else if (category === 'contacts') {
+        const contactsLink = document.getElementById('nav-contacts');
+        if (contactsLink) {
+            contactsLink.style.color = '#b87c4f';
+            contactsLink.style.fontWeight = '600';
+        }
+    }
+    else {
+        // Если category нет (главная страница благоустройства по умолчанию)
+        const blagoustroystvoLink = document.getElementById('nav-blagoustroystvo');
+        if (blagoustroystvoLink) {
+            blagoustroystvoLink.style.color = '#b87c4f';
+            blagoustroystvoLink.style.fontWeight = '600';
+        }
+    }
+}
+
+        // Скрипты для меню
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 50) {
+                navbar.classList.add('sticky');
+            } else {
+                navbar.classList.remove('sticky');
+            }
+        });
+
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+            });
+        }
+
+        const dropdownItems = document.querySelectorAll('.has-dropdown');
+        dropdownItems.forEach(item => {
+            const link = item.querySelector('.nav-link');
+            link.addEventListener('click', (e) => {
+                if (window.innerWidth <= 1000) {
+                    e.preventDefault();
+                    item.classList.toggle('active');
+                }
+            });
+        });
+        
+        // Запуск
+        renderContent();
+        highlightActiveMenuItem();
+        loadReviewsFromStorage();
+        function copyEmail(button) {
+    const email = 'monument-baza@mail.ru';
+    
+    navigator.clipboard.writeText(email).then(() => {
+        const originalHtml = button.innerHTML;
+        button.innerHTML = '<i class="fas fa-check"></i><span>Скопировано!</span>';
+        button.classList.add('copied');
+        
+        setTimeout(() => {
+            button.innerHTML = originalHtml;
+            button.classList.remove('copied');
+        }, 2000);
+    }).catch(() => {
+        alert('Не удалось скопировать. Скопируйте email вручную: ' + email);
+    });
+}
+// Принудительное добавление анимации стрелок
+function initMenuArrows() {
+    setTimeout(function() {
+        document.querySelectorAll('.has-dropdown').forEach(item => {
+            const arrow = item.querySelector('.fa-chevron-down, .fa-solid.fa-chevron-down');
+            if (arrow && !item.hasAttribute('data-arrow-inited')) {
+                item.setAttribute('data-arrow-inited', 'true');
+                
+                // Эффект при наведении мыши
+                item.addEventListener('mouseenter', () => {
+                    arrow.style.transform = 'rotate(180deg)';
+                    arrow.style.color = '#b87c4f';
+                    arrow.style.transition = 'transform 0.3s ease';
+                });
+                
+                item.addEventListener('mouseleave', () => {
+                    arrow.style.transform = 'rotate(0deg)';
+                    arrow.style.color = '';
+                });
+                
+                // Для мобильных устройств - по клику
+                const link = item.querySelector('.nav-link');
+                if (link) {
+                    link.addEventListener('click', (e) => {
+                        if (window.innerWidth <= 1000) {
+                            e.preventDefault();
+                            item.classList.toggle('active');
+                            if (item.classList.contains('active')) {
+                                arrow.style.transform = 'rotate(180deg)';
+                                arrow.style.color = '#b87c4f';
+                            } else {
+                                arrow.style.transform = 'rotate(0deg)';
+                                arrow.style.color = '';
+                            }
+                        }
+                    });
+                }
+            }
+        });
+    }, 100);
+}
+
+
+// Запускаем при загрузке страницы
+document.addEventListener('DOMContentLoaded', initMenuArrows);
+
+// Запускаем также после каждого обновления контента (для динамических страниц)
+const originalRenderContent = renderContent;
+window.renderContent = function() {
+    originalRenderContent();
+    setTimeout(initMenuArrows, 150);
+};
+// ===== ПРЕМИУМ АНИМАЦИИ ПРИ СКРОЛЛЕ =====
+function initScrollAnimations() {
+    // Настройки наблюдателя - более чувствительные
+    const observerOptions = {
+        threshold: 0.1,  // было 0.15 - раньше срабатывает
+        rootMargin: "0px 0px -20px 0px"  // было -50px
+    };
+    
+    // Создаём наблюдатель
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                // УБИРАЕМ ЗАДЕРЖКУ (было index * 50)
+                entry.target.classList.add('animate-in');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+    
+    // Наблюдаем за всеми анимируемыми элементами
+    const animatedElements = document.querySelectorAll(
+        '.service-card, .monument-card, .work-card, .review-card, .advantage-item, .info-card, .social-card, .service-item'
+    );
+    
+    animatedElements.forEach(el => observer.observe(el));
+    
+    // Добавляем класс для уже видимых элементов (при загрузке страницы)
+    setTimeout(() => {
+        animatedElements.forEach(el => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight - 100) {
+                el.classList.add('animate-in');
+            }
+        });
+    }, 100);
+}
+
+// ===== ПАРАЛЛАКС ЭФФЕКТ ДЛЯ ГЕРОЯ =====
+function initParallax() {
+    const hero = document.querySelector('.hero');
+    if (hero) {
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            hero.style.backgroundPositionY = scrolled * 0.5 + 'px';
+        });
+    }
+}
+
+// ===== 3D ЭФФЕКТ ДЛЯ КАРТОЧЕК (опционально) =====
+function init3DCards() {
+    const cards = document.querySelectorAll('.service-card, .monument-card, .work-card');
+    
+    cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            if (window.innerWidth > 768) { // Только на десктопе
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 40;
+                const rotateY = (centerX - x) / 40;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px) scale(1.02)`;
+            }
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0) scale(1)';
+        });
+    });
+}
+
+// ===== АНИМАЦИЯ ПРИ ПЕРЕКЛЮЧЕНИИ ТАБОВ =====
+function initTabAnimations() {
+    const tabs = document.querySelectorAll('.tab-btn, .service-tab');
+    
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            // Плавное появление новых услуг
+            setTimeout(() => {
+                const newItems = document.querySelectorAll('.service-item, .monument-card');
+                newItems.forEach((item, index) => {
+                    item.style.opacity = '0';
+                    item.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        item.style.transition = 'all 0.5s ease';
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateY(0)';
+                    }, index * 50);
+                });
+            }, 100);
+        });
+    });
+}
+
+// ===== АНИМАЦИЯ ДЛЯ КНОПОК ФИЛЬТРАЦИИ =====
+function initFilterButtonsAnimation() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            // Анимация нажатия
+            this.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                this.style.transform = '';
+            }, 150);
+        });
+    });
+}
+
+// ===== ОБНОВЛЕНИЕ АНИМАЦИЙ ПОСЛЕ РЕНДЕРА =====
+function refreshAnimations() {
+    setTimeout(() => {
+        initScrollAnimations();
+        init3DCards();
+        initTabAnimations();
+        initFilterButtonsAnimation();
+    }, 200);
+}
+
+// ===== ЗАПУСК ВСЕХ АНИМАЦИЙ =====
+document.addEventListener('DOMContentLoaded', () => {
+    initScrollAnimations();
+    initParallax();
+    init3DCards();
+    initTabAnimations();
+    initFilterButtonsAnimation();
+});
+
+// Перехватываем рендер контента для обновления анимаций
+const originalRenderContent1 = window.renderContent || function() {};
+window.renderContent = function() {
+    originalRenderContent1();
+    refreshAnimations();
+};
+    </script>
+</body>
+</html>

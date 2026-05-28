@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>МОНУМЕНТ | Ритуальные услуги во Владивостоке</title>
+    <meta name="description" content="Ритуальные услуги во Владивостоке. Организуем захоронение, изготовим и установим памятник, оформим все документы. Собственное производство.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+                * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #1e1e1e;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* ===== ВЕРХНИЙ ХЕДЕР ===== */
+        .top-header {
+            background: #1a1a1a;
+            padding: 15px 0;
+            border-bottom: 1px solid #333;
+        }
+
+        .header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        /* Левая часть с лого */
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 60px;
+            width: auto;
+            border-radius: 10px;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-main {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #b87c4f;
+            line-height: 1.1;
+            letter-spacing: 1px;
+        }
+
+        .logo-sub {
+            font-size: 0.7rem;
+            color: #aaaaaa;
+            letter-spacing: 0.5px;
+        }
+
+        /* Соцсети */
+        .social-links {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .social-link {
+            color: #b87c4f;
+            font-size: 1.3rem;
+            transition: 0.2s;
+            background: #2a2a2a;
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            background: #b87c4f;
+            color: #1a1a1a;
+            transform: translateY(-2px);
+        }
+
+        /* Правая часть контакты */
+        .header-right {
+            text-align: right;
+        }
+
+        .header-address {
+            color: #aaaaaa;
+            font-size: 0.85rem;
+            margin-bottom: 5px;
+        }
+
+        .header-phone {
+            color: #b87c4f;
+            font-size: 1.4rem;
+            font-weight: 700;
+            text-decoration: none;
+            display: block;
+        }
+
+        .header-worktime {
+            color: #666;
+            font-size: 0.7rem;
+        }
+
+        /* ===== МЕНЮ НАВИГАЦИИ ===== */
+        .nav-menu-wrapper {
+            background: #0d0d0d;
+            position: sticky;
+            top: 0;
+            z-index: 998;
+            transition: all 0.3s ease;
+        }
+
+        .nav-menu-wrapper.sticky {
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 5px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            display: block;
+            padding: 14px 20px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.2s;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-link:hover {
+            color: #b87c4f;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #1a1a1a;
+            min-width: 220px;
+            list-style: none;
+            border-radius: 8px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.2s;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            z-index: 100;
+        }
+
+        .nav-item:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu li a {
+            display: block;
+            padding: 12px 20px;
+            color: #e0e0e0;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: 0.2s;
+        }
+
+        .dropdown-menu li a:hover {
+            background: #b87c4f;
+            color: #1a1a1a;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        /* ===== ГЕРОЙ С ФОРМОЙ ===== */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('https://images.unsplash.com/photo-1601542917433-2e3dc9e5c944?q=80&w=2070&auto=format');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 0;
+        }
+
+        .hero .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .hero-content {
+            flex: 1;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+            max-width: 500px;
+        }
+
+        /* Форма в герое */
+        .hero-form {
+            flex: 1;
+            background: rgba(255,255,255,0.95);
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            max-width: 450px;
+        }
+
+        .hero-form h3 {
+            font-size: 1.4rem;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+        }
+
+        .hero-form p {
+            color: #666;
+            margin-bottom: 25px;
+            font-size: 0.9rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px 18px;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #b87c4f;
+        }
+
+        .form-btn {
+            width: 100%;
+            background: #b87c4f;
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .form-btn:hover {
+            background: #9a623d;
+            transform: translateY(-2px);
+        }
+
+        
+
+        /* ===== ПРЕИМУЩЕСТВА ===== */
+        .advantages {
+            padding: 80px 0;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1601542917433-2e3dc9e5c944?q=80&w=2070&auto=format');
+            background-size: cover;
+            background-attachment: fixed;
+            color: white;
+        }
+
+        .advantages .section-title {
+            color: white;
+        }
+
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 20px;
+        }
+
+        .advantage-item {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+            transition: 0.3s;
+        }
+
+        .advantage-item:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-5px);
+        }
+
+        .advantage-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .advantage-item h4 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .advantage-item p {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        /* ===== ПОДВАЛ ===== */
+        .footer {
+            background: #0d0d0d;
+            color: #aaa;
+            padding: 50px 0 30px;
+        }
+
+        .footer .container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .footer-left {
+            flex: 1;
+        }
+
+        .footer-left .logo-main {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .footer-copyright {
+            font-size: 0.8rem;
+            margin-top: 20px;
+        }
+
+        .footer-right {
+            text-align: right;
+            flex: 1;
+        }
+
+        .footer-address {
+            margin-bottom: 15px;
+        }
+
+        .footer-address a {
+            color: #b87c4f;
+            text-decoration: none;
+        }
+
+        .footer-address a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-phone {
+            color: #b87c4f;
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        /* ===== МОБИЛЬНАЯ ВЕРСИЯ ===== */
+        @media (max-width: 1000px) {
+            .container {
+                padding: 0 20px;
+            }
+            
+            .header-row {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .header-left {
+                flex-direction: column;
+            }
+            
+            .header-right {
+                text-align: center;
+            }
+            
+            .menu-toggle {
+                display: block;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                text-align: center;
+                padding: 10px 0;
+            }
+            
+            .nav-menu.active {
+                display: flex;
+            }
+            
+            .nav-item {
+                width: 100%;
+            }
+            
+            .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                display: none;
+                background: #2a2a2a;
+                margin-left: 20px;
+            }
+            
+            .nav-item.active .dropdown-menu {
+                display: block;
+            }
+            
+            .hero .container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero-content p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .hero-form {
+                width: 100%;
+            }
+            
+            .footer .container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-right {
+                text-align: center;
+            }
+            
+            .footer-social {
+                justify-content: center;
+            }
+        }
+        /* ===== СОВРЕМЕННЫЙ КАЛЬКУЛЯТОР-НАВИГАТОР ===== */
+        .step-calculator {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
+        }
+
+        .calculator-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+            position: relative;
+        }
+
+        .calculator-title::after {
+            content: '';
+            display: block;
+            width: 70px;
+            height: 4px;
+            background: linear-gradient(90deg, #b87c4f, #d4a373);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        .calculator-subtitle {
+            text-align: center;
+            color: #555;
+            margin-bottom: 40px;
+            font-size: 1rem;
+        }
+
+        .calculator-container {
+            max-width: 750px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #ffffff 0%, #fefefe 100%);
+            border-radius: 32px;
+            padding: 45px 40px;
+            box-shadow: 0 20px 40px -12px rgba(0,0,0,0.15);
+            border: 1px solid rgba(184,124,79,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .calculator-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #b87c4f, #d4a373, #b87c4f);
+        }
+
+        .step {
+            display: none;
+            animation: fadeInUp 0.5s ease;
+        }
+
+        .step.active {
+            display: block;
+        }
+
+        .step-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .step-number-circle {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #b87c4f 0%, #9a623d 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 800;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            box-shadow: 0 8px 20px rgba(184,124,79,0.3);
+        }
+
+        .step-title-text {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin: 0;
+        }
+
+        .step-options {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .calc-option {
+            flex: 1;
+            min-width: 220px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 12px;
+            background: #f8f8f8;
+            border: 2px solid #eee;
+            border-radius: 24px;
+            padding: 30px 20px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .calc-option:hover {
+            border-color: #b87c4f;
+            background: linear-gradient(135deg, #fff8f2 0%, #ffffff 100%);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(184,124,79,0.15);
+        }
+
+        .calc-option i {
+            font-size: 2.5rem;
+            color: #b87c4f;
+            transition: transform 0.3s;
+        }
+
+        .calc-option:hover i {
+            transform: scale(1.1);
+        }
+
+        .calc-option span {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #1a1a1a;
+        }
+
+        .step-form {
+            margin-top: 10px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #333;
+            font-size: 0.95rem;
+        }
+
+        .calc-select {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #eee;
+            border-radius: 20px;
+            font-size: 1rem;
+            font-family: inherit;
+            background: white;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .calc-select:hover {
+            border-color: #b87c4f;
+        }
+
+        .calc-select:focus {
+            outline: none;
+            border-color: #b87c4f;
+            box-shadow: 0 0 0 4px rgba(184,124,79,0.1);
+        }
+
+        .sub-options {
+            margin: 25px 0;
+            padding: 25px;
+            background: #fafaf5;
+            border-radius: 20px;
+            display: none;
+            border: 1px solid #f0e8e0;
+        }
+
+        .sub-options.show {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .sub-options label {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .sub-options select {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid #eee;
+            border-radius: 16px;
+            font-family: inherit;
+            background: white;
+        }
+
+        .price-result {
+            margin-top: 30px;
+            padding: 28px;
+            background: linear-gradient(135deg, #f0faf0 0%, #e8f5e8 100%);
+            border-radius: 24px;
+            text-align: center;
+            display: none;
+            border: 1px solid #d0e8d0;
+        }
+
+        .price-result.show {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .price-result .price {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #2e7d32;
+        }
+
+        .price-result .price-note {
+            font-size: 0.75rem;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        .calc-reset {
+            text-align: center;
+            margin-top: 35px;
+            padding-top: 30px;
+            border-top: 1px solid #eee;
+        }
+
+        .reset-btn {
+            background: linear-gradient(135deg, #f5f5f5 0%, #eeeeee 100%);
+            border: none;
+            color: #b87c4f;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 28px;
+            border-radius: 50px;
+            transition: all 0.3s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .reset-btn:hover {
+            background: linear-gradient(135deg, #e8e8e8 0%, #e0e0e0 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(184,124,79,0.15);
+            color: #9a623d;
+        }
+
+        .reset-btn i {
+            font-size: 0.9rem;
+            transition: transform 0.2s;
+        }
+
+        .reset-btn:hover i {
+            transform: rotate(-15deg);
+        }
+
+        .order-calc-btn {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: white;
+            border: none;
+            padding: 16px 36px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s;
+            box-shadow: 0 6px 20px rgba(37,211,102,0.35);
+        }
+
+        .order-calc-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(37,211,102,0.45);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .calculator-container {
+                padding: 30px 25px;
+                margin: 0 15px;
+                border-radius: 24px;
+            }
+            .step-options {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .calc-option {
+                padding: 20px;
+                flex-direction: row;
+                justify-content: center;
+                gap: 15px;
+            }
+            .calc-option i {
+                font-size: 1.8rem;
+            }
+            .step-number-circle {
+                width: 48px;
+                height: 48px;
+                font-size: 1.4rem;
+            }
+            .step-title-text {
+                font-size: 1.2rem;
+            }
+            .price-result .price {
+                font-size: 1.8rem;
+            }
+            .calculator-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== ВЕРХНИЙ ХЕДЕР ===== -->
+<header class="top-header">
+    <div class="container">
+        <div class="header-row">
+            <div class="header-left">
+                <a href="#" class="logo">
+                    <img src="logo.webp" alt="МОНУМЕНТ" class="logo-img" onerror="this.src='https://placehold.co/60x60/333/b87c4f?text=М'">
+                    <div class="logo-text">
+                        <div class="logo-main">МОНУМЕНТ</div>
+                        <div class="logo-sub">РИТУАЛЬНАЯ КОМПАНИЯ</div>
+                    </div>
+                </a>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                    <a href="mailto:info@monument.ru" class="social-link"><i class="far fa-envelope"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="header-address">📍 г. Владивосток, ул. Борисенко 104, стр. 6</div>
+                <a href="tel:+79247301030" class="header-phone">+7 (924) 730-10-30</a>
+                <div class="header-worktime">🕒 Работаем круглосуточно, без выходных</div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- ===== МЕНЮ ===== -->
+<div class="nav-menu-wrapper" id="navbar">
+    <div class="nav-container">
+        <button class="menu-toggle" id="menuToggle">☰ МЕНЮ</button>
+        <ul class="nav-menu" id="navMenu">
+            <li class="nav-item"><a href="service.html?category=about" class="nav-link" id="nav-about">О КОМПАНИИ</a></li>
+            <li class="nav-item has-dropdown">
+                <a href="service.html?category=blagoustroystvo" class="nav-link" id="nav-blagoustroystvo">БЛАГОУСТРОЙСТВО
+                    <i class="fa-solid fa-chevron-down"></i>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="service.html?category=blagoustroystvo&tab=uslugi">Услуги</a></li>
+                    <li><a href="service.html?category=blagoustroystvo&tab=demontazh">Демонтаж</a></li>
+                    <li><a href="service.html?category=blagoustroystvo&tab=ustanovka">Установка</a></li>
+                    <li><a href="service.html?category=blagoustroystvo&tab=gravirovka">Гравировка</a></li>
+                    <li><a href="service.html?category=blagoustroystvo&tab=plitki">Плитки СП</a></li>
+                    <li><a href="service.html?category=blagoustroystvo&tab=oblitsovka">Облицовка</a></li>
+                </ul>
+            </li>
+            <li class="nav-item has-dropdown">
+                <a href="service.html?category=pamiatniki&tab=odinochnye" class="nav-link" id="nav-pamiatniki">ПАМЯТНИКИ
+                    <i class="fa-solid fa-chevron-down"></i>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="service.html?category=pamiatniki&tab=odinochnye">Одиночные</a></li>
+                    <li><a href="service.html?category=pamiatniki&tab=semeynye">Семейные</a></li>
+                    <li><a href="service.html?category=pamiatniki&tab=nakryvnye">Накрывные плиты</a></li>
+                </ul>
+            </li>
+            <li class="nav-item"><a href="service.html?category=works" class="nav-link" id="nav-works">НАШИ РАБОТЫ</a></li>
+            <li class="nav-item"><a href="service.html?category=reviews" class="nav-link" id="nav-reviews">ОТЗЫВЫ</a></li>
+            <li class="nav-item"><a href="service.html?category=contacts" class="nav-link" id="nav-contacts">КОНТАКТЫ</a></li>
+        </ul>
+    </div>
+</div>
+
+<main>
+    <!-- ГЕРОЙ С ФОРМОЙ -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Ритуальные услуги<br>во Владивостоке</h1>
+                <p>Организуем захоронение, изготовим и установим памятник, оформим все документы</p>
+            </div>
+            <div class="hero-form">
+                <h3>Оставьте заявку</h3>
+                <p>Наши менеджеры свяжутся с Вами и помогут с выбором</p>
+                <form id="heroForm">
+                    <div class="form-group">
+                        <input type="text" placeholder="Ваше имя" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" placeholder="Номер телефона" required>
+                    </div>
+                    <button type="submit" class="form-btn">Отправить заявку</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- НАШИ УСЛУГИ -->
+    <section class="services">
+    <div class="container">
+        <h2 class="section-title">НАШИ УСЛУГИ</h2>
+        <div class="services-grid">
+            
+            <!-- Карточка 1 - Вертикальный памятник -->
+            <div class="service-card">
+                <div class="service-img">
+                    <img src="images/services/1.jpg" alt="Вертикальный гранитный памятник">
+                </div>
+                <div class="service-info">
+                    <div class="service-icon">🏛️</div>
+                    <h3>Вертикальный памятник</h3>
+                    <p class="service-description">Классический памятник из натурального гранита</p>
+                    <div class="service-price">от 28 000 ₽</div>
+                    <button class="order-btn" onclick="orderService('Вертикальный памятник', '28 000 ₽')">
+                        <span>Заказать</span>
+                    </button>
+                </div>
+                <div class="service-badge">Хит продаж</div>
+            </div>
+            
+            <!-- Карточка 2 - Двойной памятник -->
+            <div class="service-card">
+                <div class="service-img">
+                    <img src="images/services/2.PNG" alt="Двойной семейный памятник из гранита">
+                </div>
+                <div class="service-info">
+                    <div class="service-icon">🏛️🏛️</div>
+                    <h3>Двойной памятник</h3>
+                    <p class="service-description">Для семейного захоронения, два портрета</p>
+                    <div class="service-price">от 52 000 ₽</div>
+                    <button class="order-btn" onclick="orderService('Двойной памятник', '52 000 ₽')">
+                        <span>Заказать</span>
+                    </button>
+                </div>
+                <div class="service-badge">Популярный</div>
+            </div>
+            
+            <!-- Карточка 3 - Благоустройство могил -->
+            <div class="service-card">
+                <div class="service-img">
+                    <img src="images/services/3.jpg" alt="Благоустройство места захоронения">
+                </div>
+                <div class="service-info">
+                    <div class="service-icon">🌿</div>
+                    <h3>Благоустройство могил</h3>
+                    <p class="service-description">Полный комплекс работ по благоустройству</p>
+                    <div class="service-price">от 12 000 ₽</div>
+                    <button class="order-btn" onclick="orderService('Благоустройство могил', '12 000 ₽')">
+                        <span>Заказать</span>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Карточка 4 - Ритуальная урна -->
+            <div class="service-card">
+                <div class="service-img">
+                    <img src="images/services/4.jpg" alt="Ритуальные наборы">
+                </div>
+                <div class="service-info">
+                    <div class="service-icon">🏺</div>
+                    <h3>Ритуальная урна</h3>
+                    <p class="service-description">Урны для праха из гранита и мрамора</p>
+                    <div class="service-price">от 7 000 ₽</div>
+                    <button class="order-btn" onclick="orderService('Ритуальная урна', '7 000 ₽')">
+                        <span>Заказать</span>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Карточка 5 - Гравировка -->
+            <div class="service-card">
+                <div class="service-img">
+                    <img src="images/services/5.jpg" alt="Художественная гравировка на памятнике">
+                </div>
+                <div class="service-info">
+                    <div class="service-icon">✍️</div>
+                    <h3>Гравировка на памятнике</h3>
+                    <p class="service-description">Портретная и художественная гравировка</p>
+                    <div class="service-price">от 4 500 ₽</div>
+                    <button class="order-btn" onclick="orderService('Гравировка на памятнике', '4 500 ₽')">
+                        <span>Заказать</span>
+                    </button>
+                </div>
+                <div class="service-badge">Новинка</div>
+            </div>
+            
+            <!-- Карточка 6 - Демонтаж -->
+            <div class="service-card">
+                <div class="service-img">
+                    <img src="images/services/6.jpg" alt="Демонтаж старого памятника">
+                </div>
+                <div class="service-info">
+                    <div class="service-icon">🔨</div>
+                    <h3>Демонтаж старого памятника</h3>
+                    <p class="service-description">Профессиональный демонтаж с вывозом</p>
+                    <div class="service-price">от 5 000 ₽</div>
+                    <button class="order-btn" onclick="orderService('Демонтаж старого памятника', '5 000 ₽')">
+                        <span>Заказать</span>
+                    </button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+    <!-- ===== ДВУХШАГОВЫЙ КАЛЬКУЛЯТОР ===== -->
+<section class="step-calculator">
+    <div class="container">
+        <h2 class="calculator-title">Какая услуга Вас интересует?</h2>
+        <p class="calculator-subtitle">Выберите направление, затем нужные услуги</p>
+        
+        <div class="calculator-container">
+            <!-- Шаг 1: Выбор основной услуги -->
+            <div class="step active" id="step1">
+                <div class="step-header">
+                    <div class="step-number-circle">1</div>
+                    <div class="step-title-text">Выберите услугу</div>
+                </div>
+                <div class="step-options">
+                    <button class="calc-option" data-category="blagoustroystvo">
+                        <i class="fas fa-tools"></i>
+                        <span>Благоустройство</span>
+                        <small>Обустройство мест захоронений</small>
+                    </button>
+                    <button class="calc-option" data-category="pamiatniki">
+                        <i class="fas fa-monument"></i>
+                        <span>Изготовление памятника</span>
+                        <small>Гранитные памятники любой формы</small>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Шаг 2: Выбор услуг -->
+            <div class="step" id="step2">
+                <div class="step-header">
+                    <div class="step-number-circle">2</div>
+                    <div class="step-title-text" id="step2Title">Выберите услуги</div>
+                </div>
+                
+                <!-- Категории услуг -->
+                <div class="service-tabs" id="serviceTabs">
+                    <!-- Табы будут добавлены через JS -->
+                </div>
+                
+                <!-- Список услуг -->
+                <div class="calculator-services-list">
+                
+                <!-- Кнопка "Назад" -->
+                <div class="nav-buttons">
+                    <button id="backToStep1" class="back-btn">
+                        <i class="fas fa-arrow-left"></i>
+                        Назад
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Итоговая стоимость -->
+            <div class="total-result" id="totalResult">
+                <div class="total-label">Примерная стоимость:</div>
+                <div class="total-price" id="totalPrice">0 ₽</div>
+                <div class="total-note">💰 Ориентировочная цена. Точная стоимость после консультации</div>
+                <button id="orderBtn" class="order-calc-btn">
+                    <i class="fab fa-whatsapp"></i>
+                    Отправить заявку на расчёт
+                </button>
+            </div>
+            
+            <!-- Кнопка сброса -->
+            <div class="calc-reset">
+                <button id="resetBtn" class="reset-btn">
+                    <i class="fas fa-undo-alt"></i>
+                    Начать заново
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- ПРЕИМУЩЕСТВА -->
+    <section class="advantages">
+        <div class="container">
+            <h2 class="section-title">НАШИ ПРЕИМУЩЕСТВА</h2>
+            <div class="advantages-grid">
+                <div class="advantage-item"><div class="advantage-icon">🏛️</div><h4>Высокое качество</h4><p>Вся продукция соответствует ГОСТу</p></div>
+                <div class="advantage-item"><div class="advantage-icon">💰</div><h4>Доступные цены</h4><p>Работаем без посредников</p></div>
+                <div class="advantage-item"><div class="advantage-icon">📦</div><h4>Большой ассортимент</h4><p>Более 100 видов изделий</p></div>
+                <div class="advantage-item"><div class="advantage-icon">🚚</div><h4>Доставка и установка</h4><p>По всему Владивостоку</p></div>
+                <div class="advantage-item"><div class="advantage-icon">⭐</div><h4>14 лет опыта</h4><p>Тысячи довольных клиентов</p></div>
+                <div class="advantage-item"><div class="advantage-icon">🖌️</div><h4>Изделия на заказ</h4><p>По вашему проекту</p></div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- ===== ПОДВАЛ ===== -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-left">
+            <div class="logo-main">МОНУМЕНТ</div>
+            <div class="footer-social">
+                <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                <a href="mailto:info@monument.ru" class="social-link"><i class="far fa-envelope"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+            </div>
+            <div class="footer-copyright">© Монумент, 2026</div>
+        </div>
+        <div class="footer-right">
+            <div class="footer-address">
+                📍 <a href="https://yandex.ru/maps/?text=Владивосток,+ул.+Борисенко+104+стр+6" target="_blank">г. Владивосток, ул. Борисенко, д. 104, стр. 6</a>
+            </div>
+            <a href="tel:+79247301030" class="footer-phone">+7 (924) 730-10-30</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Прилипание меню
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 50) {
+            navbar.classList.add('sticky');
+        } else {
+            navbar.classList.remove('sticky');
+        }
+    });
+
+    // Бургер-меню
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+    if (menuToggle) {
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+    }
+
+    // Для мобильных: раскрытие подменю
+    const dropdownItems = document.querySelectorAll('.has-dropdown');
+    dropdownItems.forEach(item => {
+        const link = item.querySelector('.nav-link');
+        link.addEventListener('click', (e) => {
+            if (window.innerWidth <= 1000) {
+                e.preventDefault();
+                item.classList.toggle('active');
+            }
+        });
+    });
+
+    // ===== ДВУХШАГОВЫЙ КАЛЬКУЛЯТОР =====
+let currentCategory = null;
+let selectedServices = [];
+
+// Данные услуг
+const servicesData = {
+    blagoustroystvo: {
+        title: "Благоустройство",
+        tabs: {
+            uslugi: { name: "Услуги", items: [
+                { id: "blago_usl_1", name: "Изготовление брусчатки + укладка", price: 5500, desc: "300х300мм серая" },
+                { id: "blago_usl_2", name: "Укладка брусчатки", price: 3500, desc: "Сторонних производителей" },
+                { id: "blago_usl_3", name: "Изготовление ограды сварной", price: 4000, desc: "Рамка угол 25мм" },
+                { id: "blago_usl_4", name: "Изготовление скамьи металлической", price: 8000, desc: "30х90см" },
+                { id: "blago_usl_5", name: "Изготовление стола металлического", price: 8000, desc: "45х60см" },
+                { id: "blago_usl_6", name: "Отсыпка мраморной крошкой", price: 2000, desc: "1 мешок 40кг на 1м²" }
+            ] },
+            demontazh: { name: "Демонтаж", items: [
+                { id: "blago_dem_1", name: "Демонтаж брусчатки", price: 1500, desc: "С вывозом" },
+                { id: "blago_dem_2", name: "Демонтаж памятника одиночного", price: 5000, desc: "Без сохранения" },
+                { id: "blago_dem_3", name: "Демонтаж памятника семейного", price: 8000, desc: "Без сохранения" },
+                { id: "blago_dem_4", name: "Демонтаж ограды", price: 5000, desc: "Без сохранения" }
+            ] },
+            ustanovka: { name: "Установка", items: [
+                { id: "blago_ust_1", name: "Установка памятника MS", price: 8500, desc: "Высота до 80см" },
+                { id: "blago_ust_2", name: "Установка памятника ML", price: 10000, desc: "Высота до 100см" },
+                { id: "blago_ust_3", name: "Установка памятника ME", price: 12000, desc: "Высота до 120см" },
+                { id: "blago_ust_4", name: "Установка накрывной плиты", price: 2000, desc: "20мм" }
+            ] },
+            gravirovka: { name: "Гравировка", items: [
+                { id: "blago_grav_1", name: "Гравировка портрета", price: 12000, desc: "На грудь" },
+                { id: "blago_grav_2", name: "Гравировка текста", price: 70, desc: "За знак" },
+                { id: "blago_grav_3", name: "Гравировка креста", price: 2000, desc: "До 15см" },
+                { id: "blago_grav_4", name: "Гравировка цветов", price: 3000, desc: "Гвоздики/розы" }
+            ] },
+            oblitsovka: { name: "Облицовка", items: [
+                { id: "blago_obl_1", name: "Плитка полировка G603", price: 9000, desc: "300x600x20" },
+                { id: "blago_obl_2", name: "Плитка скала G603", price: 11000, desc: "300x150x30" },
+                { id: "blago_obl_3", name: "Парапет G603", price: 13000, desc: "За м²" }
+            ] }
+        }
+    },
+    pamiatniki: {
+        title: "Памятники",
+        tabs: {
+            odinochnye: { name: "Одиночные", items: [
+                { id: "pam_od_1", name: "Памятник MS", price: 33000, desc: "Стандартный" },
+                { id: "pam_od_2", name: "Памятник ML", price: 45000, desc: "Стандартный" },
+                { id: "pam_od_3", name: "Памятник ME", price: 70000, desc: "Стандартный" },
+                { id: "pam_od_4", name: "Памятник MT-800", price: 30000, desc: "Прямоугольный 800мм" },
+                { id: "pam_od_5", name: "Памятник MT-1000", price: 43000, desc: "Прямоугольный 1000мм" }
+            ] },
+            semeynye: { name: "Семейные", items: [
+                { id: "pam_sem_1", name: "Памятник ME семейный", price: 80000, desc: "820х820мм" },
+                { id: "pam_sem_2", name: "Памятник ML семейный", price: 70000, desc: "820х820мм" },
+                { id: "pam_sem_3", name: "Памятник ML/V семейный", price: 50000, desc: "700х900мм" }
+            ] },
+            nakryvnye: { name: "Накрывные плиты", items: [
+                { id: "pam_nak_1", name: "Плита 1020х470х20 черная", price: 10000, desc: "Черный гранит" },
+                { id: "pam_nak_2", name: "Плита 1020х520х20 черная", price: 12000, desc: "Черный гранит" },
+                { id: "pam_nak_3", name: "Плита 1020х520х30 светлый", price: 8000, desc: "Светло-серый" }
+            ] }
+        }
+    }
+};
+
+function renderServiceTabs() {
+    const container = document.getElementById('serviceTabs');
+    if (!container) return;
+    
+    const data = servicesData[currentCategory];
+    if (!data) return;
+    
+    let html = '';
+    let firstTab = null;
+    for (const [key, tab] of Object.entries(data.tabs)) {
+        const isActive = firstTab === null;
+        if (isActive) firstTab = key;
+        html += `<button class="service-tab ${isActive ? 'active' : ''}" data-tab="${key}">${tab.name}</button>`;
+    }
+    container.innerHTML = html;
+    
+    // Отображаем услуги первой вкладки
+    if (firstTab) {
+        renderServices(firstTab);
+    }
+    
+    // Настройка обработчиков табов
+    document.querySelectorAll('.service-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+            document.querySelectorAll('.service-tab').forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            const tabKey = tab.getAttribute('data-tab');
+            renderServices(tabKey);
+        });
+    });
+}
+
+function renderServices(tabKey) {
+    const container = document.getElementById('servicesList');
+    if (!container) return;
+    
+    const services = servicesData[currentCategory]?.tabs[tabKey]?.items;
+    if (!services) return;
+    
+    container.innerHTML = services.map(service => {
+        const isSelected = selectedServices.some(s => s.id === service.id);
+        return `
+            <div class="service-item ${isSelected ? 'selected' : ''}" data-id="${service.id}" data-price="${service.price}" data-name="${service.name}">
+                <div class="service-check">
+                    ${isSelected ? '<i class="fas fa-check"></i>' : ''}
+                </div>
+                <div class="service-info">
+                    <div class="service-name">${service.name}</div>
+                    <div class="service-desc">${service.desc || ''}</div>
+                </div>
+            </div>
+        `;
+    }).join('');
+    
+    // Добавляем обработчики
+    document.querySelectorAll('.service-item').forEach(item => {
+        item.addEventListener('click', (e) => {
+            if (e.target.closest('.service-item')) {
+                toggleService(item);
+            }
+        });
+    });
+}
+
+function toggleService(item) {
+    const id = item.getAttribute('data-id');
+    const price = parseInt(item.getAttribute('data-price'));
+    const name = item.getAttribute('data-name');
+    
+    const existingIndex = selectedServices.findIndex(s => s.id === id);
+    
+    if (existingIndex === -1) {
+        selectedServices.push({ id, name, price });
+        item.classList.add('selected');
+        const checkDiv = item.querySelector('.service-check');
+        if (checkDiv) checkDiv.innerHTML = '<i class="fas fa-check"></i>';
+    } else {
+        selectedServices.splice(existingIndex, 1);
+        item.classList.remove('selected');
+        const checkDiv = item.querySelector('.service-check');
+        if (checkDiv) checkDiv.innerHTML = '';
+    }
+    
+    updateTotalPrice();
+}
+
+function updateTotalPrice() {
+    const total = selectedServices.reduce((sum, s) => sum + s.price, 0);
+    const totalElement = document.getElementById('totalPrice');
+    if (totalElement) {
+        totalElement.textContent = total.toLocaleString() + ' ₽';
+    }
+}
+
+function goToStep(stepNumber) {
+    const step1 = document.getElementById('step1');
+    const step2 = document.getElementById('step2');
+    
+    if (stepNumber === 1) {
+        step1.classList.add('active');
+        step2.classList.remove('active');
+    } else {
+        step1.classList.remove('active');
+        step2.classList.add('active');
+        document.getElementById('step2Title').textContent = servicesData[currentCategory]?.title || 'Выберите услуги';
+        renderServiceTabs();
+    }
+}
+
+function initStepCalculator() {
+    // Выбор категории
+    document.querySelectorAll('.calc-option').forEach(btn => {
+        btn.addEventListener('click', () => {
+            currentCategory = btn.getAttribute('data-category');
+            selectedServices = [];
+            updateTotalPrice();
+            goToStep(2);
+        });
+    });
+    
+    // Кнопка назад
+    const backBtn = document.getElementById('backToStep1');
+    if (backBtn) {
+        backBtn.addEventListener('click', () => {
+            goToStep(1);
+        });
+    }
+    
+    // Отправка заявки
+    const orderBtn = document.getElementById('orderBtn');
+    if (orderBtn) {
+        orderBtn.addEventListener('click', () => {
+            if (selectedServices.length === 0) {
+                alert('Пожалуйста, выберите хотя бы одну услугу');
+                return;
+            }
+            
+            const servicesList = selectedServices.map(s => `• ${s.name}: ${s.price.toLocaleString()} ₽`).join('\n');
+            const total = selectedServices.reduce((sum, s) => sum + s.price, 0);
+            
+            const message = `Здравствуйте! Хочу получить консультацию по калькулятору:\n\nКатегория: ${servicesData[currentCategory]?.title}\n\n✅ Выбранные услуги:\n${servicesList}\n\n💰 Примерная стоимость: ${total.toLocaleString()} ₽\n\n📋 Пожалуйста, свяжитесь со мной для точного расчёта.`;
+            window.open(`https://wa.me/79247301030?text=${encodeURIComponent(message)}`, '_blank');
+        });
+    }
+    
+    // Сброс
+    const resetBtn = document.getElementById('resetBtn');
+    if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+            currentCategory = null;
+            selectedServices = [];
+            updateTotalPrice();
+            goToStep(1);
+        });
+    }
+}
+
+// Запуск
+document.addEventListener('DOMContentLoaded', function() {
+    initStepCalculator();
+});
+</script>
+</body>
+</html>
