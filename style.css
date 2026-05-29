@@ -731,65 +731,49 @@ body {
     color: #888;
 }
 
+/* Вкладки категорий услуг */
 .service-tabs {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 10px;
     margin-bottom: 25px;
-    padding-bottom: 10px;
+    padding-bottom: 15px;
     border-bottom: 2px solid #f0f0f0;
 }
 
 .service-tab {
-    background: transparent;
+    background: #f5f5f5;
     border: none;
-    padding: 8px 18px;
-    font-size: 0.85rem;
+    padding: 10px 24px;
+    font-size: 0.9rem;
     font-weight: 600;
     color: #666;
     cursor: pointer;
     border-radius: 40px;
     transition: all 0.3s ease;
-    font-family: inherit;
-}
-
-.service-tab::after {
-    content: '▼';
-    font-size: 8px;
-    margin-left: 6px;
-    display: inline-block;
-    transition: transform 0.3s ease;
-    opacity: 0.6;
-}
-
-.service-tab:hover::after {
-    transform: translateY(2px);
-}
-
-.service-tab.active::after {
-    transform: rotate(180deg);
-    color: white;
 }
 
 .service-tab:hover {
+    background: #e8e8e8;
     color: #b87c4f;
-    background: #f5f5f5;
 }
 
 .service-tab.active {
     background: linear-gradient(135deg, #b87c4f 0%, #9a623d 100%);
     color: white;
-    box-shadow: 0 4px 15px rgba(184,124,79,0.3);
+    box-shadow: 0 4px 12px rgba(184,124,79,0.3);
 }
 
+/* Список услуг */
 .calculator-services-list {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
+    margin-top: 10px;
     margin-bottom: 25px;
-    max-height: 400px;
+    max-height: 450px;
     overflow-y: auto;
-    padding-right: 8px;
+    padding-right: 10px;
 }
 
 .calculator-services-list::-webkit-scrollbar {
@@ -806,32 +790,34 @@ body {
     border-radius: 10px;
 }
 
-.service-item {
+/* Карточка услуги в калькуляторе */
+.calculator-services-list .service-item {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 14px 18px;
     background: #f8f8f8;
-    border-radius: 20px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 16px;
+    padding: 15px 20px;
     cursor: pointer;
-    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    border: 2px solid #eee;
 }
 
-.service-item:hover {
-    background: linear-gradient(135deg, #fff8f2 0%, #ffffff 100%);
+.calculator-services-list .service-item:hover {
+    background: #fff8f2;
+    border-color: #b87c4f;
     transform: translateX(5px);
-    border-color: rgba(184,124,79,0.3);
 }
 
-.service-item.selected {
-    background: linear-gradient(135deg, #e8f5e8 0%, #f0faf0 100%);
+.calculator-services-list .service-item.selected {
+    background: #e8f5e8;
     border-color: #4caf50;
 }
 
-.service-check {
-    width: 24px;
-    height: 24px;
+/* Чекбокс */
+.calculator-services-list .service-check {
+    width: 26px;
+    height: 26px;
     border-radius: 8px;
     border: 2px solid #ddd;
     background: white;
@@ -839,62 +825,63 @@ body {
     align-items: center;
     justify-content: center;
     margin-right: 15px;
-    transition: all 0.2s ease;
     flex-shrink: 0;
 }
 
-.service-item:hover .service-check {
-    border-color: #b87c4f;
-}
-
-.service-item.selected .service-check {
+.calculator-services-list .service-item.selected .service-check {
     background: #4caf50;
     border-color: #4caf50;
-    animation: checkPulse 0.3s ease;
 }
 
-.service-item.selected .service-check i {
+.calculator-services-list .service-item.selected .service-check i {
     color: white;
     font-size: 12px;
-    animation: checkPop 0.2s ease;
 }
 
-@keyframes checkPulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
+/* Информация об услуге */
+.calculator-services-list .service-info {
+    flex: 1;
 }
 
-@keyframes checkPop {
-    0% { opacity: 0; transform: scale(0.5); }
-    100% { opacity: 1; transform: scale(1); }
+.calculator-services-list .service-name {
+    font-weight: 700;
+    font-size: 1rem;
+    color: #1a1a1a;
+    margin-bottom: 4px;
 }
 
+.calculator-services-list .service-desc {
+    font-size: 0.75rem;
+    color: #888;
+}
+
+/* Кнопка назад */
 .nav-buttons {
     margin-top: 15px;
     text-align: center;
 }
 
 .back-btn {
-    background: none;
+    background: #f5f5f5;
     border: none;
-    color: #b87c4f;
+    padding: 10px 24px;
+    border-radius: 40px;
     font-size: 0.9rem;
     font-weight: 600;
+    color: #b87c4f;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 8px 16px;
-    border-radius: 40px;
-    transition: all 0.2s;
+    transition: all 0.3s ease;
 }
 
 .back-btn:hover {
-    background: #f5f5f5;
+    background: #e8e8e8;
     transform: translateX(-3px);
 }
 
+/* Итоговая стоимость */
 .total-result {
     background: linear-gradient(135deg, #f0faf0 0%, #e8f5e8 100%);
     border-radius: 24px;
@@ -914,11 +901,10 @@ body {
 }
 
 .total-price {
-    font-size: 2.2rem;
+    font-size: 2rem;
     font-weight: 800;
     color: #2e7d32;
     margin-bottom: 8px;
-    letter-spacing: -0.5px;
 }
 
 .total-note {
@@ -948,6 +934,7 @@ body {
     box-shadow: 0 12px 30px rgba(37,211,102,0.45);
 }
 
+/* Кнопка сброса */
 .calc-reset {
     text-align: center;
     margin-top: 20px;
@@ -985,6 +972,7 @@ body {
     transform: rotate(-180deg);
 }
 
+/* Адаптивность калькулятора */
 @media (max-width: 768px) {
     .calculator-container {
         padding: 25px;
@@ -1002,11 +990,15 @@ body {
     .calc-option i {
         font-size: 1.8rem;
     }
-    .service-item {
+    .service-tab {
+        padding: 8px 16px;
+        font-size: 0.8rem;
+    }
+    .calculator-services-list .service-item {
         flex-wrap: wrap;
         padding: 12px 15px;
     }
-    .service-check {
+    .calculator-services-list .service-check {
         margin-right: 12px;
     }
     .total-price {
@@ -1015,23 +1007,18 @@ body {
     .calculator-title {
         font-size: 1.6rem;
     }
-    .service-tab {
-        padding: 6px 12px;
-        font-size: 0.75rem;
-    }
 }
 
 /* ===== ПРЕМИУМ АНИМАЦИИ ДЛЯ КАРТОЧЕК ===== */
 .service-card,
 .monument-card,
-.work-card,
 .review-card,
 .advantage-item,
 .info-card,
 .social-card {
-    opacity: 0;
-    transform: translateY(15px);
-    transition: opacity 0.4s ease, transform 0.4s ease;
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition: none !important;
 }
 
 .service-card.animate-in,
@@ -1305,4 +1292,679 @@ body {
     .services .services-grid {
         margin-top: 80px;
     }
+}
+/* ===== БЛОК "НАШИ ПРЕИМУЩЕСТВА" ===== */
+.advantages {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+    color: white;
+    position: relative;
+    z-index: 1;
+}
+
+.advantages .section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 60px;
+    color: white;
+    position: relative;
+}
+
+.advantages .section-title::after {
+    content: '';
+    display: block;
+    width: 70px;
+    height: 3px;
+    background: linear-gradient(90deg, #b87c4f, #d4a373);
+    margin: 20px auto 0;
+    border-radius: 3px;
+}
+
+.advantages-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.advantage-item {
+    text-align: center;
+    padding: 35px 25px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+.advantage-item:hover {
+    transform: translateY(-8px);
+    background: rgba(184, 124, 79, 0.15);
+    border-color: rgba(184, 124, 79, 0.3);
+}
+
+.advantage-icon {
+    font-size: 3rem;
+    margin-bottom: 18px;
+    display: inline-block;
+}
+
+.advantage-item h4 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: white;
+}
+
+.advantage-item p {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.5;
+}
+
+/* Адаптация для планшетов */
+@media (max-width: 900px) {
+    .advantages-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Адаптация для телефонов */
+@media (max-width: 600px) {
+    .advantages-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .advantages {
+        padding: 60px 0;
+    }
+    
+    .advantages .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 40px;
+    }
+    
+    .advantage-item {
+        padding: 25px 20px;
+    }
+    
+    .advantage-icon {
+        font-size: 2.5rem;
+    }
+    
+    .advantage-item h4 {
+        font-size: 1rem;
+    }
+}
+/* ===== СТИЛИ ДЛЯ ШАГА 3 КАЛЬКУЛЯТОРА ===== */
+.step3-content {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.step3-summary {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.summary-card {
+    background: #f8f8f8;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.summary-card h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #b87c4f;
+    border-bottom: 2px solid #b87c4f;
+    padding-bottom: 8px;
+}
+
+.summary-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.summary-card li {
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 0.85rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.summary-card .empty-list {
+    color: #999;
+    font-size: 0.85rem;
+    text-align: center;
+    padding: 20px;
+}
+
+.step3-total {
+    background: linear-gradient(135deg, #f0faf0, #e8f5e8);
+    border-radius: 20px;
+    padding: 25px;
+    text-align: center;
+}
+
+.step3-total .total-label {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    color: #666;
+    letter-spacing: 1px;
+}
+
+.step3-total .total-price {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #2e7d32;
+    margin: 10px 0;
+}
+
+.step3-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+    .step3-summary {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    .step3-actions {
+        flex-direction: column;
+    }
+    .step3-actions button {
+        width: 100%;
+        justify-content: center;
+    }
+}
+/* ===== СТИЛИ ДЛЯ УСЛУГ С КОЛИЧЕСТВОМ ===== */
+.service-item.quantity-item .service-info {
+    flex: 1;
+}
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+}
+
+.qty-btn {
+    width: 32px;
+    height: 32px;
+    background: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #b87c4f;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.qty-btn:hover {
+    background: #b87c4f;
+    color: white;
+    border-color: #b87c4f;
+}
+
+.qty-input {
+    width: 70px;
+    height: 32px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.qty-input:focus {
+    outline: none;
+    border-color: #b87c4f;
+}
+
+.total-price-item {
+    font-weight: 700;
+    color: #2e7d32;
+    margin-left: 10px;
+    font-size: 0.9rem;
+}
+
+.service-price-display {
+    font-weight: 700;
+    color: #b87c4f;
+    margin-top: 8px;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    .quantity-control {
+        flex-wrap: wrap;
+    }
+    .qty-btn {
+        width: 28px;
+        height: 28px;
+    }
+    .qty-input {
+        width: 50px;
+    }
+}
+/* ===== КАРУСЕЛЬ ДЛЯ "НАШИХ РАБОТ" ===== */
+.works-carousel-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.works-carousel-container {
+    position: relative;
+    width: 100%;
+}
+
+.works-carousel {
+    overflow: hidden;
+    width: 100%;
+}
+
+.works-carousel-track {
+    display: flex;
+    transition: transform 0.4s ease;
+    will-change: transform;
+}
+
+/* Слайд - каждый слайд занимает 100% ширины */
+.works-carousel-slide {
+    flex: 0 0 100%;
+    min-width: 0;
+    padding: 0 15px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+}
+
+/* Карточка */
+.work-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    width: 100%;
+    max-width: 550px;
+    margin: 0 auto;
+     
+}
+
+.work-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Блок с изображением */
+.work-image {
+    height: auto; 
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    position: relative;
+    overflow: hidden;
+    background-color: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+     flex-shrink: 0; 
+}
+
+.work-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;     /* ← ЭТО ГЛАВНОЕ - показывает всё изображение */
+    transition: transform 0.3s;
+}
+
+.work-card:hover .work-image img {
+    transform: scale(1.05);
+}
+
+/* Год */
+.work-year {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: #b87c4f;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    z-index: 2;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Оверлей при наведении */
+.work-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+.work-card:hover .work-overlay {
+    opacity: 1;
+}
+
+.work-overlay i {
+    color: white;
+    font-size: 2rem;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.work-card:hover .work-overlay i {
+    transform: scale(1);
+}
+
+/* Информация */
+.work-info {
+    padding: 10px 12px 12px;
+}
+
+.work-title {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: #1a1a1a;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.work-description {
+    font-size: 0.8rem;
+    color: #666;
+    line-height: 1.4;
+    margin-bottom: 8px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.work-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0;
+}
+
+.work-category-badge {
+    background: #f0f0f0;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    color: #555;
+    font-weight: 500;
+}
+
+.work-more {
+    color: #b87c4f;
+    font-size: 0.75rem;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.work-more:hover {
+    color: #9a623d;
+    text-decoration: underline;
+}
+
+/* Кнопки навигации карусели */
+.carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 10;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-nav:hover {
+    background: #b87c4f;
+    color: white;
+    transform: translateY(-50%) scale(1.05);
+}
+
+.carousel-nav i {
+    font-size: 1rem;
+    color: #333;
+}
+
+.carousel-nav:hover i {
+    color: white;
+}
+
+.carousel-nav.prev {
+    left: 10px;
+}
+
+.carousel-nav.next {
+    right: 10px;
+}
+
+/* Точки индикаторы */
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.carousel-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ddd;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.carousel-dot.active {
+    background: #b87c4f;
+    width: 24px;
+    border-radius: 4px;
+}
+
+.carousel-dot:hover {
+    background: #b87c4f;
+}
+
+/* Счетчик */
+.carousel-counter {
+    text-align: center;
+    margin-top: 12px;
+    font-size: 0.75rem;
+    color: #888;
+}
+
+/* Принудительное отображение карточек (переопределяем opacity из других стилей) */
+.work-card {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+/* Адаптив для мобильных */
+@media (max-width: 768px) {
+    .works-carousel-slide {
+        padding: 0 10px;
+    }
+    
+    .work-card {
+        max-width: 300px;
+    }
+    
+    .work-image {
+        height: 180px;
+    }
+    
+    .carousel-nav {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .carousel-nav.prev {
+        left: -10px;
+    }
+    
+    .carousel-nav.next {
+        right: -10px;
+    }
+    
+    .work-info {
+        padding: 12px;
+    }
+    
+    .work-title {
+        font-size: 0.9rem;
+    }
+    
+    .work-description {
+        font-size: 0.75rem;
+    }
+}
+/* ===== ФИКС ДЛЯ КАРТОЧЕК ПАМЯТНИКОВ (ПЕРЕОПРЕДЕЛЯЕМ opacity) ===== */
+.monument-card {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+/* Стили для сетки памятников */
+.monuments-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)) !important;
+    gap: 30px !important;
+}
+
+.monument-card {
+    background: white !important;
+    border-radius: 20px !important;
+    overflow: hidden !important;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08) !important;
+    transition: transform 0.3s, box-shadow 0.3s !important;
+}
+
+.monument-card:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15) !important;
+}
+
+.monument-image {
+    height: 220px !important;
+    background: #f5f5f5 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+    position: relative !important;
+}
+
+.monument-image img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+}
+
+.monument-badge {
+    position: absolute !important;
+    top: 12px !important;
+    right: 12px !important;
+    background: #b87c4f !important;
+    color: white !important;
+    padding: 4px 12px !important;
+    border-radius: 20px !important;
+    font-size: 0.7rem !important;
+    font-weight: 600 !important;
+    z-index: 2 !important;
+}
+
+.monument-info {
+    padding: 16px !important;
+}
+
+.monument-title {
+    font-size: 1.1rem !important;
+    font-weight: 700 !important;
+    margin-bottom: 5px !important;
+}
+
+.monument-article {
+    font-size: 0.75rem !important;
+    color: #888 !important;
+    margin-bottom: 5px !important;
+}
+
+.monument-dimensions {
+    font-size: 0.75rem !important;
+    color: #b87c4f !important;
+    margin-bottom: 12px !important;
+}
+
+.monument-price {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    margin-top: 12px !important;
+    padding-top: 12px !important;
+    border-top: 1px solid #eee !important;
+}
+
+.monument-price .price {
+    font-size: 1.2rem !important;
+    font-weight: 700 !important;
+    color: #b87c4f !important;
+}
+
+.monument-price .order-btn {
+    background: #1a1a1a !important;
+    color: white !important;
+    border: none !important;
+    padding: 6px 16px !important;
+    border-radius: 30px !important;
+    font-size: 0.75rem !important;
+    cursor: pointer !important;
+    transition: 0.2s !important;
+}
+
+.monument-price .order-btn:hover {
+    background: #b87c4f !important;
 }

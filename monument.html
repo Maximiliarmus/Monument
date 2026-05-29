@@ -322,54 +322,7 @@
 
         
 
-        /* ===== ПРЕИМУЩЕСТВА ===== */
-        .advantages {
-            padding: 80px 0;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1601542917433-2e3dc9e5c944?q=80&w=2070&auto=format');
-            background-size: cover;
-            background-attachment: fixed;
-            color: white;
-        }
-
-        .advantages .section-title {
-            color: white;
-        }
-
-        .advantages-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 40px;
-            margin-top: 20px;
-        }
-
-        .advantage-item {
-            text-align: center;
-            padding: 30px 20px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 20px;
-            backdrop-filter: blur(5px);
-            transition: 0.3s;
-        }
-
-        .advantage-item:hover {
-            background: rgba(255,255,255,0.2);
-            transform: translateY(-5px);
-        }
-
-        .advantage-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-        }
-
-        .advantage-item h4 {
-            font-size: 1.1rem;
-            margin-bottom: 10px;
-        }
-
-        .advantage-item p {
-            font-size: 0.85rem;
-            opacity: 0.9;
-        }
+    
 
         /* ===== ПОДВАЛ ===== */
         .footer {
@@ -1057,18 +1010,18 @@
     </div>
 </section>
 
-    <!-- ===== ДВУХШАГОВЫЙ КАЛЬКУЛЯТОР ===== -->
+    <!-- ===== ТРЕХШАГОВЫЙ КАЛЬКУЛЯТОР ===== -->
 <section class="step-calculator">
     <div class="container">
         <h2 class="calculator-title">Какая услуга Вас интересует?</h2>
         <p class="calculator-subtitle">Выберите направление, затем нужные услуги</p>
         
         <div class="calculator-container">
-            <!-- Шаг 1: Выбор основной услуги -->
+            <!-- Шаг 1: Выбор направления -->
             <div class="step active" id="step1">
                 <div class="step-header">
                     <div class="step-number-circle">1</div>
-                    <div class="step-title-text">Выберите услугу</div>
+                    <div class="step-title-text">Выберите направление</div>
                 </div>
                 <div class="step-options">
                     <button class="calc-option" data-category="blagoustroystvo">
@@ -1078,7 +1031,7 @@
                     </button>
                     <button class="calc-option" data-category="pamiatniki">
                         <i class="fas fa-monument"></i>
-                        <span>Изготовление памятника</span>
+                        <span>Памятники</span>
                         <small>Гранитные памятники любой формы</small>
                     </button>
                 </div>
@@ -1091,45 +1044,40 @@
                     <div class="step-title-text" id="step2Title">Выберите услуги</div>
                 </div>
                 
-                <!-- Категории услуг -->
-                <div class="service-tabs" id="serviceTabs">
-                    <!-- Табы будут добавлены через JS -->
-                </div>
+                <div class="service-tabs" id="serviceTabs"></div>
                 
-                <!-- Список услуг -->
-                <div class="calculator-services-list">
+                <div class="calculator-services-list" id="servicesList"></div>
                 
-                <!-- Кнопка "Назад" -->
-                <div class="nav-buttons">
+                <div class="nav-buttons" style="display: flex; justify-content: space-between; gap: 15px;">
                     <button id="backToStep1" class="back-btn">
                         <i class="fas fa-arrow-left"></i>
                         Назад
                     </button>
+                    <button id="nextToStep3" class="order-calc-btn" style="background: linear-gradient(135deg, #b87c4f, #9a623d);">
+                        <i class="fas fa-calculator"></i>
+                        Перейти к расчету (0)
+                    </button>
+                </div>
+                
+                <div class="calc-reset">
+                    <button id="resetBtn" class="reset-btn">
+                        <i class="fas fa-undo-alt"></i>
+                        Начать заново
+                    </button>
                 </div>
             </div>
             
-            <!-- Итоговая стоимость -->
-            <div class="total-result" id="totalResult">
-                <div class="total-label">Примерная стоимость:</div>
-                <div class="total-price" id="totalPrice">0 ₽</div>
-                <div class="total-note">💰 Ориентировочная цена. Точная стоимость после консультации</div>
-                <button id="orderBtn" class="order-calc-btn">
-                    <i class="fab fa-whatsapp"></i>
-                    Отправить заявку на расчёт
-                </button>
-            </div>
-            
-            <!-- Кнопка сброса -->
-            <div class="calc-reset">
-                <button id="resetBtn" class="reset-btn">
-                    <i class="fas fa-undo-alt"></i>
-                    Начать заново
-                </button>
+            <!-- Шаг 3: Итоговый расчет -->
+            <div class="step" id="step3">
+                <div class="step-header">
+                    <div class="step-number-circle">3</div>
+                    <div class="step-title-text">Ваш расчет</div>
+                </div>
+                <div id="step3Container"></div>
             </div>
         </div>
     </div>
 </section>
-
     <!-- ПРЕИМУЩЕСТВА -->
     <section class="advantages">
         <div class="container">
@@ -1144,7 +1092,7 @@
             </div>
         </div>
     </section>
-</main>
+
 
 <!-- ===== ПОДВАЛ ===== -->
 <footer class="footer">
@@ -1199,9 +1147,12 @@
         });
     });
 
-    // ===== ДВУХШАГОВЫЙ КАЛЬКУЛЯТОР =====
+    // ===== ТРЕХШАГОВЫЙ КАЛЬКУЛЯТОР =====
 let currentCategory = null;
-let selectedServices = [];
+let selectedServices = {
+    blagoustroystvo: [],
+    pamiatniki: []
+};
 
 // Данные услуг
 const servicesData = {
@@ -1209,36 +1160,28 @@ const servicesData = {
         title: "Благоустройство",
         tabs: {
             uslugi: { name: "Услуги", items: [
-                { id: "blago_usl_1", name: "Изготовление брусчатки + укладка", price: 5500, desc: "300х300мм серая" },
-                { id: "blago_usl_2", name: "Укладка брусчатки", price: 3500, desc: "Сторонних производителей" },
-                { id: "blago_usl_3", name: "Изготовление ограды сварной", price: 4000, desc: "Рамка угол 25мм" },
-                { id: "blago_usl_4", name: "Изготовление скамьи металлической", price: 8000, desc: "30х90см" },
-                { id: "blago_usl_5", name: "Изготовление стола металлического", price: 8000, desc: "45х60см" },
-                { id: "blago_usl_6", name: "Отсыпка мраморной крошкой", price: 2000, desc: "1 мешок 40кг на 1м²" }
+                { id: "blago_usl_1", name: "Изготовление брусчатки + укладка", price: 5500, desc: "300х300мм, 400х400мм серая" },
+                { id: "blago_usl_2", name: "Изготовление опалубки со штукатуркой", price: 12000, desc: "ш-150мм, 150мм в землю, высота стены до 1м" },
+                { id: "blago_usl_3", name: "Изготовление ограды сварной + работа", price: 4000, desc: "Рамка угол 25мм" },
+                { id: "blago_usl_4", name: "Изготовление скамьи  (металл, верх террасная доска) ", price: 8000, desc: "30х90см" },
+                { id: "blago_usl_5", name: "Изготовление стола (металл, верх террасная доска) ", price: 8000, desc: "45х60см" },
+                
             ] },
-            demontazh: { name: "Демонтаж", items: [
-                { id: "blago_dem_1", name: "Демонтаж брусчатки", price: 1500, desc: "С вывозом" },
-                { id: "blago_dem_2", name: "Демонтаж памятника одиночного", price: 5000, desc: "Без сохранения" },
-                { id: "blago_dem_3", name: "Демонтаж памятника семейного", price: 8000, desc: "Без сохранения" },
-                { id: "blago_dem_4", name: "Демонтаж ограды", price: 5000, desc: "Без сохранения" }
-            ] },
-            ustanovka: { name: "Установка", items: [
+            
+            ustanovka: { name: "Установка памятника", items: [
                 { id: "blago_ust_1", name: "Установка памятника MS", price: 8500, desc: "Высота до 80см" },
                 { id: "blago_ust_2", name: "Установка памятника ML", price: 10000, desc: "Высота до 100см" },
                 { id: "blago_ust_3", name: "Установка памятника ME", price: 12000, desc: "Высота до 120см" },
                 { id: "blago_ust_4", name: "Установка накрывной плиты", price: 2000, desc: "20мм" }
             ] },
             gravirovka: { name: "Гравировка", items: [
-                { id: "blago_grav_1", name: "Гравировка портрета", price: 12000, desc: "На грудь" },
-                { id: "blago_grav_2", name: "Гравировка текста", price: 70, desc: "За знак" },
-                { id: "blago_grav_3", name: "Гравировка креста", price: 2000, desc: "До 15см" },
-                { id: "blago_grav_4", name: "Гравировка цветов", price: 3000, desc: "Гвоздики/розы" }
+                { id: "blago_grav_1", name: "Гравировка портрета А3", price: 10000, desc: "По плечи", hasQuantity: false  },
+                { id: "blago_grav_2", name: "Гравировка портрета А4", price: 7500, desc: "По плечи", hasQuantity: false  },
+                { id: "blago_grav_3", name: "Гравировка текста", price: 70, desc: "За знак", hasQuantity: true, unit: "знак" },
+                { id: "blago_grav_4", name: "Гравировка корабля, машины, самолета", price: 10000, desc: "До 50см", hasQuantity: false  },
+                { id: "blago_grav_5", name: "Гравировка цветов", price: 3000, desc: "Гвоздики/розы до 20см", hasQuantity: false  }
             ] },
-            oblitsovka: { name: "Облицовка", items: [
-                { id: "blago_obl_1", name: "Плитка полировка G603", price: 9000, desc: "300x600x20" },
-                { id: "blago_obl_2", name: "Плитка скала G603", price: 11000, desc: "300x150x30" },
-                { id: "blago_obl_3", name: "Парапет G603", price: 13000, desc: "За м²" }
-            ] }
+            
         }
     },
     pamiatniki: {
@@ -1265,6 +1208,34 @@ const servicesData = {
     }
 };
 
+// Вспомогательная функция для получения всех выбранных услуг
+function getAllSelectedServices() {
+    return [...selectedServices.blagoustroystvo, ...selectedServices.pamiatniki];
+}
+// Функция для правильного склонения слова "знак"
+function getSignsWord(count) {
+    if (count >= 11 && count <= 19) return 'знаков';
+    const lastDigit = count % 10;
+    if (lastDigit === 1) return 'знак';
+    if (lastDigit >= 2 && lastDigit <= 4) return 'знака';
+    return 'знаков';
+}
+// Подсчет общей стоимости
+function updateTotalPrice() {
+    const allServices = getAllSelectedServices();
+    const total = allServices.reduce((sum, s) => sum + s.price, 0);
+    
+    // Обновляем счетчик выбранных услуг на кнопке
+    const nextBtn = document.getElementById('nextToStep3');
+    if (nextBtn) {
+        const count = allServices.length;
+        nextBtn.innerHTML = `<i class="fas fa-calculator"></i> Перейти к расчету (${count})`;
+    }
+}
+
+
+
+// Отрисовка вкладок
 function renderServiceTabs() {
     const container = document.getElementById('serviceTabs');
     if (!container) return;
@@ -1281,22 +1252,21 @@ function renderServiceTabs() {
     }
     container.innerHTML = html;
     
-    // Отображаем услуги первой вкладки
     if (firstTab) {
         renderServices(firstTab);
     }
     
-    // Настройка обработчиков табов
     document.querySelectorAll('.service-tab').forEach(tab => {
         tab.addEventListener('click', () => {
             document.querySelectorAll('.service-tab').forEach(t => t.classList.remove('active'));
             tab.classList.add('active');
-            const tabKey = tab.getAttribute('data-tab');
-            renderServices(tabKey);
+            renderServices(tab.getAttribute('data-tab'));
         });
     });
 }
 
+
+// Отрисовка списка услуг
 function renderServices(tabKey) {
     const container = document.getElementById('servicesList');
     if (!container) return;
@@ -1305,120 +1275,447 @@ function renderServices(tabKey) {
     if (!services) return;
     
     container.innerHTML = services.map(service => {
-        const isSelected = selectedServices.some(s => s.id === service.id);
-        return `
-            <div class="service-item ${isSelected ? 'selected' : ''}" data-id="${service.id}" data-price="${service.price}" data-name="${service.name}">
-                <div class="service-check">
-                    ${isSelected ? '<i class="fas fa-check"></i>' : ''}
+        const isSelected = selectedServices[currentCategory].some(s => s.id === service.id);
+        const selectedItem = selectedServices[currentCategory].find(s => s.id === service.id);
+        const quantity = selectedItem?.quantity || 1;
+        
+        if (service.hasQuantity) {
+            return `
+                <div class="service-item quantity-item ${isSelected ? 'selected' : ''}" data-id="${service.id}" data-price="${service.price}" data-name="${service.name}" data-desc="${service.desc || ''}" data-unit="${service.unit || 'знак'}" data-has-quantity="true">
+                    <div class="service-check">
+                        ${isSelected ? '<i class="fas fa-check"></i>' : ''}
+                    </div>
+                    <div class="service-info">
+                        <div class="service-name">${service.name}</div>
+                        <div class="service-desc">${service.desc || ''} (${service.price.toLocaleString()} ₽/${service.unit || 'шт'})</div>
+                        ${isSelected ? `
+                            <div class="quantity-control">
+                                <button class="qty-btn minus" data-id="${service.id}">−</button>
+                                <input type="number" class="qty-input" data-id="${service.id}" value="${quantity}" min="1" max="1000" step="1">
+                                <button class="qty-btn plus" data-id="${service.id}">+</button>
+                            </div>
+                        ` : ''}
+                    </div>
                 </div>
-                <div class="service-info">
-                    <div class="service-name">${service.name}</div>
-                    <div class="service-desc">${service.desc || ''}</div>
-                </div>
+            `;
+        } else {
+    return `
+        <div class="service-item ${isSelected ? 'selected' : ''}" data-id="${service.id}" data-price="${service.price}" data-name="${service.name}" data-desc="${service.desc || ''}" data-has-quantity="false">
+            <div class="service-check">
+                ${isSelected ? '<i class="fas fa-check"></i>' : ''}
             </div>
-        `;
+            <div class="service-info">
+                <div class="service-name">${service.name}</div>
+                <div class="service-desc">${service.desc || ''}</div>
+            </div>
+        </div>
+    `;
+}
     }).join('');
     
-    // Добавляем обработчики
-    document.querySelectorAll('.service-item').forEach(item => {
-        item.addEventListener('click', (e) => {
-            if (e.target.closest('.service-item')) {
-                toggleService(item);
-            }
-        });
-    });
+    setupServiceItemHandlers();
 }
 
-function toggleService(item) {
-    const id = item.getAttribute('data-id');
-    const price = parseInt(item.getAttribute('data-price'));
-    const name = item.getAttribute('data-name');
+/// Обработчики для всех элементов (делегирование)
+function setupServiceItemHandlers() {
+    const container = document.getElementById('servicesList');
+    if (!container) return;
     
-    const existingIndex = selectedServices.findIndex(s => s.id === id);
+    // Удаляем старые обработчики, чтобы не было дублирования
+    const oldClickHandler = container._clickHandler;
+    if (oldClickHandler) {
+        container.removeEventListener('click', oldClickHandler);
+    }
+    const oldChangeHandler = container._changeHandler;
+    if (oldChangeHandler) {
+        container.removeEventListener('change', oldChangeHandler);
+    }
     
-    if (existingIndex === -1) {
-        selectedServices.push({ id, name, price });
-        item.classList.add('selected');
-        const checkDiv = item.querySelector('.service-check');
-        if (checkDiv) checkDiv.innerHTML = '<i class="fas fa-check"></i>';
-    } else {
-        selectedServices.splice(existingIndex, 1);
-        item.classList.remove('selected');
-        const checkDiv = item.querySelector('.service-check');
-        if (checkDiv) checkDiv.innerHTML = '';
+    // Новый обработчик для кликов
+    const clickHandler = (e) => {
+        // Кнопка минус
+        if (e.target.classList && e.target.classList.contains('qty-btn') && e.target.classList.contains('minus')) {
+            e.stopPropagation();
+            e.preventDefault();
+            const id = e.target.getAttribute('data-id');
+            const input = document.querySelector(`.qty-input[data-id="${id}"]`);
+            if (input) {
+                let currentQty = parseInt(input.value);
+                if (!isNaN(currentQty) && currentQty > 1) {
+                    updateQuantity(id, currentQty - 1);
+                }
+            }
+            return;
+        }
+        
+        // Кнопка плюс
+        if (e.target.classList && e.target.classList.contains('qty-btn') && e.target.classList.contains('plus')) {
+            e.stopPropagation();
+            e.preventDefault();
+            const id = e.target.getAttribute('data-id');
+            const input = document.querySelector(`.qty-input[data-id="${id}"]`);
+            if (input) {
+                let currentQty = parseInt(input.value);
+                if (!isNaN(currentQty)) {
+                    updateQuantity(id, currentQty + 1);
+                }
+            }
+            return;
+        }
+        
+        // Чекбокс (клик по области service-check)
+        const checkDiv = e.target.closest('.service-check');
+        if (checkDiv) {
+            e.stopPropagation();
+            const item = checkDiv.closest('.service-item');
+            if (item) {
+                const id = item.getAttribute('data-id');
+                const price = parseInt(item.getAttribute('data-price'));
+                const name = item.getAttribute('data-name');
+                const desc = item.getAttribute('data-desc');
+                const hasQuantity = item.getAttribute('data-has-quantity') === 'true';
+                const unit = item.getAttribute('data-unit') || 'шт';
+                toggleService(currentCategory, item, id, name, price, desc, hasQuantity, unit);
+            }
+            return;
+        }
+    };
+    
+    // Обработчик изменения количества
+    const changeHandler = (e) => {
+        if (e.target.classList && e.target.classList.contains('qty-input')) {
+            e.stopPropagation();
+            const id = e.target.getAttribute('data-id');
+            let newQty = parseInt(e.target.value);
+            if (isNaN(newQty) || newQty < 1) newQty = 1;
+            if (newQty > 1000) newQty = 1000;
+            updateQuantity(id, newQty);
+        }
+    };
+    
+    // Сохраняем обработчики и добавляем их
+    container._clickHandler = clickHandler;
+    container._changeHandler = changeHandler;
+    container.addEventListener('click', clickHandler);
+    container.addEventListener('change', changeHandler);
+}
+
+// Функция обновления количества
+function updateQuantity(serviceId, newQuantity) {
+    for (const cat of ['blagoustroystvo', 'pamiatniki']) {
+        const index = selectedServices[cat].findIndex(s => s.id === serviceId);
+        if (index !== -1) {
+            selectedServices[cat][index].quantity = newQuantity;
+            selectedServices[cat][index].totalPrice = selectedServices[cat][index].price * newQuantity;
+            
+            // Обновляем отображение - только поле ввода
+            const input = document.querySelector(`.qty-input[data-id="${serviceId}"]`);
+            if (input) input.value = newQuantity;
+            
+            break;
+        }
     }
     
     updateTotalPrice();
 }
 
+/// Функция переключения услуги (обновленная)
+function toggleService(category, itemElement, serviceId, serviceName, servicePrice, serviceDesc, hasQuantity, unit) {
+    const serviceIndex = selectedServices[category].findIndex(s => s.id === serviceId);
+    
+    if (serviceIndex === -1) {
+        // Добавляем услугу
+        const newService = { 
+            id: serviceId, 
+            name: serviceName, 
+            price: servicePrice, 
+            desc: serviceDesc,
+            hasQuantity: hasQuantity,
+            quantity: 1,
+            totalPrice: servicePrice,
+            unit: unit
+        };
+        selectedServices[category].push(newService);
+        
+        // Обновляем внешний вид карточки
+        itemElement.classList.add('selected');
+        const checkDiv = itemElement.querySelector('.service-check');
+        if (checkDiv) checkDiv.innerHTML = '<i class="fas fa-check"></i>';
+        
+        // Если услуга с количеством - добавляем контролы
+        if (hasQuantity) {
+            const infoDiv = itemElement.querySelector('.service-info');
+            const existingControls = infoDiv.querySelector('.quantity-control');
+            if (!existingControls) {
+                const quantityHtml = `
+                    <div class="quantity-control">
+                        <button class="qty-btn minus" data-id="${serviceId}">−</button>
+                        <input type="number" class="qty-input" data-id="${serviceId}" value="1" min="1" max="1000" step="1">
+                        <button class="qty-btn plus" data-id="${serviceId}">+</button>
+                    </div>
+                `;
+                infoDiv.insertAdjacentHTML('beforeend', quantityHtml);
+            }
+        } else {
+    // Не добавляем никакой цены при выборе обычной услуги
+}
+    } else {
+        // Удаляем услугу
+        selectedServices[category].splice(serviceIndex, 1);
+        itemElement.classList.remove('selected');
+        
+        const checkDiv = itemElement.querySelector('.service-check');
+        if (checkDiv) checkDiv.innerHTML = '';
+        
+        const quantityControl = itemElement.querySelector('.quantity-control');
+        if (quantityControl) quantityControl.remove();
+        
+        const priceDisplay = itemElement.querySelector('.service-price-display');
+        if (priceDisplay) priceDisplay.remove();
+    }
+    
+    updateTotalPrice();
+}
+// Функция подсчета общей стоимости (обновленная)
 function updateTotalPrice() {
-    const total = selectedServices.reduce((sum, s) => sum + s.price, 0);
+    let total = 0;
+    
+    for (const service of selectedServices.blagoustroystvo) {
+        total += service.hasQuantity ? (service.price * (service.quantity || 1)) : service.price;
+    }
+    for (const service of selectedServices.pamiatniki) {
+        total += service.hasQuantity ? (service.price * (service.quantity || 1)) : service.price;
+    }
+    
     const totalElement = document.getElementById('totalPrice');
     if (totalElement) {
         totalElement.textContent = total.toLocaleString() + ' ₽';
     }
-}
-
-function goToStep(stepNumber) {
-    const step1 = document.getElementById('step1');
-    const step2 = document.getElementById('step2');
     
-    if (stepNumber === 1) {
-        step1.classList.add('active');
-        step2.classList.remove('active');
-    } else {
-        step1.classList.remove('active');
-        step2.classList.add('active');
-        document.getElementById('step2Title').textContent = servicesData[currentCategory]?.title || 'Выберите услуги';
-        renderServiceTabs();
+    const nextBtn = document.getElementById('nextToStep3');
+    if (nextBtn) {
+        const count = getAllSelectedServices().length;
+        nextBtn.innerHTML = `<i class="fas fa-calculator"></i> Перейти к расчету (${count})`;
     }
 }
 
+// Навигация по шагам
+function goToStep(stepNumber) {
+    const step1 = document.getElementById('step1');
+    const step2 = document.getElementById('step2');
+    const step3 = document.getElementById('step3');
+    
+    step1.classList.remove('active');
+    step2.classList.remove('active');
+    step3.classList.remove('active');
+    
+    if (stepNumber === 1) {
+        step1.classList.add('active');
+        currentCategory = null;
+        document.getElementById('step2Title').textContent = 'Выберите услуги';
+    } else if (stepNumber === 2) {
+        step2.classList.add('active');
+        document.getElementById('step2Title').textContent = servicesData[currentCategory]?.title || 'Выберите услуги';
+        renderServiceTabs();
+    } else if (stepNumber === 3) {
+        step3.classList.add('active');
+        renderStep3();
+    }
+}
+
+
+/// Отправка заявки
+function sendOrder() {
+    const allServices = [...selectedServices.blagoustroystvo, ...selectedServices.pamiatniki];
+    if (allServices.length === 0) {
+        alert('Пожалуйста, выберите хотя бы одну услугу');
+        return;
+    }
+    
+    let servicesList = '📋 ВЫБРАННЫЕ УСЛУГИ:\n\n';
+    if (selectedServices.blagoustroystvo.length > 0) {
+        servicesList += '🏠 БЛАГОУСТРОЙСТВО:\n';
+        selectedServices.blagoustroystvo.forEach(s => {
+            const price = s.hasQuantity ? (s.price * s.quantity) : s.price;
+            let quantityText = '';
+            if (s.hasQuantity) {
+                const signsWord = getSignsWord(s.quantity);
+                quantityText = ` (${s.quantity} ${signsWord})`;
+            }
+            servicesList += `  • ${s.name}${quantityText}: ${price.toLocaleString()} ₽\n`;
+        });
+        servicesList += '\n';
+    }
+    if (selectedServices.pamiatniki.length > 0) {
+        servicesList += '🗿 ПАМЯТНИКИ:\n';
+        selectedServices.pamiatniki.forEach(s => {
+            const price = s.hasQuantity ? (s.price * s.quantity) : s.price;
+            let quantityText = '';
+            if (s.hasQuantity) {
+                const signsWord = getSignsWord(s.quantity);
+                quantityText = ` (${s.quantity} ${signsWord})`;
+            }
+            servicesList += `  • ${s.name}${quantityText}: ${price.toLocaleString()} ₽\n`;
+        });
+        servicesList += '\n';
+    }
+    
+    const total = allServices.reduce((sum, s) => sum + (s.hasQuantity ? (s.price * s.quantity) : s.price), 0);
+    servicesList += `💰 ОБЩАЯ СТОИМОСТЬ: ${total.toLocaleString()} ₽`;
+    
+    const message = `Здравствуйте! Хочу получить консультацию по калькулятору:\n\n${servicesList}\n\n📋 Пожалуйста, свяжитесь со мной для точного расчёта.`;
+    window.open(`https://wa.me/79247301030?text=${encodeURIComponent(message)}`, '_blank');
+}
+
+// Полный сброс
+function resetAll() {
+    selectedServices = {
+        blagoustroystvo: [],
+        pamiatniki: []
+    };
+    currentCategory = null;
+    goToStep(1);
+}
+
+// Отрисовка шага 3 (ИТОГОВЫЙ РАСЧЕТ)
+function renderStep3() {
+    // Подсчет общей суммы с учетом количества
+    let total = 0;
+    for (const service of selectedServices.blagoustroystvo) {
+        total += service.hasQuantity ? (service.price * (service.quantity || 1)) : service.price;
+    }
+    for (const service of selectedServices.pamiatniki) {
+        total += service.hasQuantity ? (service.price * (service.quantity || 1)) : service.price;
+    }
+    
+    // Формируем список услуг для Благоустройства
+    let blagoList = '';
+    for (const service of selectedServices.blagoustroystvo) {
+        if (service.hasQuantity) {
+            const signsWord = getSignsWord(service.quantity);
+            blagoList += `<li><span>${service.name} (${service.quantity} ${signsWord})</span><span>${(service.price * service.quantity).toLocaleString()} ₽</span></li>`;
+        } else {
+            blagoList += `<li><span>${service.name}</span><span>${service.price.toLocaleString()} ₽</span></li>`;
+        }
+    }
+    
+    // Формируем список услуг для Памятников
+    let pamiatnikiList = '';
+    for (const service of selectedServices.pamiatniki) {
+        if (service.hasQuantity) {
+            const signsWord = getSignsWord(service.quantity);
+            pamiatnikiList += `<li><span>${service.name} (${service.quantity} ${signsWord})</span><span>${(service.price * service.quantity).toLocaleString()} ₽</span></li>`;
+        } else {
+            pamiatnikiList += `<li><span>${service.name}</span><span>${service.price.toLocaleString()} ₽</span></li>`;
+        }
+    }
+    
+    const html = `
+        <div class="step3-content">
+            <div class="step3-summary">
+                <div class="summary-card">
+                    <h4>🏠 Благоустройство</h4>
+                    ${blagoList.length > 0 ? `<ul>${blagoList}</ul>` : '<p class="empty-list">Нет выбранных услуг</p>'}
+                </div>
+                <div class="summary-card">
+                    <h4> 🗿Памятники</h4>
+                    ${pamiatnikiList.length > 0 ? `<ul>${pamiatnikiList}</ul>` : '<p class="empty-list">Нет выбранных услуг</p>'}
+                </div>
+            </div>
+            <div class="step3-total">
+                <div class="total-label">ИТОГОВАЯ СТОИМОСТЬ</div>
+                <div class="total-price">${total.toLocaleString()} ₽</div>
+                <div class="total-note">💰 Ориентировочная цена. Точная стоимость после консультации</div>
+                <button id="finalOrderBtn" class="order-calc-btn">
+                    <i class="fab fa-whatsapp"></i>
+                    Отправить заявку на расчёт
+                </button>
+            </div>
+            <div class="step3-actions">
+                <button id="backToStep2Btn" class="back-btn">
+                    <i class="fas fa-arrow-left"></i>
+                    Назад к выбору услуг
+                </button>
+                <button id="resetAllBtn" class="reset-btn">
+                    <i class="fas fa-trash-alt"></i>
+                    Сбросить все
+                </button>
+            </div>
+        </div>
+    `;
+    
+    const container = document.getElementById('step3Container');
+    if (container) {
+        container.innerHTML = html;
+    }
+    
+    // Обработчики кнопок на шаге 3
+    const finalOrderBtn = document.getElementById('finalOrderBtn');
+    if (finalOrderBtn) finalOrderBtn.addEventListener('click', sendOrder);
+    
+    const backToStep2Btn = document.getElementById('backToStep2Btn');
+    if (backToStep2Btn) backToStep2Btn.addEventListener('click', () => goToStep(2));
+    
+    const resetAllBtn = document.getElementById('resetAllBtn');
+    if (resetAllBtn) resetAllBtn.addEventListener('click', resetAll);
+}
+
+// Исправленная функция goToStep (добавлен переход на шаг 3)
+function goToStep(stepNumber) {
+    const step1 = document.getElementById('step1');
+    const step2 = document.getElementById('step2');
+    const step3 = document.getElementById('step3');
+    
+    step1.classList.remove('active');
+    step2.classList.remove('active');
+    step3.classList.remove('active');
+    
+    if (stepNumber === 1) {
+        step1.classList.add('active');
+        currentCategory = null;
+        document.getElementById('step2Title').textContent = 'Выберите услуги';
+    } else if (stepNumber === 2) {
+        step2.classList.add('active');
+        if (currentCategory && servicesData[currentCategory]) {
+            document.getElementById('step2Title').textContent = servicesData[currentCategory].title || 'Выберите услуги';
+        } else {
+            document.getElementById('step2Title').textContent = 'Выберите услуги';
+        }
+        renderServiceTabs();
+    } else if (stepNumber === 3) {
+        step3.classList.add('active');
+        renderStep3();
+    }
+}
+// Инициализация калькулятора
 function initStepCalculator() {
-    // Выбор категории
     document.querySelectorAll('.calc-option').forEach(btn => {
         btn.addEventListener('click', () => {
             currentCategory = btn.getAttribute('data-category');
-            selectedServices = [];
-            updateTotalPrice();
             goToStep(2);
         });
     });
     
-    // Кнопка назад
     const backBtn = document.getElementById('backToStep1');
     if (backBtn) {
-        backBtn.addEventListener('click', () => {
-            goToStep(1);
-        });
+        backBtn.addEventListener('click', () => goToStep(1));
     }
     
-    // Отправка заявки
-    const orderBtn = document.getElementById('orderBtn');
-    if (orderBtn) {
-        orderBtn.addEventListener('click', () => {
-            if (selectedServices.length === 0) {
+    const nextBtn = document.getElementById('nextToStep3');
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            const allServices = getAllSelectedServices();
+            if (allServices.length === 0) {
                 alert('Пожалуйста, выберите хотя бы одну услугу');
                 return;
             }
-            
-            const servicesList = selectedServices.map(s => `• ${s.name}: ${s.price.toLocaleString()} ₽`).join('\n');
-            const total = selectedServices.reduce((sum, s) => sum + s.price, 0);
-            
-            const message = `Здравствуйте! Хочу получить консультацию по калькулятору:\n\nКатегория: ${servicesData[currentCategory]?.title}\n\n✅ Выбранные услуги:\n${servicesList}\n\n💰 Примерная стоимость: ${total.toLocaleString()} ₽\n\n📋 Пожалуйста, свяжитесь со мной для точного расчёта.`;
-            window.open(`https://wa.me/79247301030?text=${encodeURIComponent(message)}`, '_blank');
+            goToStep(3);
         });
     }
     
-    // Сброс
     const resetBtn = document.getElementById('resetBtn');
     if (resetBtn) {
-        resetBtn.addEventListener('click', () => {
-            currentCategory = null;
-            selectedServices = [];
-            updateTotalPrice();
-            goToStep(1);
-        });
+        resetBtn.addEventListener('click', resetAll);
     }
 }
 

@@ -1989,12 +1989,12 @@ const worksData = {
         {
             name: "Памятники",
             items: [
-                { id: 1, name: "Памятник гранитный MS", description: "Классический памятник из чёрного гранита", image: "images/works/ms-1.jpg", year: "2024" },
-                { id: 2, name: "Памятник гранитный ML", description: "Фигурный памятник с портретной гравировкой", image: "images/works/ml-2.jpg", year: "2024" },
-                { id: 3, name: "Памятник гранитный ME", description: "Элитный памятник из полированного гранита", image: "images/works/me-3.jpg", year: "2024" },
-                { id: 4, name: "Памятник семейный", description: "Семейный памятник с двумя портретами", image: "images/works/semeynyy-4.jpg", year: "2023" },
-                { id: 5, name: "Памятник с крестом", description: "Памятник православной формы", image: "images/works/krest-5.jpg", year: "2023" },
-                { id: 6, name: "Памятник из серого гранита", description: "Строгий памятник из серого гранита", image: "images/works/gray-6.jpg", year: "2024" }
+                { id: 1, name: "Памятник гранитный MS", description: "Классический памятник из чёрного гранита", image: "images/works/1.jpg", year: "2024" },
+                { id: 2, name: "Памятник гранитный ML", description: "Фигурный памятник с портретной гравировкой", image: "images/works/2.jpg", year: "2024" },
+                { id: 3, name: "Памятник гранитный ME", description: "Элитный памятник из полированного гранита", image: "images/works/3.jpg", year: "2024" },
+                { id: 4, name: "Памятник семейный", description: "Семейный памятник с двумя портретами", image: "images/works/4.jpg", year: "2023" },
+                { id: 5, name: "Памятник с крестом", description: "Памятник православной формы", image: "images/works/5.jpg", year: "2023" },
+                { id: 6, name: "Памятник из серого гранита", description: "Строгий памятник из серого гранита", image: "images/works/6.jpg", year: "2024" }
             ]
         },
         {
@@ -2031,6 +2031,8 @@ const worksData = {
         return;
     }
     
+    console.log('Рендерим памятники:', data.title);
+    
     let html = `
         <div class="monuments-header">
             <div class="pdf-download-container">
@@ -2045,17 +2047,15 @@ const worksData = {
     `;
     
     data.products.forEach((product, index) => {
-        // Иконка для каждого типа памятника
         let icon = '';
         if (product.type === 'Одиночный') icon = '🏛️';
         else if (product.type === 'Семейный') icon = '🏛️🏛️';
         else icon = '📐';
         
-        // Бейдж для акций
         let badge = '';
-        if (product.price.includes('33 000')) badge = '<div class="monument-badge">⭐ Хит</div>';
-        else if (product.price.includes('45 000')) badge = '<div class="monument-badge">🔥 Популярный</div>';
-        else if (product.price.includes('70 000')) badge = '<div class="monument-badge">💎 Премиум</div>';
+        if (product.price === '33 000 ₽') badge = '<div class="monument-badge">⭐ Хит</div>';
+        else if (product.price === '45 000 ₽') badge = '<div class="monument-badge">🔥 Популярный</div>';
+        else if (product.price === '70 000 ₽') badge = '<div class="monument-badge">💎 Премиум</div>';
         else badge = '<div class="monument-badge">' + product.type + '</div>';
         
         html += `
@@ -2084,47 +2084,56 @@ const worksData = {
 
         // Функция для отображения страницы памятников
         function renderPamiatnikiPage(tabId) {
-            const main = document.getElementById('dynamicMain');
-            if (!main) return;
             
-            let data;
-            let activeTab = tabId;
-            
-            if (tabId === 'odinochnye') {
-                data = monumentsData.odinochnye;
-            } else if (tabId === 'semeynye') {
-                data = monumentsData.semeynye;
-            } else if (tabId === 'nakryvnye') {
-                data = monumentsData.nakryvnye;
-            } else {
-                data = monumentsData.odinochnye;
-                activeTab = 'odinochnye';
-            }
-            
-            main.innerHTML = `
-                <div class="catalog-header">
-                    <div class="container">
-                        <h1>Гранитные памятники</h1>
-                        <p>Изготовление памятников из натурального гранита любых форм и размеров</p>
-                    </div>
-                </div>
-                <div class="monuments-tabs">
-                    <div class="tabs-container">
-                        <a href="service.html?category=pamiatniki&tab=odinochnye" class="monuments-tab-btn ${activeTab === 'odinochnye' ? 'active' : ''}">Одиночные</a>
-                        <a href="service.html?category=pamiatniki&tab=semeynye" class="monuments-tab-btn ${activeTab === 'semeynye' ? 'active' : ''}">Семейные</a>
-                        <a href="service.html?category=pamiatniki&tab=nakryvnye" class="monuments-tab-btn ${activeTab === 'nakryvnye' ? 'active' : ''}">Накрывные плиты</a>
-                    </div>
-                </div>
-                <div class="monuments-list">
-                    <div class="container">
-                        <div id="monumentsContainer"></div>
-                    </div>
-                </div>
-            `;
-            
-            renderMonumentsList(data);
-            document.title = `${data.title} | МОНУМЕНТ`;
-        }
+    const main = document.getElementById('dynamicMain');
+    
+    if (!main) return;
+    
+    let data;
+    let activeTab = tabId;
+    
+    if (tabId === 'odinochnye') {
+        data = monumentsData.odinochnye;
+        
+    } else if (tabId === 'semeynye') {
+        data = monumentsData.semeynye;
+        
+    } else if (tabId === 'nakryvnye') {
+        data = monumentsData.nakryvnye;
+        
+    } else {
+        data = monumentsData.odinochnye;
+        activeTab = 'odinochnye';
+        alert('3. Загружены данные: Одиночные (по умолчанию)');
+    }
+    
+    
+    main.innerHTML = `
+        <div class="catalog-header">
+            <div class="container">
+                <h1>Гранитные памятники</h1>
+                <p>Изготовление памятников из натурального гранита любых форм и размеров</p>
+            </div>
+        </div>
+        <div class="monuments-tabs">
+            <div class="tabs-container">
+                <a href="service.html?category=pamiatniki&tab=odinochnye" class="monuments-tab-btn ${activeTab === 'odinochnye' ? 'active' : ''}">Одиночные</a>
+                <a href="service.html?category=pamiatniki&tab=semeynye" class="monuments-tab-btn ${activeTab === 'semeynye' ? 'active' : ''}">Семейные</a>
+                <a href="service.html?category=pamiatniki&tab=nakryvnye" class="monuments-tab-btn ${activeTab === 'nakryvnye' ? 'active' : ''}">Накрывные плиты</a>
+            </div>
+        </div>
+        <div class="monuments-list">
+            <div class="container">
+                <div id="monumentsContainer"></div>
+            </div>
+        </div>
+    `;
+    
+    // Важно! Ждем, пока DOM обновится, и только потом рендерим список
+    setTimeout(() => {
+        renderMonumentsList(data);
+    }, 50);
+}
 
         // Функция для отображения страницы благоустройства
         function renderBlagoustroystvoPage(activeTab = 'uslugi') {
@@ -2235,85 +2244,8 @@ const worksData = {
     });
     container.innerHTML = html;
 }
-// Функция для отображения раздела "Наши работы"
-function renderWorksPage() {
-    const main = document.getElementById('dynamicMain');
-    if (!main) return;
-    
-    let html = `
-        <div class="works-header">
-            <div class="container">
-                <h1>${worksData.title}</h1>
-                <p>${worksData.description}</p>
-            </div>
-        </div>
-        <div class="services-list">
-            <div class="container">
-    `;
-    
-    worksData.categories.forEach(category => {
-        html += `
-            <div class="works-category">
-                <h2 class="works-category-title">
-                    <i class="fas ${category.name === 'Памятники' ? 'fa-monument' : 'fa-tools'}"></i>
-                    ${category.name}
-                </h2>
-                <div class="works-grid">
-        `;
-        
-        category.items.forEach((item, index) => {
-            html += `
-                <div class="work-card" onclick="openWorkModal(${item.id}, '${category.name}')">
-                    <div class="work-image">
-                        <img src="${item.image}" alt="${item.name}" onerror="this.src='https://placehold.co/400x300/f5f5f5/999?text=${encodeURIComponent(item.name)}'">
-                        <div class="work-year">${item.year}</div>
-                        <div class="work-overlay">
-                            <i class="fas fa-search-plus"></i>
-                        </div>
-                    </div>
-                    <div class="work-info">
-                        <div class="work-title">${item.name}</div>
-                        <div class="work-description">${item.description}</div>
-                        <div class="work-details">
-                            <span class="work-category-badge">
-                                <i class="fas ${category.name === 'Памятники' ? 'fa-monument' : 'fa-brush'}"></i>
-                                ${category.name}
-                            </span>
-                            <span class="work-more">Подробнее →</span>
-                        </div>
-                    </div>
-                </div>
-            `;
-        });
-        
-        html += `
-                </div>
-            </div>
-        `;
-    });
-    
-    html += `
-            </div>
-        </div>
-        <!-- Модальное окно -->
-        <div id="workModal" class="work-modal" onclick="closeWorkModal(event)">
-            <span class="close-modal">&times;</span>
-            <div class="work-modal-content" onclick="event.stopPropagation()">
-                <img id="modalImage" class="work-modal-image" src="" alt="">
-                <div class="work-modal-info">
-                    <div class="work-modal-title" id="modalTitle"></div>
-                    <div class="work-modal-desc" id="modalDesc"></div>
-                </div>
-            </div>
-        </div>
-    `;
-    
-    main.innerHTML = html;
-}
-
 // Функция для открытия модального окна
-function openWorkModal(id, category) {
-    // Находим нужную работу
+window.openWorkModal = function(id, category) {
     let work = null;
     for (const cat of worksData.categories) {
         const found = cat.items.find(item => item.id === id && cat.name === category);
@@ -2329,21 +2261,212 @@ function openWorkModal(id, category) {
         const modalTitle = document.getElementById('modalTitle');
         const modalDesc = document.getElementById('modalDesc');
         
-        modalImage.src = work.image;
-        modalTitle.textContent = work.name;
-        modalDesc.textContent = work.description;
+        if (modalImage) modalImage.src = work.image;
+        if (modalTitle) modalTitle.textContent = work.name;
+        if (modalDesc) modalDesc.textContent = work.description;
         
-        modal.classList.add('active');
+        if (modal) modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
     }
-}
+};
 
 // Функция для закрытия модального окна
-function closeWorkModal(event) {
+window.closeWorkModal = function(event) {
     const modal = document.getElementById('workModal');
-    if (event.target === modal || event.target.className === 'close-modal') {
-        modal.classList.remove('active');
+    if (event.target === modal || (event.target.className === 'close-modal')) {
+        if (modal) modal.classList.remove('active');
+        document.body.style.overflow = '';
     }
+};
+
+// Закрытие по ESC
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        const modal = document.getElementById('workModal');
+        if (modal && modal.classList.contains('active')) {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    }
+});
+function initWorksCarousel(carouselId, categoryName, items) {
+    const container = document.getElementById(`works-carousel-${carouselId}`);
+    if (!container) return;
+    
+    let currentIndex = 0;
+    const totalSlides = items.length;
+    
+    // ПРАВИЛЬНАЯ СТРУКТУРА: каждый item в отдельном слайде
+    container.innerHTML = `
+        <div class="works-carousel-container">
+            <button class="carousel-nav prev" data-carousel="${carouselId}">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="carousel-nav next" data-carousel="${carouselId}">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            <div class="works-carousel">
+                <div class="works-carousel-track" id="carousel-track-${carouselId}">
+                    ${items.map((item, index) => `
+                        <div class="works-carousel-slide" data-index="${index}">
+                            <div class="work-card animate-in" onclick="openWorkModal(${item.id}, '${categoryName}')">
+                                <div class="work-image">
+                                    <img src="${item.image}" alt="${item.name}" onerror="this.src='https://placehold.co/400x300/333/b87c4f?text=${encodeURIComponent(item.name)}'">
+                                    <div class="work-year">${item.year}</div>
+                                    <div class="work-overlay">
+                                        <i class="fas fa-search-plus"></i>
+                                    </div>
+                                </div>
+                                <div class="work-info">
+                                    <div class="work-title">${item.name}</div>
+                                    <div class="work-description">${item.description}</div>
+                                    <div class="work-details">
+                                        <span class="work-category-badge">
+                                            <i class="fas ${categoryName === 'Памятники' ? 'fa-monument' : 'fa-brush'}"></i>
+                                            ${categoryName}
+                                        </span>
+                                        <span class="work-more">Подробнее →</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+            <div class="carousel-dots" id="carousel-dots-${carouselId}"></div>
+            <div class="carousel-counter" id="carousel-counter-${carouselId}">
+                ${currentIndex + 1} / ${totalSlides}
+            </div>
+        </div>
+    `;
+    
+    const track = document.getElementById(`carousel-track-${carouselId}`);
+    const prevBtn = container.querySelector('.carousel-nav.prev');
+    const nextBtn = container.querySelector('.carousel-nav.next');
+    const dotsContainer = document.getElementById(`carousel-dots-${carouselId}`);
+    const counter = document.getElementById(`carousel-counter-${carouselId}`);
+    
+    if (!track) return;
+    
+    function updatePosition() {
+        const carouselElement = document.querySelector('.works-carousel');
+        const slideWidth = carouselElement ? carouselElement.clientWidth : track.parentElement.clientWidth;
+        track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+        
+        if (dotsContainer) {
+            const dots = dotsContainer.querySelectorAll('.carousel-dot');
+            dots.forEach((dot, i) => {
+                if (i === currentIndex) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+        if (counter) {
+            counter.textContent = `${currentIndex + 1} / ${totalSlides}`;
+        }
+    }
+    
+    function goToSlide(index) {
+        if (index < 0) index = 0;
+        if (index >= totalSlides) index = totalSlides - 1;
+        currentIndex = index;
+        updatePosition();
+    }
+    
+    if (dotsContainer) {
+        dotsContainer.innerHTML = '';
+        for (let i = 0; i < totalSlides; i++) {
+            const dot = document.createElement('div');
+            dot.classList.add('carousel-dot');
+            if (i === currentIndex) dot.classList.add('active');
+            dot.addEventListener('click', () => goToSlide(i));
+            dotsContainer.appendChild(dot);
+        }
+    }
+    
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updatePosition();
+            }
+        });
+    }
+    
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            if (currentIndex < totalSlides - 1) {
+                currentIndex++;
+                updatePosition();
+            }
+        });
+    }
+    
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => updatePosition(), 100);
+    });
+    
+    setTimeout(() => updatePosition(), 100);
 }
+/* ГЛАВНАЯ ФУНКЦИЯ РЕНДЕРИНГА СТРАНИЦЫ "НАШИ РАБОТЫ" */
+function renderWorksPage() {
+    const main = document.getElementById('dynamicMain');
+    if (!main) return;
+    
+    let html = `
+        <div class="works-header">
+            <div class="container">
+                <h1>${worksData.title}</h1>
+                <p>${worksData.description}</p>
+            </div>
+        </div>
+        <div class="services-list">
+            <div class="container">
+    `;
+    
+    worksData.categories.forEach((category, catIndex) => {
+        html += `
+            <div class="works-category" data-category="${catIndex}">
+                <h2 class="works-category-title">
+                    <i class="fas ${category.icon}"></i>
+                    ${category.name}
+                </h2>
+                <div id="works-carousel-${catIndex}" class="works-carousel-wrapper"></div>
+            </div>
+        `;
+    });
+    
+    html += `
+            </div>
+        </div>
+        <div id="workModal" class="work-modal" onclick="closeWorkModal(event)">
+            <span class="close-modal">&times;</span>
+            <div class="work-modal-content" onclick="event.stopPropagation()">
+                <img id="modalImage" class="work-modal-image" src="" alt="">
+                <div class="work-modal-info">
+                    <div class="work-modal-title" id="modalTitle"></div>
+                    <div class="work-modal-desc" id="modalDesc"></div>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    main.innerHTML = html;
+    document.title = 'Наши работы | МОНУМЕНТ';
+    
+    setTimeout(() => {
+        worksData.categories.forEach((category, catIndex) => {
+            initWorksCarousel(catIndex, category.name, category.items);
+        });
+    }, 100);
+}
+
+
+
 let reviewsData = {
     title: "Отзывы наших клиентов",
     description: "Реальные отзывы людей, которые доверили нам организацию похорон своих близких",
@@ -2668,47 +2791,51 @@ function renderReviewsPage() {
 function setupRatingStars() {
     const stars = document.querySelectorAll('#ratingStars i');
     const ratingInput = document.getElementById('reviewRating');
-    if (!stars.length) return;
     
+    if (!stars.length || !ratingInput) {
+        console.log('Звёзды не найдены');
+        return;
+    }
+    
+    console.log('Найдено звёзд:', stars.length);
+    
+    // Функция обновления звёзд
+    function updateStars(rating) {
+        stars.forEach((star, index) => {
+            const starValue = parseInt(star.getAttribute('data-value'));
+            if (starValue <= rating) {
+                star.className = 'fas fa-star';
+                star.style.color = '#ffc107';
+            } else {
+                star.className = 'far fa-star';
+                star.style.color = '#ddd';
+            }
+        });
+    }
+    
+    // Обработчик наведения мыши
     stars.forEach(star => {
-        star.addEventListener('click', () => {
-            const value = parseInt(star.getAttribute('data-value'));
+        star.addEventListener('mouseenter', function() {
+            const value = parseInt(this.getAttribute('data-value'));
+            updateStars(value);
+        });
+        
+        star.addEventListener('mouseleave', function() {
+            const currentRating = parseInt(ratingInput.value) || 0;
+            updateStars(currentRating);
+        });
+        
+        star.addEventListener('click', function() {
+            const value = parseInt(this.getAttribute('data-value'));
             ratingInput.value = value;
-            
-            stars.forEach(s => {
-                const starValue = parseInt(s.getAttribute('data-value'));
-                if (starValue <= value) {
-                    s.className = 'fas fa-star';
-                } else {
-                    s.className = 'far fa-star';
-                }
-            });
-        });
-        
-        star.addEventListener('mouseenter', () => {
-            const value = parseInt(star.getAttribute('data-value'));
-            stars.forEach(s => {
-                const starValue = parseInt(s.getAttribute('data-value'));
-                if (starValue <= value) {
-                    s.className = 'fas fa-star';
-                } else {
-                    s.className = 'far fa-star';
-                }
-            });
-        });
-        
-        star.addEventListener('mouseleave', () => {
-            const currentRating = parseInt(ratingInput.value);
-            stars.forEach(s => {
-                const starValue = parseInt(s.getAttribute('data-value'));
-                if (currentRating > 0 && starValue <= currentRating) {
-                    s.className = 'fas fa-star';
-                } else {
-                    s.className = 'far fa-star';
-                }
-            });
+            updateStars(value);
+            console.log('Выбрана оценка:', value);
         });
     });
+    
+    // Инициализация
+    const initialRating = parseInt(ratingInput.value) || 0;
+    updateStars(initialRating);
 }
 
 // Настройка отправки формы
@@ -3082,9 +3209,11 @@ function renderContactsPage() {
         // ОСНОВНАЯ ФУНКЦИЯ - определяет, какой раздел показывать
         
 function renderContent() {
+    
     const urlParams = new URLSearchParams(window.location.search);
     const category = urlParams.get('category');
     const tab = urlParams.get('tab');
+    
     
     console.log('=== ОТЛАДКА ===');
     console.log('category:', category);
@@ -3388,6 +3517,41 @@ function initTabAnimations() {
     });
 }
 
+    
+    
+    
+    // Отслеживаем скролл для обновления точек
+    slider.addEventListener('scroll', () => {
+        const cardWidth = cards[0].offsetWidth + 30;
+        const scrollPosition = slider.scrollLeft;
+        const activeIndex = Math.round(scrollPosition / cardWidth);
+        updateActiveDot(activeIndex);
+    });
+    
+    // Кнопка "Вперёд"
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            const cardWidth = cards[0].offsetWidth + 30;
+            const currentScroll = slider.scrollLeft;
+            const maxScroll = slider.scrollWidth - slider.clientWidth;
+            let newScroll = currentScroll + cardWidth;
+            if (newScroll > maxScroll) newScroll = maxScroll;
+            slider.scrollTo({ left: newScroll, behavior: 'smooth' });
+        });
+    }
+    
+    // Кнопка "Назад"
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+            const cardWidth = cards[0].offsetWidth + 30;
+            const currentScroll = slider.scrollLeft;
+            let newScroll = currentScroll - cardWidth;
+            if (newScroll < 0) newScroll = 0;
+            slider.scrollTo({ left: newScroll, behavior: 'smooth' });
+        });
+    }
+
+
 // ===== АНИМАЦИЯ ДЛЯ КНОПОК ФИЛЬТРАЦИИ =====
 function initFilterButtonsAnimation() {
     const filterBtns = document.querySelectorAll('.filter-btn');
@@ -3428,6 +3592,10 @@ window.renderContent = function() {
     originalRenderContent1();
     refreshAnimations();
 };
+
+
+
+        
     </script>
 </body>
 </html>
