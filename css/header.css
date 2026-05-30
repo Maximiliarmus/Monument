@@ -1,0 +1,192 @@
+/* ===== ВЕРХНИЙ ХЕДЕР ===== */
+.top-header {
+    background: #1a1a1a;
+    padding: 15px 0;
+    border-bottom: 1px solid #333;
+}
+.header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-decoration: none;
+}
+.logo-img {
+    height: 60px;
+    width: auto;
+    border-radius: 10px;
+}
+.logo-text { display: flex; flex-direction: column; }
+.logo-main {
+    font-family: 'Cinzel', 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 900;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, #d4a373 0%, #b87c4f 50%, #8b6914 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+}
+.logo-main::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #b87c4f, #d4a373, #b87c4f, transparent);
+}
+.logo-sub {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 3.5px;
+    color: #aaaaaa;
+    text-transform: uppercase;
+    margin-top: 10px;
+    display: block;
+}
+/* Соцсети */
+.social-links { display: flex; gap: 12px; align-items: center; }
+.social-link {
+    color: #b87c4f;
+    font-size: 1.3rem;
+    transition: 0.2s;
+    background: #2a2a2a;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    text-decoration: none;
+}
+.social-link:hover {
+    background: #b87c4f;
+    color: #1a1a1a;
+    transform: translateY(-2px);
+}
+/* Правая часть */
+.header-right {
+    text-align: right;
+    font-family: 'Manrope', 'Inter', sans-serif;
+}
+.header-address {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: #aaaaaa;
+    margin-bottom: 5px;
+}
+.header-phone {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #b87c4f;
+    text-decoration: none;
+    display: block;
+}
+.header-worktime {
+    font-size: 0.7rem;
+    font-weight: 400;
+    color: #666;
+}
+/* ===== МЕНЮ НАВИГАЦИИ ===== */
+.nav-menu-wrapper {
+    background: #0d0d0d;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: var(--transition);
+}
+.nav-menu-wrapper.sticky { box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 5px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.nav-item { 
+    position: relative;
+z-index: 1001; }
+.nav-link {
+    display: block;
+    padding: 14px 20px;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: var(--transition);
+     
+}
+.nav-link:hover { color: var(--primary-color); }
+/* Выпадающее подменю */
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--dark-bg);
+    min-width: 220px;
+    list-style: none;
+    border-radius: 8px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: var(--transition);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    z-index: 1002;
+}
+.nav-item:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+.dropdown-menu li a {
+    display: block;
+    padding: 12px 20px;
+    color: #e0e0e0;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+.dropdown-menu li a:hover {
+    background: var(--primary-color);
+    color: var(--dark-bg);
+}
+/* Стрелки */
+.has-dropdown .fa-chevron-down,
+.has-dropdown .fa-solid.fa-chevron-down {
+    transition: transform 0.3s ease !important;
+    display: inline-block !important;
+}
+.has-dropdown:hover .fa-chevron-down,
+.has-dropdown:hover .fa-solid.fa-chevron-down {
+    transform: rotate(180deg) !important;
+    color: #b87c4f !important;
+}
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+    padding: 10px;
+}

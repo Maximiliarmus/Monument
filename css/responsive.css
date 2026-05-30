@@ -1,0 +1,76 @@
+/* ===== АДАПТИВНЫЕ СТИЛИ ===== */
+@media (max-width: 1000px) {
+    .container { padding: 0 20px; }
+    .header-row { flex-direction: column; text-align: center; }
+    .header-left { flex-direction: column; }
+    .header-right { text-align: center; }
+    .menu-toggle {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        text-align: center;
+        padding: 10px 0;
+    }
+    .nav-menu.active { display: flex; }
+    .nav-item { width: 100%; }
+    .dropdown-menu {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        display: none;
+        background: #2a2a2a;
+        margin-left: 20px;
+    }
+    .nav-item.active .dropdown-menu { display: block; }
+    .hero .container { flex-direction: column; text-align: center; }
+    .hero-content p { margin-left: auto; margin-right: auto; }
+    .hero-form { width: 100%; }
+    .footer .container { flex-direction: column; text-align: center; }
+    .footer-right { text-align: center; }
+    .footer-social { justify-content: center; }
+    .advantages-grid { grid-template-columns: repeat(2, 1fr); }
+    .contacts-grid { grid-template-columns: 1fr; gap: 30px; }
+    .about-stats, .about-grid, .why-grid { grid-template-columns: 1fr; gap: 20px; }
+    .about-content { background-attachment: scroll; }
+    .tabs-with-button { flex-direction: column; align-items: stretch; }
+    .calc-redirect-btn { justify-content: center; width: 100%; }
+}
+
+@media (max-width: 900px) {
+    .advantages-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+    body { font-size: 14px; }
+    .logo-main { font-size: 1.4rem; }
+    .logo-img { height: 45px; }
+    .service-card { min-height: 350px; }
+    .service-card .service-info { min-height: 350px; padding: 20px 15px; }
+    .service-card .service-info h3 { font-size: 1.1rem; }
+    .services .section-title { font-size: 1.8rem; margin-bottom: 35px; }
+    .services .services-grid { margin-top: 80px; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .add-review-section { padding: 30px 20px; }
+    .rating-stars i { font-size: 1.4rem; }
+    .filter-buttons { gap: 10px; }
+    .filter-btn { padding: 6px 16px; font-size: 0.8rem; }
+    .works-carousel-slide { padding: 0 10px; }
+    .work-card { max-width: 300px; }
+    .carousel-nav { width: 32px; height: 32px; }
+    .calculator-container { padding: 25px; margin: 0 15px; }
+    .step-options { flex-direction: column; }
+    .calc-option { padding: 20px; flex-direction: row; justify-content: center; }
+    .service-tab { padding: 8px 16px; font-size: 0.8rem; }
+    .map-wrapper iframe { height: 300px; }
+}
+
+@media (max-width: 600px) {
+    .advantages-grid { grid-template-columns: 1fr; }
+    .advantages { padding: 60px 0; }
+    .advantage-item { padding: 25px 20px; }
+}

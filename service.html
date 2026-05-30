@@ -7,1517 +7,24 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">    
-<link rel="stylesheet" href="style.css">
-    <style>
-        /* ===== ТОЛЬКО СПЕЦИФИЧНЫЕ СТИЛИ ДЛЯ ДИНАМИЧЕСКИХ СТРАНИЦ ===== */
-        /* Стили только для страницы О КОМПАНИИ */
-        
-
-.about-content {
-    background: #f8f8f8;
-    padding-bottom: 80px;
-}
-
-/* HERO */
-
-.about-hero {
-    background:
-        linear-gradient(rgba(15,15,15,0.82), rgba(15,15,15,0.82)),
-        linear-gradient(135deg, #1f1f1f 0%, #2b2b2b 100%);
-    padding: 110px 0 90px;
-    text-align: center;
-    color: white;
-    margin-bottom: 70px;
-}
-
-.about-badge {
-    display: inline-block;
-    background: rgba(184,124,79,0.15);
-    border: 1px solid rgba(184,124,79,0.4);
-    color: #d4a373;
-    padding: 10px 18px;
-    border-radius: 40px;
-    font-size: 0.9rem;
-    margin-bottom: 24px;
-}
-
-.about-hero h1 {
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    margin-bottom: 20px;
-    color: white;
-}
-
-.about-subtitle {
-    max-width: 760px;
-    margin: 0 auto;
-    color: #d0d0d0;
-    font-size: 1.1rem;
-    line-height: 1.8;
-}
-
-/* STATS */
-
-.about-stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 28px;
-    margin-bottom: 70px;
-}
-
-.stat-card {
-    background: white;
-    border-radius: 24px;
-    padding: 45px 30px;
-    text-align: center;
-    box-shadow: 0 10px 35px rgba(0,0,0,0.05);
-    transition: 0.3s ease;
-}
-
-.stat-card:hover {
-    transform: translateY(-6px);
-}
-
-.stat-number {
-    font-size: 3rem;
-    font-weight: 800;
-    color: #b87c4f;
-    margin-bottom: 12px;
-}
-
-.stat-text {
-    color: #777;
-}
-
-/* GRID */
-
-.about-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
-    margin-bottom: 90px;
-}
-
-.about-card {
-    background: white;
-    border-radius: 28px;
-    padding: 40px;
-    box-shadow: 0 10px 35px rgba(0,0,0,0.05);
-}
-
-.about-card h2 {
-    margin-bottom: 20px;
-}
-
-.about-card p {
-    color: #555;
-    line-height: 1.9;
-    margin-bottom: 16px;
-}
-
-/* WHY US */
-
-.section-title {
-    text-align: center;
-    margin-bottom: 50px;
-}
-
-.section-title p {
-    color: #777;
-}
-
-.why-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 25px;
-}
-
-.why-card {
-    background: white;
-    border-radius: 24px;
-    padding: 35px 28px;
-    text-align: center;
-    transition: 0.3s ease;
-    box-shadow: 0 10px 35px rgba(0,0,0,0.04);
-}
-
-.why-card:hover {
-    transform: translateY(-8px);
-}
-
-.why-icon {
-    width: 72px;
-    height: 72px;
-    margin: 0 auto 22px;
-    border-radius: 50%;
-    background: rgba(184,124,79,0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.why-icon i {
-    font-size: 1.6rem;
-    color: #b87c4f;
-}
-
-.why-card h3 {
-    margin-bottom: 14px;
-    font-size: 1.1rem;
-}
-
-.why-card p {
-    color: #666;
-    line-height: 1.7;
-}
-
-/* MOBILE */
-
-@media (max-width: 1000px) {
-
-    .about-stats,
-    .about-grid,
-    .why-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .about-hero {
-        padding: 80px 0 70px;
-    }
-
-    .about-card,
-    .why-card,
-    .stat-card {
-        padding: 30px;
-    }
-
-}
-
-        /* Стили для страницы услуг (благоустройство) */
-        .service-header {
-            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
-            padding: 60px 0;
-            color: white;
-            text-align: center;
-        }
-        
-        .service-header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-        }
-        
-        .service-header p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        
-        .categories-tabs {
-            background: white;
-            border-bottom: 1px solid #eee;
-            position: sticky;
-            top: 75px;
-            z-index: 99;
-        }
-        
-        .tabs-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 30px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 5px;
-            overflow-x: auto;
-        }
-        
-        .tab-btn {
-            padding: 15px 25px;
-            background: none;
-            border: none;
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: #666;
-            cursor: pointer;
-            transition: 0.2s;
-            white-space: nowrap;
-        }
-        
-        .tab-btn:hover {
-            color: #b87c4f;
-        }
-        
-        .tab-btn.active {
-            color: #b87c4f;
-            border-bottom: 3px solid #b87c4f;
-        }
-        
-        .services-list {
-            padding: 40px 0 80px;
-            background: #f8f8f8;
-        }
-        
-        .service-item {
-            background: white;
-            border-radius: 16px;
-            margin-bottom: 20px;
-            overflow: hidden;
-            display: flex;
-            flex-wrap: wrap;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            transition: 0.3s;
-        }
-        
-        .service-item:hover {
-            transform: translateX(5px);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-        
-        .service-number {
-            width: 70px;
-            background: #f0f0f0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1.1rem;
-            color: #b87c4f;
-            border-right: 1px solid #eee;
-        }
-        
-        .service-content {
-            flex: 1;
-            padding: 18px 25px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            gap: 15px;
-        }
-        
-        .service-info {
-            flex: 3;
-        }
-        
-        .service-info h3 {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 5px;
-            color: #1a1a1a;
-        }
-        
-        .service-unit {
-            flex: 1;
-            min-width: 100px;
-            font-size: 0.85rem;
-            color: #666;
-        }
-        
-        .service-price {
-            flex: 0.5;
-            min-width: 100px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: #b87c4f;
-            text-align: right;
-        }
-        
-        .service-order {
-            flex: 0.3;
-            min-width: 100px;
-        }
-        
-        .order-btn {
-            background: #b87c4f;
-            color: white;
-            border: none;
-            padding: 8px 20px;
-            border-radius: 30px;
-            font-size: 0.8rem;
-            cursor: pointer;
-            transition: 0.2s;
-            width: 100%;
-        }
-        
-        .order-btn:hover {
-            background: #9a623d;
-        }
-        
-        .no-services {
-            text-align: center;
-            padding: 60px;
-            background: white;
-            border-radius: 16px;
-            color: #888;
-        }
-
-        /* Стили для раздела памятников */
-        .catalog-header {
-            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
-            padding: 50px 0;
-            color: white;
-            text-align: center;
-        }
-        
-        .catalog-header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-        
-        .monuments-tabs {
-            background: white;
-            border-bottom: 1px solid #eee;
-            position: sticky;
-            top: 75px;
-            z-index: 98;
-            padding: 0;
-        }
-        
-        .monuments-tabs .tabs-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 30px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 5px;
-        }
-        
-        .monuments-tab-btn {
-            padding: 15px 25px;
-            background: none;
-            border: none;
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: #666;
-            cursor: pointer;
-            transition: 0.2s;
-            text-decoration: none;
-            display: inline-block;
-        }
-        
-        .monuments-tab-btn:hover {
-            color: #b87c4f;
-        }
-        
-        .monuments-tab-btn.active {
-            color: #b87c4f;
-            border-bottom: 3px solid #b87c4f;
-        }
-        
-        .monuments-list {
-            padding: 50px 0 80px;
-            background: #f8f8f8;
-        }
-        
-        .monuments-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-        }
-        
-        .monument-card {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-            transition: 0.3s;
-        }
-        
-        .monument-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-        }
-        
-        .monument-image {
-            height: 220px;
-            position: relative;
-            background-color: #f8f8f8;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-        
-        .monument-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-        
-        .monument-badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: #b87c4f;
-            color: white;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.7rem;
-            font-weight: 600;
-        }
-        
-        .monument-info {
-            padding: 18px;
-        }
-        
-        .monument-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 5px;
-            color: #1a1a1a;
-        }
-        
-        .monument-article {
-            font-size: 0.75rem;
-            color: #888;
-            margin-bottom: 5px;
-        }
-        
-        .monument-dimensions {
-            font-size: 0.75rem;
-            color: #b87c4f;
-            font-weight: 500;
-            margin-bottom: 12px;
-        }
-        
-        .monument-price {
-            margin-top: 12px;
-            padding-top: 12px;
-            border-top: 1px solid #eee;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .monument-price .price {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #b87c4f;
-            white-space: nowrap;
-        }
-        
-        .monument-price .order-btn {
-            background: #1a1a1a;
-            color: white;
-            border: none;
-            padding: 8px 18px;
-            border-radius: 30px;
-            font-size: 0.75rem;
-            cursor: pointer;
-            transition: 0.2s;
-            white-space: nowrap;
-            width: auto;
-            min-width: 90px;
-        }
-        
-        .monument-price .order-btn:hover {
-            background: #b87c4f;
-        }
-        
-        .pdf-download-container {
-            text-align: right;
-            margin-bottom: 20px;
-        }
-        
-        .btn-pdf {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: #d32f2f;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 40px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.85rem;
-            transition: 0.2s;
-        }
-        
-        .btn-pdf:hover {
-            background: #b71c1c;
-            transform: translateY(-2px);
-        }
-        
-        .btn-pdf i {
-            font-size: 1rem;
-        }
-        
-        .monuments-header {
-            margin-bottom: 30px;
-        }
-        
-        .monuments-header .section-title {
-            text-align: left;
-            margin-bottom: 10px;
-            font-size: 1.8rem;
-        }
-        
-        .monuments-header .section-subtitle {
-            text-align: left;
-            color: #666;
-        }
-
-        /* Стили для раздела "Наши работы" */
-        .works-header {
-            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
-            padding: 50px 0;
-            color: white;
-            text-align: center;
-        }
-        
-        .works-header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-        
-        .works-header p {
-            font-size: 1rem;
-            opacity: 0.9;
-        }
-        
-        .works-category {
-            margin-bottom: 50px;
-        }
-        
-        .works-category-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 30px;
-            padding-bottom: 10px;
-            border-bottom: 3px solid #b87c4f;
-            display: inline-block;
-        }
-        
-        .works-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-        }
-        
-        .work-card {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-            transition: 0.3s;
-            cursor: pointer;
-        }
-        
-        .work-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-        }
-        
-        .work-image {
-            height: 260px;
-            position: relative;
-            overflow: hidden;
-            background-color: #f5f5f5;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .work-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s;
-        }
-        
-        .work-card:hover .work-image img {
-            transform: scale(1.05);
-        }
-        
-        .work-year {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: #b87c4f;
-            color: white;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 0.7rem;
-            font-weight: 600;
-        }
-        
-        .work-info {
-            padding: 20px;
-        }
-        
-        .work-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: #1a1a1a;
-        }
-        
-        .work-description {
-            font-size: 0.85rem;
-            color: #666;
-            margin-bottom: 15px;
-            line-height: 1.5;
-        }
-        
-        .work-details {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 10px;
-        }
-        
-        .work-category-badge {
-            background: #f0f0f0;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.7rem;
-            color: #555;
-        }
-        
-        .work-more {
-            color: #b87c4f;
-            font-size: 0.75rem;
-            text-decoration: none;
-            font-weight: 500;
-        }
-        
-        .work-more:hover {
-            text-decoration: underline;
-        }
-        
-        .work-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.9);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-        }
-        
-        .work-modal.active {
-            display: flex;
-        }
-        
-        .work-modal-content {
-            max-width: 90%;
-            max-height: 90%;
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            cursor: default;
-        }
-        
-        .work-modal-image {
-            width: 100%;
-            max-height: 70vh;
-            object-fit: contain;
-        }
-        
-        .work-modal-info {
-            padding: 20px;
-            text-align: center;
-        }
-        
-        .work-modal-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 5px;
-        }
-        
-        .work-modal-desc {
-            color: #666;
-            font-size: 0.9rem;
-        }
-        
-        .close-modal {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            color: white;
-            font-size: 40px;
-            cursor: pointer;
-        }
-
-        /* Стили для раздела "Отзывы" */
-        .reviews-header {
-            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
-            padding: 50px 0;
-            color: white;
-            text-align: center;
-        }
-        
-        .reviews-header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-        
-        .reviews-stats {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin-top: 30px;
-            flex-wrap: wrap;
-        }
-        
-        .stat-card {
-            text-align: center;
-            background: rgba(255,255,255,0.1);
-            padding: 15px 25px;
-            border-radius: 16px;
-        }
-        
-        .stat-number {
-            font-size: 2rem;
-            font-weight: 800;
-            color: #b87c4f;
-        }
-        
-        .stat-label {
-            font-size: 0.8rem;
-            opacity: 0.8;
-        }
-        
-        .reviews-filter {
-            background: white;
-            border-bottom: 1px solid #eee;
-            padding: 15px 0;
-            position: sticky;
-            top: 75px;
-            z-index: 98;
-        }
-        
-        /* ===== КРАСИВЫЕ КНОПКИ-ЗВЁЗДЫ ДЛЯ ФИЛЬТРАЦИИ ОТЗЫВОВ ===== */
-.filter-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    flex-wrap: wrap;
-}
-
-.filter-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: transparent;
-    border: 2px solid #e0e0e0;
-    padding: 10px 24px;
-    border-radius: 50px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: #666;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(4px);
-}
-
-.filter-btn i {
-    font-size: 1rem;
-    transition: all 0.3s ease;
-}
-
-/* Иконка звезды для кнопок */
-.filter-btn i.fa-star,
-.filter-btn i.far.fa-star {
-    margin-right: 4px;
-}
-
-/* Активная кнопка */
-.filter-btn.active {
-    background: linear-gradient(135deg, #b87c4f 0%, #9a623d 100%);
-    border-color: #b87c4f;
-    color: white;
-    box-shadow: 0 4px 15px rgba(184,124,79,0.3);
-    transform: translateY(-2px);
-}
-
-.filter-btn.active i {
-    color: white;
-}
-
-/* Кнопка "Все отзывы" */
-.filter-btn[data-rating="all"] {
-    background: #f5f5f5;
-    border-color: #ddd;
-}
-
-.filter-btn[data-rating="all"].active {
-    background: linear-gradient(135deg, #b87c4f 0%, #9a623d 100%);
-    border-color: #b87c4f;
-    color: white;
-}
-
-/* Эффекты при наведении */
-.filter-btn:hover:not(.active) {
-    border-color: #b87c4f;
-    color: #b87c4f;
-    transform: translateY(-2px);
-    background: rgba(184,124,79,0.05);
-}
-
-.filter-btn:hover:not(.active) i {
-    color: #b87c4f;
-}
-
-/* Специальные стили для кнопок с рейтингом 5,4,3 */
-.filter-btn[data-rating="5"] i.fa-star,
-.filter-btn[data-rating="5"] i.far.fa-star {
-    color: #ffc107;
-}
-
-.filter-btn[data-rating="5"]:hover:not(.active) i.fa-star {
-    color: #ffc107;
-}
-
-.filter-btn[data-rating="5"].active i.fa-star {
-    color: white;
-}
-
-/* Анимация появления */
-@keyframes starPulse {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.1);
-    }
-    100% {
-        transform: scale(1);
-    }
-}
-
-.filter-btn.active i {
-    animation: starPulse 0.3s ease;
-}
-/* Анимированные звёзды в карточках отзывов */
-.review-rating {
-    display: flex;
-    gap: 5px;
-    margin-bottom: 12px;
-}
-
-.review-rating .star {
-    font-size: 1rem;
-    transition: all 0.2s ease;
-    cursor: default;
-}
-
-.review-card:hover .review-rating .star {
-    transform: scale(1.1);
-}
-
-.review-rating .star.fa-star {
-    color: #ffc107;
-    text-shadow: 0 0 3px rgba(255,193,7,0.5);
-}
-
-.review-rating .star.far.fa-star {
-    color: #ddd;
-}
-
-/* Добавляем небольшой блеск звёздам */
-@keyframes starGlow {
-    0% {
-        text-shadow: 0 0 0 rgba(255,193,7,0);
-    }
-    100% {
-        text-shadow: 0 0 5px rgba(255,193,7,0.5);
-    }
-}
-
-.review-card .review-rating .star.fa-star {
-    animation: starGlow 0.5s ease-out;
-}
-        
-        .reviews-list {
-            padding: 50px 0;
-            background: #f8f8f8;
-        }
-        
-        .reviews-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-            gap: 30px;
-        }
-        
-        .review-card {
-            background: white;
-            border-radius: 20px;
-            padding: 25px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-            transition: 0.3s;
-        }
-        
-        .review-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-        }
-        
-        .review-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 15px;
-        }
-        .review-avatar {
-    width: 50px;
-    height: 50px;
-    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-weight: 700;
-    font-size: 1.1rem;
-}
-        
-        .review-avatar-placeholder {
-            width: 55px;
-            height: 55px;
-            background: linear-gradient(135deg, #b87c4f 0%, #9a623d 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.3rem;
-        }
-        
-        .review-info {
-            flex: 1;
-        }
-        
-        .review-name {
-            font-weight: 700;
-            font-size: 1rem;
-            margin-bottom: 3px;
-        }
-        
-        .review-date {
-            font-size: 0.7rem;
-            color: #aaa;
-        }
-        
-        .review-rating {
-            display: flex;
-            gap: 4px;
-            margin-bottom: 12px;
-        }
-        
-        .star {
-            color: #ffc107;
-            font-size: 0.9rem;
-        }
-        
-        .star.empty {
-            color: #ddd;
-        }
-        
-        .review-text {
-            font-size: 0.9rem;
-            line-height: 1.6;
-            color: #444;
-            margin-bottom: 12px;
-        }
-        
-        .read-more-btn {
-            background: none;
-            border: none;
-            color: #b87c4f;
-            font-size: 0.75rem;
-            cursor: pointer;
-            margin-top: 5px;
-            padding: 0;
-        }
-        
-        .read-more-btn:hover {
-            text-decoration: underline;
-        }
-        
-        .review-service {
-            display: inline-block;
-            background: #f0f0f0;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.7rem;
-            color: #b87c4f;
-            margin-top: 10px;
-        }
-        
-        .add-review-section {
-            background: white;
-            border-radius: 24px;
-            padding: 40px;
-            margin-top: 50px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-        }
-        
-        .add-review-title {
-            font-size: 1.6rem;
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        
-        .add-review-subtitle {
-            text-align: center;
-            color: #666;
-            margin-bottom: 30px;
-        }
-        
-        .review-form {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .form-row {
-            margin-bottom: 20px;
-        }
-        
-        .form-row label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            font-size: 0.9rem;
-        }
-        
-        .form-row input, .form-row select, .form-row textarea {
-            width: 100%;
-            padding: 12px 16px;
-            border: 1px solid #ddd;
-            border-radius: 12px;
-            font-family: inherit;
-            font-size: 0.9rem;
-            transition: 0.2s;
-        }
-        
-        .form-row input:focus, .form-row select:focus, .form-row textarea:focus {
-            outline: none;
-            border-color: #b87c4f;
-            box-shadow: 0 0 0 3px rgba(184,124,79,0.1);
-        }
-        
-        .form-row textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-        
-        .rating-input {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-        
-        .rating-stars {
-            display: flex;
-            gap: 8px;
-            cursor: pointer;
-        }
-        
-        .rating-stars i {
-            font-size: 1.5rem;
-            color: #ddd;
-            transition: 0.2s;
-        }
-        
-        .rating-stars i:hover,
-        .rating-stars i.active {
-            color: #ffc107;
-        }
-        
-        .submit-btn {
-            background: #b87c4f;
-            color: white;
-            border: none;
-            padding: 14px 28px;
-            border-radius: 40px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            width: 100%;
-            transition: 0.2s;
-        }
-        
-        .submit-btn:hover {
-            background: #9a623d;
-            transform: translateY(-2px);
-        }
-        
-        .success-message {
-            background: #4caf50;
-            color: white;
-            padding: 15px;
-            border-radius: 12px;
-            text-align: center;
-            margin-bottom: 20px;
-            display: none;
-        }
-        
-        .success-message.show {
-            display: block;
-        }
-
-        /* Стили для страницы контакты */
-        .contacts-header {
-            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
-            padding: 60px 0;
-            color: white;
-            text-align: center;
-        }
-        
-        .contacts-header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-        
-        .contacts-header p {
-            font-size: 1rem;
-            opacity: 0.9;
-        }
-        
-        .contacts-section {
-            padding: 60px 0;
-            background: #f8f8f8;
-        }
-        
-        .contacts-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-bottom: 50px;
-        }
-        
-        .contacts-info {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-        }
-        
-        .info-card {
-            background: white;
-            border-radius: 20px;
-            padding: 25px;
-            display: flex;
-            gap: 20px;
-            align-items: flex-start;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-            transition: 0.3s;
-        }
-        
-        .info-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-        
-        .info-icon {
-            width: 55px;
-            height: 55px;
-            background: linear-gradient(135deg, #b87c4f 0%, #9a623d 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.3rem;
-            flex-shrink: 0;
-        }
-        
-        .info-content {
-            flex: 1;
-        }
-        
-        .info-content h3 {
-            font-size: 1.1rem;
-            margin-bottom: 8px;
-            color: #1a1a1a;
-        }
-        
-        .info-content p {
-            color: #666;
-            line-height: 1.5;
-            margin-bottom: 5px;
-        }
-        
-        .info-link, .phone-link, .email-link {
-            color: #b87c4f;
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-        
-        .info-link:hover, .phone-link:hover, .email-link:hover {
-            text-decoration: underline;
-        }
-        
-        .work-time, .response-time {
-            font-size: 0.8rem;
-            color: #888;
-            margin-top: 5px;
-        }
-        
-        .social-card {
-            background: white;
-            border-radius: 20px;
-            padding: 25px;
-            text-align: center;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-        }
-        
-        .social-card h3 {
-            margin-bottom: 20px;
-            color: #1a1a1a;
-        }
-        
-        .messengers {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-        
-        .messenger-link {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px 20px;
-            border-radius: 40px;
-            text-decoration: none;
-            color: white;
-            font-weight: 500;
-            transition: 0.2s;
-        }
-        
-        .messenger-link.whatsapp {
-            background: #25D366;
-        }
-        
-        .messenger-link.telegram {
-            background: #0088cc;
-        }
-        
-        .messenger-link.email {
-            background: #b87c4f;
-        }
-        
-        .messenger-link:hover {
-            transform: translateY(-2px);
-            filter: brightness(1.05);
-        }
-        
-        .messenger-link i {
-            font-size: 1.2rem;
-        }
-        
-        .contacts-form {
-            display: flex;
-            align-items: center;
-        }
-        
-        .form-card {
-            background: white;
-            border-radius: 24px;
-            padding: 35px;
-            width: 100%;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-        }
-        
-        .form-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: #1a1a1a;
-        }
-        
-        .form-card p {
-            color: #666;
-            margin-bottom: 25px;
-        }
-        
-        .contact-form .form-row {
-            margin-bottom: 20px;
-        }
-        
-        .contact-form input, .contact-form textarea {
-            width: 100%;
-            padding: 14px 18px;
-            border: 1px solid #ddd;
-            border-radius: 12px;
-            font-family: inherit;
-            font-size: 0.95rem;
-            transition: 0.2s;
-        }
-        
-        .contact-form input:focus, .contact-form textarea:focus {
-            outline: none;
-            border-color: #b87c4f;
-            box-shadow: 0 0 0 3px rgba(184,124,79,0.1);
-        }
-        
-        .submit-contact-btn {
-            width: 100%;
-            background: #b87c4f;
-            color: white;
-            border: none;
-            padding: 14px;
-            border-radius: 40px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-        
-        .submit-contact-btn:hover {
-            background: #9a623d;
-            transform: translateY(-2px);
-        }
-        
-        .form-note {
-            font-size: 0.7rem;
-            color: #999;
-            text-align: center;
-            margin-top: 15px;
-        }
-        
-        .map-container {
-            margin-top: 30px;
-        }
-        
-        .map-title {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            text-align: center;
-            color: #1a1a1a;
-        }
-        
-        .map-wrapper {
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-        
-        .email-wrapper {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 5px;
-        }
-        
-        .copy-email-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: #f0f0f0;
-            border: none;
-            padding: 6px 14px;
-            border-radius: 30px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            color: #666;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        
-        .copy-email-btn i {
-            font-size: 0.8rem;
-            color: #b87c4f;
-        }
-        
-        .copy-email-btn:hover {
-            background: #b87c4f;
-            color: white;
-        }
-        
-        .copy-email-btn:hover i {
-            color: white;
-        }
-        
-        .copy-email-btn.copied {
-            background: #4caf50;
-            color: white;
-        }
-        
-        .copy-email-btn.copied i {
-            color: white;
-        }
-        
-        .input-hint {
-            display: block;
-            font-size: 0.65rem;
-            color: #999;
-            margin-top: 5px;
-        }
-        
-        .form-row input.error,
-        .form-row textarea.error {
-            border-color: #e74c3c;
-            background-color: #fff5f5;
-        }
-        
-        .error-message {
-            color: #e74c3c;
-            font-size: 0.65rem;
-            margin-top: 5px;
-            display: block;
-        }
-        
-        .form-row input.valid {
-            border-color: #4caf50;
-        }
-
-        @media (max-width: 768px) {
-            .works-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            .works-category-title {
-                font-size: 1.4rem;
-            }
-            .reviews-grid {
-                grid-template-columns: 1fr;
-            }
-            .reviews-stats {
-                gap: 15px;
-            }
-            .stat-card {
-                padding: 10px 15px;
-            }
-            .add-review-section {
-                padding: 25px;
-            }
-            .rating-stars i {
-                font-size: 1.2rem;
-            }
-            .contacts-grid {
-                grid-template-columns: 1fr;
-            }
-            .info-card {
-                padding: 20px;
-            }
-            .form-card {
-                padding: 25px;
-            }
-            .messengers {
-                flex-direction: column;
-                align-items: center;
-            }
-            .messenger-link {
-                width: 100%;
-                justify-content: center;
-            }
-            .contacts-header h1 {
-                font-size: 2rem;
-            }
-            .email-wrapper {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-        }
-    </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"> 
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">   
+<!-- Базовые стили -->
+<link rel="stylesheet" href="css/base.css">
+<!-- Компоненты -->
+<link rel="stylesheet" href="css/header.css">
+<link rel="stylesheet" href="css/footer.css">
+<!-- Страницы -->
+<link rel="stylesheet" href="css/about.css">
+<link rel="stylesheet" href="css/services.css">
+<link rel="stylesheet" href="css/monuments.css">
+<link rel="stylesheet" href="css/works.css">
+<link rel="stylesheet" href="css/reviews.css">
+<link rel="stylesheet" href="css/contacts.css">
+<link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="css/animations.css">
 </head>
 <body>
 
@@ -1588,13 +95,8 @@
 
     <!-- ДИНАМИЧЕСКИЙ КОНТЕНТ -->
     <main id="dynamicMain">
-        <div class="service-header">
-            <div class="container">
-                <h1>Загрузка...</h1>
-                <p>Пожалуйста, подождите</p>
-            </div>
-        </div>
-    </main>
+    <!-- Контент загружается динамически -->
+</main>
 
     <!-- ФУТЕР -->
     <footer class="footer">
@@ -2058,6 +560,7 @@ const worksData = {
         else if (product.price === '70 000 ₽') badge = '<div class="monument-badge">💎 Премиум</div>';
         else badge = '<div class="monument-badge">' + product.type + '</div>';
         
+        // Убираем цену и кнопку заказа
         html += `
             <div class="monument-card">
                 <div class="monument-image">
@@ -2069,22 +572,19 @@ const worksData = {
                     <h3 class="monument-title">${product.name}</h3>
                     <div class="monument-article">Артикул: ${product.article}</div>
                     <div class="monument-dimensions">📏 Размер: ${product.dimensions}</div>
-                    <div class="monument-price">
-                        <span class="price">${product.price}</span>
-                        <button class="order-btn" onclick="orderMonument('${product.name.replace(/'/g, "\\'")}', '${product.price}')">Заказать →</button>
-                    </div>
                 </div>
             </div>
         `;
     });
     
     html += `</div>`;
+    
+    
     container.innerHTML = html;
 }
 
         // Функция для отображения страницы памятников
         function renderPamiatnikiPage(tabId) {
-            
     const main = document.getElementById('dynamicMain');
     
     if (!main) return;
@@ -2094,19 +594,14 @@ const worksData = {
     
     if (tabId === 'odinochnye') {
         data = monumentsData.odinochnye;
-        
     } else if (tabId === 'semeynye') {
         data = monumentsData.semeynye;
-        
     } else if (tabId === 'nakryvnye') {
         data = monumentsData.nakryvnye;
-        
     } else {
         data = monumentsData.odinochnye;
         activeTab = 'odinochnye';
-        alert('3. Загружены данные: Одиночные (по умолчанию)');
     }
-    
     
     main.innerHTML = `
         <div class="catalog-header">
@@ -2117,9 +612,17 @@ const worksData = {
         </div>
         <div class="monuments-tabs">
             <div class="tabs-container">
-                <a href="service.html?category=pamiatniki&tab=odinochnye" class="monuments-tab-btn ${activeTab === 'odinochnye' ? 'active' : ''}">Одиночные</a>
-                <a href="service.html?category=pamiatniki&tab=semeynye" class="monuments-tab-btn ${activeTab === 'semeynye' ? 'active' : ''}">Семейные</a>
-                <a href="service.html?category=pamiatniki&tab=nakryvnye" class="monuments-tab-btn ${activeTab === 'nakryvnye' ? 'active' : ''}">Накрывные плиты</a>
+                <div class="tabs-with-button">
+                    <div class="tabs-buttons">
+                        <a href="service.html?category=pamiatniki&tab=odinochnye" class="monuments-tab-btn ${activeTab === 'odinochnye' ? 'active' : ''}">ОДИНОЧНЫЕ</a>
+                        <a href="service.html?category=pamiatniki&tab=semeynye" class="monuments-tab-btn ${activeTab === 'semeynye' ? 'active' : ''}">СЕМЕЙНЫЕ</a>
+                        <a href="service.html?category=pamiatniki&tab=nakryvnye" class="monuments-tab-btn ${activeTab === 'nakryvnye' ? 'active' : ''}">НАКРЫВНЫЕ ПЛИТЫ</a>
+                    </div>
+                    <button class="calc-redirect-btn" onclick="redirectToCalculator()">
+                        <i class="fas fa-calculator"></i>
+                        <span>Рассчитать стоимость</span>
+                    </button>
+                </div>
             </div>
         </div>
         <div class="monuments-list">
@@ -2134,7 +637,6 @@ const worksData = {
         renderMonumentsList(data);
     }, 50);
 }
-
         // Функция для отображения страницы благоустройства
         function renderBlagoustroystvoPage(activeTab = 'uslugi') {
     console.log('renderBlagoustroystvoPage вызван с activeTab:', activeTab);
@@ -2149,12 +651,20 @@ const worksData = {
         </div>
         <div class="categories-tabs">
             <div class="tabs-container" id="tabsContainer">
-                <button class="tab-btn ${activeTab === 'uslugi' ? 'active' : ''}" data-tab="uslugi">УСЛУГИ</button>
-                <button class="tab-btn ${activeTab === 'demonthazh' ? 'active' : ''}" data-tab="demonthazh">ДЕМОНТАЖ</button>
-                <button class="tab-btn ${activeTab === 'ustanovka' ? 'active' : ''}" data-tab="ustanovka">УСТАНОВКА</button>
-                <button class="tab-btn ${activeTab === 'gravirovka' ? 'active' : ''}" data-tab="gravirovka">ГРАВИРОВКА</button>
-                <button class="tab-btn ${activeTab === 'plitki' ? 'active' : ''}" data-tab="plitki">ПЛИТКИ СП</button>
-                <button class="tab-btn ${activeTab === 'oblitsovka' ? 'active' : ''}" data-tab="oblitsovka">ОБЛИЦОВКА</button>
+                <div class="tabs-with-button">
+                    <div class="tabs-buttons">
+                        <button class="tab-btn ${activeTab === 'uslugi' ? 'active' : ''}" data-tab="uslugi">УСЛУГИ</button>
+                        <button class="tab-btn ${activeTab === 'demonthazh' ? 'active' : ''}" data-tab="demonthazh">ДЕМОНТАЖ</button>
+                        <button class="tab-btn ${activeTab === 'ustanovka' ? 'active' : ''}" data-tab="ustanovka">УСТАНОВКА</button>
+                        <button class="tab-btn ${activeTab === 'gravirovka' ? 'active' : ''}" data-tab="gravirovka">ГРАВИРОВКА</button>
+                        <button class="tab-btn ${activeTab === 'plitki' ? 'active' : ''}" data-tab="plitki">ПЛИТКИ СП</button>
+                        <button class="tab-btn ${activeTab === 'oblitsovka' ? 'active' : ''}" data-tab="oblitsovka">ОБЛИЦОВКА</button>
+                    </div>
+                    <button class="calc-redirect-btn" onclick="redirectToCalculator()">
+                        <i class="fas fa-calculator"></i>
+                        <span>Рассчитать стоимость</span>
+                    </button>
+                </div>
             </div>
         </div>
         <div class="services-list">
@@ -2190,7 +700,8 @@ const worksData = {
 }
 
         // Рендер услуг для благоустройства
-        function renderServices(tabId) {
+        // Рендер услуг для благоустройства (без цен и кнопок)
+function renderServices(tabId) {
     console.log('renderServices вызван с tabId:', tabId);
     
     const data = servicesData[tabId];
@@ -2223,6 +734,7 @@ const worksData = {
         else if (tabId === 'oblitsovka') icon = '🪨';
         else icon = '📋';
         
+        // Убираем отображение цены и кнопку заказа
         html += `
             <div class="service-item">
                 <div class="service-number">${icon} ${index + 1}</div>
@@ -2232,16 +744,12 @@ const worksData = {
                         ${item.desc ? `<div class="service-desc">${item.desc}</div>` : ''}
                     </div>
                     <div class="service-unit">${item.unit}</div>
-                    <div class="service-price">${item.price}</div>
-                    <div class="service-order">
-                        <button class="order-btn" onclick="orderService('${item.name.replace(/'/g, "\\'")}', '${item.price}')">
-                            Заказать <i class="fas fa-arrow-right"></i>
-                        </button>
-                    </div>
                 </div>
             </div>
         `;
     });
+    
+    
     container.innerHTML = html;
 }
 // Функция для открытия модального окна
@@ -2411,6 +919,21 @@ function initWorksCarousel(carouselId, categoryName, items) {
     });
     
     setTimeout(() => updatePosition(), 100);
+}
+// Функция перенаправления на главную страницу с калькулятором
+function redirectToCalculator() {
+    // Плавный переход на главную страницу к калькулятору
+    if (window.location.pathname.includes('service.html')) {
+        window.location.href = 'monument.html#calculator';
+    } else {
+        // Если уже на главной, скроллим к калькулятору
+        const calculator = document.querySelector('.step-calculator');
+        if (calculator) {
+            calculator.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+            window.location.href = 'monument.html#calculator';
+        }
+    }
 }
 /* ГЛАВНАЯ ФУНКЦИЯ РЕНДЕРИНГА СТРАНИЦЫ "НАШИ РАБОТЫ" */
 function renderWorksPage() {

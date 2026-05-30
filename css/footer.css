@@ -1,0 +1,52 @@
+/* ===== ФУТЕР ===== */
+.footer {
+    background: #0d0d0d;
+    color: #aaa;
+    padding: 50px 0 30px;
+    margin-top: 40px;
+}
+.footer .container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+.footer-left { flex: 1; }
+.footer-left .logo-main {
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #d4a373 0%, #b87c4f 50%, #8b6914 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.footer-social {
+    display: flex;
+    gap: 12px;
+    margin: 20px 0;
+}
+.footer-copyright {
+    font-size: 0.8rem;
+    margin-top: 20px;
+}
+.footer-right {
+    text-align: right;
+    flex: 1;
+    font-family: 'Manrope', 'Inter', sans-serif !important;
+}
+.footer-address {
+    margin-bottom: 15px;
+    font-size: 0.85rem;
+}
+.footer-address a {
+    color: #b87c4f;
+    text-decoration: none;
+    font-size: 0.85rem;
+}
+.footer-phone {
+    color: #b87c4f;
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-decoration: none;
+    font-family: 'Manrope', 'Inter', sans-serif !important;
+}
