@@ -88,6 +88,16 @@
                     <li><a href="service.html?category=pamiatniki&tab=nakryvnye">Накрывные плиты</a></li>
                 </ul>
             </li>
+            <li class="nav-item has-dropdown">
+    <a href="service.html?category=ritual" class="nav-link" id="nav-ritual">
+        РИТУАЛЬНЫЕ УСЛУГИ
+        <i class="fa-solid fa-chevron-down"></i>
+    </a>
+    <ul class="dropdown-menu">
+        <li><a href="service.html?category=ritual&tab=funeral">Похороны</a></li>
+        <li><a href="service.html?category=ritual&tab=cremation">Кремация</a></li>
+    </ul>
+</li>
             <li class="nav-item"><a href="service.html?category=works" class="nav-link" id="nav-works">НАШИ РАБОТЫ</a></li>
             <li class="nav-item"><a href="service.html?category=reviews" class="nav-link" id="nav-reviews">ОТЗЫВЫ</a></li>
             <li class="nav-item"><a href="service.html?category=contacts" class="nav-link" id="nav-contacts">КОНТАКТЫ</a></li>
@@ -131,15 +141,15 @@
                     <img src="images/services/1.jpg" alt="Вертикальный гранитный памятник">
                 </div>
                 <div class="service-info">
-                    <div class="service-icon">🏛️</div>
-                    <h3>Вертикальный памятник</h3>
+                    
+                    <h3>Одиночный памятник</h3>
                     <p class="service-description">Классический памятник из натурального гранита</p>
                     <div class="service-price">от 28 000 ₽</div>
-                    <button class="order-btn" onclick="orderService('Вертикальный памятник', '28 000 ₽')">
+                    <button class="order-btn" onclick="redirectToCalculator('Одиночный памятник', '28 000 ₽')">
                         <span>Заказать</span>
                     </button>
                 </div>
-                <div class="service-badge">Хит продаж</div>
+                
             </div>
             
             <!-- Карточка 2 - Двойной памятник -->
@@ -148,15 +158,15 @@
                     <img src="images/services/2.PNG" alt="Двойной семейный памятник из гранита">
                 </div>
                 <div class="service-info">
-                    <div class="service-icon">🏛️🏛️</div>
-                    <h3>Двойной памятник</h3>
+                    
+                    <h3>Семейный памятник</h3>
                     <p class="service-description">Для семейного захоронения, два портрета</p>
                     <div class="service-price">от 52 000 ₽</div>
-                    <button class="order-btn" onclick="orderService('Двойной памятник', '52 000 ₽')">
+                    <button class="order-btn" onclick="redirectToCalculator('Семейный памятник', '52 000 ₽')">
                         <span>Заказать</span>
                     </button>
                 </div>
-                <div class="service-badge">Популярный</div>
+                
             </div>
             
             <!-- Карточка 3 - Благоустройство могил -->
@@ -165,27 +175,27 @@
                     <img src="images/services/3.jpg" alt="Благоустройство места захоронения">
                 </div>
                 <div class="service-info">
-                    <div class="service-icon">🌿</div>
-                    <h3>Благоустройство могил</h3>
+                    
+                    <h3>Благоустройство места захоронения</h3>
                     <p class="service-description">Полный комплекс работ по благоустройству</p>
                     <div class="service-price">от 12 000 ₽</div>
-                    <button class="order-btn" onclick="orderService('Благоустройство могил', '12 000 ₽')">
+                    <button class="order-btn" onclick="redirectToCalculator('Благоустройство места захоронения', '12 000 ₽')">
                         <span>Заказать</span>
                     </button>
                 </div>
             </div>
             
-            <!-- Карточка 4 - Ритуальная урна -->
+            <!-- Карточка 4 - Комплекс ритуальных услуг -->
             <div class="service-card">
                 <div class="service-img">
-                    <img src="images/services/4.jpg" alt="Ритуальные наборы">
+                    <img src="images/services/4.jpeg" alt="Ритуальные наборы">
                 </div>
                 <div class="service-info">
-                    <div class="service-icon">🏺</div>
-                    <h3>Ритуальная урна</h3>
-                    <p class="service-description">Урны для праха из гранита и мрамора</p>
-                    <div class="service-price">от 7 000 ₽</div>
-                    <button class="order-btn" onclick="orderService('Ритуальная урна', '7 000 ₽')">
+                    
+                    <h3>Ритуальные услуги</h3>
+                    <p class="service-description">Комплекс услуг по захоронению и кремации</p>
+                    <div class="service-price">от 70 000 ₽</div>
+                    <button class="order-btn" onclick="redirectToCalculator('Ритуальные услуги', '70 000 ₽')">
                         <span>Заказать</span>
                     </button>
                 </div>
@@ -197,15 +207,15 @@
                     <img src="images/services/5.jpg" alt="Художественная гравировка на памятнике">
                 </div>
                 <div class="service-info">
-                    <div class="service-icon">✍️</div>
+                    
                     <h3>Гравировка на памятнике</h3>
                     <p class="service-description">Портретная и художественная гравировка</p>
                     <div class="service-price">от 4 500 ₽</div>
-                    <button class="order-btn" onclick="orderService('Гравировка на памятнике', '4 500 ₽')">
+                    <button class="order-btn" onclick="redirectToCalculator('Гравировка на памятнике', '4 500 ₽')">
                         <span>Заказать</span>
                     </button>
                 </div>
-                <div class="service-badge">Новинка</div>
+                
             </div>
             
             <!-- Карточка 6 - Демонтаж -->
@@ -214,11 +224,11 @@
                     <img src="images/services/6.jpg" alt="Демонтаж старого памятника">
                 </div>
                 <div class="service-info">
-                    <div class="service-icon">🔨</div>
+                    
                     <h3>Демонтаж старого памятника</h3>
                     <p class="service-description">Профессиональный демонтаж с вывозом</p>
                     <div class="service-price">от 5 000 ₽</div>
-                    <button class="order-btn" onclick="orderService('Демонтаж старого памятника', '5 000 ₽')">
+                    <button class="order-btn" onclick="redirectToCalculator('Демонтаж старого памятника', '5 000 ₽')">
                         <span>Заказать</span>
                     </button>
                 </div>
@@ -303,7 +313,7 @@
                 <div class="advantage-item"><div class="advantage-icon">🏛️</div><h4>Высокое качество</h4><p>Вся продукция соответствует ГОСТу</p></div>
                 <div class="advantage-item"><div class="advantage-icon">💰</div><h4>Доступные цены</h4><p>Работаем без посредников</p></div>
                 <div class="advantage-item"><div class="advantage-icon">📦</div><h4>Большой ассортимент</h4><p>Более 100 видов изделий</p></div>
-                <div class="advantage-item"><div class="advantage-icon">🚚</div><h4>Доставка и установка</h4><p>По всему Владивостоку</p></div>
+                <div class="advantage-item"><div class="advantage-icon">🚚</div><h4>Доставка и установка</h4><p>По всему Владивостоку и Приморскому краю</p></div>
                 <div class="advantage-item"><div class="advantage-icon">⭐</div><h4>14 лет опыта</h4><p>Тысячи довольных клиентов</p></div>
                 <div class="advantage-item"><div class="advantage-icon">🖌️</div><h4>Изделия на заказ</h4><p>По вашему проекту</p></div>
             </div>
@@ -317,9 +327,9 @@
         <div class="footer-left">
             <div class="logo-main">МОНУМЕНТ</div>
             <div class="footer-social">
-                <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
-                <a href="mailto:info@monument.ru" class="social-link"><i class="far fa-envelope"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+                <a href="https://wa.me/79247301030" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                <a href="mailto:baza-monument@mail.ru" class="social-link"><i class="far fa-envelope"></i></a>
+                <a href="https://t.me/79247301030" class="social-link"><i class="fab fa-telegram"></i></a>
             </div>
             <div class="footer-copyright">© Монумент, 2026</div>
         </div>

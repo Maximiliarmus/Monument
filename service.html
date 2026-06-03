@@ -25,6 +25,7 @@
 <link rel="stylesheet" href="css/contacts.css">
 <link rel="stylesheet" href="css/responsive.css">
 <link rel="stylesheet" href="css/animations.css">
+<link rel="stylesheet" href="css/ritual.css">
 </head>
 <body>
 
@@ -86,6 +87,16 @@
                         <li><a href="service.html?category=pamiatniki&tab=nakryvnye">Накрывные плиты</a></li>
                     </ul>
                 </li>
+                <li class="nav-item has-dropdown">
+    <a href="service.html?category=ritual" class="nav-link" id="nav-ritual">
+        РИТУАЛЬНЫЕ УСЛУГИ
+        <i class="fa-solid fa-chevron-down"></i>
+    </a>
+    <ul class="dropdown-menu">
+        <li><a href="service.html?category=ritual&tab=funeral">Похороны</a></li>
+        <li><a href="service.html?category=ritual&tab=cremation">Кремация</a></li>
+    </ul>
+</li>
                 <li class="nav-item"><a href="service.html?category=works" class="nav-link" id="nav-works">НАШИ РАБОТЫ</a></li>
                 <li class="nav-item"><a href="service.html?category=reviews" class="nav-link" id="nav-reviews">ОТЗЫВЫ</a></li>
                 <li class="nav-item"><a href="service.html?category=contacts" class="nav-link" id="nav-contacts">КОНТАКТЫ</a></li>
@@ -104,9 +115,9 @@
             <div class="footer-left">
                 <div class="logo-main">МОНУМЕНТ</div>
                 <div class="footer-social">
-                    <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
-                    <a href="mailto:monument-baza@mail.ru" class="social-link"><i class="far fa-envelope"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+                    <a href="https://wa.me/79247301030" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                <a href="mailto:baza-monument@mail.ru" class="social-link"><i class="far fa-envelope"></i></a>
+                <a href="https://t.me/79247301030" class="social-link"><i class="fab fa-telegram"></i></a>
                 </div>
                 <div class="footer-copyright">© Монумент, 2026</div>
             </div>
@@ -483,6 +494,130 @@ function renderAboutPage() {
                 ]
             }
         };
+        // ===== ДАННЫЕ ДЛЯ РАЗДЕЛА РИТУАЛЬНЫЕ УСЛУГИ =====
+const ritualData = {
+    // ПОХОРОНЫ
+    funeralBasic: {
+        title: "Похороны (Базовый комплект)",
+        description: "Базовый комплекс услуг по организации похорон",
+        category: "funeral",
+        items: [
+            { name: "Гроб «Стандарт» красный бархат", price: "12 000 ₽" },
+            { name: "Комплект в гроб «Простой»", price: "1 500 ₽" },
+            { name: "Услуги МИКРО-катафалка по Владивостоку (3 места)", price: "15 000 ₽" },
+            { name: "Услуги рабочих по погребению тела умершего (похороны)", price: "18 000 ₽" },
+            { name: "Прием заказа, оформление документов", price: "4 500 ₽" },
+            { name: "Рытье могилы вручную", price: "15 000 ₽" },
+            { name: "Стропы для опускания гроба", price: "1 500 ₽" },
+            { name: "Временный памятник + табличка", price: "6 000 ₽" },
+            { name: "Услуги морга (санитарная обработка, одевание)", price: "6 000 ₽" },
+            
+        ]
+    },
+    funeralStandard: {
+        title: "Похороны (Стандартный комплект)",
+        description: "Стандартный комплекс услуг по организации похорон",
+        category: "funeral",
+        items: [
+            { name: "Гроб «Стандарт» бархат-барашек", price: "28 000 ₽" },
+            { name: "Комплект в гроб «Атлас»", price: "3 500 ₽" },
+            { name: "Услуги МИКРО-катафалка по Владивостоку (3 места)", price: "15 000 ₽" },
+            { name: "Услуги рабочих по погребению тела умершего (похороны)", price: "18 000 ₽" },
+            { name: "Прием заказа, оформление документов", price: "4 500 ₽" },
+            { name: "Рытье могилы вручную", price: "15 000 ₽" },
+            { name: "Стропы для опускания гроба", price: "1 500 ₽" },
+            { name: "Временный памятник + табличка", price: "6 000 ₽" },
+            { name: "Услуги морга (санитарная обработка, одевание)", price: "6 000 ₽" },
+            { name: "Доставка песка для формирования могильного холма", price: "6 500 ₽" }
+        ]
+    },
+    funeralPremium: {
+        title: "Похороны (Премиум комплект)",
+        description: "Премиум комплекс услуг по организации похорон",
+        category: "funeral",
+        items: [
+            { name: "Гроб «Витязь» деревянный лакированный", price: "70 500 ₽" },
+            { name: "Комплект в гроб стеганый «Валенсия»", price: "6 000 ₽" },
+            { name: "Услуги МИКРО-катафалка по Владивостоку (3 места)", price: "15 000 ₽" },
+            { name: "Услуги рабочих по погребению тела умершего (похороны)", price: "18 000 ₽" },
+            { name: "Прием заказа, оформление документов", price: "4 500 ₽" },
+            { name: "Рытье могилы вручную", price: "15 000 ₽" },
+            { name: "Стропы для опускания гроба", price: "1 500 ₽" },
+            { name: "Временный памятник + табличка", price: "6 000 ₽" },
+            { name: "Услуги морга (санитарная обработка, одевание)", price: "6 000 ₽" },
+            { name: "Доставка песка для формирования могильного холма", price: "6 500 ₽" }
+        ]
+    },
+    // КРЕМАЦИЯ
+    cremationBasic: {
+        title: "Кремация (Базовый комплект)",
+        description: "Базовый комплекс услуг по организации кремации",
+        category: "cremation",
+        items: [
+            { name: "Гроб «Стандарт» красный бархат", price: "12 000 ₽" },
+            { name: "Комплект в гроб «Простой»", price: "1 500 ₽" },
+            { name: "Урна для праха «Пластиковая»", price: "3 000 ₽" },
+            { name: "Услуги МИКРО-катафалка по Владивостоку (3 места)", price: "15 000 ₽" },
+            { name: "Услуги рабочих по погребению тела умершего (кремация)", price: "14 000 ₽" },
+            { name: "Прием заказа, оформление документов", price: "4 500 ₽" },
+            { name: "Услуги морга (санитарная обработка, одевание)", price: "6 000 ₽" },
+            { name: "Услуги крематория (МОРСКОЕ) без зала", price: "19 900 ₽" }
+        ]
+    },
+    cremationStandard: {
+        title: "Кремация (Стандартный комплект)",
+        description: "Стандартный комплекс услуг по организации кремации",
+        category: "cremation",
+        items: [
+            { name: "Гроб «Стандарт» бархат-барашек", price: "28 000 ₽" },
+            { name: "Комплект в гроб «Атлас»", price: "3 500 ₽" },
+            { name: "Керамическая урна для праха «Камея»", price: "6 600 ₽" },
+            { name: "Услуги МИКРО-катафалка по Владивостоку (3 места)", price: "15 000 ₽" },
+            { name: "Услуги рабочих по погребению тела умершего (кремация)", price: "14 000 ₽" },
+            { name: "Прием заказа, оформление документов", price: "4 500 ₽" },
+            { name: "Услуги морга (санитарная обработка, одевание)", price: "6 000 ₽" },
+            { name: "Услуги крематория (МОРСКОЕ) без зала", price: "19 900 ₽" }
+        ]
+    },
+    cremationPremium: {
+        title: "Кремация (Премиум комплект)",
+        description: "Премиум комплекс услуг по организации кремации",
+        category: "cremation",
+        items: [
+            { name: "Гроб «Витязь» деревянный лакированный", price: "70 500 ₽" },
+            { name: "Комплект в гроб стеганый «Валенсия»", price: "6 000 ₽" },
+            { name: "Гранитная урна для праха «Тетра»", price: "11 000 ₽" },
+            { name: "Услуги МИКРО-катафалка по Владивостоку (3 места)", price: "15 000 ₽" },
+            { name: "Услуги рабочих по погребению тела умершего (кремация)", price: "14 000 ₽" },
+            { name: "Прием заказа, оформление документов", price: "4 500 ₽" },
+            { name: "Услуги морга (санитарная обработка, одевание)", price: "6 000 ₽" },
+            { name: "Услуги крематория (МОРСКОЕ) без зала", price: "19 900 ₽" }
+        ]
+    },
+    crematoriumMorskoe: {
+        title: "Крематорий МОРСКОЕ",
+        description: "Услуги крематория МОРСКОЕ",
+        category: "crematorium",
+        showTotal: false,  // не показываем итоговую сумму
+        items: [
+            { name: "КРЕМАЦИЯ БЕЗ ЗАЛА", price: "19 900 ₽" },
+            { name: "КРЕМАЦИЯ МАЛЫЙ ЗАЛ", price: "24 700 ₽" },
+            { name: "КРЕМАЦИЯ БОЛЬШОЙ ЗАЛ", price: "25 900 ₽" }
+        ]
+    },
+    crematoriumPodgorodenka: {
+        title: "Крематорий ПОДГОРОДЕНКА",
+        description: "Услуги крематория ПОДГОРОДЕНКА",
+        category: "crematorium",
+        showTotal: false,  // не показываем итоговую сумму
+        items: [
+            { name: "КРЕМАЦИЯ В РАБОЧИЕ ДНИ", price: "24 900 ₽" },
+            { name: "КРЕМАЦИЯ В ВЫХОДНЫЕ/ПРАЗДНИЧНЫЕ ДНИ", price: "27 000 ₽" }
+        ]
+    }
+};
+
+
         // ===== ДАННЫЕ ДЛЯ РАЗДЕЛА "НАШИ РАБОТЫ" =====
 const worksData = {
     title: "Наши работы",
@@ -752,6 +887,188 @@ function renderServices(tabId) {
     
     container.innerHTML = html;
 }
+// Функция для отображения страницы ритуальных услуг
+// Функция для отображения страницы ритуальных услуг
+function renderRitualPage(activeTab = 'funeralBasic') {
+    console.log('renderRitualPage вызван с activeTab:', activeTab);
+    
+    // Определяем активную категорию для подсветки основного таба
+    let activeCategory = 'funeral';
+    if (activeTab.includes('cremation')) activeCategory = 'cremation';
+    if (activeTab.includes('crematorium')) activeCategory = 'crematorium';
+    
+    const main = document.getElementById('dynamicMain');
+    main.innerHTML = `
+        <div class="service-header">
+            <div class="container">
+                <h1 id="dynamicTitle">Ритуальные услуги</h1>
+                <p id="dynamicDescription">Полный комплекс услуг по организации похорон и кремации</p>
+            </div>
+        </div>
+        <div class="categories-tabs">
+            <div class="tabs-container" id="tabsContainer">
+                <div class="tabs-with-button">
+                    <div class="tabs-buttons" id="mainTabsContainer">
+                        <button class="tab-btn ${activeCategory === 'funeral' ? 'active' : ''}" data-category="funeral">ПОХОРОНЫ</button>
+                        <button class="tab-btn ${activeCategory === 'cremation' ? 'active' : ''}" data-category="cremation">КРЕМАЦИЯ</button>
+                        <button class="tab-btn ${activeCategory === 'crematorium' ? 'active' : ''}" data-category="crematorium">УСЛУГИ КРЕМАТОРИЯ</button>
+                    </div>
+                    <button class="calc-redirect-btn" onclick="redirectToCalculator()">
+                        <i class="fas fa-calculator"></i>
+                        <span>Рассчитать стоимость</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="services-list">
+            <div class="container" id="servicesContainer"></div>
+        </div>
+    `;
+    
+    // Рендер подтабов и услуг
+    renderSubTabs(activeCategory, activeTab);
+    
+    // Настройка основных табов
+    const mainTabs = document.querySelectorAll('.tab-btn');
+    mainTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const category = tab.getAttribute('data-category');
+            mainTabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            
+            // Определяем первый подтаб в выбранной категории
+            let firstSubTab = category === 'funeral' ? 'funeralBasic' : 
+                             (category === 'cremation' ? 'cremationBasic' : 'crematoriumMorskoe');
+            renderSubTabs(category, firstSubTab);
+            
+            const url = new URL(window.location.href);
+            url.searchParams.set('tab', firstSubTab);
+            window.history.pushState({}, '', url);
+        });
+    });
+}
+
+/// Рендер подтабов (Базовый / Стандартный / Премиум / Крематории)
+function renderSubTabs(category, activeTab) {
+    // Сначала удаляем старый блок подтабов, если есть
+    const oldSubTabs = document.querySelector('.sub-tabs-wrapper');
+    if (oldSubTabs) oldSubTabs.remove();
+    
+    // Определяем подтабы для выбранной категории
+    let subTabs = [];
+    if (category === 'funeral') {
+        subTabs = [
+            { id: 'funeralBasic', name: 'Базовый комплект' },
+            { id: 'funeralStandard', name: 'Стандартный комплект' },
+            { id: 'funeralPremium', name: 'Премиум комплект' }
+        ];
+    } else if (category === 'cremation') {
+        subTabs = [
+            { id: 'cremationBasic', name: 'Базовый комплект' },
+            { id: 'cremationStandard', name: 'Стандартный комплект' },
+            { id: 'cremationPremium', name: 'Премиум комплект' }
+        ];
+    } else if (category === 'crematorium') {
+        subTabs = [
+            { id: 'crematoriumMorskoe', name: 'МОРСКОЕ' },
+            { id: 'crematoriumPodgorodenka', name: 'ПОДГОРОДЕНКА' }
+        ];
+    }
+    
+    // Создаём блок подтабов
+    const categoriesTabs = document.querySelector('.categories-tabs');
+    const subTabsHtml = `
+        <div class="sub-tabs-wrapper">
+            <div class="tabs-container">
+                <div class="sub-tabs-buttons">
+                    ${subTabs.map(tab => `<button class="sub-tab-btn ${activeTab === tab.id ? 'active' : ''}" data-tab="${tab.id}">${tab.name}</button>`).join('')}
+                </div>
+            </div>
+        </div>
+    `;
+    
+    // Вставляем блок подтабов после основного меню
+    categoriesTabs.insertAdjacentHTML('afterend', subTabsHtml);
+    
+    // Рендер услуг
+    renderRitualServices(activeTab);
+    
+    // Настройка обработчиков для подтабов
+    const subTabBtns = document.querySelectorAll('.sub-tab-btn');
+    subTabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const tabId = btn.getAttribute('data-tab');
+            subTabBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            renderRitualServices(tabId);
+            
+            const url = new URL(window.location.href);
+            url.searchParams.set('tab', tabId);
+            window.history.pushState({}, '', url);
+        });
+    });
+}
+/// Рендер услуг для ритуальной страницы (с галочками)
+function renderRitualServices(tabId) {
+    console.log('renderRitualServices вызван с tabId:', tabId);
+    
+    const data = ritualData[tabId];
+    const container = document.getElementById('servicesContainer');
+    
+    if (!data) {
+        container.innerHTML = '<div class="no-services">Услуги в этом разделе скоро появятся</div>';
+        return;
+    }
+    
+    document.getElementById('dynamicTitle').textContent = data.title;
+    document.getElementById('dynamicDescription').textContent = data.description;
+    document.title = `${data.title} | МОНУМЕНТ`;
+    
+    let html = '';
+    data.items.forEach((item, index) => {
+        html += `
+            <div class="service-item checked-item">
+                <div class="service-checkbox">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <div class="service-content">
+                    <div class="service-info">
+                        <h3>${item.name}</h3>
+                    </div>
+                    <div class="service-price">${item.price}</div>
+                </div>
+            </div>
+        `;
+    });
+    
+    // Добавляем итоговую сумму ТОЛЬКО если showTotal не false
+    if (data.showTotal !== false) {
+        const total = data.items.reduce((sum, item) => {
+            const price = parseInt(item.price.replace(/[^\d]/g, ''));
+            return sum + (isNaN(price) ? 0 : price);
+        }, 0);
+        
+        html += `
+            <div class="total-summary">
+                <div class="total-label">ИТОГОВАЯ СТОИМОСТЬ КОМПЛЕКСА</div>
+                <div class="total-price">${total.toLocaleString()} ₽</div>
+                <div class="total-note">* В стоимость включены все услуги комплекса</div>
+                <button class="order-complex-btn" onclick="orderComplex('${data.title}', '${total}')">
+                    <i class="fab fa-whatsapp"></i>
+                    Заказать комплекс
+                </button>
+            </div>
+        `;
+    }
+    
+    container.innerHTML = html;
+}
+
+// Функция заказа комплекса услуг
+window.orderComplex = function(complexName, totalPrice) {
+    const message = `Здравствуйте! Хочу заказать комплекс услуг: ${complexName}. Ориентировочная стоимость: ${totalPrice.toLocaleString()} ₽. Пожалуйста, свяжитесь со мной для уточнения деталей.`;
+    window.open(`https://wa.me/79247301030?text=${encodeURIComponent(message)}`, '_blank');
+};
 // Функция для открытия модального окна
 window.openWorkModal = function(id, category) {
     let work = null;
@@ -1205,6 +1522,10 @@ function renderReviewsPage() {
         <i class="far fa-star"></i>
         <span>(${reviewsData.stats.threeStars})</span>
     </button>
+    <button class="write-review-btn" onclick="scrollToReviewForm()">
+    <i class="fas fa-pen"></i>
+    Написать отзыв
+</button>
 </div>
             </div>
         </div>
@@ -1218,6 +1539,7 @@ function renderReviewsPage() {
     } else {
         filteredReviews.forEach((review, idx) => {
     let shortText = review.text.length > 200 ? review.text.substring(0, 200) + '...' : review.text;
+    
     
     // Аватарка с инициалами
     const initials = review.name.substring(0, 2).toUpperCase();
@@ -1401,6 +1723,16 @@ function setupReviewForm() {
         }, 3000);
     });
 }
+// Функция плавного скролла к форме отзыва
+function scrollToReviewForm() {
+    const formSection = document.querySelector('.add-review-section');
+    if (formSection) {
+        formSection.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'start' 
+        });
+    }
+}
 // ===== ФУНКЦИЯ ДЛЯ СТРАНИЦЫ КОНТАКТЫ =====
 function renderContactsPage() {
     const main = document.getElementById('dynamicMain');
@@ -1480,10 +1812,10 @@ function renderContactsPage() {
                                     <i class="fab fa-telegram"></i>
                                     <span>Telegram</span>
                                 </a>
-                                <a href="mailto:monument-baza@mail.ru" class="messenger-link email">
-                                    <i class="far fa-envelope"></i>
-                                    <span>Email</span>
-                                </a>
+                                <a href="https://max.ru/send?phone=79247301030" target="_blank" rel="noopener noreferrer" class="messenger-link max">
+        <i class="fas fa-comment"></i>
+        <span>MAX (Россия)</span>
+    </a>
                             </div>
                         </div>
                     </div>
@@ -1763,6 +2095,17 @@ function renderContent() {
         document.title = 'Отзывы | МОНУМЕНТ';
         return;
     }
+    if (category === 'ritual') {
+    console.log('Показываем раздел "Ритуальные услуги"');
+    // Проверяем, есть ли такой tab в ritualData
+    let activeTab = 'funeralBasic'; // значение по умолчанию
+    if (tab && ritualData[tab]) {
+        activeTab = tab;
+    }
+    renderRitualPage(activeTab);
+    document.title = 'Ритуальные услуги | МОНУМЕНТ';
+    return;
+}
     
     if (category === 'works') {
         console.log('Показываем раздел "Наши работы"');

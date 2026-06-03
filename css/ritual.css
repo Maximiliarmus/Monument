@@ -1,0 +1,471 @@
+/* ===== СТРАНИЦА РИТУАЛЬНЫЕ УСЛУГИ ===== */
+
+/* Общий фон */
+#dynamicMain {
+    position: relative;
+    background: url('https://images.unsplash.com/photo-1601542917433-2e3dc9e5c944?q=80&w=2070&auto=format') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+}
+
+#dynamicMain::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: 0;
+}
+
+#dynamicMain > .service-header,
+#dynamicMain > .services-list {
+    position: relative;
+    z-index: 1;
+}
+
+/* ===== ЗАГОЛОВОК ===== */
+.service-header {
+    background: transparent;
+    padding: 40px 0 20px;
+    color: white;
+    text-align: center;
+}
+
+.service-header h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: white;
+    letter-spacing: -0.5px;
+}
+
+.service-header p {
+    font-size: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+    opacity: 0.85;
+    color: rgba(255,255,255,0.9);
+}
+
+/* ===== ТАБЫ - ПРИЛИПАЮЩЕЕ МЕНЮ ===== */
+.categories-tabs {
+    background: rgba(30, 30, 30, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(184,124,79,0.3);
+    position: sticky;
+    top: 56px;
+    z-index: 100;
+}
+
+.categories-tabs::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    background: linear-gradient(to bottom, rgba(30,30,30,0.95), transparent);
+    pointer-events: none;
+}
+
+.tabs-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+
+/* Контейнер для табов и кнопки */
+.tabs-with-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    width: 100%;
+    min-height: 55px;
+}
+
+.tabs-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    flex: 1;
+}
+
+/* Стили для кнопок табов */
+.tab-btn {
+    padding: 12px 24px;
+    background: none;
+    border: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #ccc;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-radius: 30px;
+}
+
+.tab-btn:hover {
+    color: #d4a373;
+    background: rgba(184,124,79,0.1);
+}
+
+.tab-btn.active {
+    color: #b87c4f;
+    background: rgba(184,124,79,0.15);
+    border-bottom: none;
+}
+
+/* Кнопка "Рассчитать стоимость" */
+.calc-redirect-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, #b87c4f 0%, #9a623d 100%);
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 40px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(184,124,79,0.3);
+}
+
+.calc-redirect-btn:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, #c98e5c 0%, #b87c4f 100%);
+    box-shadow: 0 6px 16px rgba(184,124,79,0.4);
+}
+
+.calc-redirect-btn i {
+    font-size: 1rem;
+}
+
+/* ===== СПИСОК УСЛУГ ===== */
+.services-list {
+    background: transparent;
+    padding: 40px 0 80px;
+    position: relative;
+    z-index: 1;
+}
+
+#servicesContainer {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+
+/* ===== СТИЛИ ДЛЯ РИТУАЛЬНЫХ УСЛУГ С ГАЛОЧКАМИ ===== */
+
+/* Карточка услуги с галочкой */
+.service-item.checked-item {
+    display: flex;
+    align-items: center;
+    background: rgba(30, 30, 30, 0.9);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(184,124,79,0.2);
+    border-radius: 16px;
+    padding: 15px 20px;
+    margin-bottom: 12px;
+    transition: all 0.3s ease;
+}
+
+.service-item.checked-item:hover {
+    background: rgba(184,124,79,0.15);
+    border-color: rgba(184,124,79,0.4);
+    transform: translateX(5px);
+}
+
+/* Галочка */
+.service-checkbox {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.service-checkbox i {
+    font-size: 1.4rem;
+    color: #4caf50;
+    transition: all 0.2s ease;
+}
+
+.service-item.checked-item:hover .service-checkbox i {
+    transform: scale(1.1);
+    color: #ffc107;
+}
+
+/* Контент услуги */
+.service-item.checked-item .service-content {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 0;
+}
+
+.service-item.checked-item .service-info {
+    flex: 1;
+}
+
+.service-item.checked-item .service-info h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Цена услуги */
+.service-item.checked-item .service-price {
+    font-weight: 700;
+    font-size: 1rem;
+    color: #b87c4f;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+/* Пустое состояние */
+.no-services {
+    text-align: center;
+    padding: 60px;
+    background: rgba(30, 30, 30, 0.9);
+    border-radius: 16px;
+    color: #ccc;
+}
+
+/* ===== ИТОГОВАЯ СУММА КОМПЛЕКСА ===== */
+.total-summary {
+    background: linear-gradient(135deg, rgba(184,124,79,0.15), rgba(184,124,79,0.05));
+    border-radius: 24px;
+    padding: 30px;
+    text-align: center;
+    margin-top: 40px;
+    border: 1px solid rgba(184,124,79,0.3);
+}
+
+.total-summary .total-label {
+    font-size: 0.9rem;
+    color: #ccc;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.total-summary .total-price {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #b87c4f;
+    margin-bottom: 8px;
+}
+
+.total-summary .total-note {
+    font-size: 0.7rem;
+    color: #888;
+    margin-bottom: 20px;
+}
+
+/* Кнопка заказа комплекса */
+.order-complex-btn {
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    color: white;
+    border: none;
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(37,211,102,0.3);
+}
+
+.order-complex-btn:hover {
+    transform: translateY(-3px);
+    background: linear-gradient(135deg, #34d873 0%, #15a085 100%);
+    box-shadow: 0 8px 25px rgba(37,211,102,0.4);
+}
+
+.order-complex-btn i {
+    font-size: 1.1rem;
+}
+
+/* ===== МОБИЛЬНАЯ АДАПТАЦИЯ ===== */
+@media (max-width: 768px) {
+    .service-header {
+        padding: 25px 0 15px;
+    }
+    .service-header h1 {
+        font-size: 1.6rem;
+    }
+    .service-header p {
+        font-size: 0.85rem;
+        padding: 0 15px;
+    }
+    
+    .tabs-with-button {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+    .tabs-buttons {
+        justify-content: center;
+        width: 100%;
+    }
+    .tab-btn {
+        padding: 8px 16px;
+        font-size: 0.8rem;
+    }
+    .calc-redirect-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 10px 20px;
+    }
+    
+    .services-list {
+        padding: 30px 0 60px;
+    }
+    #servicesContainer {
+        padding: 0 20px;
+    }
+    
+    /* Адаптация карточек с галочками */
+    .service-item.checked-item .service-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    .service-item.checked-item .service-price {
+        align-self: flex-end;
+    }
+    
+    .service-checkbox {
+        margin-right: 12px;
+    }
+    
+    .service-checkbox i {
+        font-size: 1.2rem;
+    }
+    
+    /* Итоговая сумма */
+    .total-summary {
+        padding: 20px;
+    }
+    .total-summary .total-price {
+        font-size: 1.6rem;
+    }
+    .order-complex-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 12px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .service-item.checked-item {
+        padding: 12px 15px;
+    }
+    .service-item.checked-item .service-info h3 {
+        font-size: 0.85rem;
+    }
+    .service-item.checked-item .service-price {
+        font-size: 0.85rem;
+    }
+    .total-summary .total-price {
+        font-size: 1.3rem;
+    }
+}
+
+/* ===== ГАРАНТИРОВАННОЕ РЕШЕНИЕ ДЛЯ STICKY ===== */
+.categories-tabs {
+    position: sticky !important;
+    top: 56px !important;
+    z-index: 999 !important;
+    display: block !important;
+    background: rgba(30, 30, 30, 0.95) !important;
+    backdrop-filter: blur(10px) !important;
+    will-change: transform !important;
+}
+.sub-tabs-wrapper {
+    background: rgba(30, 30, 30, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(184,124,79,0.2);
+    position: sticky;
+    top: 112px;
+    z-index: 98;
+}
+
+.sub-tabs-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 0;
+}
+
+.sub-tab-btn {
+    padding: 8px 24px;
+    background: none;
+    border: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #ccc;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-radius: 30px;
+}
+
+.sub-tab-btn:hover {
+    color: #d4a373;
+    background: rgba(184,124,79,0.1);
+}
+
+.sub-tab-btn.active {
+    color: #b87c4f;
+    background: rgba(184,124,79,0.15);
+}
+
+/* Мобильная адаптация */
+@media (max-width: 768px) {
+    .sub-tabs-wrapper {
+        top: 106px;
+    }
+    .sub-tab-btn {
+        padding: 6px 16px;
+        font-size: 0.75rem;
+    }
+    .sub-tabs-buttons {
+        gap: 6px;
+    }
+}
+/* Кнопка заказа отдельной услуги */
+.service-item .order-single-btn {
+    background: linear-gradient(135deg, #b87c4f 0%, #9a623d 100%);
+    color: white;
+    border: none;
+    padding: 6px 16px;
+    border-radius: 30px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-left: 15px;
+    white-space: nowrap;
+}
+
+.service-item .order-single-btn:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, #c98e5c 0%, #b87c4f 100%);
+}

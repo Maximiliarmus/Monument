@@ -74,3 +74,28 @@ a { transition: var(--transition); text-decoration: none; }
 ::-webkit-scrollbar-thumb:hover { background: var(--primary-dark); }
 ::selection { background-color: var(--primary-color); color: white; }
 html { scroll-behavior: smooth; }
+
+/* ===== УБИРАЕМ БЕЛЫЙ БЛОК МЕЖДУ КОНТЕНТОМ И ФУТЕРОМ ===== */
+html,
+body {
+    background-color: #0d0d0d;
+    min-height: 100vh;
+}
+
+#dynamicMain {
+    background: #f8f8f8;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.footer {
+    margin-top: 0;
+    position: relative;
+    z-index: 10;
+}
+
+/* Убираем возможные отступы у последнего элемента внутри #dynamicMain */
+#dynamicMain > :last-child {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}

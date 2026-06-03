@@ -36,7 +36,9 @@
     box-shadow: 0 20px 40px -12px rgba(0,0,0,0.3);
     border: 1px solid rgba(184,124,79,0.3);
     position: relative;
+    overflow: hidden;
 }
+
 .calculator-container::before {
     content: '';
     position: absolute;
@@ -45,6 +47,7 @@
     right: 0;
     height: 4px;
     background: linear-gradient(90deg, #b87c4f, #d4a373, #b87c4f);
+    border-radius: 32px 32px 0 0;
 }
 .step { display: none; animation: fadeInUp 0.5s ease; }
 .step.active { display: block; }
@@ -135,6 +138,8 @@
     background: linear-gradient(135deg, #b87c4f 0%, #9a623d 100%);
     color: white;
 }
+
+/* ===== СПИСОК УСЛУГ - УЛУЧШЕННОЕ ВЫРАВНИВАНИЕ ===== */
 .calculator-services-list {
     display: flex;
     flex-direction: column;
@@ -145,6 +150,7 @@
     overflow-y: auto;
     padding-right: 10px;
 }
+
 .calculator-services-list .service-item {
     display: flex;
     align-items: center;
@@ -154,15 +160,21 @@
     padding: 15px 20px;
     cursor: pointer;
     border: 2px solid rgba(184,124,79,0.2);
+    transition: all 0.3s ease;
+    gap: 15px;
 }
+
 .calculator-services-list .service-item:hover {
     background: rgba(184,124,79,0.1);
     border-color: #b87c4f;
+    transform: translateX(5px);
 }
+
 .calculator-services-list .service-item.selected {
     background: rgba(76, 175, 80, 0.15);
     border-color: #4caf50;
 }
+
 .calculator-services-list .service-check {
     width: 26px;
     height: 26px;
@@ -172,21 +184,56 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 15px;
+    flex-shrink: 0;
 }
+
 .calculator-services-list .service-item.selected .service-check {
     background: #4caf50;
     border-color: #4caf50;
 }
+
+.calculator-services-list .service-item.selected .service-check i {
+    color: white;
+    font-size: 12px;
+}
+
+/* Контейнер для текста услуги */
+.calculator-services-list .service-info {
+    flex: 1;
+    min-width: 0;
+}
+
 .calculator-services-list .service-name {
     font-weight: 700;
     font-size: 1rem;
     color: #ffffff;
+    margin-bottom: 4px;
 }
+
 .calculator-services-list .service-desc {
     font-size: 0.75rem;
     color: #aaaaaa;
 }
+
+/* Цена услуги (правая часть) */
+.calculator-services-list .service-price {
+    font-weight: 700;
+    font-size: 1rem;
+    color: #b87c4f;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+/* ===== НАВИГАЦИОННЫЕ КНОПКИ ===== */
+.nav-buttons {
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
 .back-btn {
     background: rgba(40, 40, 40, 0.9);
     border: 1px solid rgba(184,124,79,0.3);
@@ -199,7 +246,65 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
+    transition: all 0.3s ease;
 }
+
+.back-btn:hover {
+    background: rgba(184,124,79,0.2);
+    transform: translateX(-3px);
+}
+
+/* Кнопка "Перейти к расчету" */
+.order-calc-btn {
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+}
+
+.order-calc-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(37,211,102,0.4);
+}
+
+/* ===== КНОПКА "НАЧАТЬ ЗАНОВО" ОТДЕЛЬНО ===== */
+.calc-reset {
+    text-align: right;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(184,124,79,0.2);
+}
+
+.reset-btn {
+    background: rgba(40, 40, 40, 0.9);
+    border: 1px solid rgba(184,124,79,0.3);
+    color: #d4a373;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 20px;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.reset-btn:hover {
+    background: rgba(184,124,79,0.2);
+    transform: translateY(-2px);
+    color: #b87c4f;
+}
+
+/* ===== ШАГ 3: РЕЗУЛЬТАТ ===== */
 .total-result {
     background: linear-gradient(135deg, rgba(46,125,50,0.15), rgba(76,175,80,0.1));
     border-radius: 24px;
@@ -218,20 +323,195 @@
     font-weight: 800;
     color: #4caf50;
 }
+
+/* Мобильная адаптация */
+@media (max-width: 768px) {
+    .calculator-container {
+        padding: 25px;
+        margin: 0 15px;
+    }
+    .step-options {
+        flex-direction: column;
+    }
+    .calc-option {
+        padding: 20px;
+        flex-direction: row;
+        justify-content: center;
+        gap: 15px;
+    }
+    .service-tab {
+        padding: 8px 16px;
+        font-size: 0.8rem;
+    }
+    .calculator-services-list .service-item {
+        flex-wrap: wrap;
+        padding: 12px 15px;
+    }
+    .calculator-services-list .service-price {
+        margin-left: 41px; /* отступ под чекбокс */
+        width: 100%;
+    }
+    .nav-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .back-btn, .order-calc-btn {
+        justify-content: center;
+    }
+    .calc-reset {
+        text-align: center;
+    }
+}
+/* ===== ШАГ 3: УЛУЧШЕННЫЕ СТИЛИ ===== */
+
+/* Контейнер для списка выбранных услуг */
+.step3-content {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.step3-summary {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.summary-card {
+    background: rgba(40, 40, 40, 0.9);
+    border-radius: 20px;
+    padding: 20px;
+    border: 1px solid rgba(184,124,79,0.2);
+}
+
+.summary-card h4 {
+    color: #d4a373;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(184,124,79,0.3);
+}
+
+.summary-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.summary-card li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    color: #fff;
+    font-size: 0.9rem;
+}
+
+.summary-card li:last-child {
+    border-bottom: none;
+}
+
+.summary-card li span:first-child {
+    color: #ccc;
+}
+
+.summary-card li span:last-child {
+    color: #b87c4f;
+    font-weight: 700;
+}
+
+.empty-list {
+    color: #888;
+    text-align: center;
+    padding: 20px;
+    font-style: italic;
+}
+
+/* Итоговая стоимость */
+.step3-total {
+    background: linear-gradient(135deg, rgba(46,125,50,0.2), rgba(76,175,80,0.1));
+    border-radius: 24px;
+    padding: 25px;
+    text-align: center;
+    border: 1px solid rgba(76,175,80,0.4);
+}
+
+.step3-total .total-label {
+    font-size: 0.85rem;
+    color: #ccc;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.step3-total .total-price {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #4caf50;
+    margin-bottom: 8px;
+}
+
+.step3-total .total-note {
+    font-size: 0.65rem;
+    color: #888;
+    margin-bottom: 18px;
+}
+
+/* Кнопка отправки заявки */
 .order-calc-btn {
     background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
     color: white;
     border: none;
-    padding: 12px 28px;
+    padding: 14px 32px;
     border-radius: 50px;
-    font-size: 0.9rem;
+    font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
     gap: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(37,211,102,0.3);
 }
-.reset-btn {
+
+.order-calc-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(37,211,102,0.4);
+}
+
+/* Кнопки навигации в шаге 3 */
+.step3-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+.step3-actions .back-btn {
+    background: rgba(40, 40, 40, 0.9);
+    border: 1px solid rgba(184,124,79,0.3);
+    padding: 10px 24px;
+    border-radius: 40px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #d4a373;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.step3-actions .back-btn:hover {
+    background: rgba(184,124,79,0.2);
+    transform: translateX(-3px);
+}
+
+.step3-actions .reset-btn {
     background: rgba(40, 40, 40, 0.9);
     border: 1px solid rgba(184,124,79,0.3);
     color: #d4a373;
@@ -241,6 +521,42 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 8px 20px;
-    border-radius: 50px;
+    padding: 10px 24px;
+    border-radius: 40px;
+    transition: all 0.3s ease;
+}
+
+.step3-actions .reset-btn:hover {
+    background: rgba(184,124,79,0.2);
+    transform: translateY(-2px);
+    color: #b87c4f;
+}
+
+/* Мобильная адаптация для шага 3 */
+@media (max-width: 768px) {
+    .step3-summary {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .step3-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .step3-actions .back-btn,
+    .step3-actions .reset-btn {
+        justify-content: center;
+        width: 100%;
+    }
+    
+    .step3-total .total-price {
+        font-size: 1.6rem;
+    }
+    
+    .summary-card li {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
 }

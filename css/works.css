@@ -157,3 +157,24 @@
     font-size: 40px;
     cursor: pointer;
 }
+/* Отключаем тёмный фон и затемнение для страницы "Наши работы" */
+.works-header ~ #dynamicMain::before,
+body:has(.works-header) #dynamicMain::before {
+    display: none !important;
+}
+
+.works-header ~ #dynamicMain,
+body:has(.works-header) #dynamicMain {
+    background: #1a1a1a !important;
+    background-image: none !important;
+}
+
+/* Заголовки категорий становятся видимыми */
+.works-category-title {
+    color: #ffffff !important;
+}
+
+/* Опционально: золотой цвет для заголовков */
+.works-category-title {
+    color: #d4a373 !important;
+}
