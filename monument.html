@@ -94,9 +94,9 @@
         <i class="fa-solid fa-chevron-down"></i>
     </a>
     <ul class="dropdown-menu">
-        <li><a href="service.html?category=ritual&tab=funeral">Похороны</a></li>
-        <li><a href="service.html?category=ritual&tab=cremation">Кремация</a></li>
-    </ul>
+    <li><a href="service.html?category=ritual&tab=funeralBasic">Похороны</a></li>
+    <li><a href="service.html?category=ritual&tab=cremationBasic">Кремация</a></li>
+</ul>
 </li>
             <li class="nav-item"><a href="service.html?category=works" class="nav-link" id="nav-works">НАШИ РАБОТЫ</a></li>
             <li class="nav-item"><a href="service.html?category=reviews" class="nav-link" id="nav-reviews">ОТЗЫВЫ</a></li>
@@ -261,6 +261,11 @@
                         <span>Памятники</span>
                         <small>Гранитные памятники любой формы</small>
                     </button>
+                    <button class="calc-option" data-category="ritual">
+        <i class="fas fa-hand-holding-heart"></i>
+        <span>Ритуальные услуги</span>
+        <small>Комплексы услуг по похоронам и кремации</small>
+    </button>
                 </div>
             </div>
             
@@ -378,9 +383,108 @@
 let currentCategory = null;
 let selectedServices = {
     blagoustroystvo: [],
-    pamiatniki: []
+    pamiatniki: [],
+    ritual: []
 };
-
+// ===== ДАННЫЕ ДЛЯ РАЗДЕЛА ПАМЯТНИКОВ (ДЛЯ КАЛЬКУЛЯТОРА) =====
+const monumentsData = {
+    odinochnye: {
+        title: "Одиночные памятники",
+        description: "Гранитные памятники для одного захоронения. Изготовление любой формы и размера.",
+        products: [
+            { id: 1, name: "Памятник MT", article: "MT", dimensions: "22 возможных формата", price: "16 000 ₽", type: "Одиночный", image: "images/monuments/МТ.jpg", description: "Классический прямоугольный памятник из натурального гранита.",
+                formats: [{ name: "MT", size: "1800x800x100 мм", price: "122 500 ₽" }, { name: "MT (универсал)", size: "1500x800x70 мм", price: "70 000 ₽" }, { name: "MT-301", size: "1000x500x70 мм", price: "26 000 ₽" }, { name: "MT-101", size: "800x400x70 мм", price: "18 000 ₽" }, { name: "MTL-301", size: "1000x500x50 мм", price: "17 500 ₽" }, { name: "MTL-101", size: "800x400x50 мм", price: "16 000 ₽" }]
+            },
+            { id: 2, name: "Памятник № 27", article: "27", dimensions: "3 возможных формата", price: "33 000 ₽", type: "Одиночный", image: "images/monuments/27.jpg", description: "Классический фигурный памятник из натурального гранита.",
+                formats: [{ name: "ME", size: "1100x550x70 мм", price: "70 000 ₽" }, { name: "ML", size: "1000x500x50 мм", price: "45 000 ₽" }, { name: "MS", size: "800x450x50 мм", price: "33 000 ₽" }]
+            },
+            { id: 3, name: "Памятник № 29", article: "29", dimensions: "3 возможных формата", price: "33 000 ₽", type: "Одиночный", image: "images/monuments/29.jpg", description: "Классический фигурный памятник из натурального гранита.",
+                formats: [{ name: "ME", size: "1100x600x70 мм", price: "70 000 ₽" }, { name: "ML", size: "1000x500x50 мм", price: "45 000 ₽" }, { name: "MS", size: "800x450x50 мм", price: "33 000 ₽" }]
+            },
+            { id: 4, name: "Памятник № 46", article: "46", dimensions: "3 возможных формата", price: "33 000 ₽", type: "Одиночный", image: "images/monuments/46.jpg", description: "Классический фигурный памятник из натурального гранита.",
+                formats: [{ name: "ME", size: "1100x550x70 мм", price: "70 000 ₽" }, { name: "ML", size: "1000x500x50 мм", price: "45 000 ₽" }, { name: "MS", size: "800x450x50 мм", price: "33 000 ₽" }]
+            },
+            { id: 5, name: "Памятник № 108", article: "108", dimensions: "3 возможных формата", price: "33 000 ₽", type: "Одиночный", image: "images/monuments/108.jpg", description: "Классический фигурный памятник из натурального гранита.",
+                formats: [{ name: "ME", size: "1100x550x70 мм", price: "70 000 ₽" }, { name: "ML", size: "1000x500x50 мм", price: "45 000 ₽" }, { name: "MS", size: "800x450x50 мм", price: "33 000 ₽" }]
+            },
+            { id: 6, name: "Памятник № 201", article: "201", dimensions: "3 возможных формата", price: "33 000 ₽", type: "Одиночный", image: "images/monuments/201.jpg", description: "Классический фигурный памятник из натурального гранита.",
+                formats: [{ name: "ME", size: "1100x550x70 мм", price: "70 000 ₽" }, { name: "ML", size: "1000x500x50 мм", price: "45 000 ₽" }, { name: "MS", size: "800x450x50 мм", price: "33 000 ₽" }]
+            },
+            { id: 7, name: "Памятник № 202", article: "202", dimensions: "3 возможных формата", price: "33 000 ₽", type: "Одиночный", image: "images/monuments/202.jpg", description: "Классический фигурный памятник из натурального гранита.",
+                formats: [{ name: "ME", size: "1100x550x70 мм", price: "70 000 ₽" }, { name: "ML", size: "1000x500x50 мм", price: "45 000 ₽" }, { name: "MS", size: "800x450x50 мм", price: "33 000 ₽" }]
+            },
+            { id: 8, name: "Памятник № 208", article: "208", dimensions: "3 возможных формата", price: "33 000 ₽", type: "Одиночный", image: "images/monuments/208.jpg", description: "Классический фигурный памятник из натурального гранита.",
+                formats: [{ name: "ME", size: "1100x600x70 мм", price: "70 000 ₽" }, { name: "ML", size: "1000x500x50 мм", price: "45 000 ₽" }, { name: "MS", size: "800x450x50 мм", price: "33 000 ₽" }]
+            },
+            { id: 9, name: "Памятник № 222", article: "222", dimensions: "3 возможных формата", price: "33 000 ₽", type: "Одиночный", image: "images/monuments/222.jpg", description: "Классический фигурный памятник из натурального гранита.",
+                formats: [{ name: "ME", size: "1100x550x70 мм", price: "70 000 ₽" }, { name: "ML", size: "1000x500x50 мм", price: "45 000 ₽" }, { name: "MS", size: "800x450x50 мм", price: "33 000 ₽" }]
+            },
+            { id: 10, name: "Памятник № 223", article: "223", dimensions: "3 возможных формата", price: "33 000 ₽", type: "Одиночный", image: "images/monuments/223.jpg", description: "Классический фигурный памятник из натурального гранита.",
+                formats: [{ name: "ME", size: "1100x550x70 мм", price: "70 000 ₽" }, { name: "ML", size: "1000x500x50 мм", price: "45 000 ₽" }, { name: "MS", size: "800x450x50 мм", price: "33 000 ₽" }]
+            },
+            { id: 11, name: "Памятник № 230", article: "230", dimensions: "2 возможных формата", price: "45 000 ₽", type: "Одиночный", image: "images/monuments/230.jpg", description: "Классический фигурный памятник из натурального гранита.",
+                formats: [{ name: "ME", size: "1100x550x70 мм", price: "70 000 ₽" }, { name: "ML", size: "1000x500x50 мм", price: "45 000 ₽" }]
+            },
+            { id: 12, name: "Памятник № 233", article: "233", dimensions: "2 возможных формата", price: "45 000 ₽", type: "Одиночный", image: "images/monuments/233.jpg", description: "Классический фигурный памятник из натурального гранита.",
+                formats: [{ name: "ME", size: "1100x550x70 мм", price: "70 000 ₽" }, { name: "ML", size: "1000x500x50 мм", price: "45 000 ₽" }]
+            },
+            { id: 13, name: "Памятник № 235", article: "235", dimensions: "3 возможных формата", price: "33 000 ₽", type: "Одиночный", image: "images/monuments/235.jpg", description: "Классический фигурный памятник из натурального гранита.",
+                formats: [{ name: "ME", size: "1100x550x70 мм", price: "70 000 ₽" }, { name: "ML", size: "1000x500x50 мм", price: "45 000 ₽" }, { name: "MS", size: "800x450x50 мм", price: "33 000 ₽" }]
+            },
+            { id: 14, name: "Памятник № 237", article: "237", dimensions: "3 возможных формата", price: "33 000 ₽", type: "Одиночный", image: "images/monuments/237.jpg", description: "Классический фигурный памятник из натурального гранита.",
+                formats: [{ name: "ME", size: "1100x550x70 мм", price: "70 000 ₽" }, { name: "ML", size: "1000x500x50 мм", price: "45 000 ₽" }, { name: "MS", size: "800x450x50 мм", price: "33 000 ₽" }]
+            },
+            { id: 15, name: "Памятник № 239", article: "239", dimensions: "3 возможных формата", price: "33 000 ₽", type: "Одиночный", image: "images/monuments/239.jpg", description: "Классический фигурный памятник из натурального гранита.",
+                formats: [{ name: "ME", size: "1100x550x70 мм", price: "70 000 ₽" }, { name: "ML", size: "1000x500x50 мм", price: "45 000 ₽" }, { name: "MS", size: "800x450x50 мм", price: "33 000 ₽" }]
+            },
+            { id: 16, name: "Памятник № 513", article: "513", dimensions: "3 возможных формата", price: "33 000 ₽", type: "Одиночный", image: "images/monuments/513.jpg", description: "Классический фигурный памятник из натурального гранита.",
+                formats: [{ name: "ME", size: "1100x600x70 мм", price: "70 000 ₽" }, { name: "ML", size: "1000x500x50 мм", price: "45 000 ₽" }, { name: "MS", size: "800x450x50 мм", price: "33 000 ₽" }]
+            },
+            { id: 17, name: "Памятник № 514", article: "514", dimensions: "3 возможных формата", price: "33 000 ₽", type: "Одиночный", image: "images/monuments/514.jpg", description: "Классический фигурный памятник из натурального гранита.",
+                formats: [{ name: "ME", size: "1100x600x70 мм", price: "70 000 ₽" }, { name: "ML", size: "1000x500x50 мм", price: "45 000 ₽" }, { name: "MS", size: "800x450x50 мм", price: "33 000 ₽" }]
+            },
+            { id: 18, name: "Памятник № 607", article: "607", dimensions: "3 возможных формата", price: "33 000 ₽", type: "Одиночный", image: "images/monuments/607.jpg", description: "Классический фигурный памятник из натурального гранита.",
+                formats: [{ name: "ME", size: "1100x550x70 мм", price: "70 000 ₽" }, { name: "ML", size: "1000x500x50 мм", price: "45 000 ₽" }, { name: "MS", size: "800x450x50 мм", price: "33 000 ₽" }]
+            }
+        ]
+    },
+    semeynye: {
+        title: "Семейные памятники",
+        description: "Гранитные памятники для семейных захоронений (2 и более места)",
+        products: [
+            { id: 19, name: "Памятник № 5", article: "5", dimensions: "2 возможных формата", price: "90 000 ₽", type: "Семейный", image: "images/monuments/5.jpg", description: "Классический семейный памятник из натурального гранита.",
+                formats: [{ name: "ME", size: "850x1200x70 мм", price: "120 000 ₽" }, { name: "ML", size: "850x1200x50 мм", price: "90 000 ₽" }]
+            },
+            { id: 20, name: "Памятник № 9", article: "9", dimensions: "2 возможных формата", price: "90 000 ₽", type: "Семейный", image: "images/monuments/9.jpg", description: "Классический семейный памятник из натурального гранита.",
+                formats: [{ name: "ME", size: "850x1200x70 мм", price: "120 000 ₽" }, { name: "ML", size: "850x1200x50 мм", price: "90 000 ₽" }]
+            },
+            { id: 21, name: "Памятник № 10", article: "10", dimensions: "2 возможных формата", price: "90 000 ₽", type: "Семейный", image: "images/monuments/10.jpg", description: "Классический семейный памятник из натурального гранита.",
+                formats: [{ name: "ME", size: "850x1200x70 мм", price: "120 000 ₽" }, { name: "ML", size: "850x1200x50 мм", price: "90 000 ₽" }]
+            },
+            { id: 22, name: "Памятник № 19", article: "19", dimensions: "2 возможных формата", price: "90 000 ₽", type: "Семейный", image: "images/monuments/19.jpg", description: "Классический семейный памятник из натурального гранита.",
+                formats: [{ name: "ME", size: "850x1200x70 мм", price: "120 000 ₽" }, { name: "ML", size: "850x1200x50 мм", price: "90 000 ₽" }]
+            },
+            { id: 23, name: "Памятник № 96", article: "96", dimensions: "2 возможных формата", price: "90 000 ₽", type: "Семейный", image: "images/monuments/96.jpg", description: "Классический семейный памятник из натурального гранита.",
+                formats: [{ name: "ME", size: "850x1200x70 мм", price: "120 000 ₽" }, { name: "ML", size: "850x1200x50 мм", price: "90 000 ₽" }]
+            },
+            { id: 24, name: "Памятник № 616", article: "616", dimensions: "2 возможных формата", price: "90 000 ₽", type: "Семейный", image: "images/monuments/616.jpg", description: "Классический семейный памятник из натурального гранита.",
+                formats: [{ name: "ME", size: "850x1200x70 мм", price: "120 000 ₽" }, { name: "ML", size: "850x1200x50 мм", price: "90 000 ₽" }]
+            }
+        ]
+    },
+    nakryvnye: {
+        title: "Накрывные плиты",
+        description: "Гранитные накрывные плиты для оформления захоронений",
+        products: [
+            { id: 25, name: "Накрывная плита 1020х470х20 (черная)", article: "НП-1", dimensions: "1020х470х20 мм", price: "10 000 ₽", type: "Плита" },
+            { id: 26, name: "Накрывная плита 1020х520х20 (черная)", article: "НП-2", dimensions: "1020х520х20 мм", price: "12 000 ₽", type: "Плита" },
+            { id: 27, name: "Накрывная плита 1020х520х30 (черная)", article: "НП-3", dimensions: "1020х520х30 мм", price: "15 000 ₽", type: "Плита" },
+            { id: 28, name: "Накрывная плита 1050х850х30 (черная)", article: "НП-4", dimensions: "1050х850х30 мм", price: "28 000 ₽", type: "Плита" },
+            { id: 29, name: "Накрывная плита 1020х520х30 (G603 светло-серый)", article: "НП-5", dimensions: "1020х520х30 мм", price: "8 000 ₽", type: "Плита" },
+            { id: 30, name: "Накрывная плита 1050х850х30 (G603 светло-серый)", article: "НП-6", dimensions: "1050х850х30 мм", price: "15 000 ₽", type: "Плита" }
+        ]
+    }
+};
 // Данные услуг
 const servicesData = {
     blagoustroystvo: {
@@ -412,32 +516,81 @@ const servicesData = {
         }
     },
     pamiatniki: {
-        title: "Памятники",
-        tabs: {
-            odinochnye: { name: "Одиночные", items: [
-                { id: "pam_od_1", name: "Памятник MS", price: 33000, desc: "Стандартный" },
-                { id: "pam_od_2", name: "Памятник ML", price: 45000, desc: "Стандартный" },
-                { id: "pam_od_3", name: "Памятник ME", price: 70000, desc: "Стандартный" },
-                { id: "pam_od_4", name: "Памятник MT-800", price: 30000, desc: "Прямоугольный 800мм" },
-                { id: "pam_od_5", name: "Памятник MT-1000", price: 43000, desc: "Прямоугольный 1000мм" }
-            ] },
-            semeynye: { name: "Семейные", items: [
-                { id: "pam_sem_1", name: "Памятник ME семейный", price: 80000, desc: "820х820мм" },
-                { id: "pam_sem_2", name: "Памятник ML семейный", price: 70000, desc: "820х820мм" },
-                { id: "pam_sem_3", name: "Памятник ML/V семейный", price: 50000, desc: "700х900мм" }
-            ] },
-            nakryvnye: { name: "Накрывные плиты", items: [
-                { id: "pam_nak_1", name: "Плита 1020х470х20 черная", price: 10000, desc: "Черный гранит" },
-                { id: "pam_nak_2", name: "Плита 1020х520х20 черная", price: 12000, desc: "Черный гранит" },
-                { id: "pam_nak_3", name: "Плита 1020х520х30 светлый", price: 8000, desc: "Светло-серый" }
-            ] }
+    title: "Памятники",
+    tabs: {
+        odinochnye: {
+            name: "Одиночные",
+            items: monumentsData.odinochnye.products.map(product => ({
+                id: `pam_od_${product.id}`,
+                name: product.name,
+                price: parseInt(product.price.replace(/[^\d]/g, '')),
+                desc: product.description || '',
+                formats: product.formats || []  // ← добавляем форматы
+            }))
+        },
+        semeynye: {
+            name: "Семейные",
+            items: monumentsData.semeynye.products.map(product => ({
+                id: `pam_sem_${product.id}`,
+                name: product.name,
+                price: parseInt(product.price.replace(/[^\d]/g, '')),
+                desc: product.description || '',
+                formats: product.formats || []
+            }))
+        },
+        nakryvnye: {
+            name: "Накрывные плиты",
+            items: monumentsData.nakryvnye.products.map(product => ({
+                id: `pam_nak_${product.id}`,
+                name: product.name,
+                price: parseInt(product.price.replace(/[^\d]/g, '')),
+                desc: product.description || '',
+                formats: product.formats || []
+            }))
         }
     }
+},
+    ritual: {
+    title: "Ритуальные услуги",
+    tabs: {
+        funeralBasic: {
+            name: "Похороны (Базовый)",
+            price: 75900,  // общая цена пакета
+            desc: "Базовый комплекс услуг по организации похорон"
+        },
+        funeralStandard: {
+            name: "Похороны (Стандарт)",
+            price: 104000,
+            desc: "Стандартный комплекс услуг по организации похорон"
+        },
+        funeralPremium: {
+            name: "Похороны (Премиум)",
+            price: 149000,
+            desc: "Премиум комплекс услуг по организации похорон"
+        },
+        cremationBasic: {
+            name: "Кремация (Базовый)",
+            price: 75900,
+            desc: "Базовый комплекс услуг по организации кремации"
+        },
+        cremationStandard: {
+            name: "Кремация (Стандарт)",
+            price: 97500,
+            desc: "Стандартный комплекс услуг по организации кремации"
+        },
+        cremationPremium: {
+            name: "Кремация (Премиум)",
+            price: 146900,
+            desc: "Премиум комплекс услуг по организации кремации"
+        }
+    }
+}
 };
+
 
 // Вспомогательная функция для получения всех выбранных услуг
 function getAllSelectedServices() {
-    return [...selectedServices.blagoustroystvo, ...selectedServices.pamiatniki];
+    return [...selectedServices.blagoustroystvo, ...selectedServices.pamiatniki, ...selectedServices.ritual];
 }
 // Функция для правильного склонения слова "знак"
 function getSignsWord(count) {
@@ -449,13 +602,29 @@ function getSignsWord(count) {
 }
 // Подсчет общей стоимости
 function updateTotalPrice() {
-    const allServices = getAllSelectedServices();
-    const total = allServices.reduce((sum, s) => sum + s.price, 0);
+    let total = 0;
     
-    // Обновляем счетчик выбранных услуг на кнопке
+    // Благоустройство
+    for (const service of selectedServices.blagoustroystvo) {
+        total += service.hasQuantity ? (service.price * (service.quantity || 1)) : service.price;
+    }
+    // Памятники
+    for (const service of selectedServices.pamiatniki) {
+        total += service.hasQuantity ? (service.price * (service.quantity || 1)) : service.price;
+    }
+    // РИТУАЛЬНЫЕ УСЛУГИ (НОВОЕ)
+    for (const service of selectedServices.ritual) {
+        total += service.hasQuantity ? (service.price * (service.quantity || 1)) : service.price;
+    }
+    
+    const totalElement = document.getElementById('totalPrice');
+    if (totalElement) {
+        totalElement.textContent = total.toLocaleString() + ' ₽';
+    }
+    
     const nextBtn = document.getElementById('nextToStep3');
     if (nextBtn) {
-        const count = allServices.length;
+        const count = getAllSelectedServices().length;
         nextBtn.innerHTML = `<i class="fas fa-calculator"></i> Перейти к расчету (${count})`;
     }
 }
@@ -499,48 +668,214 @@ function renderServices(tabKey) {
     if (!container) return;
     
     const services = servicesData[currentCategory]?.tabs[tabKey]?.items;
+    
+    if (currentCategory === 'ritual') {
+        const tabData = servicesData[currentCategory]?.tabs[tabKey];
+        if (!tabData) {
+            container.innerHTML = '<div class="no-services">Выберите пакет услуг</div>';
+            return;
+        }
+        
+        const isSelected = selectedServices[currentCategory].some(s => s.id === tabKey);
+        
+        container.innerHTML = `
+            <div class="service-item ${isSelected ? 'selected' : ''}" data-id="${tabKey}" data-price="${tabData.price}" data-name="${tabData.name}" data-desc="${tabData.desc || ''}">
+                <div class="service-check">
+                    ${isSelected ? '<i class="fas fa-check"></i>' : ''}
+                </div>
+                <div class="service-info">
+                    <div class="service-name">${tabData.name}</div>
+                    <div class="service-desc">${tabData.desc || ''}</div>
+                </div>
+                <div class="service-price">${isSelected ? tabData.price.toLocaleString() + ' ₽' : ''}</div>
+            </div>
+        `;
+        setupSelectPlaceholder();
+        setupServiceItemHandlers();
+        return;
+    }
+    
     if (!services) return;
     
     container.innerHTML = services.map(service => {
         const isSelected = selectedServices[currentCategory].some(s => s.id === service.id);
-        const selectedItem = selectedServices[currentCategory].find(s => s.id === service.id);
-        const quantity = selectedItem?.quantity || 1;
+        const hasFormats = service.formats && service.formats.length > 0;
         
-        if (service.hasQuantity) {
-            return `
-                <div class="service-item quantity-item ${isSelected ? 'selected' : ''}" data-id="${service.id}" data-price="${service.price}" data-name="${service.name}" data-desc="${service.desc || ''}" data-unit="${service.unit || 'знак'}" data-has-quantity="true">
-                    <div class="service-check">
-                        ${isSelected ? '<i class="fas fa-check"></i>' : ''}
-                    </div>
-                    <div class="service-info">
-                        <div class="service-name">${service.name}</div>
-                        <div class="service-desc">${service.desc || ''} (${service.price.toLocaleString()} ₽/${service.unit || 'шт'})</div>
-                        ${isSelected ? `
-                            <div class="quantity-control">
-                                <button class="qty-btn minus" data-id="${service.id}">−</button>
-                                <input type="number" class="qty-input" data-id="${service.id}" value="${quantity}" min="1" max="1000" step="1">
-                                <button class="qty-btn plus" data-id="${service.id}">+</button>
-                            </div>
-                        ` : ''}
-                    </div>
-                </div>
-            `;
-        } else {
-    return `
-        <div class="service-item ${isSelected ? 'selected' : ''}" data-id="${service.id}" data-price="${service.price}" data-name="${service.name}" data-desc="${service.desc || ''}" data-has-quantity="false">
-            <div class="service-check">
-                ${isSelected ? '<i class="fas fa-check"></i>' : ''}
-            </div>
-            <div class="service-info">
-                <div class="service-name">${service.name}</div>
-                <div class="service-desc">${service.desc || ''}</div>
-            </div>
-        </div>
-    `;
+        let displayPrice = '';
+        let priceValue = service.price;
+        
+        // Если услуга уже выбрана, показываем её цену
+        if (isSelected) {
+            const selectedService = selectedServices[currentCategory].find(s => s.id === service.id);
+            if (selectedService && selectedService.price) {
+                displayPrice = selectedService.price.toLocaleString() + ' ₽';
+                priceValue = selectedService.price;
+            } else {
+                displayPrice = '';
+            }
+        }
+        
+        let formatsHtml = '';
+if (hasFormats) {
+    const selectedFormatId = selectedServices[currentCategory].find(s => s.id === service.id)?.selectedFormatId;
+    formatsHtml = `
+    <div class="service-formats">
+        <select class="format-select" data-service-id="${service.id}" data-placeholder="Выберите формат">
+            <option value="" disabled selected hidden>Выберите формат памятника</option>
+            ${service.formats.map(format => `
+                <option value="${format.name}" data-price="${format.price}" data-size="${format.size}">
+                    ${format.name} (${format.size}) — ${format.price}
+                </option>
+            `).join('')}
+        </select>
+    </div>
+`;
 }
+        
+        return `
+            <div class="service-item ${isSelected ? 'selected' : ''}" data-id="${service.id}" data-price="${service.price}" data-name="${service.name}" data-desc="${service.desc || ''}" data-has-formats="${hasFormats}">
+                <div class="service-check">
+                    ${isSelected ? '<i class="fas fa-check"></i>' : ''}
+                </div>
+                <div class="service-info">
+                    <div class="service-name">${service.name}</div>
+                    <div class="service-desc">${service.desc || ''}</div>
+                    ${formatsHtml}
+                </div>
+                <div class="service-price" id="price-${service.id}">${displayPrice}</div>
+            </div>
+        `;
     }).join('');
     
     setupServiceItemHandlers();
+    setupSelectPlaceholder();
+    
+    document.querySelectorAll('.format-select').forEach(select => {
+    select.addEventListener('change', (e) => {
+        e.stopPropagation();
+        const serviceId = select.getAttribute('data-service-id');
+        const selectedOption = select.options[select.selectedIndex];
+        
+        if (!selectedOption.value) return;
+        
+        const selectedPriceRaw = selectedOption.getAttribute('data-price');
+        const selectedName = selectedOption.value;
+        const selectedSize = selectedOption.getAttribute('data-size');
+        const selectedPrice = parseInt(selectedPriceRaw.replace(/[^\d]/g, ''));
+        
+        const priceSpan = document.getElementById(`price-${serviceId}`);
+        const serviceItem = select.closest('.service-item');
+        const checkDiv = serviceItem.querySelector('.service-check');
+        const serviceName = serviceItem.getAttribute('data-name');
+        const servicePrice = serviceItem.getAttribute('data-price');
+        const serviceDesc = serviceItem.getAttribute('data-desc');
+        const hasQuantity = serviceItem.getAttribute('data-has-quantity') === 'true';
+        const unit = serviceItem.getAttribute('data-unit') || 'шт';
+        
+        // Проверяем, выбрана ли уже услуга
+        const isSelected = selectedServices[currentCategory].some(s => s.id === serviceId);
+        
+        if (!isSelected) {
+            // Если услуга не выбрана — автоматически добавляем её
+            const finalPrice = selectedPrice;
+            const finalName = `${serviceName} (${selectedName})`;
+            const selectedFormat = {
+                name: selectedName,
+                size: selectedSize,
+                price: finalPrice
+            };
+            
+            const newService = {
+                id: serviceId,
+                name: finalName,
+                price: finalPrice,
+                desc: serviceDesc,
+                hasQuantity: hasQuantity || false,
+                quantity: 1,
+                totalPrice: finalPrice,
+                unit: unit,
+                selectedFormat: selectedFormat,
+                originalName: serviceName
+            };
+            
+            selectedServices[currentCategory].push(newService);
+            serviceItem.classList.add('selected');
+            if (checkDiv) checkDiv.innerHTML = '<i class="fas fa-check"></i>';
+            
+            if (priceSpan) {
+                priceSpan.textContent = finalPrice.toLocaleString() + ' ₽';
+            }
+        } else {
+            // Если услуга уже выбрана — обновляем цену и название
+            const serviceIndex = selectedServices[currentCategory].findIndex(s => s.id === serviceId);
+            if (serviceIndex !== -1) {
+                selectedServices[currentCategory][serviceIndex].selectedFormat = {
+                    name: selectedName,
+                    size: selectedSize,
+                    price: selectedPrice
+                };
+                selectedServices[currentCategory][serviceIndex].price = selectedPrice;
+                selectedServices[currentCategory][serviceIndex].name = `${selectedServices[currentCategory][serviceIndex].originalName || serviceName} (${selectedName})`;
+                
+                if (priceSpan) {
+                    priceSpan.textContent = selectedPrice.toLocaleString() + ' ₽';
+                }
+            }
+        }
+        
+        updateTotalPrice();
+    });
+});
+}
+
+// Функция для установки placeholder в select
+function setupSelectPlaceholder() {
+    setTimeout(() => {  // Добавляем задержку для гарантии отрисовки DOM
+        document.querySelectorAll('.format-select').forEach((select, index) => {
+            // Проверяем, есть ли уже placeholder
+            const existingPlaceholder = select.querySelector('option[disabled][hidden]');
+            if (existingPlaceholder) return;
+            
+            // Получаем текст placeholder из атрибута
+            const placeholder = select.getAttribute('data-placeholder') || 'Выберите формат';
+            
+            // Сохраняем текущее выбранное значение (если есть)
+            const currentValue = select.value;
+            
+            // Создаем placeholder option
+            const placeholderOption = document.createElement('option');
+            placeholderOption.value = '';
+            placeholderOption.textContent = placeholder;
+            placeholderOption.disabled = true;
+            placeholderOption.selected = true;
+            placeholderOption.hidden = true;
+            placeholderOption.style.display = 'none';
+            
+            // Добавляем в начало select
+            select.insertBefore(placeholderOption, select.firstChild);
+            
+            // Если не было выбранного значения, показываем placeholder
+            if (!currentValue || currentValue === '') {
+                select.value = '';
+            } else {
+                select.value = currentValue;
+            }
+            
+            // Стили для лучшего вида
+            if (select.value === '') {
+                select.style.color = '#999';
+            }
+            
+            // Обработчик изменения для сброса стиля
+            select.addEventListener('change', function() {
+                if (this.value === '') {
+                    this.style.color = '#999';
+                } else {
+                    this.style.color = '#333';
+                }
+            });
+        });
+    }, 50);
 }
 
 /// Обработчики для всех элементов (делегирование)
@@ -648,57 +983,104 @@ function updateQuantity(serviceId, newQuantity) {
 
 /// Функция переключения услуги (обновленная)
 function toggleService(category, itemElement, serviceId, serviceName, servicePrice, serviceDesc, hasQuantity, unit) {
-    const serviceIndex = selectedServices[category].findIndex(s => s.id === serviceId);
-    
-    if (serviceIndex === -1) {
-        // Добавляем услугу
+    // Для ritual пакетов
+    if (category === 'ritual') {
+        selectedServices[category] = [];
         const newService = { 
             id: serviceId, 
             name: serviceName, 
-            price: servicePrice, 
+            price: parseInt(servicePrice), 
             desc: serviceDesc,
-            hasQuantity: hasQuantity,
-            quantity: 1,
-            totalPrice: servicePrice,
-            unit: unit
+            hasQuantity: false
         };
         selectedServices[category].push(newService);
         
-        // Обновляем внешний вид карточки
+        const currentTab = document.querySelector('.service-tab.active')?.getAttribute('data-tab');
+        if (currentTab) renderServices(currentTab);
+        updateTotalPrice();
+        return;
+    }
+    
+    const serviceIndex = selectedServices[category].findIndex(s => s.id === serviceId);
+    const hasFormats = itemElement.getAttribute('data-has-formats') === 'true';
+    const formatSelect = itemElement.querySelector('.format-select');
+    const priceSpan = document.getElementById(`price-${serviceId}`);
+    
+    if (serviceIndex === -1) {
+        // Добавляем услугу
+        let finalPrice = null;
+        let finalName = serviceName;
+        let selectedFormat = null;
+        let isValid = false;
+        
+        // Если есть форматы — проверяем, выбран ли формат
+        if (hasFormats) {
+            if (formatSelect && formatSelect.value) {
+                const selectedOption = formatSelect.options[formatSelect.selectedIndex];
+                const priceRaw = selectedOption.getAttribute('data-price');
+                finalPrice = parseInt(priceRaw.replace(/[^\d]/g, ''));
+                selectedFormat = {
+                    name: selectedOption.value,
+                    size: selectedOption.getAttribute('data-size'),
+                    price: finalPrice
+                };
+                finalName = `${serviceName} (${selectedOption.value})`;
+                isValid = true;
+            } else {
+                // Формат не выбран — подсвечиваем select и показываем сообщение
+                formatSelect.style.borderColor = '#ff4444';
+                formatSelect.style.boxShadow = '0 0 5px rgba(255,68,68,0.5)';
+                setTimeout(() => {
+                    formatSelect.style.borderColor = '';
+                    formatSelect.style.boxShadow = '';
+                }, 2000);
+                alert('Пожалуйста, сначала выберите формат памятника');
+                return;
+            }
+        } else {
+            finalPrice = parseInt(servicePrice);
+            isValid = true;
+        }
+        
+        if (!isValid) return;
+        
+        const newService = { 
+            id: serviceId, 
+            name: finalName, 
+            price: finalPrice, 
+            desc: serviceDesc,
+            hasQuantity: hasQuantity || false,
+            quantity: 1,
+            totalPrice: finalPrice,
+            unit: unit || 'шт',
+            selectedFormat: selectedFormat,
+            originalName: serviceName
+        };
+        
+        selectedServices[category].push(newService);
         itemElement.classList.add('selected');
         const checkDiv = itemElement.querySelector('.service-check');
         if (checkDiv) checkDiv.innerHTML = '<i class="fas fa-check"></i>';
         
-        // Если услуга с количеством - добавляем контролы
-        if (hasQuantity) {
-            const infoDiv = itemElement.querySelector('.service-info');
-            const existingControls = infoDiv.querySelector('.quantity-control');
-            if (!existingControls) {
-                const quantityHtml = `
-                    <div class="quantity-control">
-                        <button class="qty-btn minus" data-id="${serviceId}">−</button>
-                        <input type="number" class="qty-input" data-id="${serviceId}" value="1" min="1" max="1000" step="1">
-                        <button class="qty-btn plus" data-id="${serviceId}">+</button>
-                    </div>
-                `;
-                infoDiv.insertAdjacentHTML('beforeend', quantityHtml);
-            }
-        } else {
-    // Не добавляем никакой цены при выборе обычной услуги
-}
+        if (priceSpan && finalPrice) {
+            priceSpan.textContent = finalPrice.toLocaleString() + ' ₽';
+        }
+        
     } else {
         // Удаляем услугу
         selectedServices[category].splice(serviceIndex, 1);
         itemElement.classList.remove('selected');
-        
         const checkDiv = itemElement.querySelector('.service-check');
         if (checkDiv) checkDiv.innerHTML = '';
         
-        const quantityControl = itemElement.querySelector('.quantity-control');
-        if (quantityControl) quantityControl.remove();
+        if (priceSpan) {
+            priceSpan.textContent = '';
+        }
         
-        const priceDisplay = itemElement.querySelector('.service-price-display');
-        if (priceDisplay) priceDisplay.remove();
+        // Сбрасываем select, но не блокируем
+        if (formatSelect) {
+            formatSelect.value = '';
+        }
     }
     
     updateTotalPrice();
@@ -707,11 +1089,10 @@ function toggleService(category, itemElement, serviceId, serviceName, servicePri
 function updateTotalPrice() {
     let total = 0;
     
-    for (const service of selectedServices.blagoustroystvo) {
-        total += service.hasQuantity ? (service.price * (service.quantity || 1)) : service.price;
-    }
-    for (const service of selectedServices.pamiatniki) {
-        total += service.hasQuantity ? (service.price * (service.quantity || 1)) : service.price;
+    for (const category of ['blagoustroystvo', 'pamiatniki', 'ritual']) {
+        for (const service of selectedServices[category]) {
+            total += service.hasQuantity ? (service.price * (service.quantity || 1)) : service.price;
+        }
     }
     
     const totalElement = document.getElementById('totalPrice');
@@ -753,44 +1134,42 @@ function goToStep(stepNumber) {
 
 /// Отправка заявки
 function sendOrder() {
-    const allServices = [...selectedServices.blagoustroystvo, ...selectedServices.pamiatniki];
+    const allServices = getAllSelectedServices();
     if (allServices.length === 0) {
         alert('Пожалуйста, выберите хотя бы одну услугу');
         return;
     }
     
-    let servicesList = '📋 ВЫБРАННЫЕ УСЛУГИ:\n\n';
+    let servicesList = 'ВЫБРАННЫЕ УСЛУГИ:\n\n';
+    
     if (selectedServices.blagoustroystvo.length > 0) {
-        servicesList += '🏠 БЛАГОУСТРОЙСТВО:\n';
+        servicesList += 'БЛАГОУСТРОЙСТВО:\n';
         selectedServices.blagoustroystvo.forEach(s => {
-            const price = s.hasQuantity ? (s.price * s.quantity) : s.price;
-            let quantityText = '';
-            if (s.hasQuantity) {
-                const signsWord = getSignsWord(s.quantity);
-                quantityText = ` (${s.quantity} ${signsWord})`;
-            }
-            servicesList += `  • ${s.name}${quantityText}: ${price.toLocaleString()} ₽\n`;
+            servicesList += `  • ${s.name}: ${s.price.toLocaleString()} ₽\n`;
         });
         servicesList += '\n';
     }
+    
     if (selectedServices.pamiatniki.length > 0) {
-        servicesList += '🗿 ПАМЯТНИКИ:\n';
+        servicesList += 'ПАМЯТНИКИ:\n';
         selectedServices.pamiatniki.forEach(s => {
-            const price = s.hasQuantity ? (s.price * s.quantity) : s.price;
-            let quantityText = '';
-            if (s.hasQuantity) {
-                const signsWord = getSignsWord(s.quantity);
-                quantityText = ` (${s.quantity} ${signsWord})`;
-            }
-            servicesList += `  • ${s.name}${quantityText}: ${price.toLocaleString()} ₽\n`;
+            servicesList += `  • ${s.name}: ${s.price.toLocaleString()} ₽\n`;
         });
         servicesList += '\n';
     }
     
-    const total = allServices.reduce((sum, s) => sum + (s.hasQuantity ? (s.price * s.quantity) : s.price), 0);
-    servicesList += `💰 ОБЩАЯ СТОИМОСТЬ: ${total.toLocaleString()} ₽`;
+    if (selectedServices.ritual.length > 0) {
+        servicesList += 'РИТУАЛЬНЫЕ УСЛУГИ (ПАКЕТЫ):\n';
+        selectedServices.ritual.forEach(s => {
+            servicesList += `  • ${s.name}: ${s.price.toLocaleString()} ₽\n`;
+        });
+        servicesList += '\n';
+    }
     
-    const message = `Здравствуйте! Хочу получить консультацию по калькулятору:\n\n${servicesList}\n\n📋 Пожалуйста, свяжитесь со мной для точного расчёта.`;
+    const total = getAllSelectedServices().reduce((sum, s) => sum + s.price, 0);
+    servicesList += ` ОБЩАЯ СТОИМОСТЬ: ${total.toLocaleString()} ₽`;
+    
+    const message = `Здравствуйте! Хочу получить консультацию по калькулятору:\n\n${servicesList}\n\n Пожалуйста, свяжитесь со мной для точного расчёта.`;
     window.open(`https://wa.me/79247301030?text=${encodeURIComponent(message)}`, '_blank');
 }
 
@@ -798,7 +1177,8 @@ function sendOrder() {
 function resetAll() {
     selectedServices = {
         blagoustroystvo: [],
-        pamiatniki: []
+        pamiatniki: [],
+        ritual: []
     };
     currentCategory = null;
     goToStep(1);
@@ -806,35 +1186,35 @@ function resetAll() {
 
 // Отрисовка шага 3 (ИТОГОВЫЙ РАСЧЕТ)
 function renderStep3() {
-    // Подсчет общей суммы с учетом количества
     let total = 0;
-    for (const service of selectedServices.blagoustroystvo) {
-        total += service.hasQuantity ? (service.price * (service.quantity || 1)) : service.price;
-    }
-    for (const service of selectedServices.pamiatniki) {
-        total += service.hasQuantity ? (service.price * (service.quantity || 1)) : service.price;
-    }
     
     // Формируем список услуг для Благоустройства
     let blagoList = '';
     for (const service of selectedServices.blagoustroystvo) {
         if (service.hasQuantity) {
-            const signsWord = getSignsWord(service.quantity);
-            blagoList += `<li><span>${service.name} (${service.quantity} ${signsWord})</span><span>${(service.price * service.quantity).toLocaleString()} ₽</span></li>`;
+            blagoList += `<li><span>${service.name} (${service.quantity} ${getSignsWord(service.quantity)})</span><span>${(service.price * service.quantity).toLocaleString()} ₽</span></li>`;
         } else {
             blagoList += `<li><span>${service.name}</span><span>${service.price.toLocaleString()} ₽</span></li>`;
         }
+        total += service.hasQuantity ? (service.price * service.quantity) : service.price;
     }
     
     // Формируем список услуг для Памятников
     let pamiatnikiList = '';
     for (const service of selectedServices.pamiatniki) {
         if (service.hasQuantity) {
-            const signsWord = getSignsWord(service.quantity);
-            pamiatnikiList += `<li><span>${service.name} (${service.quantity} ${signsWord})</span><span>${(service.price * service.quantity).toLocaleString()} ₽</span></li>`;
+            pamiatnikiList += `<li><span>${service.name} (${service.quantity} ${getSignsWord(service.quantity)})</span><span>${(service.price * service.quantity).toLocaleString()} ₽</span></li>`;
         } else {
             pamiatnikiList += `<li><span>${service.name}</span><span>${service.price.toLocaleString()} ₽</span></li>`;
         }
+        total += service.hasQuantity ? (service.price * service.quantity) : service.price;
+    }
+    
+    // ===== РИТУАЛЬНЫЕ УСЛУГИ (ПАКЕТЫ) =====
+    let ritualList = '';
+    for (const service of selectedServices.ritual) {
+        ritualList += `<li><span>${service.name}</span><span>${service.price.toLocaleString()} ₽</span></li>`;
+        total += service.price;
     }
     
     const html = `
@@ -845,8 +1225,12 @@ function renderStep3() {
                     ${blagoList.length > 0 ? `<ul>${blagoList}</ul>` : '<p class="empty-list">Нет выбранных услуг</p>'}
                 </div>
                 <div class="summary-card">
-                    <h4> 🗿Памятники</h4>
+                    <h4>🗿 Памятники</h4>
                     ${pamiatnikiList.length > 0 ? `<ul>${pamiatnikiList}</ul>` : '<p class="empty-list">Нет выбранных услуг</p>'}
+                </div>
+                <div class="summary-card">
+                    <h4>⚰️ Ритуальные услуги</h4>
+                    ${ritualList.length > 0 ? `<ul>${ritualList}</ul>` : '<p class="empty-list">Нет выбранных пакетов</p>'}
                 </div>
             </div>
             <div class="step3-total">
@@ -876,7 +1260,7 @@ function renderStep3() {
         container.innerHTML = html;
     }
     
-    // Обработчики кнопок на шаге 3
+    // Обработчики кнопок
     const finalOrderBtn = document.getElementById('finalOrderBtn');
     if (finalOrderBtn) finalOrderBtn.addEventListener('click', sendOrder);
     
@@ -885,34 +1269,6 @@ function renderStep3() {
     
     const resetAllBtn = document.getElementById('resetAllBtn');
     if (resetAllBtn) resetAllBtn.addEventListener('click', resetAll);
-}
-
-// Исправленная функция goToStep (добавлен переход на шаг 3)
-function goToStep(stepNumber) {
-    const step1 = document.getElementById('step1');
-    const step2 = document.getElementById('step2');
-    const step3 = document.getElementById('step3');
-    
-    step1.classList.remove('active');
-    step2.classList.remove('active');
-    step3.classList.remove('active');
-    
-    if (stepNumber === 1) {
-        step1.classList.add('active');
-        currentCategory = null;
-        document.getElementById('step2Title').textContent = 'Выберите услуги';
-    } else if (stepNumber === 2) {
-        step2.classList.add('active');
-        if (currentCategory && servicesData[currentCategory]) {
-            document.getElementById('step2Title').textContent = servicesData[currentCategory].title || 'Выберите услуги';
-        } else {
-            document.getElementById('step2Title').textContent = 'Выберите услуги';
-        }
-        renderServiceTabs();
-    } else if (stepNumber === 3) {
-        step3.classList.add('active');
-        renderStep3();
-    }
 }
 // Инициализация калькулятора
 function initStepCalculator() {
@@ -929,21 +1285,202 @@ function initStepCalculator() {
     }
     
     const nextBtn = document.getElementById('nextToStep3');
-    if (nextBtn) {
-        nextBtn.addEventListener('click', () => {
-            const allServices = getAllSelectedServices();
-            if (allServices.length === 0) {
-                alert('Пожалуйста, выберите хотя бы одну услугу');
-                return;
-            }
-            goToStep(3);
-        });
-    }
+if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+        const allServices = getAllSelectedServices();
+        if (allServices.length === 0) {
+            showNoServicesToast();
+            return;
+        }
+        goToStep(3);
+    });
+}
     
     const resetBtn = document.getElementById('resetBtn');
     if (resetBtn) {
         resetBtn.addEventListener('click', resetAll);
     }
+}
+// Проверяем, есть ли данные для добавления в калькулятор из service.html
+const pendingService = sessionStorage.getItem('pendingServiceToAdd');
+if (pendingService) {
+    sessionStorage.removeItem('pendingServiceToAdd');
+    
+    try {
+        const service = JSON.parse(pendingService);
+        console.log('Получены данные из sessionStorage:', service);
+        
+        // Функция для попытки добавления с повторением
+        const tryToAddService = (attempt = 0) => {
+            const maxAttempts = 10;
+            const delay = 500;
+            
+            // Устанавливаем категорию
+            currentCategory = service.category;
+            
+            // Переходим на шаг 2
+            goToStep(2);
+            
+            setTimeout(() => {
+                // Определяем, на какой вкладке находится нужная услуга
+                let targetTab = null;
+                let serviceItem = null;
+                
+                // Проверяем, есть ли услуга на текущей видимой вкладке
+                serviceItem = document.querySelector(`.service-item[data-id="${service.serviceId}"]`);
+                
+                if (!serviceItem) {
+                    // Если не нашли, нужно переключить вкладку
+                    console.log('Услуга не найдена на текущей вкладке, ищем в других вкладках...');
+                    
+                    // Проверяем, какой тип услуги (одиночный/семейный/накрывной)
+                    if (service.serviceId.includes('sem')) {
+                        targetTab = 'semeynye';
+                    } else if (service.serviceId.includes('nak')) {
+                        targetTab = 'nakryvnye';
+                    } else if (service.serviceId.includes('od')) {
+                        targetTab = 'odinochnye';
+                    }
+                    
+                    if (targetTab) {
+                        // Находим и кликаем по нужной вкладке
+                        const targetTabBtn = document.querySelector(`.service-tab[data-tab="${targetTab}"]`);
+                        if (targetTabBtn) {
+                            console.log('Переключаемся на вкладку:', targetTab);
+                            targetTabBtn.click();
+                            
+                            // После переключения вкладки ждем рендера и ищем элемент снова
+                            setTimeout(() => {
+                                serviceItem = document.querySelector(`.service-item[data-id="${service.serviceId}"]`);
+                                if (serviceItem) {
+                                    addServiceItem(serviceItem, service);
+                                } else if (attempt < maxAttempts) {
+                                    console.log(`Элемент не найден после переключения, попытка ${attempt + 1}...`);
+                                    setTimeout(() => tryToAddService(attempt + 1), delay);
+                                }
+                            }, 300);
+                            return;
+                        }
+                    }
+                }
+                
+                if (serviceItem) {
+                    addServiceItem(serviceItem, service);
+                } else if (attempt < maxAttempts) {
+                    console.log(`Элемент не найден, попытка ${attempt + 1} из ${maxAttempts}...`);
+                    setTimeout(() => tryToAddService(attempt + 1), delay);
+                } else {
+                    console.error('Не удалось найти элемент услуги после', maxAttempts, 'попыток');
+                    showToastMessage(`Ошибка: не удалось добавить "${service.serviceName}"`, 'error');
+                }
+            }, 500);
+        };
+        
+        // Функция для добавления услуги
+        function addServiceItem(serviceItem, service) {
+            console.log('Найден элемент услуги, добавляем...');
+            
+            // Добавляем услугу
+            const finalPrice = service.formatPrice || service.servicePrice;
+            const finalName = service.formatName ? `${service.serviceName} (${service.formatName})` : service.serviceName;
+            
+            const newService = {
+                id: service.serviceId,
+                name: finalName,
+                price: finalPrice,
+                desc: service.serviceDesc,
+                hasQuantity: false,
+                quantity: 1,
+                totalPrice: finalPrice,
+                unit: 'шт',
+                originalName: service.serviceName,
+                selectedFormat: service.formatName ? {
+                    name: service.formatName,
+                    size: service.formatSize,
+                    price: finalPrice
+                } : null
+            };
+            
+            selectedServices[service.category].push(newService);
+            serviceItem.classList.add('selected');
+            
+            const checkDiv = serviceItem.querySelector('.service-check');
+            if (checkDiv) checkDiv.innerHTML = '<i class="fas fa-check"></i>';
+            
+            const priceSpan = document.getElementById(`price-${service.serviceId}`);
+            if (priceSpan) {
+                priceSpan.textContent = finalPrice.toLocaleString() + ' ₽';
+            }
+            
+            // Если есть селект форматов и выбран формат
+            if (service.formatName) {
+                const formatSelect = serviceItem.querySelector('.format-select');
+                if (formatSelect) {
+                    for (let i = 0; i < formatSelect.options.length; i++) {
+                        const option = formatSelect.options[i];
+                        if (option.value === service.formatName || 
+                            option.textContent.includes(service.formatName)) {
+                            formatSelect.selectedIndex = i;
+                            // Триггерим событие change
+                            const event = new Event('change', { bubbles: true });
+                            formatSelect.dispatchEvent(event);
+                            break;
+                        }
+                    }
+                }
+            }
+            
+            updateTotalPrice();
+            showToastMessage(`✓ "${service.serviceName}" добавлен в расчет`, 'success');
+        }
+        
+        // Запускаем с первой попытки
+        tryToAddService();
+        
+    } catch(e) {
+        console.error('Ошибка при добавлении услуги:', e);
+    }
+}
+function showNoServicesToast() {
+    // Удаляем старый тост, если есть
+    const oldToast = document.querySelector('.toast-notification');
+    if (oldToast) oldToast.remove();
+    
+    // Создаём тост
+    const toast = document.createElement('div');
+    toast.className = 'toast-notification';
+    toast.innerHTML = `
+        <div class="toast-content">
+            <div class="toast-icon">
+                <i class="fas fa-info-circle"></i>
+            </div>
+            <div class="toast-message">
+                <strong>Внимание!</strong><br>
+                Пожалуйста, выберите хотя бы одну услугу перед расчётом.
+            </div>
+            <button class="toast-close">&times;</button>
+        </div>
+    `;
+    
+    document.body.appendChild(toast);
+    
+    // Анимация появления
+    setTimeout(() => toast.classList.add('show'), 10);
+    
+    // Закрытие по кнопке
+    const closeBtn = toast.querySelector('.toast-close');
+    closeBtn.addEventListener('click', () => {
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 300);
+    });
+    
+    // Авто-закрытие через 4 секунды
+    setTimeout(() => {
+        if (toast.parentNode) {
+            toast.classList.remove('show');
+            setTimeout(() => toast.remove(), 300);
+        }
+    }, 4000);
 }
 
 // Запуск
@@ -1025,6 +1562,130 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+// Функция для добавления конкретного памятника в калькулятор
+function addToCalculator(category, serviceId, serviceName, servicePrice, serviceDesc, formatName = null, formatPrice = null, formatSize = null) {
+    // Переключаемся на вкладку калькулятора
+    const calculatorSection = document.getElementById('calculator');
+    if (calculatorSection) {
+        calculatorSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    
+    // Устанавливаем текущую категорию
+    currentCategory = category;
+    
+    // Переходим на шаг 2
+    goToStep(2);
+    
+    // Небольшая задержка для отрисовки интерфейса
+    setTimeout(() => {
+        let targetServiceId = serviceId;
+        let finalPrice = servicePrice;
+        let finalName = serviceName;
+        let finalDesc = serviceDesc;
+        let selectedFormat = null;
+        
+        // Если указан конкретный формат
+        if (formatName && formatPrice) {
+            finalPrice = formatPrice;
+            finalName = `${serviceName} (${formatName})`;
+            selectedFormat = {
+                name: formatName,
+                size: formatSize,
+                price: formatPrice
+            };
+        }
+        
+        // Проверяем, не добавлена ли уже эта услуга
+        const alreadyAdded = selectedServices[category].some(s => s.id === targetServiceId);
+        
+        if (!alreadyAdded) {
+            // Создаем объект услуги
+            const newService = {
+                id: targetServiceId,
+                name: finalName,
+                price: finalPrice,
+                desc: finalDesc,
+                hasQuantity: false,
+                quantity: 1,
+                totalPrice: finalPrice,
+                unit: 'шт',
+                selectedFormat: selectedFormat,
+                originalName: serviceName
+            };
+            
+            // Добавляем в выбранные услуги
+            selectedServices[category].push(newService);
+            
+            // Обновляем отображение в интерфейсе
+            const serviceItem = document.querySelector(`.service-item[data-id="${targetServiceId}"]`);
+            if (serviceItem) {
+                serviceItem.classList.add('selected');
+                const checkDiv = serviceItem.querySelector('.service-check');
+                if (checkDiv) checkDiv.innerHTML = '<i class="fas fa-check"></i>';
+                
+                const priceSpan = document.getElementById(`price-${targetServiceId}`);
+                if (priceSpan) {
+                    priceSpan.textContent = finalPrice.toLocaleString() + ' ₽';
+                }
+                
+                // Если есть селект форматов, устанавливаем нужное значение
+                const formatSelect = serviceItem.querySelector('.format-select');
+                if (formatSelect && formatName) {
+                    // Ищем option с нужным значением
+                    for (let i = 0; i < formatSelect.options.length; i++) {
+                        if (formatSelect.options[i].value === formatName) {
+                            formatSelect.selectedIndex = i;
+                            break;
+                        }
+                    }
+                }
+            }
+            
+            // Показываем уведомление
+            showToastMessage(`✓ "${serviceName}" добавлен в расчет`, 'success');
+        } else {
+            showToastMessage(`"${serviceName}" уже добавлен в расчет`, 'info');
+        }
+        
+        // Обновляем общую стоимость
+        updateTotalPrice();
+        
+        // Подсвечиваем кнопку перехода к расчету
+        const nextBtn = document.getElementById('nextToStep3');
+        if (nextBtn) {
+            nextBtn.style.animation = 'pulse 0.5s ease';
+            setTimeout(() => {
+                nextBtn.style.animation = '';
+            }, 500);
+        }
+    }, 300);
+}
+
+// Функция для показа всплывающих уведомлений
+function showToastMessage(message, type = 'success') {
+    const oldToast = document.querySelector('.action-toast');
+    if (oldToast) oldToast.remove();
+    
+    const toast = document.createElement('div');
+    toast.className = `action-toast ${type}`;
+    toast.innerHTML = `
+        <div class="toast-content">
+            <div class="toast-icon">
+                ${type === 'success' ? '<i class="fas fa-check-circle"></i>' : '<i class="fas fa-info-circle"></i>'}
+            </div>
+            <div class="toast-message">${message}</div>
+        </div>
+    `;
+    
+    document.body.appendChild(toast);
+    
+    setTimeout(() => toast.classList.add('show'), 10);
+    
+    setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 300);
+    }, 3000);
+}
 </script>
 </body>
 </html>
