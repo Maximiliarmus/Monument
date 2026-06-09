@@ -47,7 +47,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.7);
+    background: rgba(0,0,0,0.85);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -56,89 +56,181 @@
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
 }
+
 .format-selector-modal.show {
     opacity: 1;
     visibility: visible;
 }
+
 .format-selector-content {
-    background: white;
+    background: #1a1a1a; /* Черный фон */
     border-radius: 20px;
     padding: 30px;
     max-width: 500px;
     width: 90%;
     max-height: 80vh;
     overflow-y: auto;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    border: 1px solid #b87c4f;
 }
+
 .format-selector-content h3 {
     margin: 0 0 10px 0;
-    color: #333;
+    color: #b87c4f; /* Оранжевый цвет */
     font-size: 24px;
     text-align: center;
+    font-weight: 600;
 }
+
 .monument-name {
     font-size: 18px;
     font-weight: 600;
-    color: #b87c4f;
+    color: #fff; /* Белый текст */
     margin-bottom: 25px;
     text-align: center;
     padding-bottom: 10px;
     border-bottom: 2px solid #b87c4f;
 }
+
+/* Список форматов */
 .formats-list {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
     margin-bottom: 25px;
 }
+
+/* Кнопки выбора формата */
 .format-option-btn {
-    background: #f8f8f8;
-    border: 2px solid #e0e0e0;
-    border-radius: 12px;
-    padding: 15px 20px;
+    background: #2a2a2a;
+    border: 1px solid #444;
+    border-radius: 10px;
+    padding: 12px 15px;
     text-align: left;
     cursor: pointer;
     transition: all 0.3s ease;
     width: 100%;
-    font-size: 16px;
+    font-size: 14px;
 }
+
 .format-option-btn:hover {
-    background: #fff5ee;
+    background: #b87c4f;
     border-color: #b87c4f;
     transform: translateX(5px);
 }
+
+.format-option-content {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
 .format-option-btn strong {
-    font-size: 18px;
-    color: #333;
-    display: block;
-    margin-bottom: 5px;
+    font-size: 15px;
+    color: #fff;
+    font-weight: 600;
 }
+
 .format-option-btn small {
-    font-size: 13px;
-    color: #666;
-    display: block;
-    margin-bottom: 8px;
+    font-size: 12px;
+    color: #aaa;
 }
+
+.format-option-btn:hover strong,
+.format-option-btn:hover small {
+    color: #fff;
+}
+
 .format-price {
-    color: #b87c4f;
+    color: #b87c4f; /* Оранжевая цена */
     font-weight: 700;
-    font-size: 18px;
-    margin-top: 5px;
-    display: inline-block;
+    font-size: 15px;
+    margin-left: auto;
+    white-space: nowrap;
 }
+
+.format-option-btn:hover .format-price {
+    color: #fff; /* Белая цена при наведении */
+}
+
+.format-option-btn:hover strong {
+    color: #fff;
+}
+
+.format-option-btn:hover small {
+    color: #f0f0f0;
+}
+
+/* Кнопка "Отмена" - черно-оранжевый стиль */
 .close-format-btn {
-    width: 100%;
-    padding: 12px;
-    background: #f0f0f0;
-    border: none;
-    border-radius: 10px;
+    background: transparent;
+    border: 2px solid #b87c4f;
+    color: #b87c4f;
+    padding: 12px 20px;
+    border-radius: 40px;
     cursor: pointer;
-    font-size: 16px;
-    margin-top: 10px;
-    transition: background 0.3s ease;
+    font-size: 15px;
+    font-weight: 600;
+    width: 100%;
+    margin-top: 15px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
 }
+
+.close-format-btn i {
+    font-size: 14px;
+}
+
 .close-format-btn:hover {
-    background: #e0e0e0;
+    background: #b87c4f;
+    color: #1a1a1a; /* Черный текст на оранжевом фоне */
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(184, 124, 79, 0.4);
+}
+
+.close-format-btn:active {
+    transform: translateY(0);
+}
+
+/* Стилизация скроллбара для черного фона */
+.format-selector-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.format-selector-content::-webkit-scrollbar-track {
+    background: #2a2a2a;
+    border-radius: 10px;
+}
+
+.format-selector-content::-webkit-scrollbar-thumb {
+    background: #b87c4f;
+    border-radius: 10px;
+}
+
+.format-selector-content::-webkit-scrollbar-thumb:hover {
+    background: #d4905a;
+}
+/* Адаптив для мобильных */
+@media (max-width: 480px) {
+    .format-option-btn {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    .format-price {
+        margin-left: 0;
+        align-self: flex-end;
+    }
+    
+    .format-option-content {
+        width: 100%;
+        justify-content: space-between;
+    }
 }
 
 /* ===== УВЕДОМЛЕНИЯ (TOAST) ===== */
@@ -170,4 +262,151 @@
 }
 .action-toast.success .toast-icon {
     color: #4caf50;
+}
+/* ===== КРАСИВЫЕ УВЕДОМЛЕНИЯ (TOAST) ===== */
+.custom-toast {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 99999;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(100%);
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.custom-toast.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+.custom-toast-content {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+    border-radius: 16px;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border-left: 4px solid #4caf50;
+    min-width: 300px;
+    max-width: 450px;
+}
+
+.custom-toast-icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(76, 175, 80, 0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.custom-toast-icon i {
+    font-size: 22px;
+    color: #4caf50;
+}
+
+.custom-toast-message {
+    flex: 1;
+}
+
+.custom-toast-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 4px;
+}
+
+.custom-toast-text {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.4;
+}
+
+.custom-toast-close {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.custom-toast-close i {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+    transition: color 0.3s ease;
+}
+
+.custom-toast-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+.custom-toast-close:hover i {
+    color: #fff;
+}
+
+/* Типы уведомлений */
+.custom-toast.success .custom-toast-content {
+    border-left-color: #4caf50;
+}
+.custom-toast.success .custom-toast-icon i {
+    color: #4caf50;
+}
+
+.custom-toast.error .custom-toast-content {
+    border-left-color: #f44336;
+}
+.custom-toast.error .custom-toast-icon i {
+    color: #f44336;
+}
+
+.custom-toast.info .custom-toast-content {
+    border-left-color: #2196f3;
+}
+.custom-toast.info .custom-toast-icon i {
+    color: #2196f3;
+}
+
+.custom-toast.warning .custom-toast-content {
+    border-left-color: #ff9800;
+}
+.custom-toast.warning .custom-toast-icon i {
+    color: #ff9800;
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 576px) {
+    .custom-toast {
+        bottom: 20px;
+        right: 20px;
+        left: 20px;
+    }
+    .custom-toast-content {
+        min-width: auto;
+        width: 100%;
+        padding: 12px 18px;
+    }
+    .custom-toast-icon {
+        width: 32px;
+        height: 32px;
+    }
+    .custom-toast-icon i {
+        font-size: 18px;
+    }
+    .custom-toast-title {
+        font-size: 14px;
+    }
+    .custom-toast-text {
+        font-size: 12px;
+    }
 }

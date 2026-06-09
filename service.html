@@ -695,17 +695,41 @@ function renderAboutPage() {
                 ]
             },
             nakryvnye: {
-                title: "Накрывные плиты",
-                description: "Гранитные накрывные плиты для оформления захоронений",
-                products: [
-                    { id: 25, name: "Накрывная плита 1020х470х20 (черная)", article: "НП-1", dimensions: "1020х470х20 мм", price: "10 000 ₽", type: "Плита" },
-                    { id: 26, name: "Накрывная плита 1020х520х20 (черная)", article: "НП-2", dimensions: "1020х520х20 мм", price: "12 000 ₽", type: "Плита" },
-                    { id: 27, name: "Накрывная плита 1020х520х30 (черная)", article: "НП-3", dimensions: "1020х520х30 мм", price: "15 000 ₽", type: "Плита" },
-                    { id: 28, name: "Накрывная плита 1050х850х30 (черная)", article: "НП-4", dimensions: "1050х850х30 мм", price: "28 000 ₽", type: "Плита" },
-                    { id: 29, name: "Накрывная плита 1020х520х30 (G603 светло-серый)", article: "НП-5", dimensions: "1020х520х30 мм", price: "8 000 ₽", type: "Плита" },
-                    { id: 30, name: "Накрывная плита 1050х850х30 (G603 светло-серый)", article: "НП-6", dimensions: "1050х850х30 мм", price: "15 000 ₽", type: "Плита" }
-                ]
-            }
+    title: "Накрывные плиты",
+    description: "Гранитные накрывные плиты для оформления захоронений",
+    products: [
+        { 
+            id: 25, 
+            name: "Накрывная плита НП Shanxi Black", 
+            article: "НП-1, НП-2, НП-3, НП-4", 
+            dimensions: "1020х470х20 мм", 
+            price: "10 000 ₽", 
+            type: "Плита",
+            image: "images/monuments/2.jpg",
+            description: "Накрывная плита из черного гранита. Выберите нужный размер:",
+            formats: [
+                { name: "Черный гранит", size: "1020х470х20 мм", price: "10 000 ₽" },
+                { name: "Черный гранит", size: "1020х520х20 мм", price: "12 000 ₽" },
+                { name: "Черный гранит", size: "1020х520х30 мм", price: "15 000 ₽" },
+                { name: "Черный гранит", size: "1050х850х30 мм", price: "28 000 ₽" }
+            ]
+        },
+        { 
+            id: 26, 
+            name: "Накрывная плита НП Светло-серый G603", 
+            article: "НП-5, НП-6", 
+            dimensions: "1020х520 мм", 
+            price: "8 000 - 15 000 ₽", 
+            type: "Плита",
+            image: "images/monuments/1.jpg",
+            description: "Накрывная плита из серого гранита. Выберите нужный размер:",
+            formats: [
+                { name: "Светло-серый G603", size: "1020х520х30 мм", price: "8 000 ₽" },
+                { name: "Светло-серый G603 (30мм)", size: "1050х850х30 мм", price: "15 000 ₽" },
+            ]
+        },
+    ]
+}
         };
         // Переменная для хранения текущего выбранного памятника
 let currentMonument = null;
@@ -929,23 +953,23 @@ const worksData = {
         {
             name: "Памятники",
             items: [
-                { id: 1, name: "Памятник гранитный MS", description: "Классический памятник из чёрного гранита", image: "images/works/1.jpg", year: "2024" },
-                { id: 2, name: "Памятник гранитный ML", description: "Фигурный памятник с портретной гравировкой", image: "images/works/2.jpg", year: "2024" },
-                { id: 3, name: "Памятник гранитный ME", description: "Элитный памятник из полированного гранита", image: "images/works/3.jpg", year: "2024" },
+                { id: 1, name: "Памятник гранитный прямоугольный", description: "Классический прямоугольный памятник из чёрного гранита", image: "images/works/22.jpg", year: "2024" },
+                { id: 2, name: "Памятник гранитный фигурный", description: "Фигурный памятник ", image: "images/works/1.jpg", year: "2024" },
+                { id: 3, name: "Памятник гранитный фигурный элитный", description: "Элитный фигурный памятник из полированного гранита", image: "images/works/28.jpg", year: "2024" },
                 { id: 4, name: "Памятник семейный", description: "Семейный памятник с двумя портретами", image: "images/works/4.jpg", year: "2023" },
-                { id: 5, name: "Памятник с крестом", description: "Памятник православной формы", image: "images/works/5.jpg", year: "2023" },
-                { id: 6, name: "Памятник из серого гранита", description: "Строгий памятник из серого гранита", image: "images/works/6.jpg", year: "2024" }
+                { id: 5, name: "Памятник крематорского варианта", description: "Памятник для захоронения урны", image: "images/works/5.jpg", year: "2023" },
+                { id: 6, name: "Памятник из серого гранита", description: "Комбинированный памятник из серого гранита с крестом", image: "images/works/6.jpg", year: "2024" }
             ]
         },
         {
             name: "Благоустройство",
             items: [
-                { id: 7, name: "Комплексное благоустройство", description: "Оградка, столик, лавочка, мраморная крошка", image: "images/works/blago-7.jpg", year: "2024" },
-                { id: 8, name: "Облицовка гранитной плиткой", description: "Цветник, облицованный гранитной плиткой", image: "images/works/oblitsovka-8.jpg", year: "2024" },
-                { id: 9, name: "Установка оградки", description: "Кованая оградка с художественными элементами", image: "images/works/ograda-9.jpg", year: "2023" },
-                { id: 10, name: "Мраморная крошка", description: "Декоративная отсыпка мраморной крошкой", image: "images/works/kroshka-10.jpg", year: "2024" },
-                { id: 11, name: "Гравировка портрета", description: "Портретная гравировка на граните", image: "images/works/portret-11.jpg", year: "2024" },
-                { id: 12, name: "Демонтаж старого памятника", description: "Замена старого памятника на новый", image: "images/works/demontazh-12.jpg", year: "2023" }
+                { id: 7, name: "Комплексное благоустройство", description: "Фундамент, столик, лавочка, облицовка", image: "images/works/7.jpg", year: "2024" },
+                { id: 8, name: "Облицовка гранитной плиткой", description: "Облицовка гранитной плиткой", image: "images/works/8.jpg", year: "2024" },
+                { id: 9, name: "Установка оградки", description: "Кованая оградка с художественными элементами", image: "images/works/9.jpg", year: "2023" },
+                { id: 10, name: "Укладка брусчатки", description: "Укладка брусчатки", image: "images/works/10.jpg", year: "2024" },
+                { id: 11, name: "Гравировка портрета", description: "Портретная гравировка на граните", image: "images/works/11.jpg", year: "2024" },
+                { id: 12, name: "Демонтаж старого памятника", description: "Замена старого памятника на новый", image: "images/works/12.jpg", year: "2023" }
             ]
         }
     ]
@@ -1097,6 +1121,31 @@ detailBtns.forEach(btn => {
             <div class="container">
                 <h1 id="dynamicTitle">Благоустройство мест захоронений</h1>
                 <p id="dynamicDescription">Профессиональное благоустройство могил под ключ. Полный комплекс услуг по демонтажу, установке и гравировке.</p>
+                <div class="service-note">
+    <div class="note-icon">
+        <i class="fas fa-question-circle"></i>
+    </div>
+    <div class="note-text-wrapper">
+        <div class="note-line">
+            <span class="note-label">Индивидуальный расчет:</span>
+            <span>Точная стоимость зависит от ваших параметров и предпочтений.</span>
+        </div>
+        <div class="note-line">
+            <span class="note-label">Нужна консультация?</span>
+            <span>Обратитесь к нам любым удобным способом — мы всегда на связи!</span>
+        </div>
+    </div>
+    <div class="note-buttons">
+        <a href="https://wa.me/79247301030" target="_blank" class="note-btn whatsapp">
+            <i class="fab fa-whatsapp"></i>
+            <span>WhatsApp</span>
+        </a>
+        <a href="tel:+79247301030" class="note-btn phone">
+            <i class="fas fa-phone-alt"></i>
+            <span>Позвонить</span>
+        </a>
+    </div>
+</div>
             </div>
         </div>
         <div class="categories-tabs">
@@ -1181,13 +1230,13 @@ function renderServices(tabId) {
         else if (tabId === 'ustanovka') icon = '📦';
         else if (tabId === 'gravirovka') icon = '✍️';
         else if (tabId === 'plitki') icon = '🧱';
-        else if (tabId === 'oblitsovka') icon = '🪨';
+        else if (tabId === 'oblitsovka') icon = '🔲';
         else icon = '📋';
         
         // Убираем отображение цены и кнопку заказа
         html += `
             <div class="service-item">
-                <div class="service-number">${icon} ${index + 1}</div>
+                <div class="service-icon">${icon}</div>
                 <div class="service-content">
                     <div class="service-info">
                         <h3>${item.name}</h3>
@@ -1400,7 +1449,7 @@ function renderRitualServices(tabId) {
                     <div class="service-info">
                         <h3>${item.name}</h3>
                     </div>
-                    <div class="service-price">${item.price}</div>
+                    <!-- Цена убрана -->
                 </div>
             </div>
         `;
@@ -2912,20 +2961,21 @@ function showFormatSelector(formats, serviceId, serviceName, servicePrice, servi
                 <h3>Выберите формат памятника</h3>
                 <p class="monument-name">${serviceName}</p>
                 <div class="formats-list">
-                    ${formats.map(format => {
-                        const priceNum = formatPriceValue(format.price);
-                        const priceDisplay = typeof priceNum === 'number' ? priceNum.toLocaleString() + ' ₽' : format.price;
-                        return `
-                            <button class="format-option-btn" 
-                                    onclick="selectFormatAndAdd('${serviceId}', '${serviceName}', ${servicePrice}, '${serviceDesc}', '${category}', '${format.name}', ${priceNum}, '${format.size}')">
-                                <strong>${format.name}</strong><br>
-                                <small>${format.size}</small><br>
-                                <span class="format-price">${priceDisplay}</span>
-                            </button>
-                        `;
-                    }).join('')}
+                    ${formats.map(format => `
+                        <button class="format-option-btn" 
+                                onclick="selectFormatAndAdd('${serviceId}', '${serviceName}', ${servicePrice}, '${serviceDesc}', '${category}', '${format.name}', ${parseInt(String(format.price).replace(/[^\d]/g, ''))}, '${format.size}')">
+                            <div class="format-option-content">
+                                <i class="fas fa-cube" style="color: #b87c4f; margin-right: 8px;"></i>
+                                <strong>${format.name}</strong>
+                                <small>${format.size}</small>
+                            </div>
+                        </button>
+                    `).join('')}
                 </div>
-                <button class="close-format-btn" onclick="closeFormatSelector()">Отмена</button>
+                <button class="close-format-btn" onclick="closeFormatSelector()">
+                    <i class="fas fa-times"></i>
+                    <span>Отмена</span>
+                </button>
             </div>
         </div>
     `;

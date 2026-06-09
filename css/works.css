@@ -34,28 +34,38 @@
     justify-content: center;
 }
 .work-card {
-    background: white;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
     border-radius: 16px;
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
     cursor: pointer;
     width: 100%;
-    max-width: 550px;
+    max-width: 750px;
 }
 .work-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15); }
+
 .work-image {
     aspect-ratio: 4 / 3;
     position: relative;
     overflow: hidden;
-    background: #f5f5f5;
+    background: #1a1a1a;
 }
 .work-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center 25%; /* Фокус на верхней трети для портретов */
     transition: transform 0.3s;
 }
-.work-card:hover .work-image img { transform: scale(1.05); }
+
+/* Дополнительно: для очень высоких картинок */
+.work-image img[data-orientation="portrait"] {
+    object-position: center 20%;
+}
+
+.work-card:hover .work-image img {
+    transform: scale(1.08);
+}
 .work-year {
     position: absolute;
     top: 12px;
@@ -72,7 +82,7 @@
     font-size: 1rem;
     font-weight: 700;
     margin-bottom: 6px;
-    color: #1a1a1a;
+    color: #ffffff;
 }
 .work-description {
     font-size: 0.8rem;
@@ -85,11 +95,11 @@
     align-items: center;
 }
 .work-category-badge {
-    background: #f0f0f0;
+    background: #b87c4f;
     padding: 4px 12px;
     border-radius: 20px;
     font-size: 0.7rem;
-    color: #555;
+    color: #f0efef;
 }
 .work-more {
     color: #b87c4f;

@@ -1221,22 +1221,22 @@ function renderStep3() {
         <div class="step3-content">
             <div class="step3-summary">
                 <div class="summary-card">
-                    <h4>🏠 Благоустройство</h4>
+                    <h4>Благоустройство</h4>
                     ${blagoList.length > 0 ? `<ul>${blagoList}</ul>` : '<p class="empty-list">Нет выбранных услуг</p>'}
                 </div>
                 <div class="summary-card">
-                    <h4>🗿 Памятники</h4>
+                    <h4>Памятники</h4>
                     ${pamiatnikiList.length > 0 ? `<ul>${pamiatnikiList}</ul>` : '<p class="empty-list">Нет выбранных услуг</p>'}
                 </div>
                 <div class="summary-card">
-                    <h4>⚰️ Ритуальные услуги</h4>
+                    <h4>Ритуальные услуги</h4>
                     ${ritualList.length > 0 ? `<ul>${ritualList}</ul>` : '<p class="empty-list">Нет выбранных пакетов</p>'}
                 </div>
             </div>
             <div class="step3-total">
                 <div class="total-label">ИТОГОВАЯ СТОИМОСТЬ</div>
                 <div class="total-price">${total.toLocaleString()} ₽</div>
-                <div class="total-note">💰 Ориентировочная цена. Точная стоимость после консультации</div>
+                <div class="total-note">Ориентировочная цена. Точная стоимость после консультации</div>
                 <button id="finalOrderBtn" class="order-calc-btn">
                     <i class="fab fa-whatsapp"></i>
                     Отправить заявку на расчёт
@@ -1685,6 +1685,179 @@ function showToastMessage(message, type = 'success') {
         toast.classList.remove('show');
         setTimeout(() => toast.remove(), 300);
     }, 3000);
+}
+// ===== АВТОМАТИЧЕСКОЕ ОПРЕДЕЛЕНИЕ ОРИЕНТАЦИИ ИЗОБРАЖЕНИЙ =====
+function setImageOrientation() {
+    const images = document.querySelectorAll('.service-card .service-img img');
+    
+    images.forEach(img => {
+        // Функция проверки ориентации
+        const checkAndSetOrientation = () => {
+            const width = img.naturalWidth;
+            const height = img.naturalHeight;
+            
+            if (width && height) {
+                if (width > height) {
+                    img.setAttribute('data-orientation', 'landscape');
+                } else if (height > width) {
+                    img.setAttribute('data-orientation', 'portrait');
+                } else {
+                    img.setAttribute('data-orientation', 'square');
+                }
+                console.log(`Изображение ${img.src.split('/').pop()}: ${width}x${height} - ориентация: ${img.getAttribute('data-orientation')}`);
+            }
+        };
+        
+        // Если изображение уже загружено
+        if (img.complete && img.naturalWidth > 0) {
+            checkAndSetOrientation();
+        } else {
+            // Ждем загрузки
+            img.addEventListener('load', checkAndSetOrientation);
+        }
+    });
+}
+
+// Запускаем при загрузке страницы
+document.addEventListener('DOMContentLoaded', function() {
+    setImageOrientation();
+    
+    // Наблюдаем за динамически добавляемыми карточками
+    const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            if (mutation.addedNodes.length) {
+                setTimeout(setImageOrientation, 100);
+            }
+        });
+    });
+    
+    observer.observe(document.body, { childList: true, subtree: true });
+});
+// Функция для перенаправления на калькулятор с главной страницы
+function redirectToCalculator(serviceName, servicePrice) {
+    console.log('redirectToCalculator вызвана:', serviceName, servicePrice);
+    
+    // Плавный скролл к калькулятору
+    const calculatorSection = document.getElementById('calculator');
+    if (calculatorSection) {
+        calculatorSection.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'start' 
+        });
+        
+        // Подсветка калькулятора
+        calculatorSection.style.transition = 'box-shadow 0.5s ease';
+        calculatorSection.style.boxShadow = '0 0 0 3px #b87c4f';
+        setTimeout(() => {
+            calculatorSection.style.boxShadow = '';
+        }, 1500);
+    } else {
+        console.error('Элемент calculator не найден');
+    }
+}
+document.addEventListener('DOMContentLoaded', function() {
+    const heroForm = document.getElementById('heroForm');
+    if (heroForm) {
+        heroForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Получаем поля формы
+            const nameField = this.querySelector('input[placeholder="Ваше имя"]');
+            const phoneField = this.querySelector('input[placeholder="Номер телефона"]');
+            
+            const name = nameField ? nameField.value.trim() : '';
+            const phone = phoneField ? phoneField.value.trim() : '';
+            
+            // Проверка на заполнение
+            if (!name) {
+                alert('Пожалуйста, введите ваше имя');
+                nameField.focus();
+                return;
+            }
+            
+            if (!phone) {
+                alert('Пожалуйста, введите номер телефона');
+                phoneField.focus();
+                return;
+            }
+            
+            // Формируем сообщение для WhatsApp
+            const message = `НОВАЯ ЗАЯВКА С САЙТА\n\n Имя: ${name}\n Телефон: ${phone}\n\n Хочу получить консультацию, перезвоните, пожалуйста, в ближайшее время.`;
+            
+            // Номер телефона
+            const phoneNumber = '79247301030';
+            
+            // Отправляем в WhatsApp
+            window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
+            
+            // Очищаем форму
+            this.reset();
+            
+            // Показываем сообщение об успехе
+            showCustomToast('Ваша заявка отправлена! Менеджер свяжется с вами в ближайшее время.', 'success', 'Заявка отправлена!');
+        });
+    }
+});
+// ===== КРАСИВОЕ УВЕДОМЛЕНИЕ (TOAST) =====
+function showCustomToast(message, type = 'success', title = '') {
+    // Удаляем старый тост, если есть
+    const oldToast = document.querySelector('.custom-toast');
+    if (oldToast) oldToast.remove();
+    
+    // Определяем заголовок и иконку в зависимости от типа
+    let icon = 'fa-check-circle';
+    let defaultTitle = 'Успешно!';
+    
+    switch(type) {
+        case 'success':
+            icon = 'fa-check-circle';
+            defaultTitle = 'Успешно!';
+            break;
+        case 'error':
+            icon = 'fa-exclamation-circle';
+            defaultTitle = 'Ошибка!';
+            break;
+        case 'info':
+            icon = 'fa-info-circle';
+            defaultTitle = 'Внимание!';
+            break;
+        case 'warning':
+            icon = 'fa-exclamation-triangle';
+            defaultTitle = 'Предупреждение!';
+            break;
+    }
+    
+    const finalTitle = title || defaultTitle;
+    
+    // Создаём тост
+    const toast = document.createElement('div');
+    toast.className = `custom-toast ${type}`;
+    toast.innerHTML = `
+        <div class="custom-toast-content">
+            <div class="custom-toast-icon">
+                <i class="fas ${icon}"></i>
+            </div>
+            <div class="custom-toast-message">
+                <div class="custom-toast-title">${finalTitle}</div>
+                <div class="custom-toast-text">${message}</div>
+            </div>
+            <button class="custom-toast-close">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    `;
+    
+    document.body.appendChild(toast);
+    
+    // Показываем тост
+    setTimeout(() => toast.classList.add('show'), 10);
+    
+    // Закрытие по кнопке (только так, без таймера)
+    const closeBtn = toast.querySelector('.custom-toast-close');
+    closeBtn.addEventListener('click', () => {
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 300);
+    });
 }
 </script>
 </body>

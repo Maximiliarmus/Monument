@@ -170,17 +170,26 @@
     border-color: rgba(184,124,79,0.4);
 }
 
-.service-number {
+/* Блок с иконкой вместо номера */
+.service-icon {
     width: 70px;
     background: rgba(0, 0, 0, 0.5);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 700;
-    font-size: 1.2rem;
-    color: #b87c4f;
-    border-right: 1px solid rgba(184,124,79,0.2);
     flex-shrink: 0;
+    border-right: 1px solid rgba(184,124,79,0.2);
+}
+
+.service-icon i {
+    font-size: 28px;
+    color: #b87c4f;
+    transition: all 0.3s ease;
+}
+
+.service-item:hover .service-icon i {
+    transform: scale(1.1);
+    color: #d4905a;
 }
 
 .service-content {
@@ -197,6 +206,7 @@
     flex: 3;
     min-width: 200px;
 }
+
 .service-info h3 {
     font-size: 1rem;
     font-weight: 600;
@@ -204,12 +214,38 @@
     color: #fff;
     line-height: 1.4;
 }
+
+.service-desc {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: 4px;
+}
+
 .service-unit {
     flex: 1;
     min-width: 100px;
     font-size: 0.85rem;
-    color: #ccc;
+    color: #b87c4f;
     text-align: right;
+    font-weight: 500;
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 768px) {
+    .service-icon {
+        width: 55px;
+    }
+    .service-icon i {
+        font-size: 22px;
+    }
+    .service-content {
+        padding: 15px 18px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .service-unit {
+        text-align: left;
+    }
 }
 
 /* Пустое состояние */
@@ -289,4 +325,139 @@
     backdrop-filter: blur(1px) !important;
     will-change: transform !important;
 }
+/* Заметка в хедере с кнопками */
+.service-note {
+    background: linear-gradient(135deg, rgba(184, 124, 79, 0.12) 0%, rgba(184, 124, 79, 0.05) 100%);
+    border: 1px solid rgba(184, 124, 79, 0.25);
+    border-radius: 20px;
+    padding: 20px 25px;
+    margin-top: 25px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    backdrop-filter: blur(4px);
+    flex-wrap: wrap;
+}
 
+.service-note .note-icon {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    background: rgba(184, 124, 79, 0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.service-note .note-icon i {
+    font-size: 24px;
+    color: #b87c4f;
+}
+
+.service-note .note-text-wrapper {
+    flex: 1;
+    min-width: 200px;
+}
+
+.service-note .note-line {
+    margin-bottom: 10px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.service-note .note-line:last-child {
+    margin-bottom: 0;
+}
+
+.service-note .note-label {
+    font-weight: 700;
+    color: #b87c4f;
+    margin-right: 8px;
+    display: inline-block;
+}
+
+/* Блок с кнопками */
+.service-note .note-buttons {
+    display: flex;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.service-note .note-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border-radius: 40px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.service-note .note-btn.whatsapp {
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    color: white;
+    border: none;
+}
+
+.service-note .note-btn.whatsapp:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+}
+
+.service-note .note-btn.phone {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(184, 124, 79, 0.5);
+    color: #fff;
+}
+
+.service-note .note-btn.phone:hover {
+    background: rgba(184, 124, 79, 0.2);
+    border-color: #b87c4f;
+    transform: translateY(-2px);
+}
+
+.service-note .note-btn i {
+    font-size: 16px;
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 768px) {
+    .service-note {
+        padding: 18px 20px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+    }
+    
+    .service-note .note-icon {
+        align-self: center;
+    }
+    
+    .service-note .note-text-wrapper {
+        text-align: center;
+    }
+    
+    .service-note .note-line {
+        text-align: center;
+    }
+    
+    .service-note .note-label {
+        display: block;
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+    
+    .service-note .note-buttons {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .service-note .note-btn {
+        padding: 8px 16px;
+        font-size: 13px;
+    }
+}
