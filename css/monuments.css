@@ -653,3 +653,40 @@
 .modal-calc-btn span {
     font-size: 16px;
 }
+/* ===== СПЕЦИАЛЬНЫЕ СТИЛИ ДЛЯ НАКРЫВНЫХ ПЛИТ ===== */
+/* При открытии вкладки накрывных плит */
+.monument-card-slab {
+    min-height: 400px !important;  /* Добавьте эту строку */
+}
+.monuments-tab-btn[href*="nakryvnye"].active ~ .monuments-list .monument-image,
+body:has(.monuments-tab-btn[href*="nakryvnye"].active) .monument-image {
+    height: 300px !important;
+}
+
+/* Альтернативный способ - через класс (нужно добавить в JS) */
+.monument-card-slab .monument-image {
+    height: 380px !important;
+}
+
+.monument-card-slab .monument-info {
+    padding: 10px 12px !important;
+}
+
+.monument-card-slab .monument-title {
+    font-size: 14px !important;
+    margin-bottom: 4px;
+}
+
+.monument-card-slab .monument-article {
+    font-size: 11px !important;
+}
+
+.monument-card-slab .monument-dimensions {
+    font-size: 11px !important;
+    margin-bottom: 8px;
+}
+
+.monument-card-slab .monument-details-btn {
+    padding: 5px 12px !important;
+    font-size: 11px !important;
+}
