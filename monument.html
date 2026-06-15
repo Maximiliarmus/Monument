@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=5.0">
     <title>МОНУМЕНТ | Ритуальные услуги во Владивостоке</title>
     <link rel="icon" type="image/webp" href="logo.webp">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
@@ -926,6 +926,38 @@ function setupServiceItemHandlers() {
             }
             return;
         }
+           const serviceItem = e.target.closest('.service-item');
+        if (serviceItem && !e.target.closest('.format-select') && !e.target.closest('.qty-btn')) {
+            e.stopPropagation();
+            
+            const id = serviceItem.getAttribute('data-id');
+            const price = parseInt(serviceItem.getAttribute('data-price'));
+            const name = serviceItem.getAttribute('data-name');
+            const desc = serviceItem.getAttribute('data-desc');
+            const hasQuantity = serviceItem.getAttribute('data-has-quantity') === 'true';
+            const unit = serviceItem.getAttribute('data-unit') || 'шт';
+            
+            // Проверяем, есть ли форматы у этой услуги
+            const hasFormats = serviceItem.getAttribute('data-has-formats') === 'true';
+            
+            if (hasFormats) {
+                // Если есть форматы, подсвечиваем select вместо добавления
+                const formatSelect = serviceItem.querySelector('.format-select');
+                if (formatSelect) {
+                    formatSelect.style.borderColor = '#b87c4f';
+                    formatSelect.style.boxShadow = '0 0 0 2px rgba(184,124,79,0.3)';
+                    setTimeout(() => {
+                        formatSelect.style.borderColor = '';
+                        formatSelect.style.boxShadow = '';
+                    }, 1500);
+                }
+                // Показываем подсказку
+                showFormatWarningToast();
+            } else {
+                toggleService(currentCategory, serviceItem, id, name, price, desc, hasQuantity, unit);
+            }
+            return;
+        }
         
         // Чекбокс (клик по области service-check)
         const checkDiv = e.target.closest('.service-check');
@@ -1036,7 +1068,7 @@ function toggleService(category, itemElement, serviceId, serviceName, servicePri
                     formatSelect.style.borderColor = '';
                     formatSelect.style.boxShadow = '';
                 }, 2000);
-                alert('Пожалуйста, сначала выберите формат памятника');
+                showFormatWarningToast();
                 return;
             }
         } else {
@@ -1860,6 +1892,50 @@ function showCustomToast(message, type = 'success', title = '') {
         toast.classList.remove('show');
         setTimeout(() => toast.remove(), 300);
     });
+}
+// Функция для показа красивого предупреждения о выборе формата
+function showFormatWarningToast() {
+    // Удаляем старый тост, если есть
+    const oldToast = document.querySelector('.format-warning-toast');
+    if (oldToast) oldToast.remove();
+    
+    // Создаём тост
+    const toast = document.createElement('div');
+    toast.className = 'format-warning-toast';
+    toast.innerHTML = `
+        <div class="toast-content">
+            <div class="toast-icon">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <div class="toast-message">
+                <div class="toast-title">Внимание!</div>
+                <div class="toast-text">Пожалуйста, сначала выберите формат памятника</div>
+            </div>
+            <button class="toast-close">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    `;
+    
+    document.body.appendChild(toast);
+    
+    // Анимация появления
+    setTimeout(() => toast.classList.add('show'), 10);
+    
+    // Закрытие по кнопке
+    const closeBtn = toast.querySelector('.toast-close');
+    closeBtn.addEventListener('click', () => {
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 300);
+    });
+    
+    // Авто-закрытие через 3 секунды
+    setTimeout(() => {
+        if (toast.parentNode) {
+            toast.classList.remove('show');
+            setTimeout(() => toast.remove(), 300);
+        }
+    }, 3000);
 }
 </script>
 </body>

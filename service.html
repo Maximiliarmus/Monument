@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=5.0">
     <title>Благоустройство | МОНУМЕНТ</title>
     <link rel="icon" type="image/webp" href="logo.webp">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
@@ -2224,7 +2224,7 @@ function renderContactsPage() {
                             </div>
                             <div class="info-content">
                                 <h3>Режим работы</h3>
-                                <p>Ежедневно: <strong>09:00 — 19:00</strong></p>
+                                <p>Ежедневно: <strong>09:00 — 17:00</strong></p>
                                 <p>🕒 Заявки принимаются круглосуточно</p>
                             </div>
                         </div>
@@ -2279,24 +2279,24 @@ function renderContactsPage() {
                 
                 <!-- Карта -->
                 <div class="map-container">
-                    <h3 class="map-title">Мы на карте</h3>
-                    <div class="map-wrapper">
-                        <iframe 
-                            src="https://yandex.ru/map-widget/v1/?ll=131.962429%2C43.088839&z=17&pt=131.962429%2C43.088839,pm2b87c4f" 
-                            width="100%" 
-                            height="400" 
-                            frameborder="0"
-                            style="border-radius: 20px;">
-                        </iframe>
-                        <p style="text-align: center; margin-top: 12px;">
-                            <a href="https://yandex.ru/maps/?text=Владивосток,+ул.+Борисенко+104+стр+6" target="_blank" style="color: #b87c4f;">
-                                📍 Открыть карту в Яндекс.Картах →
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
+    <h3 class="map-title">Мы на карте</h3>
+    <div class="map-wrapper">
+        <iframe 
+            src="https://yandex.ru/map-widget/v1/?ll=131.962429%2C43.088839&z=17&pt=131.962429%2C43.088839,pm2b87c4f" 
+            width="100%" 
+            height="400" 
+            frameborder="0"
+            style="border-radius: 20px;">
+        </iframe>
+        <div class="map-button-wrapper">
+            <a href="https://yandex.ru/maps/?text=Владивосток,+ул.+Борисенко+104+стр+6" target="_blank" class="map-button">
+                <i class="fas fa-map-marked-alt"></i>
+                <span>Открыть карту в Яндекс.Картах</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
         </div>
+    </div>
+</div>
     `;
     
     main.innerHTML = html;
