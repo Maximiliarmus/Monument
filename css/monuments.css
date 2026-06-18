@@ -153,18 +153,16 @@
     height: 100%;
 }
 .monument-card:hover {
-     transform: translateY(-8px);
+    transform: translateY(-8px);
     box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-    background: #1a1a1a; /* Черный фон */
+    background: #1a1a1a;
 }
 .monument-card:hover .monument-title {
     color: #fff;
 }
-
 .monument-card:hover .monument-article {
     color: #b87c4f;
 }
-
 .monument-card:hover .monument-dimensions {
     color: #ccc;
 }
@@ -173,12 +171,12 @@
     color: #fff;
     border-color: #b87c4f;
 }
-
 .monument-card:hover .monument-details-btn:hover {
     background: #fff;
     color: #b87c4f;
     border-color: #fff;
 }
+
 .monument-image {
     width: 100%;
     height: 680px;
@@ -189,15 +187,14 @@
     justify-content: center;
     flex-shrink: 0;
     position: relative;
-    overflow: hidden;
 }
 .monument-image img {
     width: 100%;
     height: auto;
-    object-fit: cover; /* Изображение покрывает контейнер, сохраняя пропорции */
+    object-fit: cover;
     object-position: center center;
     transition: transform 0.5s ease;
-     image-rendering: -webkit-optimize-contrast; /* Улучшает четкость */
+    image-rendering: -webkit-optimize-contrast;
     image-rendering: crisp-edges;
 }
 .monument-card:hover .monument-image img {
@@ -206,6 +203,7 @@
 .monument-card:hover .monument-image::after {
     background: rgba(0,0,0,0.3);
 }
+
 .monument-image .zoom-icon {
     position: absolute;
     top: 50%;
@@ -218,7 +216,6 @@
     z-index: 2;
     pointer-events: none;
 }
-
 .monument-card:hover .monument-image .zoom-icon {
     transform: translate(-50%, -50%) scale(1);
     opacity: 1;
@@ -251,13 +248,11 @@
     color: #333;
     margin-bottom: 8px;
 }
-
 .monument-article {
     font-size: 13px;
     color: #999;
     margin-bottom: 8px;
 }
-
 .monument-dimensions {
     font-size: 13px;
     color: #b87c4f;
@@ -315,7 +310,251 @@
     color: #ccc;
 }
 
-/* ===== МОБИЛЬНАЯ АДАПТАЦИЯ ===== */
+/* ===== ГАРАНТИРОВАННОЕ РЕШЕНИЕ ДЛЯ STICKY ===== */
+.monuments-tabs {
+    position: sticky !important;
+    top: 56px !important;
+    z-index: 999 !important;
+    display: block !important;
+    background: rgba(30, 30, 30, 0.95) !important;
+    backdrop-filter: blur(10px) !important;
+    will-change: transform !important;
+}
+
+/* ===== МОДАЛЬНОЕ ОКНО ДЛЯ ПАМЯТНИКА ===== */
+.monument-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.monument-modal.active {
+    display: flex;
+    opacity: 1;
+}
+.monument-modal-content {
+    max-width: 1200px;
+    width: 90%;
+    max-height: 90vh;
+    background: rgba(30, 30, 30, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(184, 124, 79, 0.3);
+    border-radius: 28px;
+    overflow: hidden;
+    position: relative;
+    animation: modalFadeIn 0.3s ease;
+}
+@keyframes modalFadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+.monument-modal-close {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    font-size: 35px;
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.2s;
+    z-index: 10;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.5);
+}
+.monument-modal-close:hover {
+    color: #b87c4f;
+    background: rgba(184,124,79,0.2);
+    transform: scale(1.1);
+}
+.monument-modal-body {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 30px;
+    gap: 30px;
+}
+.monument-modal-image {
+    flex: 1;
+    min-width: 480px;
+    background: transparent;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+.monument-modal-image img {
+    width: 100%;
+    max-height: 700px;
+    object-fit: contain;
+    border-radius: 16px;
+}
+.monument-modal-info {
+    flex: 1;
+    min-width: 280px;
+    color: #fff;
+}
+.monument-modal-info h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #d4a373;
+}
+.modal-description {
+    margin: 20px 0;
+}
+.modal-description p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #ccc;
+}
+.modal-formats-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+}
+.modal-formats-table th {
+    text-align: left;
+    padding: 12px 8px;
+    background: rgba(184, 124, 79, 0.15);
+    color: #d4a373;
+    font-weight: 600;
+}
+.modal-formats-table td {
+    padding: 10px 8px;
+    border-bottom: 1px solid rgba(184, 124, 79, 0.2);
+    color: #ddd;
+}
+.modal-formats-table tr:last-child td {
+    border-bottom: none;
+}
+.modal-formats-table .format-price {
+    color: #b87c4f;
+    font-weight: 700;
+    text-align: right;
+}
+.modal-order-btn {
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+}
+.modal-order-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(37,211,102,0.4);
+}
+
+.monument-details-btn {
+    background: rgba(184, 124, 79, 0.2);
+    border: 1px solid rgba(184, 124, 79, 0.3);
+    color: #d4a373;
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 12px;
+    width: 100%;
+}
+.monument-details-btn:hover {
+    background: #b87c4f;
+    color: white;
+    border-color: #b87c4f;
+    transform: translateY(-2px);
+}
+
+/* Кнопка "Рассчитать стоимость" в модальном окне */
+.modal-calc-btn {
+    background: linear-gradient(135deg, #b87c4f 0%, #9a623d 100%);
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    margin-top: 25px;
+    box-shadow: 0 4px 15px rgba(184, 124, 79, 0.3);
+    letter-spacing: 0.5px;
+}
+.modal-calc-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(184, 124, 79, 0.4);
+    background: linear-gradient(135deg, #c48a5a 0%, #aa6e45 100%);
+}
+.modal-calc-btn:active {
+    transform: translateY(0px);
+}
+.modal-calc-btn i {
+    font-size: 18px;
+    transition: transform 0.3s ease;
+}
+.modal-calc-btn:hover i {
+    transform: scale(1.1);
+}
+.modal-calc-btn span {
+    font-size: 16px;
+}
+
+/* ===== СПЕЦИАЛЬНЫЕ СТИЛИ ДЛЯ НАКРЫВНЫХ ПЛИТ ===== */
+.monument-card-slab {
+    min-height: 400px !important;
+}
+.monuments-tab-btn[href*="nakryvnye"].active ~ .monuments-list .monument-image,
+body:has(.monuments-tab-btn[href*="nakryvnye"].active) .monument-image {
+    height: 300px !important;
+}
+.monument-card-slab .monument-image {
+    height: 380px !important;
+}
+.monument-card-slab .monument-info {
+    padding: 10px 12px !important;
+}
+.monument-card-slab .monument-title {
+    font-size: 14px !important;
+    margin-bottom: 4px;
+}
+.monument-card-slab .monument-article {
+    font-size: 11px !important;
+}
+.monument-card-slab .monument-dimensions {
+    font-size: 11px !important;
+    margin-bottom: 8px;
+}
+.monument-card-slab .monument-details-btn {
+    padding: 5px 12px !important;
+    font-size: 11px !important;
+}
+
+/* ===== МОБИЛЬНАЯ АДАПТАЦИЯ (ВСЕ КАРТИНКИ КАК У ПЛИТ) ===== */
 @media (max-width: 768px) {
     .catalog-header {
         padding: 25px 0 15px;
@@ -363,9 +602,39 @@
         gap: 20px !important;
     }
     
+    /* ===== ВСЕ КАРТИНКИ КАК У ПЛИТ ===== */
     .monument-image {
-        height: 180px;
+        height: 260px;
+        padding: 5px;
+        background: #0a0a0a;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
+    
+    .monument-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: scale-down;
+        object-position: center center;
+        transition: transform 0.3s ease;
+    }
+    
+    .monument-card:hover .monument-image img {
+        transform: scale(1.03);
+    }
+    
+    /* ===== ПЛИТЫ ТОЖЕ С ТАКИМИ ЖЕ СТИЛЯМИ ===== */
+    .monument-card-slab .monument-image {
+        height: 260px !important;
+        padding: 5px !important;
+    }
+    
+    .monument-card-slab .monument-image img {
+        object-fit: scale-down !important;
+    }
+    
     .monument-info {
         padding: 15px;
     }
@@ -381,205 +650,23 @@
         width: 100%;
         justify-content: center;
     }
-}
-
-@media (max-width: 480px) {
-    .monument-image {
-        height: 160px;
-    }
-    .monument-title {
-        font-size: 0.9rem;
-    }
-    .monument-article,
-    .monument-dimensions {
-        font-size: 0.65rem;
-    }
-}
-
-/* ===== ГАРАНТИРОВАННОЕ РЕШЕНИЕ ДЛЯ STICKY (аналогично services.css) ===== */
-.monuments-tabs {
-    position: sticky !important;
-    top: 56px !important;
-    z-index: 999 !important;
-    display: block !important;
-    background: rgba(30, 30, 30, 0.95) !important;
-    backdrop-filter: blur(10px) !important;
-    will-change: transform !important;
-}
-/* ===== МОДАЛЬНОЕ ОКНО ДЛЯ ПАМЯТНИКА ===== */
-.monument-modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.9);
-    z-index: 9999;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.monument-modal.active {
-    display: flex;
-    opacity: 1;
-}
-
-.monument-modal-content {
-    max-width: 1200px;
-    width: 90%;
-    max-height: 90vh;
-    background: rgba(30, 30, 30, 0.95);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(184, 124, 79, 0.3);
-    border-radius: 28px;
-    overflow: hidden;
-    position: relative;
-    animation: modalFadeIn 0.3s ease;
-}
-
-@keyframes modalFadeIn {
-    from {
-        opacity: 0;
-        transform: scale(0.95);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-.monument-modal-close {
-    position: absolute;
-    top: 15px;
-    right: 25px;
-    font-size: 35px;
-    font-weight: bold;
-    color: #fff;
-    cursor: pointer;
-    transition: all 0.2s;
-    z-index: 10;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    background: rgba(0,0,0,0.5);
-}
-
-.monument-modal-close:hover {
-    color: #b87c4f;
-    background: rgba(184,124,79,0.2);
-    transform: scale(1.1);
-}
-
-.monument-modal-body {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 30px;
-    gap: 30px;
-}
-
-.monument-modal-image {
-    flex: 1;
-    min-width: 480px;
-    background: transparent;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-}
-
-.monument-modal-image img {
-    width: 100%;
-    max-height: 700px;
-    object-fit: contain;
-    border-radius: 16px;
     
-}
-
-.monument-modal-info {
-    flex: 1;
-    min-width: 280px;
-    color: #fff;
-}
-
-.monument-modal-info h2 {
-    font-size: 1.8rem;
-    font-weight: 700;
-    margin-bottom: 20px;
-    color: #d4a373;
-}
-
-.modal-description {
-    margin: 20px 0;
-}
-
-.modal-description p {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: #ccc;
-}
-
-.modal-formats-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 15px 0;
-}
-
-.modal-formats-table th {
-    text-align: left;
-    padding: 12px 8px;
-    background: rgba(184, 124, 79, 0.15);
-    color: #d4a373;
-    font-weight: 600;
-}
-
-.modal-formats-table td {
-    padding: 10px 8px;
-    border-bottom: 1px solid rgba(184, 124, 79, 0.2);
-    color: #ddd;
-}
-
-.modal-formats-table tr:last-child td {
-    border-bottom: none;
-}
-
-.modal-formats-table .format-price {
-    color: #b87c4f;
-    font-weight: 700;
-    text-align: right;
-}
-
-.modal-order-btn {
-    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-    color: white;
-    border: none;
-    padding: 12px 28px;
-    border-radius: 50px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 20px;
-    transition: all 0.3s ease;
-}
-
-.modal-order-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(37,211,102,0.4);
-}
-
-@media (max-width: 768px) {
+    /* Модальное окно */
+    .monument-modal-content {
+        max-height: 90vh;
+        overflow-y: auto !important;
+    }
     .monument-modal-body {
-        flex-direction: column;
+        flex-direction: column !important;
         padding: 20px;
+    }
+    .monument-modal-image {
+        max-height: 200px !important;
+        min-width: auto;
+    }
+    .monument-modal-image img {
+        max-height: 200px !important;
+        object-fit: contain !important;
     }
     .monument-modal-info h2 {
         font-size: 1.4rem;
@@ -590,103 +677,32 @@
         font-size: 0.8rem;
     }
 }
-.monument-details-btn {
-    background: rgba(184, 124, 79, 0.2);
-    border: 1px solid rgba(184, 124, 79, 0.3);
-    color: #d4a373;
-    padding: 8px 16px;
-    border-radius: 30px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin-top: 12px;
-    width: 100%;
+
+@media (max-width: 480px) {
+    .monument-image {
+        height: 220px;
+        padding: 4px;
+    }
+    .monument-card-slab .monument-image {
+        height: 220px !important;
+        padding: 4px !important;
+    }
+    .monument-title {
+        font-size: 0.9rem;
+    }
+    .monument-article,
+    .monument-dimensions {
+        font-size: 0.65rem;
+    }
 }
 
-.monument-details-btn:hover {
-    background: #b87c4f;
-    color: white;
-    border-color: #b87c4f;
-    transform: translateY(-2px);
-}
-/* Кнопка "Рассчитать стоимость" в модальном окне */
-.modal-calc-btn {
-    background: linear-gradient(135deg, #b87c4f 0%, #9a623d 100%);
-    color: white;
-    border: none;
-    padding: 14px 28px;
-    border-radius: 50px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    width: 100%;
-    margin-top: 25px;
-    box-shadow: 0 4px 15px rgba(184, 124, 79, 0.3);
-    letter-spacing: 0.5px;
-}
-
-.modal-calc-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(184, 124, 79, 0.4);
-    background: linear-gradient(135deg, #c48a5a 0%, #aa6e45 100%);
-}
-
-.modal-calc-btn:active {
-    transform: translateY(0px);
-}
-
-.modal-calc-btn i {
-    font-size: 18px;
-    transition: transform 0.3s ease;
-}
-
-.modal-calc-btn:hover i {
-    transform: scale(1.1);
-}
-
-.modal-calc-btn span {
-    font-size: 16px;
-}
-/* ===== СПЕЦИАЛЬНЫЕ СТИЛИ ДЛЯ НАКРЫВНЫХ ПЛИТ ===== */
-/* При открытии вкладки накрывных плит */
-.monument-card-slab {
-    min-height: 400px !important;  /* Добавьте эту строку */
-}
-.monuments-tab-btn[href*="nakryvnye"].active ~ .monuments-list .monument-image,
-body:has(.monuments-tab-btn[href*="nakryvnye"].active) .monument-image {
-    height: 300px !important;
-}
-
-/* Альтернативный способ - через класс (нужно добавить в JS) */
-.monument-card-slab .monument-image {
-    height: 380px !important;
-}
-
-.monument-card-slab .monument-info {
-    padding: 10px 12px !important;
-}
-
-.monument-card-slab .monument-title {
-    font-size: 14px !important;
-    margin-bottom: 4px;
-}
-
-.monument-card-slab .monument-article {
-    font-size: 11px !important;
-}
-
-.monument-card-slab .monument-dimensions {
-    font-size: 11px !important;
-    margin-bottom: 8px;
-}
-
-.monument-card-slab .monument-details-btn {
-    padding: 5px 12px !important;
-    font-size: 11px !important;
+@media (max-width: 375px) {
+    .monument-image {
+        height: 190px;
+        padding: 3px;
+    }
+    .monument-card-slab .monument-image {
+        height: 190px !important;
+        padding: 3px !important;
+    }
 }

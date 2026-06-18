@@ -130,6 +130,19 @@
     .nav-item.active .dropdown-menu {
         display: block;
     }
+    /* Анимация для подменю */
+    .dropdown-menu {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease, opacity 0.3s ease;
+        opacity: 0;
+    }
+    
+    .nav-item.active .dropdown-menu {
+        max-height: 500px;
+        opacity: 1;
+    }
+
     
     /* Герой */
     .hero .container {
@@ -289,9 +302,7 @@
         grid-template-columns: 1fr !important;
     }
     
-    .monument-image {
-        height: 250px;
-    }
+    
     
     .monument-title {
         font-size: 1rem;
@@ -437,21 +448,8 @@
     .total-price {
         font-size: 1.6rem;
     }
-    
-    /* Благоустройство */
-    .service-item {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .service-icon {
-        margin-bottom: 10px;
-    }
-    
-    .service-unit {
-        margin-top: 8px;
-    }
 }
+    
 
 /* ===== 6. МАЛЕНЬКИЕ ТЕЛЕФОНЫ (375px - 575px) ===== */
 @media (max-width: 575px) {
@@ -484,9 +482,7 @@
         font-size: 0.8rem;
     }
     
-    .monument-image {
-        height: 200px;
-    }
+   
     
     .monument-details-btn {
         padding: 5px 12px;
@@ -1694,5 +1690,76 @@
     .work-modal-info {
         max-height: calc(80vh - 180px) !important;
         padding: 12px !important;
+    }
+}
+/* ===== СКРЫТЬ ИКОНКИ И ЕДИНИЦУ ИЗМЕРЕНИЯ В БЛАГОУСТРОЙСТВЕ НА МОБИЛКЕ ===== */
+@media (max-width: 768px) {
+    /* 1. Скрываем иконки */
+    .service-icon {
+        display: none !important;
+    }
+    
+    /* 2. Скрываем единицу измерения (м2, п.м и т.д.) */
+    .service-unit {
+        display: none !important;
+    }
+    
+    /* 3. Убираем отступы у контейнера */
+    .service-item {
+        padding: 12px 15px !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+    }
+    
+    /* 4. Информация об услуге - слева */
+    .service-info {
+        flex: 1 !important;
+        text-align: left !important;
+        align-items: flex-start !important;
+        padding: 0 !important;
+    }
+    
+    /* 5. Название услуги */
+    .service-info h4 {
+        font-size: 0.85rem !important;
+        margin: 0 !important;
+        text-align: left !important;
+    }
+    
+    /* 6. Описание (оставляем или скрываем) */
+    .service-description {
+        font-size: 0.7rem !important;
+        color: rgba(255, 255, 255, 0.6) !important;
+        text-align: left !important;
+        margin: 2px 0 0 0 !important;
+    }
+    
+    /* 7. Цена - справа */
+    .service-price {
+        font-size: 0.9rem !important;
+        font-weight: 700 !important;
+        color: #b87c4f !important;
+        white-space: nowrap !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: none !important;
+        text-align: right !important;
+        flex-shrink: 0 !important;
+    }
+}
+
+/* Очень маленькие экраны - скрываем описание */
+@media (max-width: 480px) {
+    .service-description {
+        display: none !important;
+    }
+    
+    .service-info h4 {
+        font-size: 0.75rem !important;
+    }
+    
+    .service-price {
+        font-size: 0.8rem !important;
     }
 }
