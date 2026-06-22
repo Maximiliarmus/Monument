@@ -704,18 +704,11 @@ function renderServices(tabKey) {
         const hasFormats = service.formats && service.formats.length > 0;
         
         let displayPrice = '';
-        let priceValue = service.price;
-        
-        // Если услуга уже выбрана, показываем её цену
-        if (isSelected) {
-            const selectedService = selectedServices[currentCategory].find(s => s.id === service.id);
-            if (selectedService && selectedService.price) {
-                displayPrice = selectedService.price.toLocaleString() + ' ₽';
-                priceValue = selectedService.price;
-            } else {
-                displayPrice = '';
-            }
-        }
+let priceValue = service.price;
+
+// ❌ УБИРАЕМ ОТОБРАЖЕНИЕ ЦЕНЫ СПРАВА ПРИ ВЫБОРЕ
+// Теперь цена НЕ показывается справа
+displayPrice = ''; // ← ВСЕГДА ПУСТО
         
         let formatsHtml = '';
 if (hasFormats) {
@@ -725,10 +718,10 @@ if (hasFormats) {
         <select class="format-select" data-service-id="${service.id}" data-placeholder="Выберите формат">
             <option value="" disabled selected hidden>Выберите формат памятника</option>
             ${service.formats.map(format => `
-                <option value="${format.name}" data-price="${format.price}" data-size="${format.size}">
-                    ${format.name} (${format.size}) — ${format.price}
-                </option>
-            `).join('')}
+    <option value="${format.name}" data-price="${format.price}" data-size="${format.size}">
+        ${format.name} (${format.size})  
+    </option>
+`).join('')}
         </select>
     </div>
 `;
@@ -758,7 +751,23 @@ if (hasFormats) {
         const serviceId = select.getAttribute('data-service-id');
         const selectedOption = select.options[select.selectedIndex];
         
-        if (!selectedOption.value) return;
+        if (!selectedOption.value) {
+                // Если выбран пустой вариант - удаляем услугу
+                const serviceIndex = selectedServices[currentCategory].findIndex(s => s.id === serviceId);
+                if (serviceIndex !== -1) {
+                    selectedServices[currentCategory].splice(serviceIndex, 1);
+                    const serviceItem = select.closest('.service-item');
+                    if (serviceItem) {
+                        serviceItem.classList.remove('selected');
+                        const checkDiv = serviceItem.querySelector('.service-check');
+                        if (checkDiv) checkDiv.innerHTML = '';
+                        const priceSpan = document.getElementById(`price-${serviceId}`);
+                        if (priceSpan) priceSpan.textContent = '';
+                    }
+                }
+                updateTotalPrice();
+                return;
+            }
         
         const selectedPriceRaw = selectedOption.getAttribute('data-price');
         const selectedName = selectedOption.value;
@@ -805,8 +814,8 @@ if (hasFormats) {
             if (checkDiv) checkDiv.innerHTML = '<i class="fas fa-check"></i>';
             
             if (priceSpan) {
-                priceSpan.textContent = finalPrice.toLocaleString() + ' ₽';
-            }
+    priceSpan.textContent = ''; // ← ОСТАВЛЯЕМ ПУСТЫМ
+}
         } else {
             // Если услуга уже выбрана — обновляем цену и название
             const serviceIndex = selectedServices[currentCategory].findIndex(s => s.id === serviceId);
@@ -820,8 +829,8 @@ if (hasFormats) {
                 selectedServices[currentCategory][serviceIndex].name = `${selectedServices[currentCategory][serviceIndex].originalName || serviceName} (${selectedName})`;
                 
                 if (priceSpan) {
-                    priceSpan.textContent = selectedPrice.toLocaleString() + ' ₽';
-                }
+    priceSpan.textContent = ''; // ← ОСТАВЛЯЕМ ПУСТЫМ
+}
             }
         }
         
@@ -926,7 +935,28 @@ function setupServiceItemHandlers() {
             }
             return;
         }
-           const serviceItem = e.target.closest('.service-item');
+        
+        // ===== ОБРАБОТКА КЛИКА ПО ЧЕК-БОКСУ =====
+        const checkDiv = e.target.closest('.service-check');
+        if (checkDiv) {
+            e.stopPropagation();
+            const item = checkDiv.closest('.service-item');
+            if (item) {
+                const id = item.getAttribute('data-id');
+                const price = parseInt(item.getAttribute('data-price'));
+                const name = item.getAttribute('data-name');
+                const desc = item.getAttribute('data-desc');
+                const hasQuantity = item.getAttribute('data-has-quantity') === 'true';
+                const unit = item.getAttribute('data-unit') || 'шт';
+                
+                // ПРЯМОЕ ПЕРЕКЛЮЧЕНИЕ - без проверки формата
+                toggleServiceDirect(currentCategory, item, id, name, price, desc, hasQuantity, unit);
+            }
+            return;
+        }
+        
+        // ===== ОБРАБОТКА КЛИКА ПО КАРТОЧКЕ (НЕ ПО ЧЕК-БОКСУ) =====
+        const serviceItem = e.target.closest('.service-item');
         if (serviceItem && !e.target.closest('.format-select') && !e.target.closest('.qty-btn')) {
             e.stopPropagation();
             
@@ -940,8 +970,14 @@ function setupServiceItemHandlers() {
             // Проверяем, есть ли форматы у этой услуги
             const hasFormats = serviceItem.getAttribute('data-has-formats') === 'true';
             
-            if (hasFormats) {
-                // Если есть форматы, подсвечиваем select вместо добавления
+            // Проверяем, выбрана ли уже услуга
+            const isSelected = selectedServices[currentCategory].some(s => s.id === id);
+            
+            if (isSelected) {
+                // Если уже выбрана - удаляем (снимаем выбор)
+                toggleServiceDirect(currentCategory, serviceItem, id, name, price, desc, hasQuantity, unit);
+            } else if (hasFormats) {
+                // Если есть форматы и не выбрана - подсвечиваем select
                 const formatSelect = serviceItem.querySelector('.format-select');
                 if (formatSelect) {
                     formatSelect.style.borderColor = '#b87c4f';
@@ -951,27 +987,10 @@ function setupServiceItemHandlers() {
                         formatSelect.style.boxShadow = '';
                     }, 1500);
                 }
-                // Показываем подсказку
                 showFormatWarningToast();
             } else {
-                toggleService(currentCategory, serviceItem, id, name, price, desc, hasQuantity, unit);
-            }
-            return;
-        }
-        
-        // Чекбокс (клик по области service-check)
-        const checkDiv = e.target.closest('.service-check');
-        if (checkDiv) {
-            e.stopPropagation();
-            const item = checkDiv.closest('.service-item');
-            if (item) {
-                const id = item.getAttribute('data-id');
-                const price = parseInt(item.getAttribute('data-price'));
-                const name = item.getAttribute('data-name');
-                const desc = item.getAttribute('data-desc');
-                const hasQuantity = item.getAttribute('data-has-quantity') === 'true';
-                const unit = item.getAttribute('data-unit') || 'шт';
-                toggleService(currentCategory, item, id, name, price, desc, hasQuantity, unit);
+                // Обычная услуга без форматов
+                toggleServiceDirect(currentCategory, serviceItem, id, name, price, desc, hasQuantity, unit);
             }
             return;
         }
@@ -994,6 +1013,120 @@ function setupServiceItemHandlers() {
     container._changeHandler = changeHandler;
     container.addEventListener('click', clickHandler);
     container.addEventListener('change', changeHandler);
+}
+/// Функция прямого переключения услуги (БЕЗ проверки формата) - для чек-боксов
+function toggleServiceDirect(category, itemElement, serviceId, serviceName, servicePrice, serviceDesc, hasQuantity, unit) {
+    // Для ritual пакетов
+    if (category === 'ritual') {
+        selectedServices[category] = [];
+        const newService = { 
+            id: serviceId, 
+            name: serviceName, 
+            price: parseInt(servicePrice), 
+            desc: serviceDesc,
+            hasQuantity: false
+        };
+        selectedServices[category].push(newService);
+        
+        const currentTab = document.querySelector('.service-tab.active')?.getAttribute('data-tab');
+        if (currentTab) renderServices(currentTab);
+        updateTotalPrice();
+        return;
+    }
+    
+    const serviceIndex = selectedServices[category].findIndex(s => s.id === serviceId);
+    const hasFormats = itemElement.getAttribute('data-has-formats') === 'true';
+    const formatSelect = itemElement.querySelector('.format-select');
+    const priceSpan = document.getElementById(`price-${serviceId}`);
+    
+    if (serviceIndex === -1) {
+        // ===== ДОБАВЛЯЕМ УСЛУГУ =====
+        let finalPrice = null;
+        let finalName = serviceName;
+        let selectedFormat = null;
+        
+        // Если есть форматы — берем выбранный или первый
+        if (hasFormats) {
+            if (formatSelect && formatSelect.value) {
+                // Есть выбранный формат
+                const selectedOption = formatSelect.options[formatSelect.selectedIndex];
+                const priceRaw = selectedOption.getAttribute('data-price');
+                finalPrice = parseInt(priceRaw.replace(/[^\d]/g, ''));
+                selectedFormat = {
+                    name: selectedOption.value,
+                    size: selectedOption.getAttribute('data-size'),
+                    price: finalPrice
+                };
+                finalName = `${serviceName} (${selectedOption.value})`;
+            } else if (formatSelect && formatSelect.options.length > 1) {
+                // Нет выбранного - берем первый доступный формат
+                const firstOption = formatSelect.options[1]; // пропускаем placeholder
+                if (firstOption && firstOption.value) {
+                    const priceRaw = firstOption.getAttribute('data-price');
+                    finalPrice = parseInt(priceRaw.replace(/[^\d]/g, ''));
+                    selectedFormat = {
+                        name: firstOption.value,
+                        size: firstOption.getAttribute('data-size'),
+                        price: finalPrice
+                    };
+                    finalName = `${serviceName} (${firstOption.value})`;
+                    // Устанавливаем выбранное значение в select
+                    formatSelect.value = firstOption.value;
+                }
+            }
+            
+            // Если все равно нет цены - берем базовую
+            if (!finalPrice) {
+                finalPrice = parseInt(servicePrice);
+                finalName = serviceName;
+            }
+        } else {
+            finalPrice = parseInt(servicePrice);
+        }
+        
+        const newService = { 
+            id: serviceId, 
+            name: finalName, 
+            price: finalPrice, 
+            desc: serviceDesc,
+            hasQuantity: hasQuantity || false,
+            quantity: 1,
+            totalPrice: finalPrice,
+            unit: unit || 'шт',
+            selectedFormat: selectedFormat,
+            originalName: serviceName
+        };
+        
+        selectedServices[category].push(newService);
+        itemElement.classList.add('selected');
+        const checkDiv = itemElement.querySelector('.service-check');
+        if (checkDiv) checkDiv.innerHTML = '<i class="fas fa-check"></i>';
+        
+        // ❌ НЕ ПОКАЗЫВАЕМ ЦЕНУ СПРАВА
+        if (priceSpan) {
+            priceSpan.textContent = '';
+        }
+        
+    } else {
+        // ===== УДАЛЯЕМ УСЛУГУ =====
+        selectedServices[category].splice(serviceIndex, 1);
+        itemElement.classList.remove('selected');
+        const checkDiv = itemElement.querySelector('.service-check');
+        if (checkDiv) checkDiv.innerHTML = '';
+        
+        // ❌ УБИРАЕМ ЦЕНУ ПРИ УДАЛЕНИИ
+        if (priceSpan) {
+            priceSpan.textContent = '';
+        }
+        
+        // Сбрасываем select (но не удаляем услугу из-за этого)
+        if (formatSelect) {
+            // Не сбрасываем select, чтобы пользователь не потерял выбранный формат
+            // но можно снять выделение
+        }
+    }
+    
+    updateTotalPrice();
 }
 
 // Функция обновления количества
@@ -1096,8 +1229,9 @@ function toggleService(category, itemElement, serviceId, serviceName, servicePri
         const checkDiv = itemElement.querySelector('.service-check');
         if (checkDiv) checkDiv.innerHTML = '<i class="fas fa-check"></i>';
         
-        if (priceSpan && finalPrice) {
-            priceSpan.textContent = finalPrice.toLocaleString() + ' ₽';
+        // ❌ УБИРАЕМ ОТОБРАЖЕНИЕ ЦЕНЫ СПРАВА
+        if (priceSpan) {
+            priceSpan.textContent = ''; // ← ОСТАВЛЯЕМ ПУСТЫМ
         }
         
     } else {
@@ -1107,11 +1241,12 @@ function toggleService(category, itemElement, serviceId, serviceName, servicePri
         const checkDiv = itemElement.querySelector('.service-check');
         if (checkDiv) checkDiv.innerHTML = '';
         
+        // ❌ УБИРАЕМ ЦЕНУ ПРИ УДАЛЕНИИ
         if (priceSpan) {
             priceSpan.textContent = '';
         }
         
-        // Сбрасываем select, но не блокируем
+        // Сбрасываем select
         if (formatSelect) {
             formatSelect.value = '';
         }
