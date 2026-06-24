@@ -2072,6 +2072,48 @@ function showFormatWarningToast() {
         }
     }, 3000);
 }
+// ===== ПЛАВАЮЩИЙ БАННЕР СО СКИДКОЙ =====
+function closePromoBanner() {
+    const banner = document.getElementById('promoBanner');
+    if (banner) {
+        banner.classList.add('hidden');
+        localStorage.setItem('promoBannerClosed', 'true');
+    }
+}
+
+// Показываем баннер при загрузке
+document.addEventListener('DOMContentLoaded', function() {
+    const banner = document.getElementById('promoBanner');
+    if (banner) {
+        // Проверяем, не закрыт ли баннер
+        const isClosed = localStorage.getItem('promoBannerClosed');
+        
+        // Если баннер не закрыт - показываем
+        if (isClosed !== 'true') {
+            banner.classList.remove('hidden');
+            banner.style.display = 'flex'; // Принудительно показываем
+            console.log('✅ Баннер показан');
+        } else {
+            banner.classList.add('hidden');
+            console.log('❌ Баннер скрыт (был закрыт)');
+        }
+    }
+});
 </script>
+<!-- ===== ПЛАВАЮЩИЙ БАННЕР СО СКИДКОЙ ===== -->
+<div id="promoBanner" class="promo-banner">
+    <div class="promo-banner-content">
+        <div class="promo-icon">🎁</div>
+        <div class="promo-text">
+            <span class="promo-title">СКИДКА 10%</span>
+            <span class="promo-desc">
+                при обращении с 
+                <a href="https://www.farpost.ru/vladivostok/misc/sell/pamjatniki-skidka-20-vse-raboty-blagoustrojstvo-skidka-10-135784565.html" target="_blank" class="promo-link">Фарпост</a> 
+                или сайта
+            </span>
+        </div>
+        <button class="promo-close" onclick="closePromoBanner()">✕</button>
+    </div>
+</div>
 </body>
 </html>
