@@ -510,7 +510,7 @@ const servicesData = {
             gravirovka: { name: "Гравировка", items: [
                 { id: "blago_grav_1", name: "Гравировка портрета А3", price: 10000, desc: "По плечи", hasQuantity: false  },
                 { id: "blago_grav_2", name: "Гравировка портрета А4", price: 7500, desc: "По плечи", hasQuantity: false  },
-                { id: "blago_grav_3", name: "Гравировка текста", price: 70, desc: "За знак", hasQuantity: true, unit: "знак" },
+                { id: "blago_grav_3", name: "Гравировка текста", price: 70, desc: "ФИО, дата, эпитафия", hasQuantity: true, unit: "знак" },
                 { id: "blago_grav_4", name: "Гравировка корабля, машины, самолета", price: 10000, desc: "До 50см", hasQuantity: false  },
                 { id: "blago_grav_5", name: "Гравировка цветов", price: 3000, desc: "Гвоздики/розы до 20см", hasQuantity: false  }
             ] },
@@ -699,36 +699,63 @@ function renderServices(tabKey) {
     
     if (!services) return;
     
+    // ===== ОСНОВНАЯ ЧАСТЬ С ПОДДЕРЖКОЙ hasQuantity =====
     container.innerHTML = services.map(service => {
         const isSelected = selectedServices[currentCategory].some(s => s.id === service.id);
         const hasFormats = service.formats && service.formats.length > 0;
+        const hasQuantity = service.hasQuantity === true;
+        
+        // Получаем текущее количество из выбранной услуги
+        let currentQuantity = 1;
+        if (isSelected) {
+            const selectedService = selectedServices[currentCategory].find(s => s.id === service.id);
+            if (selectedService && selectedService.quantity) {
+                currentQuantity = selectedService.quantity;
+            }
+        }
         
         let displayPrice = '';
-let priceValue = service.price;
-
-// ❌ УБИРАЕМ ОТОБРАЖЕНИЕ ЦЕНЫ СПРАВА ПРИ ВЫБОРЕ
-// Теперь цена НЕ показывается справа
-displayPrice = ''; // ← ВСЕГДА ПУСТО
         
         let formatsHtml = '';
-if (hasFormats) {
-    const selectedFormatId = selectedServices[currentCategory].find(s => s.id === service.id)?.selectedFormatId;
-    formatsHtml = `
-    <div class="service-formats">
-        <select class="format-select" data-service-id="${service.id}" data-placeholder="Выберите формат">
-            <option value="" disabled selected hidden>Выберите формат памятника</option>
-            ${service.formats.map(format => `
-    <option value="${format.name}" data-price="${format.price}" data-size="${format.size}">
-        ${format.name} (${format.size})  
-    </option>
-`).join('')}
-        </select>
-    </div>
-`;
+        if (hasFormats) {
+            formatsHtml = `
+            <div class="service-formats">
+                <select class="format-select" data-service-id="${service.id}" data-placeholder="Выберите формат">
+                    <option value="" disabled selected hidden>Выберите формат памятника</option>
+                    ${service.formats.map(format => `
+                    <option value="${format.name}" data-price="${format.price}" data-size="${format.size}">
+                        ${format.name} (${format.size})  
+                    </option>
+                    `).join('')}
+                </select>
+            </div>
+            `;
+        }
+        
+        // ===== БЛОК ДЛЯ ВВОДА КОЛИЧЕСТВА (ДЛЯ ГРАВИРОВКИ ТЕКСТА) =====
+        let quantityHtml = '';
+if (hasQuantity && isSelected) {
+    const unit = service.unit || 'шт'; // ← ТОЛЬКО ЕСЛИ ВЫБРАНО
+    let unitLabel = unit;
+    if (unit === 'знак') {
+        unitLabel = getSignsWord(currentQuantity);
+    }
+    
+    quantityHtml = `
+        <div class="service-quantity">
+            <label for="qty-input-${service.id}">Количество:</label>
+            <div class="qty-control">
+                <button class="qty-btn minus" data-id="${service.id}" type="button">−</button>
+                <input type="number" class="qty-input" id="qty-input-${service.id}" data-id="${service.id}" value="${currentQuantity}" min="1" max="10000" step="1">
+                <button class="qty-btn plus" data-id="${service.id}" type="button">+</button>
+            </div>
+            <span class="qty-unit-label" id="qty-unit-${service.id}">${unitLabel}</span>
+        </div>
+    `;
 }
         
         return `
-            <div class="service-item ${isSelected ? 'selected' : ''}" data-id="${service.id}" data-price="${service.price}" data-name="${service.name}" data-desc="${service.desc || ''}" data-has-formats="${hasFormats}">
+            <div class="service-item ${isSelected ? 'selected' : ''}" data-id="${service.id}" data-price="${service.price}" data-name="${service.name}" data-desc="${service.desc || ''}" data-has-formats="${hasFormats}" data-has-quantity="${hasQuantity}" data-unit="${service.unit || 'шт'}">
                 <div class="service-check">
                     ${isSelected ? '<i class="fas fa-check"></i>' : ''}
                 </div>
@@ -736,6 +763,7 @@ if (hasFormats) {
                     <div class="service-name">${service.name}</div>
                     <div class="service-desc">${service.desc || ''}</div>
                     ${formatsHtml}
+                    ${quantityHtml}
                 </div>
                 <div class="service-price" id="price-${service.id}">${displayPrice}</div>
             </div>
@@ -957,7 +985,8 @@ function setupServiceItemHandlers() {
         
         // ===== ОБРАБОТКА КЛИКА ПО КАРТОЧКЕ (НЕ ПО ЧЕК-БОКСУ) =====
         const serviceItem = e.target.closest('.service-item');
-        if (serviceItem && !e.target.closest('.format-select') && !e.target.closest('.qty-btn')) {
+// Проверяем, что клик НЕ по селекту, НЕ по кнопкам +/-, НЕ по полю ввода
+if (serviceItem && !e.target.closest('.format-select') && !e.target.closest('.qty-btn') && !e.target.closest('.qty-input')) {
             e.stopPropagation();
             
             const id = serviceItem.getAttribute('data-id');
@@ -1007,12 +1036,32 @@ function setupServiceItemHandlers() {
             updateQuantity(id, newQty);
         }
     };
-    
+    const inputHandler = (e) => {
+    if (e.target.classList && e.target.classList.contains('qty-input')) {
+        e.stopPropagation();
+        const id = e.target.getAttribute('data-id');
+        let value = parseInt(e.target.value);
+        
+        // Если поле пустое - ничего не делаем
+        if (e.target.value === '') return;
+        
+        if (isNaN(value) || value < 1) value = 1;
+        if (value > 10000) value = 10000;
+        
+        // Обновляем только если значение изменилось
+        if (value !== parseInt(e.target.value)) {
+            e.target.value = value;
+        }
+        
+        updateQuantity(id, value);
+    }
+};
     // Сохраняем обработчики и добавляем их
     container._clickHandler = clickHandler;
     container._changeHandler = changeHandler;
     container.addEventListener('click', clickHandler);
     container.addEventListener('change', changeHandler);
+    container.addEventListener('input', inputHandler);
 }
 /// Функция прямого переключения услуги (БЕЗ проверки формата) - для чек-боксов
 function toggleServiceDirect(category, itemElement, serviceId, serviceName, servicePrice, serviceDesc, hasQuantity, unit) {
@@ -1039,6 +1088,14 @@ function toggleServiceDirect(category, itemElement, serviceId, serviceName, serv
     const formatSelect = itemElement.querySelector('.format-select');
     const priceSpan = document.getElementById(`price-${serviceId}`);
     
+    // Получаем количество из поля ввода (если есть)
+    const qtyInput = document.querySelector(`.qty-input[data-id="${serviceId}"]`);
+    let quantity = 1;
+    if (qtyInput) {
+        quantity = parseInt(qtyInput.value) || 1;
+        if (quantity < 1) quantity = 1;
+    }
+    
     if (serviceIndex === -1) {
         // ===== ДОБАВЛЯЕМ УСЛУГУ =====
         let finalPrice = null;
@@ -1048,7 +1105,6 @@ function toggleServiceDirect(category, itemElement, serviceId, serviceName, serv
         // Если есть форматы — берем выбранный или первый
         if (hasFormats) {
             if (formatSelect && formatSelect.value) {
-                // Есть выбранный формат
                 const selectedOption = formatSelect.options[formatSelect.selectedIndex];
                 const priceRaw = selectedOption.getAttribute('data-price');
                 finalPrice = parseInt(priceRaw.replace(/[^\d]/g, ''));
@@ -1059,8 +1115,7 @@ function toggleServiceDirect(category, itemElement, serviceId, serviceName, serv
                 };
                 finalName = `${serviceName} (${selectedOption.value})`;
             } else if (formatSelect && formatSelect.options.length > 1) {
-                // Нет выбранного - берем первый доступный формат
-                const firstOption = formatSelect.options[1]; // пропускаем placeholder
+                const firstOption = formatSelect.options[1];
                 if (firstOption && firstOption.value) {
                     const priceRaw = firstOption.getAttribute('data-price');
                     finalPrice = parseInt(priceRaw.replace(/[^\d]/g, ''));
@@ -1070,12 +1125,10 @@ function toggleServiceDirect(category, itemElement, serviceId, serviceName, serv
                         price: finalPrice
                     };
                     finalName = `${serviceName} (${firstOption.value})`;
-                    // Устанавливаем выбранное значение в select
                     formatSelect.value = firstOption.value;
                 }
             }
             
-            // Если все равно нет цены - берем базовую
             if (!finalPrice) {
                 finalPrice = parseInt(servicePrice);
                 finalName = serviceName;
@@ -1084,14 +1137,17 @@ function toggleServiceDirect(category, itemElement, serviceId, serviceName, serv
             finalPrice = parseInt(servicePrice);
         }
         
+        // Если есть количество - умножаем цену
+        const totalPrice = hasQuantity ? finalPrice * quantity : finalPrice;
+        
         const newService = { 
             id: serviceId, 
-            name: finalName, 
-            price: finalPrice, 
+            name: hasQuantity ? `${finalName} (${quantity} ${unit === 'знак' ? getSignsWord(quantity) : unit})` : finalName, 
+            price: finalPrice, // ← базовая цена за единицу
+            totalPrice: totalPrice, // ← итоговая цена с учетом количества
             desc: serviceDesc,
             hasQuantity: hasQuantity || false,
-            quantity: 1,
-            totalPrice: finalPrice,
+            quantity: hasQuantity ? quantity : 1,
             unit: unit || 'шт',
             selectedFormat: selectedFormat,
             originalName: serviceName
@@ -1102,9 +1158,15 @@ function toggleServiceDirect(category, itemElement, serviceId, serviceName, serv
         const checkDiv = itemElement.querySelector('.service-check');
         if (checkDiv) checkDiv.innerHTML = '<i class="fas fa-check"></i>';
         
-        // ❌ НЕ ПОКАЗЫВАЕМ ЦЕНУ СПРАВА
+        // Обновляем цену справа
         if (priceSpan) {
             priceSpan.textContent = '';
+        }
+        
+        // Обновляем отображение цены количества
+        const qtyPriceSpan = document.getElementById(`qty-price-${serviceId}`);
+        if (qtyPriceSpan) {
+            qtyPriceSpan.textContent = totalPrice.toLocaleString() + ' ₽';
         }
         
     } else {
@@ -1114,16 +1176,30 @@ function toggleServiceDirect(category, itemElement, serviceId, serviceName, serv
         const checkDiv = itemElement.querySelector('.service-check');
         if (checkDiv) checkDiv.innerHTML = '';
         
-        // ❌ УБИРАЕМ ЦЕНУ ПРИ УДАЛЕНИИ
         if (priceSpan) {
             priceSpan.textContent = '';
         }
         
-        // Сбрасываем select (но не удаляем услугу из-за этого)
-        if (formatSelect) {
-            // Не сбрасываем select, чтобы пользователь не потерял выбранный формат
-            // но можно снять выделение
+        // Скрываем поле количества (оно перерисуется при следующем рендере)
+        const qtyContainer = itemElement.querySelector('.service-quantity');
+        if (qtyContainer) {
+            qtyContainer.style.display = 'none';
         }
+        
+        // Сбрасываем select
+        if (formatSelect) {
+            formatSelect.value = '';
+        }
+    }
+    
+    // Перерисовываем список (чтобы обновить отображение)
+    const currentTab = document.querySelector('.service-tab.active')?.getAttribute('data-tab');
+    if (currentTab) {
+        // Сохраняем текущее состояние выбора
+        const currentServices = selectedServices[category];
+        renderServices(currentTab);
+        // Восстанавливаем выбранные услуги
+        selectedServices[category] = currentServices;
     }
     
     updateTotalPrice();
@@ -1131,15 +1207,38 @@ function toggleServiceDirect(category, itemElement, serviceId, serviceName, serv
 
 // Функция обновления количества
 function updateQuantity(serviceId, newQuantity) {
+    if (newQuantity < 1) newQuantity = 1;
+    if (newQuantity > 10000) newQuantity = 10000;
+    
     for (const cat of ['blagoustroystvo', 'pamiatniki']) {
         const index = selectedServices[cat].findIndex(s => s.id === serviceId);
         if (index !== -1) {
-            selectedServices[cat][index].quantity = newQuantity;
-            selectedServices[cat][index].totalPrice = selectedServices[cat][index].price * newQuantity;
+            const service = selectedServices[cat][index];
+            service.quantity = newQuantity;
+            service.totalPrice = service.price * newQuantity;
             
-            // Обновляем отображение - только поле ввода
+            // Обновляем название услуги с правильным склонением
+            const unit = service.unit || 'шт';
+            let unitLabel = unit;
+            if (unit === 'знак') {
+                unitLabel = getSignsWord(newQuantity);
+            }
+            const originalName = service.originalName || service.name.replace(/\(.*\)/, '').trim();
+            service.name = `${originalName} (${newQuantity} ${unitLabel})`;
+            
+            // Обновляем отображение - поле ввода
             const input = document.querySelector(`.qty-input[data-id="${serviceId}"]`);
             if (input) input.value = newQuantity;
+            
+            // ===== ОБНОВЛЯЕМ ЕДИНИЦУ ИЗМЕРЕНИЯ СПРАВА ОТ ПОЛЯ =====
+            const unitSpan = document.getElementById(`qty-unit-${serviceId}`);
+            if (unitSpan) {
+                let unitLabelForSpan = unit;
+                if (unit === 'знак') {
+                    unitLabelForSpan = getSignsWord(newQuantity);
+                }
+                unitSpan.textContent = unitLabelForSpan;
+            }
             
             break;
         }
@@ -1213,7 +1312,7 @@ function toggleService(category, itemElement, serviceId, serviceName, servicePri
         
         const newService = { 
             id: serviceId, 
-            name: finalName, 
+            name: hasQuantity ? `${finalName} (${quantity} ${unit === 'знак' ? getSignsWord(quantity) : unit})` : finalName, 
             price: finalPrice, 
             desc: serviceDesc,
             hasQuantity: hasQuantity || false,
@@ -1361,12 +1460,12 @@ function renderStep3() {
     let blagoList = '';
     for (const service of selectedServices.blagoustroystvo) {
         if (service.hasQuantity) {
-            blagoList += `<li><span>${service.name} (${service.quantity} ${getSignsWord(service.quantity)})</span><span>${(service.price * service.quantity).toLocaleString()} ₽</span></li>`;
-        } else {
-            blagoList += `<li><span>${service.name}</span><span>${service.price.toLocaleString()} ₽</span></li>`;
-        }
-        total += service.hasQuantity ? (service.price * service.quantity) : service.price;
+            blagoList += `<li><span>${service.name}</span><span>${(service.price * service.quantity).toLocaleString()} ₽</span></li>`;
+    } else {
+        blagoList += `<li><span>${service.name}</span><span>${service.price.toLocaleString()} ₽</span></li>`;
     }
+    total += service.hasQuantity ? (service.price * service.quantity) : service.price;
+}
     
     // Формируем список услуг для Памятников
     let pamiatnikiList = '';
@@ -2077,7 +2176,7 @@ function closePromoBanner() {
     const banner = document.getElementById('promoBanner');
     if (banner) {
         banner.classList.add('hidden');
-        localStorage.setItem('promoBannerClosed', 'true');
+        //localStorage.setItem('promoBannerClosed', 'true');
     }
 }
 
@@ -2086,16 +2185,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const banner = document.getElementById('promoBanner');
     if (banner) {
         // Проверяем, не закрыт ли баннер
-        const isClosed = localStorage.getItem('promoBannerClosed');
+        //const isClosed = localStorage.getItem('promoBannerClosed');
         
         // Если баннер не закрыт - показываем
-        if (isClosed !== 'true') {
+         if (banner) {
+           
             banner.classList.remove('hidden');
-            banner.style.display = 'flex'; // Принудительно показываем
-            console.log('✅ Баннер показан');
-        } else {
-            banner.classList.add('hidden');
-            console.log('❌ Баннер скрыт (был закрыт)');
+            banner.style.display = 'flex';
+            banner.style.opacity = '1';
+            banner.style.visibility = 'visible';
+            console.log('✅ Баннер ПОКАЗАН');
         }
     }
 });

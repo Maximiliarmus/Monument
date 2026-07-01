@@ -864,3 +864,172 @@
 .close-format-btn:hover {
     background: #e0e0e0;
 }
+/* ===== УПРАВЛЕНИЕ КОЛИЧЕСТВОМ (ДЛЯ ГРАВИРОВКИ ТЕКСТА) ===== */
+.service-quantity {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: rgba(184, 124, 79, 0.08);
+    border: 1px solid rgba(184, 124, 79, 0.15);
+    border-radius: 12px;
+    flex-wrap: wrap;
+    animation: quantityFadeIn 0.3s ease;
+}
+
+@keyframes quantityFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.service-quantity label {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.qty-control {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.qty-btn {
+    width: 32px;
+    height: 32px;
+    border: 1px solid rgba(184, 124, 79, 0.3);
+    background: rgba(184, 124, 79, 0.1);
+    color: #b87c4f;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    line-height: 1;
+}
+
+.qty-btn:hover {
+    background: rgba(184, 124, 79, 0.25);
+    transform: scale(1.05);
+}
+
+.qty-btn:active {
+    transform: scale(0.95);
+}
+
+.qty-input {
+    width: 55px;
+    height: 32px;
+    text-align: center;
+    border: 1px solid rgba(184, 124, 79, 0.3);
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.qty-input:focus {
+    border-color: #b87c4f;
+    box-shadow: 0 0 0 2px rgba(184, 124, 79, 0.2);
+}
+
+.qty-input::-webkit-inner-spin-button,
+.qty-input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.qty-input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+/* ===== ЕДИНИЦА ИЗМЕРЕНИЯ СПРАВА ОТ ПОЛЯ ===== */
+.qty-unit-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #b87c4f;
+    min-width: 40px;
+    text-align: left;
+    white-space: nowrap;
+}
+
+/* ===== Стили для выбранной услуги с количеством ===== */
+.service-item.selected .service-quantity {
+    background: rgba(184, 124, 79, 0.12);
+    border-color: rgba(184, 124, 79, 0.3);
+}
+
+/* ===== МОБИЛЬНАЯ АДАПТАЦИЯ ===== */
+@media (max-width: 768px) {
+    .service-quantity {
+        padding: 10px 12px;
+        gap: 8px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .service-quantity label {
+        font-size: 13px;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .qty-control {
+        justify-content: center;
+    }
+    
+    .qty-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 20px;
+    }
+    
+    .qty-input {
+        width: 60px;
+        height: 36px;
+        font-size: 16px;
+    }
+    
+    .qty-unit-label {
+        font-size: 14px;
+        min-width: 35px;
+    }
+}
+
+@media (max-width: 480px) {
+    .service-quantity {
+        padding: 8px 10px;
+    }
+    
+    .qty-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 17px;
+    }
+    
+    .qty-input {
+        width: 50px;
+        height: 32px;
+        font-size: 14px;
+    }
+    
+    .qty-unit-label {
+        font-size: 13px;
+        min-width: 30px;
+    }
+}
